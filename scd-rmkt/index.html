@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<link rel="icon" type="image/png" href="../favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Capital Digital | Você ganhou acesso gratuito</title>
+<style>
+  /* ---------- FONTE ---------- */
+  @font-face { font-family:"Mosvita"; src:url("assets/fonts/Mosvita-Regular.otf") format("opentype"); font-weight:400; font-display:swap; }
+  @font-face { font-family:"Mosvita"; src:url("assets/fonts/Mosvita-SemiBold.otf") format("opentype"); font-weight:600; font-display:swap; }
+  @font-face { font-family:"Mosvita"; src:url("assets/fonts/Mosvita-Bold.otf") format("opentype"); font-weight:700; font-display:swap; }
+  @font-face { font-family:"Mosvita"; src:url("assets/fonts/Mosvita-ExtraBold.otf") format("opentype"); font-weight:800; font-display:swap; }
+
+  :root{
+    --bg-0:#07080a;
+    --bg-1:#0d0f13;
+    --ink:#f5f7fa;
+    --ink-dim:#b7bfca;
+    --ink-soft:#8d96a3;
+    --ink-faint:#5d6573;
+    --gold:#f39021;
+    --green:#21b821;
+    --green-bright:#2ee02e;
+    --green-deep:#169016;
+    --red:#ec1c1c;
+    --card:rgba(255,255,255,0.04);
+    --line:rgba(255,255,255,0.09);
+    --line-soft:rgba(255,255,255,0.06);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Mosvita",system-ui,-apple-system,sans-serif;
+    background:var(--bg-0);color:var(--ink);
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    line-height:1.55;overflow-x:hidden;position:relative;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-2;
+    background:
+      radial-gradient(115% 70% at 50% -8%, rgba(243,144,33,0.11) 0%, rgba(243,144,33,0) 55%),
+      radial-gradient(90% 50% at 85% 8%, rgba(243,144,33,0.06) 0%, rgba(243,144,33,0) 60%),
+      linear-gradient(180deg, var(--bg-1) 0%, var(--bg-0) 55%, #050608 100%);
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+
+  .wrap{width:100%;max-width:760px;margin:0 auto;padding:0 22px;}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;text-align:center;padding:clamp(40px,7vw,64px) 0 clamp(44px,7vw,60px);overflow:hidden;}
+  .covers{position:relative;display:flex;justify-content:center;align-items:flex-end;height:clamp(170px,34vw,260px);margin-bottom:clamp(28px,5vw,40px);}
+  .covers img{
+    position:absolute;bottom:0;width:clamp(108px,21vw,160px);border-radius:10px;
+    border:1px solid var(--line);box-shadow:0 18px 40px -16px rgba(0,0,0,.85);
+  }
+  .covers img:nth-child(1){transform:translateX(-190%) rotate(-9deg);bottom:14px;opacity:.85;}
+  .covers img:nth-child(2){transform:translateX(-98%) rotate(-5deg);bottom:7px;}
+  .covers img:nth-child(3){transform:none;z-index:3;width:clamp(122px,24vw,180px);}
+  .covers img:nth-child(4){transform:translateX(98%) rotate(5deg);bottom:7px;}
+  .covers img:nth-child(5){transform:translateX(190%) rotate(9deg);bottom:14px;opacity:.85;}
+  .hero h1{
+    font-size:clamp(24px,5.6vw,40px);font-weight:800;line-height:1.18;letter-spacing:-.01em;
+    max-width:680px;margin:0 auto;text-wrap:balance;
+  }
+  .hero h1 .hl{color:var(--gold);}
+  .hero .sub{
+    display:inline-block;margin-top:18px;
+    font-size:clamp(11px,2.6vw,13px);font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--ink-dim);border:1px solid var(--line);border-radius:100px;padding:9px 18px;
+  }
+
+  /* ---------- CARTA (texto corrido) ---------- */
+  .carta{padding:clamp(10px,2vw,20px) 0 0;}
+  .bloco{padding:clamp(26px,5vw,40px) 0;text-align:center;}
+  .bloco h2{
+    font-size:clamp(20px,4.6vw,30px);font-weight:800;line-height:1.22;letter-spacing:-.01em;
+    margin-bottom:clamp(16px,3vw,22px);text-wrap:balance;
+  }
+  .bloco h2 .hl{color:var(--gold);}
+  .bloco p{
+    color:var(--ink-dim);font-size:clamp(15px,3.2vw,17px);line-height:1.65;
+    max-width:620px;margin:0 auto 14px;text-wrap:pretty;
+  }
+  .bloco p:last-child{margin-bottom:0;}
+  .bloco p strong{color:#fff;font-weight:700;}
+  .bloco p .hl{color:var(--gold);font-weight:700;}
+  .bloco p .gr{color:var(--green-bright);font-weight:700;}
+  .bloco p u{text-underline-offset:3px;}
+
+  .divider{border:none;border-top:1px solid var(--line-soft);max-width:280px;margin:0 auto;}
+
+  /* foto autor */
+  .foto-bloco{display:flex;justify-content:center;padding:clamp(8px,2vw,16px) 0;}
+  .foto-bloco .frame{
+    position:relative;width:min(100%,420px);border-radius:16px;overflow:hidden;
+    border:1px solid var(--line);box-shadow:0 30px 70px -30px rgba(0,0,0,.9);
+  }
+  .foto-bloco img{width:100%;height:auto;}
+  .foto-bloco .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,8,10,.45),transparent 45%);}
+  .foto-bloco .frame.print{width:min(100%,460px);background:#fff;}
+  .foto-bloco .frame.print::after{background:none;}
+
+  /* ===== showcase (página + foto de fundo + notificações) ===== */
+  .showcase{padding:clamp(8px,2vw,20px) 0 clamp(20px,4vw,34px);}
+  /* o wrap padrão tem padding:0 22px mas queremos controle total aqui */
+  .showcase>.wrap{padding:0;}
+  .showcase-card{
+    position:relative;overflow:hidden;
+    background:#08090b;
+    border:1px solid var(--line);border-radius:18px;
+    box-shadow:0 40px 90px -40px rgba(0,0,0,.95);
+    /* margens explícitas — 20px cada lado no mobile */
+    margin:0 20px;
+  }
+  .showcase-bg{position:absolute;inset:0;}
+  .showcase-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 12%;}
+  .showcase-bg::after{content:"";position:absolute;inset:0;background:
+    linear-gradient(180deg,rgba(6,7,9,.8) 0%,rgba(6,7,9,.6) 40%,rgba(6,7,9,.95) 100%),
+    linear-gradient(90deg,rgba(6,7,9,.6) 0%,rgba(6,7,9,0) 50%,rgba(6,7,9,.6) 100%);
+  }
+  /* grid: padding uniforme, 1 coluna no mobile */
+  .showcase-grid{
+    position:relative;z-index:1;
+    display:grid;grid-template-columns:1fr;
+    gap:clamp(20px,4vw,36px);
+    align-items:start;
+    padding:20px;
+  }
+
+  /* mini página — centralizada */
+  .mini-page{
+    max-width:260px;margin:0 auto;width:100%;
+    border-radius:14px;overflow:hidden;
+    border:1px solid rgba(255,255,255,.12);background:#0a0b0d;
+    box-shadow:0 30px 70px -26px rgba(0,0,0,.95);
+  }
+  .mini-bar{background:var(--red);text-align:center;padding:8px 10px;
+    font-size:9.5px;font-weight:800;letter-spacing:.04em;color:#fff;line-height:1.7;text-transform:uppercase;}
+  .mini-bar s{opacity:.85;}
+  .mini-bar .free{color:#ffd23f;}
+  .mini-video{position:relative;padding:10px 10px 0;}
+  .mini-video .vframe{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:9/16;max-height:340px;margin:0 auto;background:#000;}
+  .mini-video .vframe img{width:100%;height:100%;object-fit:cover;}
+  .mini-video .vframe::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.12);}
+  .play-overlay{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;opacity:.90;}
+  .play-overlay .ring{width:54px;height:54px;border-radius:50%;border:3.5px solid rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 18px rgba(0,0,0,.35);}
+  .play-overlay .ring svg{width:22px;height:22px;}
+  .mini-btn{display:block;margin:12px;text-align:center;border-radius:10px;
+    background:linear-gradient(180deg,var(--green-bright) 0%,var(--green) 55%,#169016 100%);
+    color:#fff;font-weight:800;font-size:12.5px;padding:12px 10px;
+    box-shadow:0 10px 24px -10px rgba(33,184,33,.7), inset 0 1px 0 rgba(255,255,255,.25);}
+  .mini-foot{border-top:1px solid rgba(255,255,255,.08);background:#07080a;
+    padding:11px 10px 13px;display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;}
+  .mini-foot img{height:12px;width:auto;opacity:.95;}
+  .mini-foot .r1{font-size:8px;font-weight:700;color:rgba(255,255,255,.8);letter-spacing:.03em;}
+  .mini-foot .r2{font-size:7px;color:rgba(255,255,255,.45);letter-spacing:.02em;}
+
+  /* notificações hotmart — sem transforms no mobile */
+  .toast-col{display:flex;flex-direction:column;gap:10px;width:100%;}
+  .toast{
+    display:flex;align-items:center;gap:11px;
+    background:rgba(16,18,22,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,.13);border-radius:13px;padding:10px 13px;
+    box-shadow:0 16px 36px -16px rgba(0,0,0,.9);
+    transform:none;
+  }
+  .toast .ticon{flex-shrink:0;width:38px;height:38px;border-radius:9px;overflow:hidden;display:grid;place-items:center;}
+  .toast .ticon img{width:100%;height:100%;object-fit:cover;display:block;}
+  .toast .tbody{min-width:0;flex:1;overflow:hidden;display:block;text-align:left;}
+  .toast .t1{display:flex;align-items:baseline;justify-content:space-between;gap:6px;}
+  .toast .t1 b{font-size:11.5px;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:left;}
+  .toast .t1 i{font-style:normal;font-size:10px;color:rgba(255,255,255,.55);flex-shrink:0;white-space:nowrap;}
+  .toast .t2{display:block;text-align:left;font-size:11px;color:rgba(255,255,255,.75);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;}
+
+  @media (min-width:700px){
+    .showcase-card{margin:0;}
+    .showcase>.wrap{padding:0 22px;}
+    .showcase-grid{grid-template-columns:1fr 1.1fr;align-items:center;padding:clamp(28px,4vw,44px);}
+    .mini-page{max-width:320px;}
+    /* rotações só no desktop — card overflow:hidden contém tudo */
+    .toast:nth-child(1){transform:rotate(-1.2deg) translateX(-4px);}
+    .toast:nth-child(2){transform:rotate(.6deg) translateX(8px);}
+    .toast:nth-child(3){transform:rotate(-0.8deg) translateX(2px);}
+    .toast:nth-child(4){transform:rotate(1.4deg) translateX(-6px);}
+    .toast:nth-child(5){transform:rotate(-0.5deg) translateX(10px);}
+  }
+
+  /* mockup de dispositivos */
+  .mockup-bloco{display:flex;justify-content:center;margin:clamp(18px,4vw,30px) auto;}
+  .mockup-bloco img{width:min(100%,680px);height:auto;}
+
+  /* statement amarelo */
+  .statement{
+    font-size:clamp(16px,3.6vw,20px);font-weight:800;letter-spacing:.02em;text-transform:uppercase;
+    color:var(--gold);max-width:640px;margin:0 auto;line-height:1.45;text-wrap:balance;
+  }
+
+  /* ---------- BOTÃO CTA ---------- */
+  .cta-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:clamp(22px,4vw,30px);}
+  .cta{
+    display:inline-flex;align-items:center;justify-content:center;text-align:center;
+    font-family:"Mosvita",sans-serif;font-weight:800;font-size:clamp(15px,3.2vw,18px);line-height:1.2;
+    color:#fff;background:linear-gradient(180deg,var(--green-bright) 0%,var(--green) 55%,var(--green-deep) 100%);
+    border:none;border-radius:14px;cursor:pointer;
+    min-height:64px;padding:14px clamp(22px,5vw,42px);width:min(100%,520px);
+    box-shadow:0 16px 34px -12px rgba(33,184,33,.6), inset 0 1px 0 rgba(255,255,255,.28);
+    animation:pulse 1.9s cubic-bezier(.4,0,.6,1) infinite;
+    transition:transform .12s ease;
+  }
+  .cta:hover{transform:translateY(-1px) scale(1.012);}
+  .cta:active{transform:scale(.987);}
+  @keyframes pulse{
+    0%{box-shadow:0 16px 34px -12px rgba(33,184,33,.6),0 0 0 0 rgba(46,224,46,.5);}
+    70%{box-shadow:0 16px 34px -12px rgba(33,184,33,.6),0 0 0 20px rgba(46,224,46,0);}
+    100%{box-shadow:0 16px 34px -12px rgba(33,184,33,.6),0 0 0 0 rgba(46,224,46,0);}
+  }
+  @media (prefers-reduced-motion:reduce){.cta{animation:none;}}
+  .cta-note{font-size:12.5px;color:var(--ink-soft);font-weight:600;letter-spacing:.04em;}
+
+  /* "ou seja" espaçado */
+  .ouseja{
+    font-size:clamp(13px,3vw,15px);font-weight:700;letter-spacing:.5em;text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- RECAP CARD ---------- */
+  .recap{padding:clamp(30px,5vw,48px) 0 clamp(40px,6vw,56px);}
+  .recap-card{
+    background:linear-gradient(180deg,#101319,rgba(13,15,19,.85));
+    border:1px solid var(--line);border-radius:22px;
+    padding:clamp(26px,5vw,44px) clamp(20px,4vw,40px);
+    box-shadow:0 40px 90px -40px rgba(0,0,0,.95), 0 0 0 1px rgba(243,144,33,.07);
+    position:relative;overflow:hidden;
+  }
+  .recap-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.6;}
+  .recap-card h2{
+    text-align:center;font-size:clamp(20px,4.4vw,28px);font-weight:800;line-height:1.25;
+    margin-bottom:clamp(22px,4vw,30px);text-wrap:balance;
+  }
+  .recap-card h2 .hl{color:var(--gold);}
+  .recap-list{list-style:none;display:flex;flex-direction:column;}
+  .recap-list li{
+    display:flex;align-items:flex-start;gap:12px;
+    padding:13px 0;border-top:1px solid var(--line-soft);
+    color:var(--ink-dim);font-size:clamp(13.5px,3vw,15.5px);line-height:1.4;text-align:left;
+  }
+  .recap-list li:last-child{border-bottom:1px solid var(--line-soft);}
+  .recap-list .ck{color:var(--green-bright);flex-shrink:0;width:18px;height:18px;display:grid;place-items:center;margin-top:2px;}
+  .recap-list .ck svg{width:15px;height:15px;}
+  .recap-list .item{flex:1;}
+  .recap-list .item b{color:#fff;font-weight:700;}
+  .recap-list .val{font-weight:700;color:var(--ink-soft);white-space:nowrap;margin-top:1px;}
+  .recap-total{
+    text-align:center;margin-top:clamp(24px,4vw,34px);
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .recap-total .t1{font-size:clamp(17px,3.8vw,23px);color:var(--red);font-weight:800;}
+  .recap-total .t1 s{color:var(--red);text-decoration-thickness:2.5px;}
+  .recap-total .sub{font-size:clamp(15px,3.4vw,19px);color:var(--ink-dim);font-weight:600;margin-top:10px;}
+  .recap-total .big{font-size:clamp(36px,9vw,56px);color:#fff;font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-top:2px;}
+  .recap-total .big .n{color:var(--green-bright);}
+  .recap-total .vista{font-size:clamp(15px,3.4vw,19px);color:#fff;font-weight:600;margin-top:2px;}
+  .recap-card .cta-wrap{margin-top:clamp(24px,4vw,32px);}
+  .pay-row{
+    display:flex;justify-content:center;gap:8px 18px;flex-wrap:wrap;margin-top:18px;
+    font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);
+  }
+  .garantia-mini{
+    display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 12px;margin-top:16px;
+    font-size:13px;color:var(--ink-soft);font-weight:600;
+  }
+  .garantia-mini svg{width:17px;height:17px;color:var(--ink-soft);flex-shrink:0;}
+  .garantia-mini span{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;}
+  @media (max-width:560px){
+    /* cada selo em sua própria linha única, centralizado */
+    .garantia-mini{flex-direction:column;gap:10px;}
+    .garantia-mini span:nth-child(2){display:none;}
+  }
+
+  /* ---------- DÚVIDAS ---------- */
+  .duvidas{
+    text-align:center;border-top:1px solid var(--line-soft);
+    padding:clamp(40px,7vw,60px) 22px;
+  }
+  .duvidas h3{font-size:clamp(18px,4vw,24px);font-weight:800;letter-spacing:.04em;margin-bottom:12px;}
+  .duvidas p{color:var(--ink-dim);font-size:clamp(14px,3vw,16px);max-width:520px;margin:0 auto 22px;}
+  .btn-wpp{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    font-weight:800;font-size:clamp(13px,3vw,15px);letter-spacing:.06em;text-transform:uppercase;
+    color:#fff;background:linear-gradient(180deg,var(--green-bright),var(--green-deep));
+    border-radius:12px;min-height:54px;padding:0 26px;
+    box-shadow:0 12px 26px -12px rgba(33,184,33,.6);
+    transition:transform .12s ease;
+  }
+  .btn-wpp:hover{transform:scale(1.02);}
+  .btn-wpp svg{width:19px;height:19px;flex-shrink:0;}
+
+  /* ---------- RODAPÉ ---------- */
+  footer{
+    border-top:1px solid var(--line-soft);
+    padding:36px 22px 44px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;
+  }
+  footer .logo{height:32px;width:auto;opacity:.92;}
+  footer .rights{font-size:13px;color:var(--ink-dim);letter-spacing:.04em;font-weight:600;}
+  footer .cnpj{font-size:12px;color:var(--ink-faint);letter-spacing:.03em;line-height:1.6;}
+  footer .cnpj strong{font-weight:700;color:var(--ink-soft);}
+
+  @media (max-width:480px){
+    .covers img:nth-child(1),.covers img:nth-child(5){display:none;}
+    .covers img:nth-child(2){transform:translateX(-78%) rotate(-6deg);}
+    .covers img:nth-child(4){transform:translateX(78%) rotate(6deg);}
+  }
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '946406425103675');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<section class="hero" data-screen-label="Hero">
+  <div class="wrap">
+    <div class="covers">
+      <img src="assets/modulos/m03.jpg" alt="" />
+      <img src="assets/modulos/m05.jpg" alt="" />
+      <img src="assets/modulos/m01.jpg" alt="Capital Digital" />
+      <img src="assets/modulos/m06.jpg" alt="" />
+      <img src="assets/modulos/m08.jpg" alt="" />
+    </div>
+    <h1>PARABÉNS: <span class="hl">VOCÊ GANHOU ACESSO GRATUITO</span> AO CAPITAL DIGITAL.</h1>
+    <span class="sub">( Leia até o final para entender como )</span>
+  </div>
+</section>
+
+<!-- ============ CARTA ============ -->
+<main class="carta">
+
+  <section class="bloco" data-screen-label="Abertura">
+    <div class="wrap">
+      <h2>Você chegou na minha página, se interessou pelo Capital Digital, mas não concluiu seu acesso.</h2>
+      <p>E pra ser bem sincero: eu não vou te entregar um "curso".</p>
+      <p>O que eu realmente quero te entregar é <strong>liberdade financeira, liberdade de tempo e liberdade geográfica.</strong></p>
+      <p>É você poder construir uma renda recorrente trabalhando apenas com a internet, sem depender de chefe, de sorte ou de ninguém.</p>
+      <p>Portanto, se é isso que você verdadeiramente quer, continue lendo até o final, porque nas próximas linhas eu vou te explicar como esse <span class="hl">acesso gratuito e exclusivo</span> vai funcionar.</p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============ SHOWCASE: PÁGINA + RESULTADOS ============ -->
+  <section class="bloco showcase" data-screen-label="Showcase">
+    <div class="wrap">
+      <div class="showcase-card">
+        <div class="showcase-bg"><img src="assets/banner-luiz.jpg" alt="" /></div>
+        <div class="showcase-grid">
+          <div class="mini-page">
+            <div class="mini-bar">Aula liberada | De: <s>R$697,00</s> por: <span class="free">R$0,00</span><br />- Acaba hoje - Tempo restante: <span id="mockTimer">10:55:30</span> -</div>
+            <div class="mini-video">
+              <div class="vframe">
+                <img src="assets/vsl-frame.jpg" alt="Luiz Brito na aula do Capital Digital" />
+                <div class="play-overlay">
+                  <span class="ring"><svg viewBox="0 0 24 24" fill="white"><polygon points="9,6 9,18 18,12"></polygon></svg></span>
+                </div>
+              </div>
+            </div>
+            <span class="mini-btn">Quero uma das 30 vagas agora!</span>
+            <div class="mini-foot">
+              <img src="assets/logo-capital.png" alt="Capital Digital" />
+              <span class="r1">Todos os direitos reservados</span>
+              <span class="r2">CNPJ 48.978.195/0001-75 | AXR NEGOCIOS DIGITAIS LTDA</span>
+            </div>
+          </div>
+          <div class="toast-col">
+            <div class="toast">
+              <span class="ticon"><img src="assets/hotmart-logo.png" alt="Hotmart" /></span>
+              <span class="tbody"><span class="t1"><b>Venda realizada com Cartão de Cré...</b><i>há 5m</i></span><span class="t2">Você recebeu: R$ 176,50 - HP2066481314</span></span>
+            </div>
+            <div class="toast">
+              <span class="ticon"><img src="assets/hotmart-logo.png" alt="Hotmart" /></span>
+              <span class="tbody"><span class="t1"><b>Venda realizada com o Pix Hotmart</b><i>há 22m</i></span><span class="t2">Você recebeu: R$ 176,50 - HP5534871092</span></span>
+            </div>
+            <div class="toast">
+              <span class="ticon"><img src="assets/hotmart-logo.png" alt="Hotmart" /></span>
+              <span class="tbody"><span class="t1"><b>Venda realizada com Cartão de Cré...</b><i>há 41m</i></span><span class="t2">Você recebeu: R$ 176,50 - HP8812340657</span></span>
+            </div>
+            <div class="toast">
+              <span class="ticon"><img src="assets/hotmart-logo.png" alt="Hotmart" /></span>
+              <span class="tbody"><span class="t1"><b>Venda realizada com o Pix Hotmart</b><i>há 1h</i></span><span class="t2">Você recebeu: R$ 176,50 - HP0091534561</span></span>
+            </div>
+            <div class="toast">
+              <span class="ticon"><img src="assets/hotmart-logo.png" alt="Hotmart" /></span>
+              <span class="tbody"><span class="t1"><b>Venda realizada com Cartão de Cré...</b><i>há 2h</i></span><span class="t2">Você recebeu: R$ 176,50 - HP3916708126</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloco" data-screen-label="Relembrar">
+    <div class="wrap">
+      <h2>PRIMEIRAMENTE, EU QUERO TE RELEMBRAR...</h2>
+      <p>Se você está lendo esta carta, é porque você já visitou minha página, chegou até o acesso e saiu de lá sem confirmar sua vaga.</p>
+      <p>E a grande questão é que, neste exato momento, não é a sua vaga que corre risco.</p>
+      <p>Não se trata apenas de uma vaga. É a sua <strong>liberdade financeira</strong> que está em jogo.</p>
+      <p>Eu sei que você pode estar inseguro, pensando em quantas oportunidades você já viu antes e que acabou não funcionando...</p>
+      <p>Ou eu mesmo, pensando em quanta coisa eu já estudei e testei pela internet sem nunca ter o resultado que prometiam.</p>
+      <p>Eu já estive exatamente aí. E é por isso que essa carta existe.</p>
+    </div>
+  </section>
+
+  <div class="foto-bloco">
+    <div class="frame"><img src="assets/foto-autor.jpg" alt="Luiz Brito" /></div>
+  </div>
+
+  <section class="bloco" data-screen-label="Contexto">
+    <div class="wrap">
+      <h2>Vender no digital não precisa ser loteria.</h2>
+      <p>A maioria das pessoas tenta vender na internet no impulso: posta, impulsiona, torce... e desiste quando não acontece nada.</p>
+      <p>Mas você entende que construir um <strong>Sistema de Renda Autônoma</strong> é diferente de TUDO isso?</p>
+      <p>Um Sistema de Renda Autônoma é uma estrutura que funciona por você: atrai as pessoas certas, apresenta a oferta certa e vende todos os dias, <strong>mesmo quando você não está olhando.</strong></p>
+      <p>Não depende da sua imagem, não depende de viralizar e não depende de sorte.</p>
+      <p>Depende de método. E é exatamente isso que eu ensino dentro do Capital Digital, do zero ao operacional.</p>
+      <p>E o melhor: você não constrói nada sozinho. Dentro do Capital Digital existe um <strong>sistema de IA</strong> que analisa o mercado por você, encontra as ofertas que já vendem muito, modela e cria tudo: a oferta, o entregável e a estrutura.</p>
+      <p>Enquanto a maioria passa meses tentando adivinhar o que vender, <strong>você começa com o caminho já traçado.</strong></p>
+      <p>Afinal, se você está ganhando, eu também estou. Dá só uma olhada no que esse sistema gerou em um único dia:</p>
+    </div>
+  </section>
+
+  <div class="foto-bloco">
+    <div class="frame print"><img src="assets/print-vendas.jpg" alt="Print de vendas: R$ 5.312,63 em um dia, 21 pedidos" /></div>
+  </div>
+
+  <section class="bloco" data-screen-label="Por isso">
+    <div class="wrap">
+      <p class="statement" style="margin-top:10px;">Por isso, eu quero te entregar o mesmo método que eu uso: o Sistema de Renda Autônoma.</p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="bloco" data-screen-label="Como funciona">
+    <div class="wrap">
+      <h2>"Tá bom Luiz, mas você me disse que ia me entregar acesso de <u>GRAÇA</u>, como isso funciona?"</h2>
+      <div class="mockup-bloco">
+        <img src="assets/mockup-dispositivos.png" alt="Área de membros do Capital Digital no tablet e aula no MacBook" />
+      </div>
+      <p>Seguinte: o Capital Digital é o meu treinamento completo, com 10 módulos e um <strong>Sistema de Renda Autônoma com IA</strong> que escaneia o mercado, modela as ofertas que já vendem muito e cria tudo pra você.</p>
+      <p>Porém, você não vai pagar nada por ele <strong>durante os 7 primeiros dias.</strong></p>
+      <p>Eu quero te entregar um <span class="gr">teste gratuito de 7 dias, sem compromisso.</span></p>
+      <p>Ou seja: você terá uma SEMANA inteira pra entrar, assistir aos módulos, colocar a IA pra trabalhar e ver a sua estrutura nascendo...</p>
+      <p>Antes de decidir se o método fica com você ou não.</p>
+      <p>E não para por aí: se você aplicar o passo a passo por 30 dias e não tiver resultado, <strong>eu também devolvo o seu investimento.</strong></p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="bloco" data-screen-label="Garantia">
+    <div class="wrap">
+      <h2>"Mas Luiz, e se eu não conseguir?"</h2>
+      <p>Seguinte: eu quero que você experimente de verdade. Por isso, seu investimento sai de <s>R$ 1.426</s> por <strong>R$ 247</strong> e você fica protegido por <strong>duas garantias.</strong></p>
+      <p><strong>Garantia incondicional de 7 dias:</strong> entrou e sentiu que não é pra você, por qualquer motivo? Eu devolvo 100% do seu investimento.</p>
+      <p><strong>Garantia condicional de 30 dias:</strong> aplicou o passo a passo durante 30 dias e não teve resultado nenhum? <strong>Eu também devolvo seu investimento!</strong></p>
+      <p>Afinal, eu não quero ficar com seu dinheiro e nem te deixar no prejuízo. Se não fizer sentido, você não perde nada.</p>
+      <p>Agora você só precisa tocar no botão abaixo para garantir sua vaga nessa condição especial:</p>
+      <div class="cta-wrap">
+        <a class="cta" href="https://pay.hub.la/10aw3sP8Q2djO5jrOYMt">QUERO GARANTIR MINHA VAGA COM DESCONTO</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloco" data-screen-label="Uma venda">
+    <div class="wrap">
+      <p class="ouseja">Ou seja...</p>
+      <h2 style="margin-top:14px;">Uma única venda já paga o seu investimento.</h2>
+      <p>Sendo que, geralmente, um Sistema de Renda Autônoma bem montado não faz só uma venda... ele vende <strong>todos os dias.</strong></p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="bloco" data-screen-label="Presente">
+    <div class="wrap">
+      <h2>Eu ainda preparei um presente surpresa pra você!</h2>
+      <p>Ao entrar no Capital Digital AGORA, eu vou liberar pra você um presentinho secreto que MUITOS alunos me dizem ser algo <strong>EXTREMAMENTE VALIOSO.</strong></p>
+      <p>Basta tocar no botão abaixo e garantir a sua vaga agora:</p>
+      <div class="cta-wrap">
+        <a class="cta" href="https://pay.hub.la/10aw3sP8Q2djO5jrOYMt">QUERO GARANTIR MINHA VAGA COM DESCONTO</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RECAP ============ -->
+  <section class="recap" data-screen-label="Recapitulando">
+    <div class="wrap">
+      <div class="recap-card">
+        <h2>Então, só relembrando tudo o que você terá acesso <span class="hl">AINDA hoje:</span></h2>
+        <ul class="recap-list">
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="item"><b>Acesso imediato aos 10 módulos do Capital Digital</b></span><span class="val">R$297</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="item"><b>Sistema de Renda Autônoma (scanner, modelagem e criação)</b></span><span class="val">R$297</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="item"><b>Suporte 24h com IA na área de membros exclusiva</b></span><span class="val">R$147</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="item"><b>Suporte humano em horário comercial</b></span><span class="val">R$97</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="item">Bônus 1: Portal de Dúvidas</span><span class="val">R$97</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="item">Bônus 2: Agente de IA para Análise de Campanhas</span><span class="val">R$197</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="item">Bônus 3: Comunidade Capital Digital</span><span class="val">R$150</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="item">Bônus 4: Todas as atualizações futuras</span><span class="val">R$47</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="item">Bônus 5: Imersão Vendendo em 24 horas</span><span class="val">R$97</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="item">Garantia incondicional de 7 dias + Garantia condicional de 30 dias</span></li>
+        </ul>
+        <div class="recap-total">
+          <div class="t1">Valor total: <s>R$1.426</s></div>
+          <div class="sub">Mas nessa página, você paga apenas:</div>
+          <div class="big">12x de <span class="n">R$25,10</span></div>
+          <div class="vista">ou R$247,00 à vista</div>
+        </div>
+        <div class="cta-wrap">
+          <a class="cta" href="https://pay.hub.la/10aw3sP8Q2djO5jrOYMt">QUERO GARANTIR MINHA VAGA COM DESCONTO</a>
+        </div>
+        <div class="garantia-mini">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg>Compra 100% segura</span>
+          <span>·</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>Garantia de até 30 dias</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ DÚVIDAS ============ -->
+<section class="duvidas" data-screen-label="Dúvidas">
+  <h3>AINDA TEM DÚVIDAS?</h3>
+  <p>Ficou alguma dúvida sobre o Capital Digital? Clique no botão abaixo e fale comigo direto no WhatsApp. Vamos tirar todas as suas dúvidas por lá.</p>
+  <a class="btn-wpp" href="https://wa.me/message/YQPH6BJ7ISPSK1" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.668-1.612-.916-2.207-.241-.579-.486-.5-.668-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.064 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>
+    Dúvidas? Clique aqui
+  </a>
+</section>
+
+<!-- ============ RODAPÉ ============ -->
+<footer>
+  <img class="logo" src="assets/logo-capital.png" alt="Capital Digital" />
+  <div class="rights">Todos os direitos reservados</div>
+  <div class="cnpj"><strong>CNPJ 48.978.195/0001-75 | AXR NEGOCIOS DIGITAIS LTDA</strong></div>
+</footer>
+
+<script>
+  /* timer do mockup (conta até a meia-noite, como na página real) */
+  (function () {
+    var el = document.getElementById('mockTimer');
+    if (!el) return;
+    function p(x){ return x < 10 ? '0' + x : x; }
+    function tick(){
+      var n = new Date();
+      var end = new Date(n); end.setHours(23,59,59,999);
+      var d = Math.max(0, end - n);
+      var h = Math.floor(d/3600000), m = Math.floor(d%3600000/60000), s = Math.floor(d%60000/1000);
+      el.textContent = p(h)+':'+p(m)+':'+p(s);
+    }
+    tick(); setInterval(tick, 1000);
+  })();
+</script>
+</body>
+</html>

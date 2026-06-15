@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="shortcut icon" href="/favicon.png">
+<title>Aula Liberada — Máquina de Vendas</title>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '946406425103675');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<style>
+  /* ============ FONTE MOSVITA ============ */
+  @font-face {
+    font-family: "Mosvita";
+    src: url("../fonts/Mosvita-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Mosvita";
+    src: url("../fonts/Mosvita-Bold.otf") format("opentype");
+    font-weight: 700;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Mosvita";
+    src: url("../fonts/Mosvita-SemiBold.otf") format("opentype");
+    font-weight: 600;
+    font-display: swap;
+  }
+
+  :root {
+    --bg-0: #07080a;
+    --bg-1: #0d0f13;
+    --ink: #f5f7fa;
+    --ink-dim: #9aa3b0;
+    --ink-faint: #5d6573;
+    --green: #21b821;
+    --green-bright: #2ee02e;
+    --green-deep: #169016;
+    --red: #ff4d4d;
+    --line: rgba(255,255,255,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { height: 100%; }
+
+  body {
+    font-family: "Mosvita", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--bg-0);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* ============ GRADIENTE DE FUNDO SUTIL ============ */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(120% 80% at 50% -10%, rgba(243,144,33,0.12) 0%, rgba(243,144,33,0) 55%),
+      radial-gradient(100% 60% at 50% 110%, rgba(243,144,33,0.06) 0%, rgba(243,144,33,0) 60%),
+      linear-gradient(180deg, var(--bg-1) 0%, var(--bg-0) 60%, #050608 100%);
+  }
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: radial-gradient(rgba(255,255,255,0.6) 0.5px, transparent 0.5px);
+    background-size: 3px 3px;
+  }
+
+  /* ============ ESTRUTURA ============ */
+  .page {
+    flex: 1 0 auto;
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 28px 20px 56px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ============ HEADER / BARRA DE OFERTA ============ */
+  .offer-bar {
+    width: 100%;
+    background: #ec1c1c;
+    color: #fff;
+    text-align: center;
+    padding: 16px 20px;
+  }
+  .offer-inner {
+    max-width: 920px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .offer-bar p {
+    font-family: "Mosvita", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.005em;
+    line-height: 1.25;
+    font-size: 14px;
+  }
+  .offer-bar s { text-decoration-thickness: 2px; }
+  .offer-bar .free { color: #f39021; }
+  #clock { font-variant-numeric: tabular-nums; }
+
+  /* ============ VÍDEO VTURB ============ */
+  .video-stage {
+    width: min(100%, 400px);
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #000;
+    border: 1px solid var(--line);
+    box-shadow: 0 24px 70px -28px rgba(0,0,0,0.9), 0 0 0 1px rgba(46,224,46,0.05);
+  }
+  #vturb-player {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .vturb-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    color: var(--ink-faint);
+    background:
+      radial-gradient(80% 80% at 50% 40%, rgba(33,184,33,0.06), transparent 70%),
+      #0a0c0f;
+    text-align: center;
+    padding: 24px;
+  }
+  .vturb-placeholder svg { width: 56px; height: 56px; opacity: 0.5; }
+  .vturb-placeholder .t1 { font-size: 15px; font-weight: 700; color: var(--ink-dim); letter-spacing: 0.04em; }
+  .vturb-placeholder .t2 { font-size: 12.5px; color: var(--ink-faint); max-width: 380px; line-height: 1.5; }
+  .vturb-placeholder code {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    background: rgba(255,255,255,0.06);
+    padding: 1px 6px; border-radius: 5px; color: var(--green-bright);
+    font-size: 11.5px;
+  }
+
+  /* ============ BOTÃO PULSANTE ============ */
+  .cta-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 28px;
+  }
+  .esconder { display: none !important; }
+
+  .cta {
+    --pulse: rgba(46,224,46,0.55);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    font-family: "Mosvita", sans-serif;
+    font-weight: 700;
+    font-size: clamp(18px, 4.6vw, 26px);
+    letter-spacing: 0.01em;
+    color: #fff;
+    background: linear-gradient(180deg, var(--green-bright) 0%, var(--green) 55%, var(--green-deep) 100%);
+    border: none;
+    border-radius: 16px;
+    padding: clamp(18px, 4vw, 24px) clamp(26px, 6vw, 48px);
+    width: min(100%, 460px);
+    cursor: pointer;
+    line-height: 1.15;
+    box-shadow: 0 14px 30px -10px rgba(33,184,33,0.55);
+    animation: ctaPulse 1.7s cubic-bezier(0.4,0,0.6,1) infinite;
+    transition: transform 0.12s ease;
+    font-size: 18px;
+    width: min(100%, 400px);
+  }
+  .cta:hover { transform: scale(1.02); }
+  .cta:active { transform: scale(0.985); }
+
+  @keyframes ctaPulse {
+    0%   { box-shadow: 0 14px 30px -10px rgba(33,184,33,0.55), 0 0 0 0 var(--pulse); }
+    70%  { box-shadow: 0 14px 30px -10px rgba(33,184,33,0.55), 0 0 0 22px rgba(46,224,46,0); }
+    100% { box-shadow: 0 14px 30px -10px rgba(33,184,33,0.55), 0 0 0 0 rgba(46,224,46,0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cta { animation: none; }
+  }
+
+  /* ============ RODAPÉ ============ */
+  footer {
+    flex-shrink: 0;
+    border-top: 1px solid rgba(255,255,255,0.14);
+    padding: 34px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    text-align: center;
+  }
+  footer .logo { height: 34px; width: auto; opacity: 0.95; }
+  footer .rights { font-size: 13px; color: var(--ink-dim); letter-spacing: 0.05em; font-weight: 600; }
+  footer .cnpj { font-size: 12px; color: var(--ink-faint); letter-spacing: 0.04em; line-height: 1.6; }
+
+  /* ============ RESPONSIVO ============ */
+  @media (max-width: 560px) {
+    .page { padding: 20px 16px 44px; }
+    .cta { border-radius: 14px; }
+    footer { padding: 28px 18px 34px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- HEADER / BARRA DE OFERTA -->
+  <header class="offer-bar">
+    <div class="offer-inner">
+      <p class="line1">Aula Liberada | De: <s>R$697,00</s> por: <span class="free">R$0,00</span></p>
+      <p class="line2">- Acaba hoje - Tempo restante: <span id="clock" aria-live="polite">00:00:00</span> -</p>
+    </div>
+  </header>
+
+  <main class="page">
+
+    <!-- VÍDEO VTURB -->
+    <div class="video-stage">
+      <div id="vturb-player">
+        <!-- =====================================================
+             COLE AQUI O CÓDIGO (EMBED) DO VTURB
+             e remova a div .vturb-placeholder abaixo
+             ===================================================== -->
+        <div class="vturb-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="3"></rect>
+            <path d="M10 9l5 3-5 3V9z"></path>
+          </svg>
+          <div class="t1">Área do vídeo</div>
+          <div class="t2">Cole o código de incorporação do <strong>VTurb</strong> dentro de <code>#vturb-player</code> e remova este aviso.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTÃO PULSANTE (liberado pelo vídeo) -->
+    <div class="cta-wrap esconder" id="ctaWrap">
+      <a class="cta" id="ctaBtn" href="https://pay.hub.la/tlSeiZhKhdLY9LcP878q">Quero uma das 30 vagas agora!</a>
+    </div>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <img class="logo" src="assets/logo-capital.png" alt="Capital Digital">
+    <div class="rights">Todos os direitos reservados</div>
+    <div class="cnpj">CNPJ 48.978.195/0001-75 | AXR NEGOCIOS DIGITAIS LTDA</div>
+  </footer>
+
+  <script>
+    /* LIBERAÇÃO DO BOTÃO — SINCRONIZADO COM O VÍDEO (VTurb / smartplayer) */
+    var SECONDS_TO_DISPLAY = 0;
+    var FALLBACK_NO_PLAYER_SECONDS = 6;
+
+    (function liberarBotao() {
+      var revelado = false, elapsed = 0;
+      function mostrar() {
+        if (revelado) return;
+        revelado = true;
+        document.querySelectorAll('.esconder').forEach(function (el) { el.classList.remove('esconder'); });
+      }
+      var timer = setInterval(function () {
+        elapsed += 1;
+        var sp = (typeof smartplayer !== 'undefined' && smartplayer.instances && smartplayer.instances[0] && smartplayer.instances[0].video) ? smartplayer.instances[0].video : null;
+        if (sp) {
+          if (sp.currentTime > SECONDS_TO_DISPLAY) { mostrar(); clearInterval(timer); }
+        } else if (elapsed >= FALLBACK_NO_PLAYER_SECONDS) {
+          mostrar(); clearInterval(timer);
+        }
+      }, 1000);
+    })();
+
+    /* CONTADOR REGRESSIVO — "ACABA HOJE" */
+    (function countdown() {
+      const clock = document.getElementById('clock');
+      const pad = (n) => String(n).padStart(2, '0');
+      function tick() {
+        const now = new Date();
+        const end = new Date(now);
+        end.setHours(23, 59, 59, 999);
+        let diff = Math.max(0, Math.floor((end - now) / 1000));
+        const h = Math.floor(diff / 3600);
+        const m = Math.floor((diff % 3600) / 60);
+        const s = diff % 60;
+        clock.textContent = pad(h) + ':' + pad(m) + ':' + pad(s);
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+  </script>
+
+</body>
+</html>

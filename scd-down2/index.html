@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<link rel="icon" type="image/png" href="../favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Última chance — Sócio Capital Digital por R$297</title>
+<style>
+  @font-face { font-family: "Mosvita"; src: url("assets/fonts/Mosvita-Regular.otf") format("opentype"); font-weight: 400; font-display: swap; }
+  @font-face { font-family: "Mosvita"; src: url("assets/fonts/Mosvita-SemiBold.otf") format("opentype"); font-weight: 600; font-display: swap; }
+  @font-face { font-family: "Mosvita"; src: url("assets/fonts/Mosvita-Bold.otf") format("opentype"); font-weight: 700; font-display: swap; }
+  @font-face { font-family: "Mosvita"; src: url("assets/fonts/Mosvita-ExtraBold.otf") format("opentype"); font-weight: 800; font-display: swap; }
+
+  :root {
+    --bg-0: #07080a;
+    --bg-1: #0d0f13;
+    --ink: #f5f7fa;
+    --ink-dim: #c2c9d4;
+    --ink-faint: #5d6573;
+    --green: #21b821;
+    --green-bright: #2ee02e;
+    --green-deep: #169016;
+    --red: #ec1c1c;
+    --gold: #f39021;
+    --gold-soft: #f7a94d;
+    --line: rgba(255,255,255,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+
+  body {
+    font-family: "Mosvita", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--bg-0);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: "";
+    position: fixed; inset: 0; z-index: -2;
+    background:
+      radial-gradient(120% 80% at 50% -10%, rgba(243,144,33,0.10) 0%, rgba(243,144,33,0) 55%),
+      radial-gradient(100% 60% at 50% 110%, rgba(243,144,33,0.05) 0%, rgba(243,144,33,0) 60%),
+      linear-gradient(180deg, var(--bg-1) 0%, var(--bg-0) 60%, #050608 100%);
+  }
+  body::after {
+    content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    opacity: 0.035;
+    background-image: radial-gradient(rgba(255,255,255,0.6) 0.5px, transparent 0.5px);
+    background-size: 3px 3px;
+  }
+
+  /* ============ BARRA TOPO ============ */
+  .top-bar {
+    width: 100%;
+    background: var(--red);
+    color: #fff;
+    text-align: center;
+    padding: 15px 20px;
+  }
+  .top-bar p {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 1.25;
+    font-size: clamp(13px, 3vw, 17px);
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    width: 100%;
+    min-height: 560px;
+    background: #07080a;
+  }
+  .hero-photo {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url("assets/foto-hero.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 68% 14%;
+  }
+  .hero-photo::after {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(90deg, #07080a 0%, rgba(7,8,10,0.96) 30%, rgba(7,8,10,0.66) 55%, rgba(7,8,10,0.22) 84%, rgba(7,8,10,0) 100%),
+      linear-gradient(180deg, rgba(7,8,10,0.45) 0%, rgba(7,8,10,0) 26%, rgba(7,8,10,0) 62%, #07080a 100%);
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 60px 24px 70px;
+  }
+  .hero-copy { max-width: 540px; }
+  .hero h1 {
+    font-weight: 800;
+    font-size: clamp(24px, 3vw, 36px);
+    line-height: 1.16;
+    letter-spacing: -0.01em;
+    margin-bottom: 22px;
+    text-wrap: balance;
+  }
+  .hero p {
+    font-weight: 400;
+    font-size: clamp(15px, 1.9vw, 18px);
+    line-height: 1.55;
+    color: var(--ink-dim);
+    margin-bottom: 14px;
+  }
+  .hero p strong { color: #fff; font-weight: 700; }
+  .hero p .hl { color: var(--gold); font-weight: 600; }
+
+  /* ============ TAG DE PREÇO (R$297) ============ */
+  .price-tag-wrap {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    right: clamp(14px, 3vw, 56px);
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .price-tag {
+    position: relative;
+    width: clamp(216px, 24vw, 300px);
+    transform: rotate(-7deg);
+    background: linear-gradient(135deg, #ff4242 0%, #e01b1b 48%, #b01010 100%);
+    clip-path: polygon(16% 0, 100% 0, 100% 100%, 16% 100%, 0 50%);
+    padding: 22px 26px 24px 54px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 22px 48px -18px rgba(176,16,16,0.75);
+  }
+  .price-tag .hole {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: #07080a;
+    box-shadow: inset 0 0 0 3px rgba(0,0,0,0.4), 0 0 0 2px rgba(255,255,255,0.18);
+  }
+  .price-tag .t-top {
+    font-weight: 700;
+    font-size: clamp(13px, 1.5vw, 16px);
+    letter-spacing: 0.02em;
+    opacity: 0.95;
+    margin-bottom: 2px;
+  }
+  .price-tag .t-price {
+    font-weight: 800;
+    font-size: clamp(34px, 4.2vw, 50px);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  .price-tag .t-sub {
+    font-weight: 700;
+    font-size: clamp(13px, 1.5vw, 16px);
+    margin-top: 4px;
+  }
+  .price-tag .t-note {
+    font-weight: 400;
+    font-size: clamp(10px, 1.1vw, 12px);
+    opacity: 0.9;
+    margin-top: 6px;
+    line-height: 1.3;
+  }
+
+  /* ============ SEÇÃO GARANTIA ============ */
+  .guarantee {
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 56px 24px 44px;
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+  .seal {
+    flex-shrink: 0;
+    width: 168px; height: 168px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 50% 38%, #fbb558 0%, #f39021 52%, #c86e10 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    color: #2a1602;
+    box-shadow: 0 18px 40px -16px rgba(243,144,33,0.6), inset 0 0 0 4px rgba(255,255,255,0.25), inset 0 0 0 9px rgba(0,0,0,0.12);
+    position: relative;
+  }
+  .seal::before {
+    content: "";
+    position: absolute; inset: 12px;
+    border-radius: 50%;
+    border: 2px dashed rgba(42,22,2,0.35);
+  }
+  .seal .pct { font-weight: 800; font-size: 34px; line-height: 1; }
+  .seal .rz { font-weight: 800; font-size: 15px; letter-spacing: 0.06em; margin-top: 2px; }
+  .seal .days { font-weight: 700; font-size: 10.5px; letter-spacing: 0.05em; margin-top: 8px; opacity: 0.85; }
+  .guarantee-text h2 {
+    font-weight: 800;
+    font-size: clamp(21px, 3.4vw, 30px);
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .guarantee-text p {
+    font-weight: 400;
+    font-size: clamp(15px, 2vw, 17px);
+    line-height: 1.55;
+    color: var(--ink-dim);
+    margin-bottom: 12px;
+  }
+  .guarantee-text p strong { color: #fff; font-weight: 700; }
+
+  .divider {
+    width: min(100%, 880px);
+    height: 1px;
+    margin: 0 auto;
+    background: var(--line);
+  }
+
+  /* ============ OFERTA FINAL ============ */
+  .final {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 50px 24px 8px;
+    text-align: center;
+  }
+  .final h2 {
+    font-weight: 800;
+    font-size: clamp(26px, 4.6vw, 40px);
+    line-height: 1.12;
+    margin-bottom: 18px;
+    text-wrap: balance;
+  }
+  .final .lead {
+    font-weight: 400;
+    font-size: clamp(15px, 2vw, 18px);
+    line-height: 1.55;
+    color: var(--ink-dim);
+    max-width: 600px;
+    margin: 0 auto 12px;
+  }
+  .final .lead strong { color: #fff; font-weight: 700; }
+  .final .lead .hl { color: var(--gold); font-weight: 700; }
+
+  /* card de preço */
+  .price-card {
+    width: 100%;
+    max-width: 560px;
+    margin: 34px auto 0;
+    padding: 34px 28px 32px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: rgba(255,255,255,0.03);
+    box-shadow: 0 30px 70px -34px rgba(0,0,0,0.9);
+    text-align: center;
+  }
+  .price-card .total {
+    font-weight: 700;
+    font-size: clamp(16px, 3vw, 19px);
+    color: var(--red);
+    margin-bottom: 18px;
+  }
+  .price-card .total s { text-decoration-thickness: 2px; }
+  .price-card .pay-label {
+    font-weight: 600;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--ink-dim);
+    margin-bottom: 10px;
+  }
+  .price-card .installment {
+    font-weight: 800;
+    font-size: clamp(34px, 7vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+  .price-card .installment b { color: var(--green-bright); }
+  .price-card .cash {
+    font-weight: 700;
+    font-size: clamp(15px, 2.6vw, 19px);
+    color: var(--ink);
+    margin-top: 4px;
+    margin-bottom: 26px;
+  }
+
+  /* botões */
+  .cta {
+    --pulse: rgba(46,224,46,0.55);
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    text-align: center; text-decoration: none;
+    font-family: "Mosvita", sans-serif;
+    font-weight: 800;
+    font-size: clamp(15px, 3.4vw, 20px);
+    color: #fff;
+    background: linear-gradient(180deg, var(--green-bright) 0%, var(--green) 55%, var(--green-deep) 100%);
+    border: none; border-radius: 14px;
+    padding: 0 clamp(20px, 4vw, 32px);
+    min-height: 66px;
+    width: 100%;
+    cursor: pointer;
+    line-height: 1.2;
+    box-shadow: 0 14px 30px -10px rgba(33,184,33,0.55), inset 0 1px 0 rgba(255,255,255,0.25);
+    animation: ctaPulse 1.7s cubic-bezier(0.4,0,0.6,1) infinite;
+    transition: transform 0.12s ease;
+  }
+  .cta:hover { transform: scale(1.015); }
+  .cta:active { transform: scale(0.985); }
+  @keyframes ctaPulse {
+    0%   { box-shadow: 0 14px 30px -10px rgba(33,184,33,0.55), 0 0 0 0 var(--pulse); }
+    70%  { box-shadow: 0 14px 30px -10px rgba(33,184,33,0.55), 0 0 0 20px rgba(46,224,46,0); }
+    100% { box-shadow: 0 14px 30px -10px rgba(33,184,33,0.55), 0 0 0 0 rgba(46,224,46,0); }
+  }
+  @media (prefers-reduced-motion: reduce) { .cta { animation: none; } }
+
+  .decline {
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    text-align: center; text-decoration: none;
+    font-family: "Mosvita", sans-serif;
+    font-weight: 700;
+    font-size: clamp(13px, 3vw, 16px);
+    color: #fff;
+    background: var(--red);
+    border: none; border-radius: 14px;
+    padding: 0 clamp(18px, 4vw, 28px);
+    min-height: 56px;
+    width: 100%;
+    margin-top: 13px;
+    cursor: pointer;
+    line-height: 1.2;
+    box-shadow: 0 12px 26px -12px rgba(236,28,28,0.6), inset 0 1px 0 rgba(255,255,255,0.18);
+    transition: transform 0.12s ease, background 0.2s ease;
+  }
+  .decline:hover { background: #d31616; transform: scale(1.01); }
+  .decline:active { transform: scale(0.985); }
+
+  /* ============ SEÇÃO TROCAR PAGAMENTO ============ */
+  .pay-section {
+    margin: 28px auto 0;
+    padding: 26px 22px 28px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: rgba(255,255,255,0.025);
+    text-align: center;
+  }
+  .pay-section .info-ico {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 12px;
+    color: var(--ink-dim);
+  }
+  .pay-section h3 {
+    font-weight: 700;
+    font-size: clamp(17px, 3.6vw, 21px);
+    margin-bottom: 16px;
+  }
+  .pay-list {
+    list-style: none;
+    text-align: left;
+    display: flex; flex-direction: column;
+    gap: 10px;
+    max-width: 420px;
+    margin: 0 auto 22px;
+  }
+  .pay-list li {
+    display: flex; gap: 11px; align-items: flex-start;
+    font-size: clamp(13px, 3.2vw, 15px);
+    line-height: 1.45;
+    color: var(--ink-dim);
+  }
+  .pay-list li .num {
+    flex-shrink: 0;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: rgba(243,144,33,0.16);
+    color: var(--gold);
+    font-weight: 700; font-size: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 1px;
+  }
+  .pay-btn {
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    text-align: center; text-decoration: none;
+    font-family: "Mosvita", sans-serif;
+    font-weight: 700;
+    font-size: clamp(12px, 3vw, 15px);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #111;
+    background: var(--gold);
+    border: none; border-radius: 12px;
+    padding: 0 clamp(18px, 4vw, 26px);
+    min-height: 54px;
+    width: min(100%, 420px);
+    cursor: pointer;
+    line-height: 1.2;
+    box-shadow: 0 12px 26px -14px rgba(243,144,33,0.7), inset 0 1px 0 rgba(255,255,255,0.4);
+    transition: transform 0.12s ease, background 0.2s ease;
+  }
+  .pay-btn:hover { background: #ffa53d; transform: scale(1.01); }
+  .pay-btn:active { transform: scale(0.985); }
+
+  /* ============ RODAPÉ ============ */
+  footer {
+    flex-shrink: 0;
+    margin-top: 56px;
+    border-top: 1px solid rgba(255,255,255,0.14);
+    padding: 34px 20px 40px;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 16px;
+    text-align: center;
+  }
+  footer .logo { height: 34px; width: auto; opacity: 0.95; }
+  footer .rights { font-size: 13px; color: var(--ink-dim); letter-spacing: 0.05em; font-weight: 600; }
+  footer .cnpj { font-size: 12px; color: var(--ink-faint); letter-spacing: 0.04em; line-height: 1.6; }
+
+  /* ============ RESPONSIVO ============ */
+  @media (max-width: 900px) {
+    /* fluxo em bloco (sem flex) para evitar colapso de altura no mobile */
+    .hero { min-height: auto; flex-shrink: 0; }
+    .hero-photo {
+      position: relative; inset: auto;
+      width: 100%; height: 300px;
+      background-position: 56% 10%;
+    }
+    .hero-photo::after {
+      background: linear-gradient(180deg, rgba(7,8,10,0.1) 0%, rgba(7,8,10,0) 32%, rgba(7,8,10,0.86) 86%, #07080a 100%);
+    }
+    .hero-inner { padding: 6px 20px 44px; }
+    .hero-copy { max-width: none; text-align: center; }
+    /* tag: bloco centralizado, com leve sobreposição segura sobre a foto */
+    .price-tag-wrap {
+      position: static;
+      transform: none;
+      display: flex;
+      justify-content: center;
+      margin: -34px auto 20px;
+    }
+    .price-tag { transform: rotate(-5deg); width: clamp(220px, 64vw, 270px); }
+    .guarantee { display: block; text-align: center; padding: 44px 22px 36px; }
+    .seal { margin: 0 auto 22px; }
+    .guarantee-text p { max-width: 480px; margin-left: auto; margin-right: auto; }
+    .final { padding: 40px 20px 8px; }
+  }
+  @media (max-width: 480px) {
+    .hero-photo { height: 260px; }
+    .price-tag { width: clamp(208px, 72vw, 248px); }
+    .price-card { padding: 26px 18px 24px; }
+    .price-card .installment { font-size: clamp(30px, 9vw, 44px); }
+    .pay-section { padding: 24px 16px 26px; }
+  }
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '946406425103675');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+  <!-- ======= BARRA TOPO ======= -->
+  <header class="top-bar" data-screen-label="Topo">
+    <p>Última chance: você não verá essa página NUNCA mais! 🎁</p>
+  </header>
+
+  <!-- ======= HERO ======= -->
+  <section class="hero" data-screen-label="Hero">
+    <div class="hero-photo" aria-hidden="true"></div>
+
+    <div class="price-tag-wrap" aria-hidden="false">
+      <div class="price-tag">
+        <span class="hole"></span>
+        <div class="t-top">Pague apenas:</div>
+        <div class="t-price">R$297,00</div>
+        <div class="t-sub">no acesso completo</div>
+        <div class="t-note">(você nunca mais terá acesso a esse preço)</div>
+      </div>
+    </div>
+
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <h1>Eu sei que as coisas não andam fáceis e que o dinheiro é um problema, senão você não estaria aqui…</h1>
+
+        <p>Somente <strong>aqui e agora</strong>, eu vou te liberar o <strong>acesso completo ao Sócio Capital Digital</strong>: as ofertas validadas, os criativos que já vendem e a comissão recorrente, prontos na sua mão.</p>
+
+        <p>Você não precisa criar nada do zero. É só entrar na operação que já funciona e começar a faturar.</p>
+
+        <p>Você já entendeu que isso aqui é literalmente <span class="hl">pagar para dar certo na vida</span>. Aproveite o desconto agora!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= GARANTIA ======= -->
+  <section class="guarantee" data-screen-label="Garantia">
+    <div class="seal" aria-label="100% risco zero, 7 dias de garantia">
+      <div class="pct">100%</div>
+      <div class="rz">RISCO ZERO</div>
+      <div class="days">7 DIAS DE GARANTIA</div>
+    </div>
+    <div class="guarantee-text">
+      <h2>Acesso imediato ao Sócio Capital Digital</h2>
+      <p>Assim que concluir, você recebe o seu acesso e o suporte para começar a operar com as ofertas que já vendem.</p>
+      <p>Lembre-se: aqui você está basicamente <strong>pagando pra vencer</strong>.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ======= OFERTA FINAL ======= -->
+  <section class="final" data-screen-label="Oferta">
+    <h2>Não existe outra página…</h2>
+    <p class="lead">Essa é a <strong>última vez</strong> que você vê essa oferta. Por isso, estou te cobrando menos da metade do preço para entrar como Sócio.</p>
+    <p class="lead">Saiba que <strong>uma única venda recorrente</strong> já é capaz de mudar toda a sua história…</p>
+
+    <div class="price-card">
+      <div class="total">Valor total: <s>R$597,00</s></div>
+      <div class="pay-label">Mas nessa página, você paga apenas:</div>
+      <div class="installment">12x de <b>R$30,18</b></div>
+      <div class="cash">ou R$297,00 à vista</div>
+
+      <a class="cta" href="https://pay.hub.la/6G29okJJ2VozO0nkpfwI/upsell">Eu quero esse desconto surreal agora!</a>
+      <a class="decline" href="http://luizbrito.com/scd-obg">Ainda prefiro fazer tudo sozinho! Seguir em frente…</a>
+
+      <!-- ======= TROCAR MEIO DE PAGAMENTO ======= -->
+      <section class="pay-section" data-screen-label="Pagamento">
+        <div class="info-ico">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 16v-5"></path><path d="M12 8h.01"></path>
+          </svg>
+        </div>
+        <h3>Precisa trocar o meio de pagamento?</h3>
+        <ul class="pay-list">
+          <li><span class="num">1</span> Se você pagou no pix, e quer passar agora no cartão;</li>
+          <li><span class="num">2</span> Se quer pagar com 2 cartões;</li>
+          <li><span class="num">3</span> Se quer pagar com pix + cartão;</li>
+          <li><span class="num">4</span> Se quer trocar para qualquer outro meio de pagamento;</li>
+        </ul>
+        <a class="pay-btn" href="https://pay.hub.la/6G29okJJ2VozO0nkpfwI">Desejo trocar o método de pagamento</a>
+      </section>
+    </div>
+  </section>
+
+  <!-- ======= RODAPÉ ======= -->
+  <footer>
+    <img class="logo" src="assets/logo-capital.png" alt="Capital Digital" />
+    <div class="rights">Todos os direitos reservados</div>
+    <div class="cnpj"><strong>CNPJ 48.978.195/0001-75 | AXR NEGOCIOS DIGITAIS LTDA</strong></div>
+  </footer>
+
+</body>
+</html>

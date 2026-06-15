@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<link rel="icon" type="image/png" href="../favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="robots" content="noindex" />
+<title>Compra confirmada | Capital Digital</title>
+<style>
+  /* ============ FONTE MOSVITA ============ */
+  @font-face {
+    font-family: "Mosvita";
+    src: url("assets/fonts/Mosvita-Regular.otf") format("opentype");
+    font-weight: 400; font-display: swap;
+  }
+  @font-face {
+    font-family: "Mosvita";
+    src: url("assets/fonts/Mosvita-SemiBold.otf") format("opentype");
+    font-weight: 600; font-display: swap;
+  }
+  @font-face {
+    font-family: "Mosvita";
+    src: url("assets/fonts/Mosvita-Bold.otf") format("opentype");
+    font-weight: 700; font-display: swap;
+  }
+  @font-face {
+    font-family: "Mosvita";
+    src: url("assets/fonts/Mosvita-ExtraBold.otf") format("opentype");
+    font-weight: 800; font-display: swap;
+  }
+
+  :root {
+    --bg-0: #07080a;
+    --bg-1: #0d0f13;
+    --ink: #f5f7fa;
+    --ink-dim: #c2c9d4;
+    --ink-faint: #5d6573;
+    --green: #21b821;
+    --green-bright: #2ee02e;
+    --green-deep: #169016;
+    --red: #ec1c1c;
+    --gold: #f39021;
+    --gold-soft: #f7a94d;
+    --line: rgba(255,255,255,0.08);
+    --card: rgba(255,255,255,0.035);
+    --card-line: rgba(255,255,255,0.10);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+
+  body {
+    font-family: "Mosvita", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--bg-0);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* ============ GRADIENTE DE FUNDO AMARELO SUTIL ============ */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(120% 80% at 50% -10%, rgba(243,144,33,0.10) 0%, rgba(243,144,33,0) 55%),
+      radial-gradient(100% 60% at 50% 110%, rgba(243,144,33,0.05) 0%, rgba(243,144,33,0) 60%),
+      linear-gradient(180deg, var(--bg-1) 0%, var(--bg-0) 60%, #050608 100%);
+  }
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: radial-gradient(rgba(255,255,255,0.6) 0.5px, transparent 0.5px);
+    background-size: 3px 3px;
+  }
+
+  /* ============ BARRA TOPO (vermelha) ============ */
+  .top-bar {
+    width: 100%;
+    background: var(--red);
+    color: #fff;
+    text-align: center;
+    padding: 15px 20px;
+  }
+  .top-bar p {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 1.25;
+    font-size: clamp(13px, 3vw, 17px);
+  }
+
+  /* ============ WRAPPER PRINCIPAL ============ */
+  main {
+    flex: 1 0 auto;
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: clamp(36px, 7vw, 64px) 20px clamp(24px, 5vw, 48px);
+  }
+
+  /* ============ HERO / BOAS-VINDAS ============ */
+  .hero { text-align: center; }
+  .check {
+    width: clamp(76px, 18vw, 96px);
+    height: clamp(76px, 18vw, 96px);
+    margin: 0 auto clamp(22px, 4vw, 30px);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    background: radial-gradient(120% 120% at 50% 20%, var(--green-bright) 0%, var(--green) 55%, var(--green-deep) 100%);
+    box-shadow: 0 18px 40px -14px rgba(33,184,33,0.7), inset 0 2px 0 rgba(255,255,255,0.3);
+    animation: pop 0.6s cubic-bezier(0.18,0.9,0.32,1.3) both;
+  }
+  .check svg { width: 52%; height: 52%; }
+  @keyframes pop {
+    0% { transform: scale(0.4); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) { .check { animation: none; } }
+
+  .hero .eyebrow {
+    font-size: clamp(12px, 2.8vw, 14px);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-weight: 800;
+    line-height: 1.12;
+    font-size: clamp(28px, 6.4vw, 46px);
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .hero h1 .hl { color: var(--gold); }
+  .hero .sub {
+    margin: clamp(16px, 3vw, 22px) auto 0;
+    max-width: 560px;
+    color: var(--ink-dim);
+    font-size: clamp(16px, 3.4vw, 19px);
+    line-height: 1.55;
+    text-wrap: pretty;
+  }
+  .hero .sub strong { color: #fff; font-weight: 700; }
+
+  /* ============ CARTÃO DE PASSOS ============ */
+  .card {
+    margin-top: clamp(34px, 6vw, 52px);
+    background: var(--card);
+    border: 1px solid var(--card-line);
+    border-radius: 20px;
+    padding: clamp(24px, 5vw, 38px);
+  }
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: clamp(18px, 3.5vw, 26px);
+  }
+  .card-head .ico {
+    flex-shrink: 0;
+    width: 46px; height: 46px;
+    border-radius: 13px;
+    display: grid; place-items: center;
+    color: var(--gold);
+    background: rgba(243,144,33,0.12);
+    border: 1px solid rgba(243,144,33,0.25);
+  }
+  .card-head .ico svg { width: 24px; height: 24px; }
+  .card-head h2 {
+    font-weight: 800;
+    font-size: clamp(19px, 4.2vw, 26px);
+    line-height: 1.2;
+  }
+  .card > p.intro {
+    color: var(--ink-dim);
+    font-size: clamp(15px, 3.2vw, 17px);
+    line-height: 1.6;
+    margin-bottom: clamp(20px, 4vw, 28px);
+    text-wrap: pretty;
+  }
+  .card > p.intro strong { color: #fff; font-weight: 700; }
+  .card > p.intro .hl { color: var(--gold); font-weight: 700; }
+
+  /* lista de passos */
+  .steps { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .steps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    color: var(--ink-dim);
+    font-size: clamp(15px, 3.2vw, 17px);
+    line-height: 1.5;
+  }
+  .steps li .num {
+    flex-shrink: 0;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-weight: 800;
+    font-size: 14px;
+    color: #fff;
+    background: linear-gradient(180deg, var(--green-bright), var(--green-deep));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+  }
+  .steps li strong { color: #fff; font-weight: 700; }
+  .steps li code {
+    font-family: "Mosvita", monospace;
+    background: rgba(243,144,33,0.14);
+    color: var(--gold-soft);
+    padding: 1px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.94em;
+  }
+
+  /* alerta de spam */
+  .tip {
+    margin-top: clamp(20px, 4vw, 26px);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: rgba(243,144,33,0.08);
+    border: 1px solid rgba(243,144,33,0.22);
+    border-radius: 14px;
+    padding: 16px 18px;
+    font-size: clamp(13.5px, 3vw, 15px);
+    line-height: 1.55;
+    color: var(--ink-dim);
+  }
+  .tip svg { flex-shrink: 0; width: 22px; height: 22px; color: var(--gold); margin-top: 1px; }
+  .tip strong { color: #fff; font-weight: 700; }
+
+  /* ============ BOTÕES ============ */
+  .actions {
+    margin-top: clamp(26px, 5vw, 34px);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+  }
+  .cta {
+    --pulse: rgba(46,224,46,0.55);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-family: "Mosvita", sans-serif;
+    font-weight: 800;
+    font-size: clamp(16px, 3.6vw, 20px);
+    letter-spacing: 0.01em;
+    color: #fff;
+    background: linear-gradient(180deg, var(--green-bright) 0%, var(--green) 55%, var(--green-deep) 100%);
+    border: none;
+    border-radius: 14px;
+    padding: 0 clamp(22px, 4vw, 38px);
+    min-height: 66px;
+    width: 100%;
+    max-width: 520px;
+    cursor: pointer;
+    line-height: 1.2;
+    box-shadow: 0 14px 30px -10px rgba(33,184,33,0.55), inset 0 1px 0 rgba(255,255,255,0.25);
+    animation: ctaPulse 1.7s cubic-bezier(0.4,0,0.6,1) infinite;
+    transition: transform 0.12s ease;
+  }
+  .cta svg { width: 23px; height: 23px; }
+  .cta:hover { transform: scale(1.02); }
+  .cta:active { transform: scale(0.985); }
+  @keyframes ctaPulse {
+    0%   { box-shadow: 0 14px 30px -10px rgba(33,184,33,0.55), 0 0 0 0 var(--pulse); }
+    70%  { box-shadow: 0 14px 30px -10px rgba(33,184,33,0.55), 0 0 0 22px rgba(46,224,46,0); }
+    100% { box-shadow: 0 14px 30px -10px rgba(33,184,33,0.55), 0 0 0 0 rgba(46,224,46,0); }
+  }
+  @media (prefers-reduced-motion: reduce) { .cta { animation: none; } }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    font-family: "Mosvita", sans-serif;
+    font-weight: 700;
+    font-size: clamp(15px, 3.2vw, 17px);
+    color: var(--ink);
+    background: transparent;
+    border: 1.5px solid var(--card-line);
+    border-radius: 14px;
+    padding: 0 clamp(20px, 4vw, 32px);
+    min-height: 58px;
+    width: 100%;
+    max-width: 520px;
+    line-height: 1.2;
+    transition: border-color 0.18s ease, background 0.18s ease, transform 0.12s ease;
+  }
+  .btn-ghost svg { width: 22px; height: 22px; color: #25d366; }
+  .btn-ghost:hover { border-color: rgba(243,144,33,0.5); background: rgba(243,144,33,0.06); }
+  .btn-ghost:active { transform: scale(0.99); }
+
+  /* ============ BLOCO IMPORTANTE / SUPORTE ============ */
+  .support {
+    margin-top: clamp(20px, 4vw, 28px);
+    background: var(--card);
+    border: 1px solid var(--card-line);
+    border-radius: 20px;
+    padding: clamp(24px, 5vw, 36px);
+  }
+  .support .card-head .ico { color: var(--red); background: rgba(236,28,28,0.12); border-color: rgba(236,28,28,0.28); }
+  .support p.intro { color: var(--ink-dim); font-size: clamp(15px, 3.2vw, 17px); line-height: 1.6; margin-bottom: 18px; }
+  .support p.intro strong { color: #fff; }
+  .topics {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 22px;
+    margin-bottom: clamp(22px, 4vw, 28px);
+  }
+  .topics li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink-dim);
+    font-size: clamp(14px, 3vw, 16px);
+    line-height: 1.4;
+  }
+  .topics li::before {
+    content: "";
+    flex-shrink: 0;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  /* ============ MENSAGEM DE FECHAMENTO ============ */
+  .closing {
+    margin-top: clamp(34px, 6vw, 52px);
+    text-align: center;
+  }
+  .closing h2 {
+    font-weight: 800;
+    font-size: clamp(22px, 4.8vw, 32px);
+    line-height: 1.18;
+    margin-bottom: clamp(16px, 3vw, 22px);
+  }
+  .closing h2 .hl { color: var(--gold); }
+  .closing p {
+    max-width: 580px;
+    margin: 0 auto 14px;
+    color: var(--ink-dim);
+    font-size: clamp(15px, 3.2vw, 17px);
+    line-height: 1.65;
+    text-wrap: pretty;
+  }
+  .closing p strong { color: #fff; font-weight: 700; }
+  .closing .quote {
+    color: var(--gold-soft);
+    font-weight: 600;
+    font-style: italic;
+  }
+  .closing .sign {
+    margin-top: clamp(24px, 4vw, 32px);
+    color: var(--ink);
+    font-weight: 700;
+    font-size: clamp(16px, 3.4vw, 19px);
+  }
+  .closing .sign .assinatura {
+    display: block;
+    margin: 8px auto 2px;
+    height: clamp(56px, 13vw, 78px);
+    width: auto;
+    opacity: 0.92;
+  }
+  .closing .sign .name { display: block; color: var(--ink-dim); font-weight: 700; font-size: 0.92em; letter-spacing: 0.02em; }
+
+  /* ============ RODAPÉ ============ */
+  footer {
+    flex-shrink: 0;
+    margin-top: clamp(40px, 7vw, 64px);
+    border-top: 1px solid rgba(255,255,255,0.14);
+    padding: 34px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+  footer .logo { height: 34px; width: auto; opacity: 0.95; }
+  footer .rights { font-size: 13px; color: var(--ink-dim); letter-spacing: 0.05em; font-weight: 600; }
+  footer .cnpj { font-size: 12px; color: var(--ink-faint); letter-spacing: 0.04em; line-height: 1.6; }
+
+  /* ============ RESPONSIVO ============ */
+  @media (max-width: 560px) {
+    .card-head { gap: 10px; }
+    .topics { grid-template-columns: 1fr; gap: 9px; }
+  }
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '946406425103675');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+  <!-- ======= BARRA TOPO ======= -->
+  <header class="top-bar" data-screen-label="Topo">
+    <p>✅ Compra confirmada: seja bem-vindo ao Capital Digital!</p>
+  </header>
+
+  <main data-screen-label="Obrigado">
+
+    <!-- ======= BOAS-VINDAS ======= -->
+    <section class="hero">
+      <div class="check" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6 9 17l-5-5"></path>
+        </svg>
+      </div>
+      <div class="eyebrow">Pagamento aprovado</div>
+      <h1>Que <span class="hl">ALEGRIA</span> ter você com a gente!</h1>
+      <p class="sub">Sua compra foi confirmada e o seu acesso já está liberado. Siga os passos abaixo para <strong>começar agora mesmo</strong>.</p>
+    </section>
+
+    <!-- ======= PASSOS DE ACESSO ======= -->
+    <section class="card" data-screen-label="Acesso">
+      <div class="card-head">
+        <div class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
+          </svg>
+        </div>
+        <h2>O que fazer a seguir?</h2>
+      </div>
+
+      <p class="intro">Neste exato momento você recebeu um <strong>WhatsApp</strong> e um <strong>e-mail</strong> com os seus dados de acesso à área de membros. Siga o passo a passo:</p>
+
+      <ol class="steps">
+        <li><span class="num">1</span><div>Acesse a área de membros pelo botão abaixo;</div></li>
+        <li><span class="num">2</span><div>Insira o <strong>e-mail</strong> que você usou na compra;</div></li>
+        <li><span class="num">3</span><div>A sua <strong>senha de acesso</strong> chega no seu <strong>e-mail de compra</strong>;</div></li>
+        <li><span class="num">4</span><div>Faça login, troque a senha e <strong>salve</strong> em um lugar seguro.</div></li>
+      </ol>
+
+      <div class="tip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+        </svg>
+        <div>Não encontrou o e-mail? Procure na caixa de <strong>spam / promoções</strong> por <strong>"Capital Digital"</strong>. O acesso completo está lá.</div>
+      </div>
+
+      <div class="actions">
+        <!-- Área de membros (Hubla) -->
+        <a class="cta" href="https://app.hub.la/m/AUmKV16wB9yBdDrdlvUy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><path d="M10 17l5-5-5-5"></path><path d="M15 12H3"></path></svg>
+          Acessar a Área de Membros
+        </a>
+      </div>
+    </section>
+
+    <!-- ======= SUPORTE ======= -->
+    <section class="support" data-screen-label="Suporte">
+      <div class="card-head">
+        <div class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"></path>
+          </svg>
+        </div>
+        <h2>Precisa de ajuda?</h2>
+      </div>
+      <p class="intro">Este é o nosso canal de <strong>relacionamento com o cliente</strong>. Salve o contato para qualquer dúvida sobre:</p>
+      <ul class="topics">
+        <li>Pagamentos</li>
+        <li>Acesso à plataforma</li>
+        <li>Compra de novos produtos</li>
+        <li>Reembolso</li>
+        <li>Críticas e sugestões</li>
+        <li>Dúvidas sobre a operação</li>
+      </ul>
+      <div class="actions">
+        <!-- Suporte / relacionamento (WhatsApp) -->
+        <a class="btn-ghost" href="https://wa.me/message/YQPH6BJ7ISPSK1" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.47 14.38c-.3-.15-1.74-.86-2.01-.96-.27-.1-.47-.15-.66.15-.2.3-.76.96-.93 1.16-.17.2-.34.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.66-1.6-.91-2.19-.24-.57-.48-.49-.66-.5l-.56-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.74-.71 1.99-1.4.24-.69.24-1.28.17-1.4-.07-.12-.27-.2-.57-.35z"></path><path d="M12 2a10 10 0 0 0-8.6 15.06L2 22l5.06-1.33A10 10 0 1 0 12 2zm0 18.17a8.17 8.17 0 0 1-4.16-1.14l-.3-.18-3 .79.8-2.92-.2-.31A8.17 8.17 0 1 1 12 20.17z"></path></svg>
+          Falar com o suporte no WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <!-- ======= FECHAMENTO ======= -->
+    <section class="closing" data-screen-label="Mensagem">
+      <h2>Será um <span class="hl">prazer</span> caminhar ao seu lado!</h2>
+      <p>A partir de agora você não está mais sozinho. Toda a estrutura, as ofertas validadas, os criativos e o suporte foram construídos com muito cuidado, visando uma única coisa:</p>
+      <p class="quote">"Te dar condição de construir uma renda recorrente e transformar a vida da sua família."</p>
+      <p>Essa é a nossa missão aqui. Obrigado por confiar. Aproveite cada detalhe e <strong>vá com tudo</strong>.</p>
+      <div class="sign">
+        Com carinho,
+        <img class="assinatura" src="assets/assinatura-luiz.png" alt="Luiz Brito" />
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======= RODAPÉ ======= -->
+  <footer>
+    <img class="logo" src="assets/logo-capital.png" alt="Capital Digital" />
+    <div class="rights">Todos os direitos reservados</div>
+    <div class="cnpj"><strong>CNPJ 48.978.195/0001-75 | AXR NEGOCIOS DIGITAIS LTDA</strong></div>
+  </footer>
+
+</body>
+</html>
