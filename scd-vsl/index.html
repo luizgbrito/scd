@@ -1,11 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<link rel="icon" type="image/png" href="/favicon.png">
-<link rel="shortcut icon" href="/favicon.png">
-<title>Aula Liberada — Sistema de Renda Autônoma</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Aula Liberada — Máquina de Vendas</title>
 
 <!-- Meta Pixel Code -->
 <script>
@@ -29,20 +27,8 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   /* ============ FONTE MOSVITA ============ */
   @font-face {
     font-family: "Mosvita";
-    src: url("../fonts/Mosvita-Regular.otf") format("opentype");
-    font-weight: 400;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "Mosvita";
-    src: url("../fonts/Mosvita-Bold.otf") format("opentype");
-    font-weight: 700;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "Mosvita";
-    src: url("../fonts/Mosvita-SemiBold.otf") format("opentype");
-    font-weight: 600;
+    src: url("assets/fonts/Mosvita.otf") format("opentype");
+    font-weight: 100 900;
     font-display: swap;
   }
 
@@ -87,6 +73,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
       radial-gradient(100% 60% at 50% 110%, rgba(243,144,33,0.06) 0%, rgba(243,144,33,0) 60%),
       linear-gradient(180deg, var(--bg-1) 0%, var(--bg-0) 60%, #050608 100%);
   }
+  /* grão/textura muito sutil para tirar o "chapado" */
   body::after {
     content: "";
     position: fixed;
@@ -110,7 +97,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
     align-items: center;
   }
 
-  /* ============ HEADER / BARRA DE OFERTA ============ */
+  /* ============ HEADER / BARRA DE OFERTA (vermelha) ============ */
   .offer-bar {
     width: 100%;
     background: #ec1c1c;
@@ -137,7 +124,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   .offer-bar .free { color: #f39021; }
   #clock { font-variant-numeric: tabular-nums; }
 
-  /* ============ VÍDEO VTURB ============ */
+  /* ============ VÍDEO VTURB (vertical / retrato) ============ */
   .video-stage {
     width: min(100%, 400px);
     margin: 0 auto;
@@ -147,14 +134,13 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
     border: 1px solid var(--line);
     box-shadow: 0 24px 70px -28px rgba(0,0,0,0.9), 0 0 0 1px rgba(46,224,46,0.05);
   }
+  /* container fluido — o próprio embed define sua proporção (9:16) via padding-top interno */
   #vturb-player {
     position: relative;
     width: 100%;
-    aspect-ratio: 9 / 16;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
+  #vturb-player vturb-smartplayer { width: 100% !important; max-width: 100% !important; }
+  /* placeholder visível — REMOVA ao colar o embed do vturb */
   .vturb-placeholder {
     position: absolute;
     inset: 0;
@@ -187,6 +173,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
     justify-content: center;
     margin-top: 28px;
   }
+  /* elementos liberados pelo vídeo começam ocultos */
   .esconder { display: none !important; }
 
   .cta {
@@ -211,8 +198,6 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
     box-shadow: 0 14px 30px -10px rgba(33,184,33,0.55);
     animation: ctaPulse 1.7s cubic-bezier(0.4,0,0.6,1) infinite;
     transition: transform 0.12s ease;
-    font-size: 18px;
-    width: min(100%, 400px);
   }
   .cta:hover { transform: scale(1.02); }
   .cta:active { transform: scale(0.985); }
@@ -224,6 +209,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   }
   @media (prefers-reduced-motion: reduce) {
     .cta { animation: none; }
+    .badge .dot { animation: none; }
   }
 
   /* ============ RODAPÉ ============ */
@@ -244,50 +230,60 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   /* ============ RESPONSIVO ============ */
   @media (max-width: 560px) {
     .page { padding: 20px 16px 44px; }
+    .offer { gap: 12px; margin-bottom: 22px; }
+    .clock .seg { min-width: 38px; padding: 5px 7px; }
     .cta { border-radius: 14px; }
     footer { padding: 28px 18px 34px; }
   }
 </style>
 </head>
 <body>
+  <template id="__bundler_thumbnail" data-bg-color="#07080a">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="1200" height="120" fill="#ec1c1c"/>
+      <rect x="490" y="200" width="220" height="380" rx="20" fill="#0a0c0f" stroke="#21b821" stroke-width="3"/>
+      <path d="M575 350 l60 40 -60 40 z" fill="#21b821"/>
+      <rect x="430" y="630" width="340" height="70" rx="16" fill="#21b821"/>
+    </svg>
+  </template>
 
-  <!-- HEADER / BARRA DE OFERTA -->
-  <header class="offer-bar">
+  <!-- ======= HEADER / BARRA DE OFERTA (vermelha, igual ao anexo) ======= -->
+  <header class="offer-bar" data-screen-label="Header">
     <div class="offer-inner">
       <p class="line1">Aula Liberada | De: <s>R$697,00</s> por: <span class="free">R$0,00</span></p>
       <p class="line2">- Acaba hoje - Tempo restante: <span id="clock" aria-live="polite">00:00:00</span> -</p>
     </div>
   </header>
 
-  <main class="page">
+  <main class="page" data-screen-label="Landing">
 
-    <!-- VÍDEO VTURB -->
+    <!-- ======= VÍDEO VTURB (sem headline) ======= -->
     <div class="video-stage">
       <div id="vturb-player">
-        <!-- =====================================================
-             COLE AQUI O CÓDIGO (EMBED) DO VTURB
-             e remova a div .vturb-placeholder abaixo
-             ===================================================== -->
-        <div class="vturb-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="4" width="20" height="16" rx="3"></rect>
-            <path d="M10 9l5 3-5 3V9z"></path>
-          </svg>
-          <div class="t1">Área do vídeo</div>
-          <div class="t2"><vturb-smartplayer id="vid-6a68418d92424af13b85e242" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/players/6a68418d92424af13b85e242/v4/player.js", s.async=!0,document.head.appendChild(s); </script></div>
-        </div>
+<vturb-smartplayer id="vid-6a68418d92424af13b85e242" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
+<script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/players/6a68418d92424af13b85e242/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
       </div>
     </div>
 
-  <!-- RODAPÉ -->
+  </main>
+
+  <!-- ======= RODAPÉ ======= -->
   <footer>
-    <img class="logo" src="assets/logo-capital.png" alt="Capital Digital">
+    <img class="logo" src="assets/logo-capital.png" alt="Capital Digital" />
     <div class="rights">Todos os direitos reservados</div>
-    <div class="cnpj"><b>CNPJ 48.978.195/0001-75 | AXR NEGOCIOS DIGITAIS LTDA</b></div>
+    <div class="cnpj">CNPJ 48.978.195/0001-75 | AXR NEGOCIOS DIGITAIS LTDA</div>
   </footer>
 
   <script>
-    /* LIBERAÇÃO DO BOTÃO — SINCRONIZADO COM O VÍDEO (VTurb / smartplayer) */
+    /* =====================================================================
+       LIBERAÇÃO DO BOTÃO — SINCRONIZADO COM O VÍDEO (VTurb / smartplayer)
+       ---------------------------------------------------------------------
+       Os elementos com a classe ".esconder" começam ocultos e são exibidos
+       quando o vídeo passa de SECONDS_TO_DISPLAY segundos.
+       >> Ajuste apenas SECONDS_TO_DISPLAY (em segundos). Ex.: 480 = 8 min.
+       >> Se NÃO houver player na página, o botão é liberado após
+          FALLBACK_NO_PLAYER_SECONDS (evita botão preso sem vídeo).
+       ===================================================================== */
     var SECONDS_TO_DISPLAY = 0;
     var FALLBACK_NO_PLAYER_SECONDS = 6;
 
@@ -309,10 +305,14 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
       }, 1000);
     })();
 
-    /* CONTADOR REGRESSIVO — "ACABA HOJE" */
+    /* =====================================================================
+       CONTADOR REGRESSIVO — "ACABA HOJE"
+       Conta até o fim do dia atual (23:59:59). Ao virar o dia, recomeça.
+       ===================================================================== */
     (function countdown() {
       const clock = document.getElementById('clock');
       const pad = (n) => String(n).padStart(2, '0');
+
       function tick() {
         const now = new Date();
         const end = new Date(now);
@@ -327,6 +327,5 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
       setInterval(tick, 1000);
     })();
   </script>
-
 </body>
 </html>
