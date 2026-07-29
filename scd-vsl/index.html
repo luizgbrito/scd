@@ -126,93 +126,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   .offer-bar .free { color: #f39021; }
   #clock { font-variant-numeric: tabular-nums; }
 
-  /* ============ VÍDEO VTURB (vertical / retrato) ============ */
-  .video-stage {
-    width: min(100%, 400px);
-    margin: 0 auto;
-    border-radius: 16px;
-    overflow: hidden;
-    background: #000;
-    border: 1px solid var(--line);
-    box-shadow: 0 24px 70px -28px rgba(0,0,0,0.9), 0 0 0 1px rgba(46,224,46,0.05);
-  }
-  /* container fluido — o próprio embed define sua proporção (9:16) via padding-top interno */
-  #vturb-player {
-    position: relative;
-    width: 100%;
-  }
-  #vturb-player vturb-smartplayer { width: 100% !important; max-width: 100% !important; }
-  /* placeholder visível — REMOVA ao colar o embed do vturb */
-  .vturb-placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-    color: var(--ink-faint);
-    background:
-      radial-gradient(80% 80% at 50% 40%, rgba(33,184,33,0.06), transparent 70%),
-      #0a0c0f;
-    text-align: center;
-    padding: 24px;
-  }
-  .vturb-placeholder svg { width: 56px; height: 56px; opacity: 0.5; }
-  .vturb-placeholder .t1 { font-size: 15px; font-weight: 700; color: var(--ink-dim); letter-spacing: 0.04em; }
-  .vturb-placeholder .t2 { font-size: 12.5px; color: var(--ink-faint); max-width: 380px; line-height: 1.5; }
-  .vturb-placeholder code {
-    font-family: ui-monospace, "SF Mono", Menlo, monospace;
-    background: rgba(255,255,255,0.06);
-    padding: 1px 6px; border-radius: 5px; color: var(--green-bright);
-    font-size: 11.5px;
-  }
-
-  /* ============ BOTÃO PULSANTE ============ */
-  .cta-wrap {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 28px;
-  }
-  /* elementos liberados pelo vídeo começam ocultos */
-  .esconder { display: none !important; }
-
-  .cta {
-    --pulse: rgba(46,224,46,0.55);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    text-decoration: none;
-    font-family: "Mosvita", sans-serif;
-    font-weight: 700;
-    font-size: clamp(18px, 4.6vw, 26px);
-    letter-spacing: 0.01em;
-    color: #fff;
-    background: linear-gradient(180deg, var(--green-bright) 0%, var(--green) 55%, var(--green-deep) 100%);
-    border: none;
-    border-radius: 16px;
-    padding: clamp(18px, 4vw, 24px) clamp(26px, 6vw, 48px);
-    width: min(100%, 460px);
-    cursor: pointer;
-    line-height: 1.15;
-    box-shadow: 0 14px 30px -10px rgba(33,184,33,0.55);
-    animation: ctaPulse 1.7s cubic-bezier(0.4,0,0.6,1) infinite;
-    transition: transform 0.12s ease;
-  }
-  .cta:hover { transform: scale(1.02); }
-  .cta:active { transform: scale(0.985); }
-
-  @keyframes ctaPulse {
-    0%   { box-shadow: 0 14px 30px -10px rgba(33,184,33,0.55), 0 0 0 0 var(--pulse); }
-    70%  { box-shadow: 0 14px 30px -10px rgba(33,184,33,0.55), 0 0 0 22px rgba(46,224,46,0); }
-    100% { box-shadow: 0 14px 30px -10px rgba(33,184,33,0.55), 0 0 0 0 rgba(46,224,46,0); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .cta { animation: none; }
-    .badge .dot { animation: none; }
-  }
+  /* ============ VÍDEO VTURB \u2014 sem wrapper visual, embed livre e íntegro ============ */
 
   /* ============ RODAPÉ ============ */
   footer {
@@ -232,9 +146,6 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   /* ============ RESPONSIVO ============ */
   @media (max-width: 560px) {
     .page { padding: 20px 16px 44px; }
-    .offer { gap: 12px; margin-bottom: 22px; }
-    .clock .seg { min-width: 38px; padding: 5px 7px; }
-    .cta { border-radius: 14px; }
     footer { padding: 28px 18px 34px; }
   }
 </style>
@@ -259,13 +170,9 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
 
   <main class="page" data-screen-label="Landing">
 
-    <!-- ======= VÍDEO VTURB (sem headline) ======= -->
-    <div class="video-stage">
-      <div id="vturb-player">
+    <!-- ======= VÍDEO VTURB (sem headline, sem wrapper) ======= -->
 <vturb-smartplayer id="vid-6a68418d92424af13b85e242" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
 <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/players/6a68418d92424af13b85e242/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
-      </div>
-    </div>
 
   </main>
 
@@ -278,34 +185,12 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
 
   <script>
     /* =====================================================================
-       LIBERAÇÃO DO BOTÃO — SINCRONIZADO COM O VÍDEO (VTurb / smartplayer)
+       CÓDIGO DE DELAY \u2014 pronto para uso, zerado
        ---------------------------------------------------------------------
-       Os elementos com a classe ".esconder" começam ocultos e são exibidos
-       quando o vídeo passa de SECONDS_TO_DISPLAY segundos.
-       >> Ajuste apenas SECONDS_TO_DISPLAY (em segundos). Ex.: 480 = 8 min.
-       >> Se NÃO houver player na página, o botão é liberado após
-          FALLBACK_NO_PLAYER_SECONDS (evita botão preso sem vídeo).
+       Ajuste apenas SECONDS_TO_DISPLAY (em segundos) quando quiser
+       sincronizar qualquer elemento futuro com o vídeo (VTurb / smartplayer).
        ===================================================================== */
     var SECONDS_TO_DISPLAY = 0;
-    var FALLBACK_NO_PLAYER_SECONDS = 6;
-
-    (function liberarBotao() {
-      var revelado = false, elapsed = 0;
-      function mostrar() {
-        if (revelado) return;
-        revelado = true;
-        document.querySelectorAll('.esconder').forEach(function (el) { el.classList.remove('esconder'); });
-      }
-      var timer = setInterval(function () {
-        elapsed += 1;
-        var sp = (typeof smartplayer !== 'undefined' && smartplayer.instances && smartplayer.instances[0] && smartplayer.instances[0].video) ? smartplayer.instances[0].video : null;
-        if (sp) {
-          if (sp.currentTime > SECONDS_TO_DISPLAY) { mostrar(); clearInterval(timer); }
-        } else if (elapsed >= FALLBACK_NO_PLAYER_SECONDS) {
-          mostrar(); clearInterval(timer);
-        }
-      }, 1000);
-    })();
 
     /* =====================================================================
        CONTADOR REGRESSIVO — "ACABA HOJE"
