@@ -1,10 +1,10 @@
-@font-face{font-family:Mosvita;src:url(fonts/Mosvita-Light.otf) format("opentype");font-weight:300;font-style:normal;font-display:swap}
-@font-face{font-family:Mosvita;src:url(fonts/Mosvita-Regular.otf) format("opentype");font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:Mosvita;src:url(fonts/Mosvita-SemiBold.otf) format("opentype");font-weight:600;font-style:normal;font-display:swap}
-@font-face{font-family:Mosvita;src:url(fonts/Mosvita-Bold.otf) format("opentype");font-weight:700;font-style:normal;font-display:swap}
-@font-face{font-family:Mosvita;src:url(fonts/Mosvita-ExtraBold.otf) format("opentype");font-weight:800;font-style:normal;font-display:swap}
-@font-face{font-family:Mosvita;src:url(fonts/Mosvita-Black.otf) format("opentype");font-weight:900;font-style:normal;font-display:swap}
-@font-face{font-family:"Mosvita Expanded";src:url(fonts/Mosvita-Expanded.otf) format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:Mosvita;src:url(fonts/Mosvita-Light.otf) format("opentype");font-weight:300;font-style:normal;font-display:block}
+@font-face{font-family:Mosvita;src:url(fonts/Mosvita-Regular.otf) format("opentype");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:Mosvita;src:url(fonts/Mosvita-SemiBold.otf) format("opentype");font-weight:600;font-style:normal;font-display:block}
+@font-face{font-family:Mosvita;src:url(fonts/Mosvita-Bold.otf) format("opentype");font-weight:700;font-style:normal;font-display:block}
+@font-face{font-family:Mosvita;src:url(fonts/Mosvita-ExtraBold.otf) format("opentype");font-weight:800;font-style:normal;font-display:block}
+@font-face{font-family:Mosvita;src:url(fonts/Mosvita-Black.otf) format("opentype");font-weight:900;font-style:normal;font-display:block}
+@font-face{font-family:"Mosvita Expanded";src:url(fonts/Mosvita-Expanded.otf) format("opentype");font-weight:400;font-style:normal;font-display:block}
 
 :root{
   --font-display:"Mosvita", Georgia, serif;
@@ -24,8 +24,8 @@ img { max-width: 100%; }
 
 .font-display, .font-display * { font-family: var(--font-display) !important; }
 .tracking-luxe{letter-spacing:.32em}
-.text-gradient-silver{background:var(--gradient-text);color:transparent;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;overflow:visible;padding-right:.03em}
-.text-gradient-warm{background:var(--gradient-warm-accent);color:transparent;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;overflow:visible;padding-right:.03em}
+.text-gradient-silver{color:#EDEAE2}
+.text-gradient-warm{color:#E3A857}
 .bg-warm-radial{background-image:var(--gradient-warm)}
 .bg-card-dark{background:var(--gradient-card)}
 .bg-noise{background-image:radial-gradient(circle at 1px 1px, white 1px, transparent 0);background-size:3px 3px}
