@@ -24,8 +24,8 @@ img { max-width: 100%; }
 
 .font-display, .font-display * { font-family: var(--font-display) !important; }
 .tracking-luxe{letter-spacing:.32em}
-.text-gradient-silver{color:#EDEAE2}
-.text-gradient-warm{color:#E3A857}
+.text-gradient-silver{background:var(--gradient-text);color:transparent;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.text-gradient-warm{background:var(--gradient-warm-accent);color:transparent;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .bg-warm-radial{background-image:var(--gradient-warm)}
 .bg-card-dark{background:var(--gradient-card)}
 .bg-noise{background-image:radial-gradient(circle at 1px 1px, white 1px, transparent 0);background-size:3px 3px}
