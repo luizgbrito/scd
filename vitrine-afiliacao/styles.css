@@ -19,14 +19,13 @@
 
 html { scroll-behavior: smooth; }
 html, body { font-family: var(--font-sans); overflow-x: hidden; width: 100%; }
-button, input, textarea, select, a { font-family: var(--font-sans); }
-* { -webkit-text-size-adjust: 100%; }
+* { font-family: var(--font-sans) !important; -webkit-text-size-adjust: 100%; }
 img { max-width: 100%; }
 
-.font-display{font-family:var(--font-display)}
+.font-display, .font-display * { font-family: var(--font-display) !important; }
 .tracking-luxe{letter-spacing:.32em}
-.text-gradient-silver{background:var(--gradient-text);color:transparent;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.text-gradient-warm{background:var(--gradient-warm-accent);color:transparent;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.text-gradient-silver{background:var(--gradient-text);color:transparent;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;overflow:visible;padding-right:.03em}
+.text-gradient-warm{background:var(--gradient-warm-accent);color:transparent;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;overflow:visible;padding-right:.03em}
 .bg-warm-radial{background-image:var(--gradient-warm)}
 .bg-card-dark{background:var(--gradient-card)}
 .bg-noise{background-image:radial-gradient(circle at 1px 1px, white 1px, transparent 0);background-size:3px 3px}
