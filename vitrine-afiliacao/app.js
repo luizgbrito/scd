@@ -46,7 +46,7 @@ function renderCards() {
       ? "bg-gradient-to-r from-[oklch(0.78_0.16_80)] to-[oklch(0.65_0.2_50)] text-black"
       : "border border-white/20 bg-white/10 text-white/80 backdrop-blur";
     return `
-      <article data-idx="${idx}" class="reveal group relative cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-card-dark transition-all duration-500 active:scale-[0.98] hover:border-[oklch(0.7_0.18_60/0.45)] hover:shadow-[0_30px_80px_-30px_oklch(0.7_0.18_60/0.45)]" style="transition-delay:${idx * 120}ms">
+      <article data-idx="${idx}" class="reveal-lift group relative cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-card-dark transition-all duration-500 active:scale-[0.98] hover:border-[oklch(0.7_0.18_60/0.45)] hover:shadow-[0_30px_80px_-30px_oklch(0.7_0.18_60/0.45)]" style="transition-delay:${idx * 120}ms">
         <div class="relative aspect-[3/4] overflow-hidden">
           <img src="${p.image}" alt="${p.name}" loading="lazy" class="h-full w-full object-cover grayscale transition-transform duration-1000 group-hover:scale-110 group-hover:grayscale-0"/>
           <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent transition-opacity duration-500 group-hover:opacity-80"></div>
@@ -80,7 +80,14 @@ function renderCards() {
 }
 
 let revealObserver = null;
+let revealReady = !document.fonts || document.fonts.status === 'loaded';
+if (!revealReady) {
+  document.fonts.ready.then(() => { revealReady = true; initReveal(); });
+  setTimeout(() => { revealReady = true; initReveal(); }, 2000);
+}
+
 function initReveal() {
+  if (!revealReady) return;
   if (!revealObserver) {
     revealObserver = ('IntersectionObserver' in window)
       ? new IntersectionObserver((entries) => {
@@ -93,7 +100,7 @@ function initReveal() {
         }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' })
       : null;
   }
-  document.querySelectorAll('.reveal:not(.is-visible)').forEach(el => {
+  document.querySelectorAll('.reveal:not(.is-visible), .reveal-lift:not(.is-visible)').forEach(el => {
     const delay = el.dataset.delay;
     if (delay) el.style.transitionDelay = `${delay}ms`;
     if (revealObserver) revealObserver.observe(el);
