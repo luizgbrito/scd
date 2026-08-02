@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8" />
-<link rel="icon" type="image/png" href="../favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Acesso Liberado — Upsell</title>
 <style>
@@ -136,46 +135,8 @@
   }
   @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
 
-  /* ============ VÍDEO VTURB (vertical) ============ */
-  .video-stage {
-    width: min(100%, 400px);
-    margin: 0 auto;
-    border-radius: 16px;
-    overflow: hidden;
-    background: #000;
-    border: 1px solid var(--line);
-    box-shadow: 0 24px 70px -28px rgba(0,0,0,0.9), 0 0 0 1px rgba(46,224,46,0.05);
-  }
-  #vturb-player {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 9 / 16;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .vturb-placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-    color: var(--ink-faint);
-    background: radial-gradient(80% 80% at 50% 40%, rgba(243,144,33,0.06), transparent 70%), #0a0c0f;
-    text-align: center;
-    padding: 24px;
-  }
-  .vturb-placeholder svg { width: 56px; height: 56px; opacity: 0.5; }
-  .vturb-placeholder .t1 { font-size: 15px; font-weight: 700; color: var(--ink-dim); letter-spacing: 0.04em; }
-  .vturb-placeholder .t2 { font-size: 12.5px; color: var(--ink-faint); max-width: 300px; line-height: 1.5; }
-  .vturb-placeholder code {
-    font-family: ui-monospace, "SF Mono", Menlo, monospace;
-    background: rgba(255,255,255,0.06);
-    padding: 1px 6px; border-radius: 5px; color: var(--gold);
-    font-size: 11.5px;
-  }
+  /* ============ VÍDEO VTURB — div sem estilo visual, só posiciona o embed ============ */
+  #vturb-player { width: 100%; max-width: 400px; margin: 0 auto; }
 
   /* ============ BOTÃO PULSANTE (primário) ============ */
   .cta-wrap {
@@ -349,23 +310,6 @@
     footer { padding: 28px 18px 34px; }
   }
 </style>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '946406425103675');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -384,22 +328,11 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
       <span class="arrow">▼</span>
     </div>
 
-    <!-- ======= VÍDEO VTURB (vertical, sem headline) ======= -->
-    <div class="video-stage">
-      <div id="vturb-player">
-        <!-- ===================================================== -->
-        <!--   COLE AQUI O CÓDIGO (EMBED) DO VTURB                  -->
-        <!--   e remova a div .vturb-placeholder abaixo            -->
-        <!-- ===================================================== -->
-        <div class="vturb-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="4" width="20" height="16" rx="3"></rect>
-            <path d="M10 9l5 3-5 3V9z"></path>
-          </svg>
-          <div class="t1">Área do vídeo</div>
-          <div class="t2">Cole o código do <strong>VTurb</strong> dentro de <code>#vturb-player</code> e remova este aviso.</div>
-        </div>
-      </div>
+    <!-- ======= VÍDEO VTURB (sem headline) ======= -->
+    <div id="vturb-player">
+      <!-- ===================================================== -->
+      <!--   COLE AQUI O CÓDIGO (EMBED) DO VTURB, livre e íntegro  -->
+      <!-- ===================================================== -->
     </div>
 
     <!-- ======= BOTÃO PULSANTE (liberado pelo vídeo) ======= -->
