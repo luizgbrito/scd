@@ -198,9 +198,13 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
 
   /* ---------- DEPOIMENTOS EM VÍDEO ---------- */
   .depoimentos{padding:clamp(30px,5vw,44px) 0;}
-  .video-grid{display:grid;grid-template-columns:1fr;gap:22px;max-width:420px;margin:0 auto;}
-  @media (min-width:640px){.video-grid{max-width:900px;grid-template-columns:repeat(3,1fr);}}
-  .video-grid > div{width:100%;}
+  .video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:460px;margin:0 auto;}
+  @media (min-width:600px){.video-grid{max-width:620px;gap:22px;}}
+  .video-grid > div{
+    width:100%;border-radius:16px;overflow:hidden;
+    border:1px solid rgba(243,144,33,.28);
+    box-shadow:0 0 0 1px rgba(243,144,33,.08), 0 8px 40px -6px rgba(243,144,33,.4);
+  }
 
   /* ---------- RECAP CARD (OFERTA) ---------- */
   .recap{padding:clamp(30px,5vw,48px) 0 clamp(40px,6vw,56px);}
@@ -321,21 +325,24 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   .passo .t{font-weight:700;color:#fff;font-size:clamp(14.5px,3vw,16px);margin-bottom:4px;}
   .passo .d{color:var(--ink-dim);font-size:clamp(13.5px,2.9vw,15px);line-height:1.5;}
 
-  /* ---------- DIFERENCIAL (COMPARAÇÃO) ---------- */
+  /* ---------- DIFERENCIAL (COMPARAÇÃO, LAYOUT PILL) ---------- */
   .diferencial{padding:clamp(30px,5vw,44px) 0;}
-  .compare-grid{display:grid;grid-template-columns:1fr;gap:16px;max-width:640px;margin:0 auto;}
-  @media (min-width:640px){.compare-grid{grid-template-columns:1fr 1fr;}}
-  .compare-card{border-radius:16px;padding:22px 20px;border:1px solid var(--line);}
-  .compare-card.bad{background:rgba(236,28,28,.05);border-color:rgba(236,28,28,.2);}
-  .compare-card.good{background:rgba(33,184,33,.06);border-color:rgba(33,184,33,.25);}
-  .compare-card h4{font-size:15px;font-weight:800;margin-bottom:14px;text-transform:uppercase;letter-spacing:.03em;}
-  .compare-card.bad h4{color:var(--red);}
-  .compare-card.good h4{color:var(--green-bright);}
-  .compare-card ul{list-style:none;display:flex;flex-direction:column;gap:10px;text-align:left;}
-  .compare-card li{display:flex;gap:9px;align-items:flex-start;color:var(--ink-dim);font-size:clamp(13.5px,2.9vw,15px);line-height:1.45;}
-  .compare-card .ic{flex-shrink:0;width:18px;height:18px;margin-top:1px;}
-  .compare-card.bad .ic{color:var(--red);}
-  .compare-card.good .ic{color:var(--green-bright);}
+  .compare-grid{display:grid;grid-template-columns:1fr;gap:28px;max-width:900px;margin:0 auto;}
+  @media (min-width:760px){.compare-grid{grid-template-columns:1fr 1fr;gap:32px;}}
+  .compare-col h4{text-align:center;font-size:14px;font-weight:800;margin-bottom:16px;text-transform:uppercase;letter-spacing:.04em;}
+  .compare-col.bad h4{color:var(--red);}
+  .compare-col.good h4{color:var(--green-bright);}
+  .compare-col ul{list-style:none;display:flex;flex-direction:column;gap:12px;text-align:left;}
+  .compare-row{
+    display:flex;gap:12px;align-items:center;
+    border:1px solid var(--line);border-radius:14px;background:var(--card);
+    padding:14px 16px;
+  }
+  .compare-row .ic{flex-shrink:0;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;}
+  .compare-row .ic svg{width:14px;height:14px;}
+  .compare-row.bad .ic{background:rgba(236,28,28,.15);color:var(--red);}
+  .compare-row.good .ic{background:rgba(33,184,33,.15);color:var(--green-bright);}
+  .compare-row span{color:var(--ink-dim);font-size:clamp(13.5px,2.9vw,15px);line-height:1.45;}
 
   /* ---------- CONHEÇA QUEM VAI TE ENSINAR ---------- */
   .professor{padding:clamp(30px,5vw,44px) 0;}
@@ -485,22 +492,22 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
     <div class="wrap">
       <h2 style="text-align:center;font-size:clamp(20px,4.6vw,30px);font-weight:800;margin-bottom:26px;">O Capital Digital é diferente do que você já viu por aí</h2>
       <div class="compare-grid">
-        <div class="compare-card bad">
+        <div class="compare-col bad">
           <h4>Curso comum de "ganhar dinheiro online"</h4>
           <ul>
-            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>Só teoria solta, sem estrutura pronta pra usar.</li>
-            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>Te obriga a aparecer, gravar vídeo e virar influenciador.</li>
-            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>Sem suporte de verdade quando você trava.</li>
-            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>Garantia curta ou nenhuma.</li>
+            <li class="compare-row bad"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></span><span>Só teoria solta, sem estrutura pronta pra usar.</span></li>
+            <li class="compare-row bad"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></span><span>Te obriga a aparecer, gravar vídeo e virar influenciador.</span></li>
+            <li class="compare-row bad"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></span><span>Sem suporte de verdade quando você trava.</span></li>
+            <li class="compare-row bad"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></span><span>Garantia curta ou nenhuma.</span></li>
           </ul>
         </div>
-        <div class="compare-card good">
+        <div class="compare-col good">
           <h4>Capital Digital</h4>
           <ul>
-            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Sistema com IA que entrega a estrutura pronta pra usar.</li>
-            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Não depende da sua imagem nem de viralizar.</li>
-            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Suporte 24h com IA e suporte humano de verdade.</li>
-            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Garantia dupla: 7 dias incondicional + 30 dias condicional.</li>
+            <li class="compare-row good"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span>Sistema com IA que entrega a estrutura pronta pra usar.</span></li>
+            <li class="compare-row good"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span>Não depende da sua imagem nem de viralizar.</span></li>
+            <li class="compare-row good"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span>Suporte 24h com IA e suporte humano de verdade.</span></li>
+            <li class="compare-row good"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span>Garantia dupla: 7 dias incondicional + 30 dias condicional.</span></li>
           </ul>
         </div>
       </div>
@@ -529,9 +536,6 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
       <h2 style="text-align:center;font-size:clamp(20px,4.6vw,30px);font-weight:800;margin-bottom:8px;">Quem já está dentro, fala por si</h2>
       <p style="text-align:center;color:var(--ink-dim);max-width:560px;margin:0 auto 30px;">Alunos reais do Capital Digital contando como foi aplicar o método.</p>
       <div class="video-grid">
-        <div>
-          <vturb-smartplayer id="vid-6a849cecdefad6a7cc804c47" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 176.66666666666666% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
-        </div>
         <div>
           <vturb-smartplayer id="vid-6a849ce8a4d48ef3f38abaf9" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
         </div>
@@ -666,7 +670,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
         </details>
         <details class="faq-item">
           <summary>Quais as formas de pagamento?</summary>
-          <div class="a">Cartão de crédito (em até 12x) ou Pix.</div>
+          <div class="a">Cartão de crédito (em até 12x), Pix ou parcelado em 2 cartões diferentes.</div>
         </details>
         <details class="faq-item">
           <summary>Preciso aparecer ou gravar vídeo?</summary>
@@ -724,7 +728,6 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
 </footer>
 
 <!-- Vturb player scripts -->
-<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/players/6a849cecdefad6a7cc804c47/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
 <script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/players/6a849ce8a4d48ef3f38abaf9/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
 <script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/players/6a849ce2c25ad82f79b9b205/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
 <script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/players/6a849cdcd52b73491ec4a5c5/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
@@ -744,7 +747,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
 (function(){
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var targets = document.querySelectorAll(
-    'main > section, main > .foto-bloco, main > .mockup-bloco, .duvidas, .passo, .compare-card, .video-grid > div'
+    'main > section, main > .foto-bloco, main > .mockup-bloco, .duvidas, .passo, .compare-row, .video-grid > div'
   );
   if (reduceMotion || !('IntersectionObserver' in window)) {
     targets.forEach(function(el){ el.classList.add('reveal', 'visible'); });
