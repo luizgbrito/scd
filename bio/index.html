@@ -247,6 +247,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   .recap-total .big{font-size:clamp(36px,9vw,56px);color:#fff;font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-top:2px;}
   .recap-total .big .n{color:var(--green-bright);}
   .recap-total .vista{font-size:clamp(15px,3.4vw,19px);color:#fff;font-weight:600;margin-top:2px;}
+  .recap-total .daily{font-size:13px;color:var(--gold-soft);font-weight:600;margin-top:10px;}
   .recap-card .cta-wrap{margin-top:clamp(24px,4vw,32px);}
   .garantia-mini{
     display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 12px;margin-top:16px;
@@ -312,6 +313,17 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   }
   .btn-wpp:hover{transform:scale(1.02);}
   .btn-wpp svg{width:19px;height:19px;flex-shrink:0;}
+
+  /* ---------- CALLOUT DO NOME DO LOOP (pausa visual clara) ---------- */
+  .loop-callout{
+    max-width:600px;margin:0 auto;
+    background:linear-gradient(180deg,#fff8e6,#fdecc4);
+    border-radius:18px;padding:clamp(22px,4.5vw,30px) clamp(22px,4.5vw,32px);
+    text-align:center;box-shadow:0 24px 60px -24px rgba(0,0,0,.6);
+  }
+  .loop-callout .label{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#a8681a;margin-bottom:8px;}
+  .loop-callout .name{font-size:clamp(22px,5vw,30px);font-weight:800;color:#1a1206;line-height:1.2;margin-bottom:10px;}
+  .loop-callout .sub{font-size:clamp(13.5px,3vw,15.5px);color:#5c4a28;line-height:1.55;}
 
   /* ---------- COMO FUNCIONA (PASSOS) ---------- */
   .passos{padding:clamp(30px,5vw,44px) 0;}
@@ -421,6 +433,17 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
         <li><span class="warn">!</span><p>"Acho que preciso aparecer, gravar vídeo, viralizar. E eu não quero isso."</p></li>
       </ul>
     </div>
+    <div class="wrap" style="margin-top:32px;">
+      <h2 style="font-size:clamp(19px,4.2vw,26px);">E se continuar assim, é bem provável que você também vá:</h2>
+    </div>
+    <div class="wrap">
+      <ul class="beneficios-list">
+        <li><span class="warn">!</span><p>Perder mais um mês tentando adivinhar o que vender.</p></li>
+        <li><span class="warn">!</span><p>Ver gente que começou depois de você vendendo mais.</p></li>
+        <li><span class="warn">!</span><p>Gastar em anúncio sem saber se aquilo vai voltar.</p></li>
+        <li><span class="warn">!</span><p>Continuar de fora, vendo o "certo" sempre um passo à frente.</p></li>
+      </ul>
+    </div>
   </section>
 
   <div class="foto-bloco">
@@ -447,7 +470,14 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   <!-- ============ COMO FUNCIONA (PASSOS) ============ -->
   <section class="passos">
     <div class="wrap">
-      <h2 style="text-align:center;font-size:clamp(20px,4.6vw,30px);font-weight:800;margin-bottom:26px;">Como funciona, em 4 passos simples</h2>
+      <div class="loop-callout">
+        <div class="label">Isso tem nome</div>
+        <div class="name">Loop da Renda Autônoma</div>
+        <div class="sub">Um ciclo de 4 passos que se repete sozinho, todos os dias, sem você precisar recomeçar do zero a cada oferta nova.</div>
+      </div>
+    </div>
+    <div class="wrap">
+      <h2 style="text-align:center;font-size:clamp(20px,4.6vw,30px);font-weight:800;margin:32px 0 26px;">Como funciona, em 4 passos simples</h2>
       <div class="passos-list">
         <div class="passo">
           <span class="num">1</span>
@@ -573,6 +603,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
           <div class="sub">Mas nessa página, você paga apenas:</div>
           <div class="big">12x de <span class="n">R$30,18</span></div>
           <div class="vista">ou R$297,00 à vista</div>
+          <div class="daily">Menos de R$1,50 por dia pra ter um sistema completo trabalhando por você.</div>
         </div>
         <div class="cta-wrap">
           <a class="cta" href="https://pay.hub.la/tlSeiZhKhdLY9LcP878q" data-cta="oferta">Quero ativar meu sistema agora</a>
@@ -678,18 +709,53 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
           <summary>O conteúdo é atualizado?</summary>
           <div class="a">Sim, e todas as atualizações futuras já estão inclusas no seu acesso, sem custo adicional.</div>
         </details>
+        <details class="faq-item">
+          <summary>Funciona pra qualquer nicho ou mercado?</summary>
+          <div class="a">Sim. A IA escaneia o mercado e te mostra as ofertas que já estão vendendo agora, então você não fica preso a um nicho fixo — ela se adapta ao que está funcionando.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Preciso ter produto ou loja própria?</summary>
+          <div class="a">Não. A própria IA modela e cria o entregável e a estrutura pra você, então você não precisa chegar com nada pronto.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Preciso saber de tráfego pago?</summary>
+          <div class="a">Não é obrigatório pra começar. Os módulos te ensinam do zero, e o suporte 24h com IA mais o suporte humano te ajudam quando a dúvida for mais técnica.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Já tentei antes e não deu certo. Por que dessa vez seria diferente?</summary>
+          <div class="a">Porque dessa vez você não fica tentando adivinhar sozinho: a IA assume as partes que mais travam (scanner, modelagem, criação) e você tem garantia dupla pra testar sem risco.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Tem algum requisito ou idade mínima?</summary>
+          <div class="a">Não. Qualquer pessoa maior de idade, com acesso à internet e um computador ou celular, pode aplicar o método.</div>
+        </details>
       </div>
     </div>
   </section>
 
   <hr class="divider" />
 
-  <!-- ============ CTA FINAL ============ -->
+  <!-- ============ CTA FINAL (DOIS CENÁRIOS) ============ -->
   <section class="bloco">
     <div class="wrap">
-      <h2>A escolha é simples.</h2>
-      <p>Você pode fechar essa página agora e continuar exatamente onde está, tentando no impulso, torcendo pra alguma coisa dar certo.</p>
-      <p>Ou pode ativar hoje o mesmo Sistema de Renda Autônoma que já gerou <strong>R$5.312 em um único dia</strong>, com duas garantias te protegendo o tempo todo.</p>
+      <h2>Daqui a 6 meses, onde você quer estar?</h2>
+      <div class="compare-grid" style="margin-top:8px;">
+        <div class="compare-col bad">
+          <h4>Cenário A</h4>
+          <ul>
+            <li class="compare-row bad"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></span><span>Ainda tentando vender no impulso, testando oferta atrás de oferta.</span></li>
+            <li class="compare-row bad"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></span><span>Sem saber por que as vendas não vêm, torcendo pra alguma coisa dar certo.</span></li>
+          </ul>
+        </div>
+        <div class="compare-col good">
+          <h4>Cenário B</h4>
+          <ul>
+            <li class="compare-row good"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span>Com o Sistema de Renda Autônoma rodando, vendendo todos os dias.</span></li>
+            <li class="compare-row good"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span>Protegido por duas garantias, sem depender de sorte ou de imagem.</span></li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:26px;">A diferença entre os dois cenários é a decisão que você toma agora.</p>
       <div class="cta-wrap">
         <a class="cta" href="https://pay.hub.la/tlSeiZhKhdLY9LcP878q" data-cta="final">Quero ativar meu sistema agora</a>
         <span class="cta-note">Acesso imediato · Garantia dupla de até 30 dias</span>
