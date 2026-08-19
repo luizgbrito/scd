@@ -205,20 +205,6 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
     border:1px solid rgba(243,144,33,.28);
     box-shadow:0 0 0 1px rgba(243,144,33,.08), 0 8px 40px -6px rgba(243,144,33,.4);
   }
-  .yt-embed{position:relative;width:100%;padding:177.77778% 0 0;background:#000;}
-  .yt-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;}
-  .yt-facade{position:absolute;inset:0;width:100%;height:100%;padding:0;margin:0;border:none;background:#000;cursor:pointer;display:block;}
-  .yt-facade img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
-  .yt-facade .play-ic{
-    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-    width:52px;height:52px;border-radius:50%;
-    background:rgba(243,144,33,.92);color:#fff;
-    display:grid;place-items:center;
-    box-shadow:0 8px 24px -6px rgba(0,0,0,.6);
-    transition:transform .15s ease;
-  }
-  .yt-facade .play-ic svg{width:20px;height:20px;margin-left:2px;}
-  .yt-facade:hover .play-ic{transform:translate(-50%,-50%) scale(1.06);}
 
   /* ---------- RECAP CARD (OFERTA) ---------- */
   .recap{padding:clamp(30px,5vw,48px) 0 clamp(40px,6vw,56px);}
@@ -545,36 +531,16 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
       <p style="text-align:center;color:var(--ink-dim);max-width:560px;margin:0 auto 30px;">Alunos reais do Capital Digital contando como foi aplicar o método.</p>
       <div class="video-grid">
         <div>
-          <div class="yt-embed">
-            <button type="button" class="yt-facade" data-yid="qqaP_g1BhGw" aria-label="Assistir depoimento">
-              <img src="https://img.youtube.com/vi/qqaP_g1BhGw/hqdefault.jpg" alt="" loading="lazy" />
-              <span class="play-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span>
-            </button>
-          </div>
+          <vturb-smartplayer id="vid-6a849ce8a4d48ef3f38abaf9" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
         </div>
         <div>
-          <div class="yt-embed">
-            <button type="button" class="yt-facade" data-yid="GT_nLPgmK7o" aria-label="Assistir depoimento">
-              <img src="https://img.youtube.com/vi/GT_nLPgmK7o/hqdefault.jpg" alt="" loading="lazy" />
-              <span class="play-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span>
-            </button>
-          </div>
+          <vturb-smartplayer id="vid-6a849ce2c25ad82f79b9b205" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
         </div>
         <div>
-          <div class="yt-embed">
-            <button type="button" class="yt-facade" data-yid="u24ltUyMbc4" aria-label="Assistir depoimento">
-              <img src="https://img.youtube.com/vi/u24ltUyMbc4/hqdefault.jpg" alt="" loading="lazy" />
-              <span class="play-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span>
-            </button>
-          </div>
+          <vturb-smartplayer id="vid-6a849cdcd52b73491ec4a5c5" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
         </div>
         <div>
-          <div class="yt-embed">
-            <button type="button" class="yt-facade" data-yid="M_LmvbNQlOQ" aria-label="Assistir depoimento">
-              <img src="https://img.youtube.com/vi/M_LmvbNQlOQ/hqdefault.jpg" alt="" loading="lazy" />
-              <span class="play-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span>
-            </button>
-          </div>
+          <vturb-smartplayer id="vid-6a849cd4ffaacf48857abd29" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
         </div>
       </div>
     </div>
@@ -756,20 +722,43 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   });
 </script>
 
-<!-- Depoimentos YouTube: sem título/controles, só o play inicial. Toca ao clicar. -->
+<!-- Vturb player scripts -->
+<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/players/6a849ce8a4d48ef3f38abaf9/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
+<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/players/6a849ce2c25ad82f79b9b205/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
+<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/players/6a849cdcd52b73491ec4a5c5/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
+<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/players/6a849cd4ffaacf48857abd29/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
+
+<!-- Bloqueia o Smart Autoplay do Vturb: o player continua aparecendo normal, mas só toca depois de um clique real do usuário -->
 <script>
-  document.querySelectorAll('.yt-facade').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var yid = btn.getAttribute('data-yid');
-      var iframe = document.createElement('iframe');
-      iframe.src = 'https://www.youtube.com/embed/' + yid + '?autoplay=1&controls=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3';
-      iframe.title = 'Depoimento Capital Digital';
-      iframe.loading = 'lazy';
-      iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
-      iframe.allowFullscreen = true;
-      btn.replaceWith(iframe);
-    }, { once: true });
+(function(){
+  document.querySelectorAll('.video-grid vturb-smartplayer').forEach(function(player){
+    var userClicked = false;
+    player.addEventListener('click', function(){ userClicked = true; }, true);
+
+    function guard(video){
+      if (video.dataset.autoplayGuard) return;
+      video.dataset.autoplayGuard = '1';
+      video.addEventListener('play', function(){
+        if (!userClicked) { video.pause(); }
+      });
+    }
+
+    function scan(root){
+      var v = root && root.querySelector && root.querySelector('video');
+      if (v) guard(v);
+    }
+
+    scan(player);
+    scan(player.shadowRoot);
+
+    var mo = new MutationObserver(function(){
+      scan(player);
+      scan(player.shadowRoot);
+    });
+    mo.observe(player, { childList: true, subtree: true });
+    if (player.shadowRoot) mo.observe(player.shadowRoot, { childList: true, subtree: true });
   });
+})();
 </script>
 
 <!-- Animação sutil ao rolar -->
