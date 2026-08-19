@@ -205,6 +205,8 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
     border:1px solid rgba(243,144,33,.28);
     box-shadow:0 0 0 1px rgba(243,144,33,.08), 0 8px 40px -6px rgba(243,144,33,.4);
   }
+  .yt-embed{position:relative;width:100%;padding:177.77778% 0 0;background:#000;}
+  .yt-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;}
 
   /* ---------- RECAP CARD (OFERTA) ---------- */
   .recap{padding:clamp(30px,5vw,48px) 0 clamp(40px,6vw,56px);}
@@ -531,16 +533,16 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
       <p style="text-align:center;color:var(--ink-dim);max-width:560px;margin:0 auto 30px;">Alunos reais do Capital Digital contando como foi aplicar o método.</p>
       <div class="video-grid">
         <div>
-          <vturb-smartplayer id="vid-6a849ce8a4d48ef3f38abaf9" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
+          <div class="yt-embed"><iframe src="https://www.youtube.com/embed/qqaP_g1BhGw?rel=0&modestbranding=1&playsinline=1" title="Depoimento Capital Digital" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
         </div>
         <div>
-          <vturb-smartplayer id="vid-6a849ce2c25ad82f79b9b205" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
+          <div class="yt-embed"><iframe src="https://www.youtube.com/embed/GT_nLPgmK7o?rel=0&modestbranding=1&playsinline=1" title="Depoimento Capital Digital" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
         </div>
         <div>
-          <vturb-smartplayer id="vid-6a849cdcd52b73491ec4a5c5" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
+          <div class="yt-embed"><iframe src="https://www.youtube.com/embed/u24ltUyMbc4?rel=0&modestbranding=1&playsinline=1" title="Depoimento Capital Digital" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
         </div>
         <div>
-          <vturb-smartplayer id="vid-6a849cd4ffaacf48857abd29" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
+          <div class="yt-embed"><iframe src="https://www.youtube.com/embed/M_LmvbNQlOQ?rel=0&modestbranding=1&playsinline=1" title="Depoimento Capital Digital" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
         </div>
       </div>
     </div>
@@ -712,44 +714,6 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   <div class="cnpj"><strong>CNPJ 48.978.195/0001-75 | AXR Digital</strong></div>
 </footer>
 
-<!-- Vturb player scripts -->
-<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/players/6a849ce8a4d48ef3f38abaf9/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
-<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/players/6a849ce2c25ad82f79b9b205/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
-<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/players/6a849cdcd52b73491ec4a5c5/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
-<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/players/6a849cd4ffaacf48857abd29/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
-
-<!-- Bloqueia o Smart Autoplay do Vturb: o player continua aparecendo normal, mas só toca depois de um clique real do usuário -->
-<script>
-(function(){
-  document.querySelectorAll('.video-grid vturb-smartplayer').forEach(function(player){
-    var userClicked = false;
-    player.addEventListener('click', function(){ userClicked = true; }, true);
-
-    function guard(video){
-      if (video.dataset.autoplayGuard) return;
-      video.dataset.autoplayGuard = '1';
-      video.addEventListener('play', function(){
-        if (!userClicked) { video.pause(); }
-      });
-    }
-
-    function scan(root){
-      var v = root && root.querySelector && root.querySelector('video');
-      if (v) guard(v);
-    }
-
-    scan(player);
-    scan(player.shadowRoot);
-
-    var mo = new MutationObserver(function(){
-      scan(player);
-      scan(player.shadowRoot);
-    });
-    mo.observe(player, { childList: true, subtree: true });
-    if (player.shadowRoot) mo.observe(player.shadowRoot, { childList: true, subtree: true });
-  });
-})();
-</script>
 
 <!-- CTA click tracking -->
 <script>
