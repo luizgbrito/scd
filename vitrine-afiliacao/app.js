@@ -21,8 +21,8 @@ const products = [
     image: "images/product-hosana-door.jpg",
     logo: "GESTORA DIGITAL",
     commission: "80%",
-    price: "R$ 997,00",
-    description: "Formação completa para se tornar Gestora de Projetos Digitais e fechar o primeiro contrato em até 30 dias, organizando operações de agências e negócios online sem precisar aparecer, vender ou ter experiência prévia.",
+    price: "R$ 197,00",
+    description: "Formação completa para se tornar Gestora de Projetos Digitais e fechar o primeiro contrato de até R$ 5.000 em até 30 dias, organizando operações de agências e negócios online sem precisar aparecer, vender ou ter experiência prévia.",
     materialsUrl: null
   }
 ];
