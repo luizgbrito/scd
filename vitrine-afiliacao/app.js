@@ -11,7 +11,8 @@ const products = [
     commission: "80%",
     price: "R$ 297,00",
     description: "Plataforma completa para criar ofertas, páginas de vendas e funis prontos para rodar tráfego, sem precisar de equipe técnica.",
-    materialsUrl: "https://hub.la/group_affiliate/AUmKV16wB9yBdDrdlvUy"
+    materialsUrl: "https://drive.google.com/drive/folders/1TumwAjHrVDMLr10gqFfCCouhB8MIxQrR?usp=drive_link",
+    affiliateUrl: "https://hub.la/group_affiliate/AUmKV16wB9yBdDrdlvUy"
   },
   {
     name: "Profissão Gestora Digital",
@@ -23,7 +24,8 @@ const products = [
     commission: "80%",
     price: "R$ 197,00",
     description: "Formação completa para se tornar Gestora de Projetos Digitais e fechar o primeiro contrato de até R$ 5.000 em até 30 dias, organizando operações de agências e negócios online sem precisar aparecer, vender ou ter experiência prévia.",
-    materialsUrl: null
+    materialsUrl: "https://drive.google.com/drive/folders/1PzrfLLQZkLMmxE8E9phbdNoVfq3p8ABj?usp=drive_link",
+    affiliateUrl: "https://hub.la/group_affiliate/6hUCCvqClNs9QKKpEBxZ"
   }
 ];
 
@@ -156,7 +158,7 @@ function renderModal() {
               <button type="button" disabled title="Materiais ainda não liberados" class="relative w-full overflow-hidden rounded-full bg-white/10 py-4 sm:py-5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.3em] text-white/40 cursor-not-allowed">
                 Acessar Materiais
               </button>`}
-              <a href="mailto:suporte@axrdigital.com.br?subject=${encodeURIComponent('Solicitação de afiliação - ' + t.name)}" class="block w-full rounded-full border border-[oklch(0.7_0.18_60/0.4)] py-4 sm:py-5 text-center text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.3em] text-white transition-all duration-300 active:scale-[0.97] hover:bg-[oklch(0.7_0.18_60/0.1)] hover:border-[oklch(0.7_0.18_60/0.7)] cursor-pointer">Solicitar Afiliação</a>
+              <a href="${t.affiliateUrl || `mailto:suporte@axrdigital.com.br?subject=${encodeURIComponent('Solicitação de afiliação - ' + t.name)}`}" ${t.affiliateUrl ? 'target="_blank" rel="noopener"' : ''} class="block w-full rounded-full border border-[oklch(0.7_0.18_60/0.4)] py-4 sm:py-5 text-center text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.3em] text-white transition-all duration-300 active:scale-[0.97] hover:bg-[oklch(0.7_0.18_60/0.1)] hover:border-[oklch(0.7_0.18_60/0.7)] cursor-pointer">Solicitar Afiliação</a>
               <button id="modal-back" class="w-full rounded-full border border-white/5 py-4 sm:py-5 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.15em] sm:tracking-[0.3em] text-white/70 transition-all duration-300 active:scale-[0.97] hover:bg-white/5 hover:text-white hover:border-white/10 cursor-pointer">Voltar</button>
             </div>
           </div>
