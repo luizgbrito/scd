@@ -19,7 +19,7 @@ const products = [
     category: "Gestão de Projetos",
     status: "Faturando",
     statusTone: "live",
-    image: "images/product-hosana-door.jpg",
+    image: "images/product-hosana-portrait.png",
     logo: "GESTORA DIGITAL",
     commission: "80%",
     price: "R$ 197,00",
@@ -150,14 +150,10 @@ function renderModal() {
               </div>
             </div>
             <div class="mt-auto space-y-3 sm:space-y-4 transition-all duration-700 delay-600 ${a ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}">
-              ${t.materialsUrl ? `
               <a href="${t.materialsUrl}" target="_blank" rel="noopener" class="relative block w-full overflow-hidden rounded-full bg-white py-4 sm:py-5 text-center text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.3em] text-black transition-all duration-500 hover:scale-[1.02] active:scale-95 group/btn-modal cursor-pointer">
                 <span class="relative z-10">Acessar Materiais</span>
                 <div class="absolute inset-0 bg-gradient-to-r from-[oklch(0.78_0.16_80)] to-[oklch(0.65_0.2_50)] opacity-0 transition-opacity duration-500 group-hover/btn-modal:opacity-100"></div>
-              </a>` : `
-              <button type="button" disabled title="Materiais ainda não liberados" class="relative w-full overflow-hidden rounded-full bg-white/10 py-4 sm:py-5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.3em] text-white/40 cursor-not-allowed">
-                Acessar Materiais
-              </button>`}
+              </a>
               <a href="${t.affiliateUrl || `mailto:suporte@axrdigital.com.br?subject=${encodeURIComponent('Solicitação de afiliação - ' + t.name)}`}" ${t.affiliateUrl ? 'target="_blank" rel="noopener"' : ''} class="block w-full rounded-full border border-[oklch(0.7_0.18_60/0.4)] py-4 sm:py-5 text-center text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.3em] text-white transition-all duration-300 active:scale-[0.97] hover:bg-[oklch(0.7_0.18_60/0.1)] hover:border-[oklch(0.7_0.18_60/0.7)] cursor-pointer">Solicitar Afiliação</a>
               <button id="modal-back" class="w-full rounded-full border border-white/5 py-4 sm:py-5 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.15em] sm:tracking-[0.3em] text-white/70 transition-all duration-300 active:scale-[0.97] hover:bg-white/5 hover:text-white hover:border-white/10 cursor-pointer">Voltar</button>
             </div>
