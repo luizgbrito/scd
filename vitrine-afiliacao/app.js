@@ -2,37 +2,26 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 const products = [
   {
-    name: "Gota Sexy",
-    category: "Relacionamento",
+    name: "Capital Digital",
+    category: "SaaS",
     status: "Faturando",
     statusTone: "live",
-    image: "images/product-drops-DsldHsz4.jpg",
-    logo: "GOTA SEXY",
-    commission: "60%",
-    price: "R$ 197,00",
-    description: "Estimulante natural focado no nicho de relacionamentos, com alta conversão e materiais validados para escala."
+    image: "images/product-capital-digital.jpg",
+    logo: "CAPITAL DIGITAL",
+    commission: "80%",
+    price: "R$ 297,00",
+    description: "Plataforma completa para criar ofertas, páginas de vendas e funis prontos para rodar tráfego, sem precisar de equipe técnica."
   },
   {
-    name: "My Hair",
-    category: "Estética",
-    status: "Escalando",
+    name: "Formação Gestora Próspera",
+    category: "Gestão de Projetos",
+    status: "Faturando",
     statusTone: "live",
-    image: "images/product-hair-uMq2cjos.jpg",
-    logo: "MY HAIR",
-    commission: "55%",
-    price: "R$ 147,00",
-    description: "Suplemento vitamínico premium para fortalecimento capilar. Público feminino engajado e recompra garantida."
-  },
-  {
-    name: "Leon Ponce",
-    category: "Saúde",
-    status: "Em Breve",
-    statusTone: "soon",
-    image: "images/product-beauty-DU5LgyC8.jpg",
-    logo: "LEON PONCE",
-    commission: "50%",
-    price: "R$ 167,00",
-    description: "Fórmula exclusiva focada em bem-estar e estética, desenvolvida com tecnologia de ponta para resultados reais."
+    image: "images/product-hosana-door.jpg",
+    logo: "GESTORA PRÓSPERA",
+    commission: "80%",
+    price: "R$ 1.238,52",
+    description: "Formação completa para se tornar Gestora de Projetos Digitais e faturar atuando nos bastidores de agências e negócios online, sem precisar aparecer."
   }
 ];
 
@@ -161,6 +150,7 @@ function renderModal() {
                 <span class="relative z-10">Acessar Materiais</span>
                 <div class="absolute inset-0 bg-gradient-to-r from-[oklch(0.78_0.16_80)] to-[oklch(0.65_0.2_50)] opacity-0 transition-opacity duration-500 group-hover/btn-modal:opacity-100"></div>
               </button>
+              <a href="mailto:suporte@axrdigital.com.br?subject=${encodeURIComponent('Solicitação de afiliação - ' + t.name)}" class="block w-full rounded-full border border-[oklch(0.7_0.18_60/0.4)] py-4 sm:py-5 text-center text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.3em] text-white transition-all duration-300 active:scale-[0.97] hover:bg-[oklch(0.7_0.18_60/0.1)] hover:border-[oklch(0.7_0.18_60/0.7)] cursor-pointer">Solicitar Afiliação</a>
               <button id="modal-back" class="w-full rounded-full border border-white/5 py-4 sm:py-5 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.15em] sm:tracking-[0.3em] text-white/70 transition-all duration-300 active:scale-[0.97] hover:bg-white/5 hover:text-white hover:border-white/10 cursor-pointer">Voltar</button>
             </div>
           </div>
