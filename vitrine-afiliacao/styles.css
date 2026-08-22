@@ -11,10 +11,10 @@
   --font-expanded:"Mosvita Expanded", "Mosvita", serif;
   --font-sans:"Mosvita", system-ui, sans-serif;
   --gradient-warm:radial-gradient(ellipse 80% 60% at 50% 0%, oklch(55% .16 70/.18), transparent 60%), radial-gradient(ellipse 60% 50% at 80% 90%, oklch(60% .18 50/.1), transparent 60%);
-  --gradient-text:linear-gradient(180deg, #fff 0%, #d8d4cc 50%, #8a7a5e 100%);
-  --gradient-warm-accent:linear-gradient(120deg, oklch(85% .13 85), oklch(70% .18 55));
   --gradient-card:linear-gradient(180deg, oklch(14% .005 80) 0%, oklch(6% 0 0) 100%);
   --shadow-glow:0 30px 80px -30px oklch(70% .18 60/.35);
+  --ink:#F5F7FA;
+  --accent:#F39021;
 }
 
 html { scroll-behavior: smooth; }
@@ -24,8 +24,8 @@ img { max-width: 100%; }
 
 .font-display, .font-display * { font-family: var(--font-display) !important; }
 .tracking-luxe{letter-spacing:.32em}
-.text-gradient-silver{background:var(--gradient-text);color:transparent;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.text-gradient-warm{background:var(--gradient-warm-accent);color:transparent;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.text-gradient-silver{color:var(--ink)}
+.text-gradient-warm{color:var(--accent)}
 .bg-warm-radial{background-image:var(--gradient-warm)}
 .bg-card-dark{background:var(--gradient-card)}
 .bg-noise{background-image:radial-gradient(circle at 1px 1px, white 1px, transparent 0);background-size:3px 3px}
