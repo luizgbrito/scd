@@ -118,14 +118,12 @@
 
   /* ===== showcase (página + foto de fundo + notificações) ===== */
   .showcase{padding:clamp(8px,2vw,20px) 0 clamp(20px,4vw,34px);}
-  /* o wrap padrão tem padding:0 22px mas queremos controle total aqui */
   .showcase>.wrap{padding:0;}
   .showcase-card{
     position:relative;overflow:hidden;
     background:#08090b;
     border:1px solid var(--line);border-radius:18px;
     box-shadow:0 40px 90px -40px rgba(0,0,0,.95);
-    /* margens explícitas — 20px cada lado no mobile */
     margin:0 20px;
   }
   .showcase-bg{position:absolute;inset:0;}
@@ -134,7 +132,6 @@
     linear-gradient(180deg,rgba(6,7,9,.8) 0%,rgba(6,7,9,.6) 40%,rgba(6,7,9,.95) 100%),
     linear-gradient(90deg,rgba(6,7,9,.6) 0%,rgba(6,7,9,0) 50%,rgba(6,7,9,.6) 100%);
   }
-  /* grid: padding uniforme, 1 coluna no mobile */
   .showcase-grid{
     position:relative;z-index:1;
     display:grid;grid-template-columns:1fr;
@@ -143,7 +140,6 @@
     padding:20px;
   }
 
-  /* mini página — centralizada */
   .mini-page{
     max-width:260px;margin:0 auto;width:100%;
     border-radius:14px;overflow:hidden;
@@ -171,7 +167,6 @@
   .mini-foot .r1{font-size:8px;font-weight:700;color:rgba(255,255,255,.8);letter-spacing:.03em;}
   .mini-foot .r2{font-size:7px;color:rgba(255,255,255,.45);letter-spacing:.02em;}
 
-  /* notificações hotmart — sem transforms no mobile */
   .toast-col{display:flex;flex-direction:column;gap:10px;width:100%;}
   .toast{
     display:flex;align-items:center;gap:11px;
@@ -193,7 +188,6 @@
     .showcase>.wrap{padding:0 22px;}
     .showcase-grid{grid-template-columns:1fr 1.1fr;align-items:center;padding:clamp(28px,4vw,44px);}
     .mini-page{max-width:320px;}
-    /* rotações só no desktop — card overflow:hidden contém tudo */
     .toast:nth-child(1){transform:rotate(-1.2deg) translateX(-4px);}
     .toast:nth-child(2){transform:rotate(.6deg) translateX(8px);}
     .toast:nth-child(3){transform:rotate(-0.8deg) translateX(2px);}
@@ -201,17 +195,14 @@
     .toast:nth-child(5){transform:rotate(-0.5deg) translateX(10px);}
   }
 
-  /* mockup de dispositivos */
   .mockup-bloco{display:flex;justify-content:center;margin:clamp(18px,4vw,30px) auto;}
   .mockup-bloco img{width:min(100%,680px);height:auto;}
 
-  /* statement amarelo */
   .statement{
     font-size:clamp(16px,3.6vw,20px);font-weight:800;letter-spacing:.02em;text-transform:uppercase;
     color:var(--gold);max-width:640px;margin:0 auto;line-height:1.45;text-wrap:balance;
   }
 
-  /* ---------- BOTÃO CTA ---------- */
   .cta-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:clamp(22px,4vw,30px);}
   .cta{
     display:inline-flex;align-items:center;justify-content:center;text-align:center;
@@ -233,13 +224,11 @@
   @media (prefers-reduced-motion:reduce){.cta{animation:none;}}
   .cta-note{font-size:12.5px;color:var(--ink-soft);font-weight:600;letter-spacing:.04em;}
 
-  /* "ou seja" espaçado */
   .ouseja{
     font-size:clamp(13px,3vw,15px);font-weight:700;letter-spacing:.5em;text-transform:uppercase;
     color:var(--ink-soft);
   }
 
-  /* ---------- RECAP CARD ---------- */
   .recap{padding:clamp(30px,5vw,48px) 0 clamp(40px,6vw,56px);}
   .recap-card{
     background:linear-gradient(180deg,#101319,rgba(13,15,19,.85));
@@ -289,12 +278,10 @@
   .garantia-mini svg{width:17px;height:17px;color:var(--ink-soft);flex-shrink:0;}
   .garantia-mini span{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;}
   @media (max-width:560px){
-    /* cada selo em sua própria linha única, centralizado */
     .garantia-mini{flex-direction:column;gap:10px;}
     .garantia-mini span:nth-child(2){display:none;}
   }
 
-  /* ---------- DÚVIDAS ---------- */
   .duvidas{
     text-align:center;border-top:1px solid var(--line-soft);
     padding:clamp(40px,7vw,60px) 22px;
@@ -312,7 +299,6 @@
   .btn-wpp:hover{transform:scale(1.02);}
   .btn-wpp svg{width:19px;height:19px;flex-shrink:0;}
 
-  /* ---------- RODAPÉ ---------- */
   footer{
     border-top:1px solid var(--line-soft);
     padding:36px 22px 44px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;
@@ -328,6 +314,7 @@
     .covers img:nth-child(4){transform:translateX(78%) rotate(6deg);}
   }
 </style>
+
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -338,13 +325,26 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
+
 fbq('init', '946406425103675');
+fbq('init', '4184277945203270');
+fbq('init', '1377242124615254');
+
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
+<noscript>
+<img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
-/></noscript>
+/>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=4184277945203270&ev=PageView&noscript=1"
+/>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1377242124615254&ev=PageView&noscript=1"
+/>
+</noscript>
 <!-- End Meta Pixel Code -->
+
 </head>
 <body>
 
