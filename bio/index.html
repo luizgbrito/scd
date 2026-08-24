@@ -255,28 +255,6 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   .carousel-arrow.is-hidden{opacity:0;pointer-events:none;}
   @media (max-width:480px){.carousel-arrow{width:30px;height:30px;}.carousel-arrow svg{width:15px;height:15px;}}
 
-  /* ---------- PRINTS: DEPOIMENTOS E RESULTADOS ---------- */
-  .prints-subtitle{
-    font-size:clamp(14.5px,3.2vw,17px);font-weight:800;color:var(--ink);
-    margin:30px 0 10px;
-  }
-  .print-grid{
-    display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x proximity;
-    padding:6px 22px 14px;margin:0 -22px;
-    -webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;
-  }
-  .print-grid::-webkit-scrollbar{display:none;}
-  .print-card{
-    flex:0 0 auto;width:min(72vw,260px);scroll-snap-align:center;
-    border-radius:14px;overflow:hidden;background:#0d0f13;
-    border:1px solid rgba(243,144,33,.28);
-    box-shadow:0 0 0 1px rgba(243,144,33,.08), 0 8px 32px -8px rgba(243,144,33,.35);
-    display:flex;flex-direction:column;
-  }
-  .print-card img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;}
-  .print-card .cap{font-size:11.5px;font-weight:700;color:var(--ink-dim);text-align:center;padding:8px 10px;letter-spacing:.01em;}
-  @media (min-width:600px){.print-card{width:220px;}}
-
   /* ---------- RECAP CARD (OFERTA) ---------- */
   .recap{padding:clamp(30px,5vw,48px) 0 clamp(40px,6vw,56px);scroll-margin-top:24px;}
   .recap-card{
@@ -700,40 +678,6 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
         </div>
         <button class="carousel-arrow next" type="button" aria-label="Próximo depoimento"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></button>
       </div>
-
-      <h3 class="prints-subtitle">Print não mente</h3>
-      <div class="carousel-wrap">
-        <button class="carousel-arrow prev is-hidden" type="button" aria-label="Print anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"></polyline></svg></button>
-        <div class="print-grid">
-          <div class="print-card">
-            <img src="assets/img/print-depoimento-breno-1.jpg" alt="Depoimento Breno: resultado de anúncios com ROAS 12.34 e lucro de R$ 1.325,56" loading="lazy" />
-            <div class="cap">Breno · aluno Capital Digital</div>
-          </div>
-          <div class="print-card">
-            <img src="assets/img/print-depoimento-breno-2.jpg" alt="Depoimento Breno: faturamento líquido de US$ 2.316,92 em vendas" loading="lazy" />
-            <div class="cap">Breno · aluno Capital Digital</div>
-          </div>
-          <div class="print-card">
-            <img src="assets/img/print-depoimento-isaque-1.jpg" alt="Depoimento Isaque: notificações de vendas realizadas na Hotmart" loading="lazy" />
-            <div class="cap">Isaque · aluno Capital Digital</div>
-          </div>
-        </div>
-        <button class="carousel-arrow next" type="button" aria-label="Próximo print"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></button>
-      </div>
-
-      <h3 class="prints-subtitle">E o resultado continua chegando</h3>
-      <div class="carousel-wrap">
-        <button class="carousel-arrow prev is-hidden" type="button" aria-label="Resultado anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"></polyline></svg></button>
-        <div class="print-grid">
-          <div class="print-card"><img src="assets/img/print-resultado-1.jpg" alt="Resultado real: faturamento líquido de R$ 12.193,22 e lucro de R$ 6.247,39" loading="lazy" /></div>
-          <div class="print-card"><img src="assets/img/print-resultado-2.jpg" alt="Resultado real: notificações de vendas realizadas na Hotmart" loading="lazy" /></div>
-          <div class="print-card"><img src="assets/img/print-resultado-3.jpg" alt="Resultado real: receita de US$ 12.807,07 em 30 dias" loading="lazy" /></div>
-          <div class="print-card"><img src="assets/img/print-resultado-4.jpg" alt="Resultado real: valor líquido de R$ 642.736,82 no dashboard" loading="lazy" /></div>
-          <div class="print-card"><img src="assets/img/print-resultado-5.jpg" alt="Resultado real: valor líquido de R$ 367.982,54 em vendas" loading="lazy" /></div>
-          <div class="print-card"><img src="assets/img/print-resultado-6.jpg" alt="Resultado real: receita de US$ 6.635,06 em 30 dias" loading="lazy" /></div>
-        </div>
-        <button class="carousel-arrow next" type="button" aria-label="Próximo resultado"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></button>
-      </div>
     </div>
   </section>
 
@@ -1023,7 +967,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
 <script>
 (function(){
   document.querySelectorAll('.carousel-wrap').forEach(function(wrap){
-    var track = wrap.querySelector('.video-grid, .print-grid');
+    var track = wrap.querySelector('.video-grid');
     var prev = wrap.querySelector('.carousel-arrow.prev');
     var next = wrap.querySelector('.carousel-arrow.next');
     if (!track || !prev || !next) return;
