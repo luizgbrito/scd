@@ -97,12 +97,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
     max-width:640px;margin:0 auto clamp(20px,4vw,26px);text-wrap:balance;
   }
   .vsl-bloco h1 .hl{color:var(--gold);}
-  .vsl-embed{
-    max-width:640px;margin:0 auto;border-radius:16px;overflow:hidden;
-    border:1px solid rgba(243,144,33,.28);
-    box-shadow:0 0 0 1px rgba(243,144,33,.08), 0 24px 60px -20px rgba(0,0,0,.75);
-    background:#000;
-  }
+  .vsl-embed{max-width:420px;margin:0 auto;}
 
   /* ---------- HERO ---------- */
   .hero{position:relative;text-align:center;padding:clamp(22px,5vw,34px) 0 clamp(44px,7vw,60px);overflow:hidden;}
@@ -818,7 +813,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
 <footer>
   <img class="logo" src="assets/img/logo-capital.png" alt="Capital Digital" />
   <div class="rights">Todos os direitos reservados</div>
-  <div class="cnpj"><strong>CNPJ 48.978.195/0001-75 | AXR Digital</strong></div>
+  <div class="cnpj"><strong>CNPJ 48.978.195/0001-75 | AXR NEGÓCIOS DIGITAIS LTDA</strong></div>
 </footer>
 
 
@@ -838,13 +833,13 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
 <script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/players/6a849cdcd52b73491ec4a5c5/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
 <script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/players/6a849cd4ffaacf48857abd29/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
 
-<!-- Bloqueia o Smart Autoplay do Vturb: o player continua aparecendo normal, mas só toca depois de um clique real
-     dentro daquele player específico. O Vturb tenta desbloquear áudio no primeiro clique em QUALQUER lugar da
-     página (padrão deles) e às vezes chama play() antes do nosso listener existir, por isso força pause()
-     imediatamente ao detectar o <video> e reforça por alguns segundos via polling. -->
+<!-- Bloqueia o Smart Autoplay do Vturb em TODOS os players da página (depoimentos e VSL). Cada player só toca
+     depois de um clique real dentro dele mesmo. O Vturb tenta desbloquear áudio no primeiro clique em QUALQUER
+     lugar da página (padrão deles) e às vezes chama play() antes do nosso listener existir, por isso força
+     pause() imediatamente ao detectar o <video> e reforça por alguns segundos via polling. -->
 <script>
 (function(){
-  document.querySelectorAll('.video-grid vturb-smartplayer').forEach(function(player){
+  document.querySelectorAll('vturb-smartplayer').forEach(function(player){
     var userClicked = false;
     player.addEventListener('click', function(){ userClicked = true; }, true);
 
@@ -862,7 +857,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
       var poll = setInterval(function(){
         enforce(video);
         tries++;
-        if (userClicked || tries > 60) clearInterval(poll);
+        if (userClicked || tries > 140) clearInterval(poll);
       }, 50);
     }
 
