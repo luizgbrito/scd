@@ -862,8 +862,8 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
     }
 
     function scan(root){
-      var v = root && root.querySelector && root.querySelector('video');
-      if (v) guard(v);
+      if (!root || !root.querySelectorAll) return;
+      root.querySelectorAll('video').forEach(guard);
     }
 
     scan(player);
