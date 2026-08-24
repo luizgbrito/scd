@@ -267,16 +267,15 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   }
   .print-grid::-webkit-scrollbar{display:none;}
   .print-card{
-    flex:0 0 auto;width:min(78vw,300px);height:380px;scroll-snap-align:center;
+    flex:0 0 auto;width:min(72vw,260px);scroll-snap-align:center;
     border-radius:14px;overflow:hidden;background:#0d0f13;
     border:1px solid rgba(243,144,33,.28);
     box-shadow:0 0 0 1px rgba(243,144,33,.08), 0 8px 32px -8px rgba(243,144,33,.35);
     display:flex;flex-direction:column;
   }
-  .print-card .img-wrap{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:8px;}
-  .print-card .img-wrap img{max-width:100%;max-height:100%;object-fit:contain;display:block;border-radius:6px;}
-  .print-card .cap{font-size:11.5px;font-weight:700;color:var(--ink-dim);text-align:center;padding:0 10px 12px;letter-spacing:.01em;}
-  @media (min-width:600px){.print-card{width:250px;height:330px;}}
+  .print-card img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;}
+  .print-card .cap{font-size:11.5px;font-weight:700;color:var(--ink-dim);text-align:center;padding:8px 10px;letter-spacing:.01em;}
+  @media (min-width:600px){.print-card{width:220px;}}
 
   /* ---------- RECAP CARD (OFERTA) ---------- */
   .recap{padding:clamp(30px,5vw,48px) 0 clamp(40px,6vw,56px);scroll-margin-top:24px;}
@@ -702,36 +701,36 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
         <button class="carousel-arrow next" type="button" aria-label="Próximo depoimento"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></button>
       </div>
 
-      <h3 class="prints-subtitle">Prints de depoimentos</h3>
+      <h3 class="prints-subtitle">Print não mente</h3>
       <div class="carousel-wrap">
         <button class="carousel-arrow prev is-hidden" type="button" aria-label="Print anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"></polyline></svg></button>
         <div class="print-grid">
           <div class="print-card">
-            <div class="img-wrap"><img src="assets/img/print-depoimento-breno-1.jpg" alt="Depoimento Breno: resultado de anúncios com ROAS 12.34 e lucro de R$ 1.325,56" loading="lazy" /></div>
+            <img src="assets/img/print-depoimento-breno-1.jpg" alt="Depoimento Breno: resultado de anúncios com ROAS 12.34 e lucro de R$ 1.325,56" loading="lazy" />
             <div class="cap">Breno · aluno Capital Digital</div>
           </div>
           <div class="print-card">
-            <div class="img-wrap"><img src="assets/img/print-depoimento-breno-2.jpg" alt="Depoimento Breno: faturamento líquido de US$ 2.316,92 em vendas" loading="lazy" /></div>
+            <img src="assets/img/print-depoimento-breno-2.jpg" alt="Depoimento Breno: faturamento líquido de US$ 2.316,92 em vendas" loading="lazy" />
             <div class="cap">Breno · aluno Capital Digital</div>
           </div>
           <div class="print-card">
-            <div class="img-wrap"><img src="assets/img/print-depoimento-isaque-1.jpg" alt="Depoimento Isaque: notificações de vendas realizadas na Hotmart" loading="lazy" /></div>
+            <img src="assets/img/print-depoimento-isaque-1.jpg" alt="Depoimento Isaque: notificações de vendas realizadas na Hotmart" loading="lazy" />
             <div class="cap">Isaque · aluno Capital Digital</div>
           </div>
         </div>
         <button class="carousel-arrow next" type="button" aria-label="Próximo print"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></button>
       </div>
 
-      <h3 class="prints-subtitle">Resultados</h3>
+      <h3 class="prints-subtitle">E o resultado continua chegando</h3>
       <div class="carousel-wrap">
         <button class="carousel-arrow prev is-hidden" type="button" aria-label="Resultado anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"></polyline></svg></button>
         <div class="print-grid">
-          <div class="print-card"><div class="img-wrap"><img src="assets/img/print-resultado-1.jpg" alt="Resultado real: faturamento líquido de R$ 12.193,22 e lucro de R$ 6.247,39" loading="lazy" /></div></div>
-          <div class="print-card"><div class="img-wrap"><img src="assets/img/print-resultado-2.jpg" alt="Resultado real: notificações de vendas realizadas na Hotmart" loading="lazy" /></div></div>
-          <div class="print-card"><div class="img-wrap"><img src="assets/img/print-resultado-3.jpg" alt="Resultado real: receita de US$ 12.807,07 em 30 dias" loading="lazy" /></div></div>
-          <div class="print-card"><div class="img-wrap"><img src="assets/img/print-resultado-4.jpg" alt="Resultado real: valor líquido de R$ 642.736,82 no dashboard" loading="lazy" /></div></div>
-          <div class="print-card"><div class="img-wrap"><img src="assets/img/print-resultado-5.jpg" alt="Resultado real: valor líquido de R$ 367.982,54 em vendas" loading="lazy" /></div></div>
-          <div class="print-card"><div class="img-wrap"><img src="assets/img/print-resultado-6.jpg" alt="Resultado real: receita de US$ 6.635,06 em 30 dias" loading="lazy" /></div></div>
+          <div class="print-card"><img src="assets/img/print-resultado-1.jpg" alt="Resultado real: faturamento líquido de R$ 12.193,22 e lucro de R$ 6.247,39" loading="lazy" /></div>
+          <div class="print-card"><img src="assets/img/print-resultado-2.jpg" alt="Resultado real: notificações de vendas realizadas na Hotmart" loading="lazy" /></div>
+          <div class="print-card"><img src="assets/img/print-resultado-3.jpg" alt="Resultado real: receita de US$ 12.807,07 em 30 dias" loading="lazy" /></div>
+          <div class="print-card"><img src="assets/img/print-resultado-4.jpg" alt="Resultado real: valor líquido de R$ 642.736,82 no dashboard" loading="lazy" /></div>
+          <div class="print-card"><img src="assets/img/print-resultado-5.jpg" alt="Resultado real: valor líquido de R$ 367.982,54 em vendas" loading="lazy" /></div>
+          <div class="print-card"><img src="assets/img/print-resultado-6.jpg" alt="Resultado real: receita de US$ 6.635,06 em 30 dias" loading="lazy" /></div>
         </div>
         <button class="carousel-arrow next" type="button" aria-label="Próximo resultado"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></button>
       </div>
