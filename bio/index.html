@@ -335,6 +335,45 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   .btn-wpp:hover{transform:scale(1.02);}
   .btn-wpp svg{width:19px;height:19px;flex-shrink:0;}
 
+  /* ---------- WHATSAPP FLUTUANTE ---------- */
+  .wpp-float{
+    position:fixed;right:18px;bottom:18px;z-index:999;
+    width:58px;height:58px;border-radius:50%;
+    background:linear-gradient(180deg,var(--green-bright),var(--green-deep));
+    display:grid;place-items:center;color:#fff;
+    box-shadow:0 12px 30px -8px rgba(33,184,33,.65);
+    animation:wppPulse 2.4s ease-out infinite;
+  }
+  .wpp-float svg{width:29px;height:29px;}
+  .wpp-float-bubble{
+    position:absolute;right:0;bottom:72px;
+    max-width:190px;white-space:normal;text-align:center;
+    background:#fff;color:#161a12;font-weight:700;font-size:13px;line-height:1.35;
+    padding:10px 14px;border-radius:12px;
+    box-shadow:0 10px 26px -8px rgba(0,0,0,.5);
+    opacity:0;transform:translateY(6px);pointer-events:none;
+    animation:wppBubble 6s ease-in-out 1.4s infinite;
+  }
+  .wpp-float-bubble::after{
+    content:"";position:absolute;right:22px;bottom:-6px;
+    width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;
+    border-top:6px solid #fff;
+  }
+  @keyframes wppPulse{
+    0%{box-shadow:0 12px 30px -8px rgba(33,184,33,.65),0 0 0 0 rgba(46,224,46,.55);}
+    70%{box-shadow:0 12px 30px -8px rgba(33,184,33,.65),0 0 0 16px rgba(46,224,46,0);}
+    100%{box-shadow:0 12px 30px -8px rgba(33,184,33,.65),0 0 0 0 rgba(46,224,46,0);}
+  }
+  @keyframes wppBubble{
+    0%,8%{opacity:0;transform:translateY(6px);}
+    14%,82%{opacity:1;transform:translateY(0);}
+    90%,100%{opacity:0;transform:translateY(6px);}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .wpp-float{animation:none;}
+    .wpp-float-bubble{animation:none;opacity:1;transform:none;}
+  }
+
   /* ---------- CALLOUT DO NOME DO LOOP (pausa visual clara) ---------- */
   .loop-callout{
     max-width:600px;margin:0 auto;
@@ -816,6 +855,11 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   <div class="cnpj"><strong>CNPJ 48.978.195/0001-75 | AXR NEGÓCIOS DIGITAIS LTDA</strong></div>
 </footer>
 
+<!-- ============ WHATSAPP FLUTUANTE ============ -->
+<a class="wpp-float" href="https://wa.me/message/YQPH6BJ7ISPSK1" target="_blank" rel="noopener" aria-label="Fale no WhatsApp">
+  <span class="wpp-float-bubble">Dúvidas? Fala comigo</span>
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.668-1.612-.916-2.207-.241-.579-.486-.5-.668-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.064 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>
+</a>
 
 <!-- CTA click tracking -->
 <script>
