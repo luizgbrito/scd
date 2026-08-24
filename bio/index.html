@@ -222,13 +222,19 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
 
   /* ---------- DEPOIMENTOS EM VÍDEO ---------- */
   .depoimentos{padding:clamp(30px,5vw,44px) 0;}
-  .video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:460px;margin:0 auto;}
-  @media (min-width:600px){.video-grid{max-width:620px;gap:22px;}}
+  .video-grid{
+    display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x proximity;
+    padding:6px 22px 14px;margin:0 -22px;max-width:none;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .video-grid::-webkit-scrollbar{display:none;}
   .video-grid > div{
-    width:100%;border-radius:16px;overflow:hidden;
+    flex:0 0 auto;width:min(76vw,300px);scroll-snap-align:center;
+    border-radius:16px;overflow:hidden;
     border:1px solid rgba(243,144,33,.28);
     box-shadow:0 0 0 1px rgba(243,144,33,.08), 0 8px 40px -6px rgba(243,144,33,.4);
   }
+  @media (min-width:600px){.video-grid > div{width:260px;}}
 
   /* ---------- RECAP CARD (OFERTA) ---------- */
   .recap{padding:clamp(30px,5vw,48px) 0 clamp(40px,6vw,56px);scroll-margin-top:24px;}
@@ -885,10 +891,19 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
 (function(){
   document.querySelectorAll('vturb-smartplayer').forEach(function(player){
     var userClicked = false;
-    player.addEventListener('click', function(){ userClicked = true; }, true);
+    player.addEventListener('click', function(){
+      userClicked = true;
+      var vids = player.querySelectorAll ? player.querySelectorAll('video') : [];
+      vids.forEach(function(v){ v.muted = false; });
+      if (player.shadowRoot) {
+        player.shadowRoot.querySelectorAll('video').forEach(function(v){ v.muted = false; });
+      }
+    }, true);
 
     function enforce(video){
-      if (!userClicked && !video.paused) { video.pause(); }
+      if (userClicked) return;
+      if (!video.muted) { video.muted = true; }
+      if (!video.paused) { video.pause(); }
     }
 
     function guard(video){
@@ -897,12 +912,14 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
       enforce(video);
       video.addEventListener('play', function(){ enforce(video); });
       video.addEventListener('playing', function(){ enforce(video); });
+      video.addEventListener('timeupdate', function(){ enforce(video); });
+      video.addEventListener('volumechange', function(){ enforce(video); });
       var tries = 0;
       var poll = setInterval(function(){
         enforce(video);
         tries++;
-        if (userClicked || tries > 140) clearInterval(poll);
-      }, 50);
+        if (userClicked || tries > 200) clearInterval(poll);
+      }, 25);
     }
 
     function scan(root){

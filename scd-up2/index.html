@@ -235,10 +235,19 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
 (function(){
   document.querySelectorAll('vturb-smartplayer').forEach(function(player){
     var userClicked = false;
-    player.addEventListener('click', function(){ userClicked = true; }, true);
+    player.addEventListener('click', function(){
+      userClicked = true;
+      var vids = player.querySelectorAll ? player.querySelectorAll('video') : [];
+      vids.forEach(function(v){ v.muted = false; });
+      if (player.shadowRoot) {
+        player.shadowRoot.querySelectorAll('video').forEach(function(v){ v.muted = false; });
+      }
+    }, true);
 
     function enforce(video){
-      if (!userClicked && !video.paused) { video.pause(); }
+      if (userClicked) return;
+      if (!video.muted) { video.muted = true; }
+      if (!video.paused) { video.pause(); }
     }
 
     function guard(video){
@@ -247,12 +256,14 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
       enforce(video);
       video.addEventListener('play', function(){ enforce(video); });
       video.addEventListener('playing', function(){ enforce(video); });
+      video.addEventListener('timeupdate', function(){ enforce(video); });
+      video.addEventListener('volumechange', function(){ enforce(video); });
       var tries = 0;
       var poll = setInterval(function(){
         enforce(video);
         tries++;
-        if (userClicked || tries > 140) clearInterval(poll);
-      }, 50);
+        if (userClicked || tries > 200) clearInterval(poll);
+      }, 25);
     }
 
     function scan(root){
