@@ -216,12 +216,28 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
 
   /* ---------- TROCA DE PAGAMENTO ---------- */
   .troca{padding:clamp(20px,4vw,30px) 0;}
-  .troca-card{max-width:600px;margin:0 auto;border:1px solid var(--line);border-radius:16px;background:var(--card);padding:clamp(20px,4vw,26px);text-align:left;}
-  .troca-card h3{font-size:clamp(15px,3.2vw,17px);font-weight:800;margin-bottom:12px;}
-  .troca-card ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:16px;}
-  .troca-card li{color:var(--ink-dim);font-size:clamp(13.5px,2.9vw,15px);padding-left:18px;position:relative;}
-  .troca-card li::before{content:"•";position:absolute;left:0;color:var(--gold);}
-  .troca-card a{color:var(--gold-soft);font-weight:700;font-size:14px;text-decoration:underline;text-underline-offset:3px;}
+  .troca-card{max-width:600px;margin:0 auto;border:1px solid var(--line);border-radius:18px;background:var(--card);padding:clamp(26px,5vw,36px) clamp(20px,4vw,28px);text-align:center;}
+  .troca-card .badge{width:44px;height:44px;border-radius:50%;background:var(--card);border:1px solid var(--line);
+    display:grid;place-items:center;margin:0 auto 16px;color:var(--ink-soft);}
+  .troca-card .badge svg{width:20px;height:20px;}
+  .troca-card h3{font-size:clamp(17px,3.8vw,21px);font-weight:800;margin-bottom:20px;}
+  .troca-card ol{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:22px;text-align:left;counter-reset:troca;}
+  .troca-card li{display:flex;gap:12px;align-items:flex-start;color:var(--ink-dim);font-size:clamp(13.5px,2.9vw,15px);line-height:1.4;}
+  .troca-card li .n{
+    counter-increment:troca;flex-shrink:0;width:26px;height:26px;border-radius:50%;
+    background:rgba(243,144,33,.14);color:var(--gold);font-weight:800;font-size:13px;
+    display:grid;place-items:center;margin-top:1px;
+  }
+  .troca-card li .n::before{content:counter(troca);}
+  .troca-btn{
+    display:inline-flex;align-items:center;justify-content:center;text-align:center;
+    font-family:"Mosvita",sans-serif;font-weight:800;font-size:clamp(13px,2.9vw,15px);letter-spacing:.03em;
+    color:#1a1206;background:linear-gradient(180deg,var(--gold-soft),var(--gold));
+    border-radius:12px;min-height:54px;padding:12px 28px;width:100%;
+    box-shadow:0 12px 26px -10px rgba(243,144,33,.5);
+    transition:transform .12s ease;
+  }
+  .troca-btn:hover{transform:translateY(-1px) scale(1.01);}
 
   /* ---------- REVEAL ---------- */
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease;}
@@ -250,14 +266,14 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   <section class="hero">
     <div class="wrap">
       <h1>Sem enrolação: nessa página você ganhou <span class="hl">R$500 de desconto</span> pra entrar no Hustle Club até o fim do ano</h1>
-      <p class="scarcity">Você <strong>não vai ver essa condição de novo</strong> — nem pedindo no direct, nem no suporte. Só aqui, só agora.</p>
+      <p class="scarcity">Você <strong>não vai ver essa condição de novo</strong>, nem pedindo no direct, nem no suporte. Só aqui, só agora.</p>
     </div>
   </section>
 
   <!-- ============ CARTA PESSOAL ============ -->
   <section class="bloco reveal">
     <div class="wrap">
-      <p>Antes de mais nada: obrigado por confiar em mim e entrar pro Capital Digital. Meu recado é simples — o que separa quem muda de vida de quem só reclama é o segundo de coragem que você já teve.</p>
+      <p>Antes de mais nada: obrigado por confiar em mim e entrar pro Capital Digital. Meu recado é simples: o que separa quem muda de vida de quem só reclama é o segundo de coragem que você já teve.</p>
       <p>Agora você já tem o sistema, o passo a passo completo pra espionar o mercado, modelar ofertas e rodar sua máquina de vendas. Mas preciso ser sincero sobre uma coisa.</p>
       <p>O principal motivo pelo qual gente com o conhecimento certo e o melhor sistema nas mãos ainda assim não sai do lugar <strong>não é falta de vontade, nem de conteúdo, nem de inteligência.</strong> É solidão.</p>
       <p>É travar numa dúvida boba de madrugada e não ter ninguém pra destravar. Alunos com acompanhamento chegam ao resultado, em média, <span class="hl">4x mais rápido</span> do que quem vai sozinho.</p>
@@ -270,7 +286,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
     <div class="wrap">
       <div class="old">Você não vai pagar R$2.000,00</div>
       <div class="old2">Nem R$997,00</div>
-      <p class="note">Você vai ter o mesmo acesso ao Hustle Club que qualquer outro aluno, por uma condição que eu reservo só pra quem já é aluno do Capital Digital — e só existe aqui, nessa página, agora.</p>
+      <p class="note">Você vai ter o mesmo acesso ao Hustle Club que qualquer outro aluno, por uma condição que eu reservo só pra quem já é aluno do Capital Digital, e só existe aqui, nessa página, agora.</p>
       <div class="cta-wrap">
         <a class="cta" href="#oferta" data-cta="hero">Quero ser sócio com desconto</a>
         <span class="cta-note">Garantia incondicional de 7 dias</span>
@@ -299,7 +315,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
         </div>
         <div class="recebe-item">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></span>
-          <div><div class="t">Bônus: Acesso antecipado a ofertas exclusivas</div><div class="d">Antes de qualquer afiliado saber que a oferta existe, você já tá rodando — com a maior comissão que eu consigo liberar.</div></div>
+          <div><div class="t">Bônus: Acesso antecipado a ofertas exclusivas</div><div class="d">Antes de qualquer afiliado saber que a oferta existe, você já tá rodando, com a maior comissão que eu consigo liberar.</div></div>
         </div>
         <div class="recebe-item">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7z"></path></svg></span>
@@ -340,7 +356,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
           <div class="vista">ou R$497,00 à vista</div>
         </div>
         <div class="cta-wrap">
-          <a class="cta" href="https://pay.hub.la/SUBSTITUIR-LINK-HUSTLE-CLUB" data-cta="oferta">Quero ser sócio com desconto</a>
+          <a class="cta" href="https://pay.hub.la/Ir0LWRObs999DWAl6alA/upsell" data-cta="oferta">Quero ser sócio com desconto</a>
         </div>
         <div class="garantia-mini">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg>
@@ -355,14 +371,15 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   <section class="troca reveal">
     <div class="wrap">
       <div class="troca-card">
+        <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg></div>
         <h3>Precisa trocar o meio de pagamento?</h3>
-        <ul>
-          <li>Se você pagou no Pix e quer passar pro cartão</li>
-          <li>Se quer pagar com 2 cartões</li>
-          <li>Se quer pagar com Pix + cartão</li>
-          <li>Se quer trocar pra qualquer outro meio de pagamento</li>
-        </ul>
-        <a href="https://wa.me/message/YQPH6BJ7ISPSK1" target="_blank" rel="noopener">Falar sobre troca de pagamento →</a>
+        <ol>
+          <li><span class="n"></span><span>Se você pagou no Pix e quer passar pro cartão</span></li>
+          <li><span class="n"></span><span>Se quer pagar com 2 cartões</span></li>
+          <li><span class="n"></span><span>Se quer pagar com Pix + cartão</span></li>
+          <li><span class="n"></span><span>Se quer trocar pra qualquer outro meio de pagamento</span></li>
+        </ol>
+        <a class="troca-btn" href="https://pay.hub.la/Ir0LWRObs999DWAl6alA">Desejo trocar o método de pagamento</a>
       </div>
     </div>
   </section>
