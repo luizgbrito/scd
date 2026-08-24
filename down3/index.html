@@ -145,7 +145,15 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   }
   @media (prefers-reduced-motion:reduce){.cta{animation:none;}}
   .cta-note{font-size:12.5px;color:var(--ink-soft);font-weight:600;letter-spacing:.04em;}
-  .decline{display:block;text-align:center;margin-top:20px;font-size:13px;color:var(--ink-faint);text-decoration:underline;text-underline-offset:3px;}
+  .decline{
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    font-family:"Mosvita",sans-serif;font-weight:800;font-size:clamp(14px,3vw,16px);line-height:1.3;
+    color:#fff;background:linear-gradient(180deg,#f04a3a,#c41414);
+    border-radius:14px;min-height:56px;padding:12px 26px;width:min(100%,520px);
+    margin:20px auto 0;box-shadow:0 12px 26px -10px rgba(196,20,20,.55);
+    transition:transform .12s ease;
+  }
+  .decline:hover{transform:translateY(-1px) scale(1.01);}
   .decline:hover{color:var(--ink-soft);}
 
   /* ---------- VOCÊ RECEBE (CARDS) ---------- */
@@ -265,7 +273,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   <!-- ============ HERO ============ -->
   <section class="hero">
     <div class="wrap">
-      <h1>Sem enrolação: nessa página você ganhou <span class="hl">R$500 de desconto</span> pra entrar no Hustle Club até o fim do ano</h1>
+      <h1>Sem enrolação: nessa página você ganhou <span class="hl">R$500 de desconto</span> pra entrar no Hustle Club</h1>
       <p class="scarcity">Você <strong>não vai ver essa condição de novo</strong>, nem pedindo no direct, nem no suporte. Só aqui, só agora.</p>
     </div>
   </section>
@@ -288,7 +296,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
       <div class="old2">Nem R$997,00</div>
       <p class="note">Você vai ter o mesmo acesso ao Hustle Club que qualquer outro aluno, por uma condição que eu reservo só pra quem já é aluno do Capital Digital, e só existe aqui, nessa página, agora.</p>
       <div class="cta-wrap">
-        <a class="cta" href="#oferta" data-cta="hero">Quero ser sócio com desconto</a>
+        <a class="cta" href="#oferta" data-cta="hero">Quero entrar no Hustle Club</a>
         <span class="cta-note">Garantia incondicional de 7 dias</span>
       </div>
     </div>
@@ -303,7 +311,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
       <div class="recebe-list">
         <div class="recebe-item">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
-          <div><div class="t">Mentoria quinzenal comigo, ao vivo</div><div class="d">Duas vezes por mês, eu abro a operação de cada aluno: corrijo criativo, ajusto oferta, olho os números. Fica tudo gravado se você não puder assistir ao vivo.</div></div>
+          <div><div class="t">Mentoria em grupo comigo, ao vivo, por 6 meses</div><div class="d">Duas vezes por mês, eu abro a operação dos alunos em grupo: corrijo criativo, ajusto oferta, olho os números. Fica tudo gravado se você não puder assistir ao vivo.</div></div>
         </div>
         <div class="recebe-item">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span>
@@ -342,7 +350,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
       <div class="recap-card reveal">
         <h2>É agora, ou <span class="hl">você paga o preço cheio</span> depois</h2>
         <ul class="recap-list">
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="item"><b>Mentoria quinzenal comigo, ao vivo</b>, até o fim do ano</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="item"><b>Mentoria em grupo comigo, ao vivo</b>, por 6 meses</span></li>
           <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="item"><b>Comunidade Hustle Club vitalícia</b>, com sala de trabalho conjunto</span></li>
           <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="item">Bônus: Estratégia Oculta de Tráfego Direto</span></li>
           <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="item">Bônus: acesso antecipado a ofertas exclusivas</span></li>
@@ -356,7 +364,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
           <div class="vista">ou R$497,00 à vista</div>
         </div>
         <div class="cta-wrap">
-          <a class="cta" href="https://pay.hub.la/Ir0LWRObs999DWAl6alA/upsell" data-cta="oferta">Quero ser sócio com desconto</a>
+          <a class="cta" href="https://pay.hub.la/Ir0LWRObs999DWAl6alA/upsell" data-cta="oferta">Quero entrar no Hustle Club</a>
         </div>
         <div class="garantia-mini">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg>
@@ -390,7 +398,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
 <footer>
   <img class="logo" src="assets/img/logo-capital.png" alt="Capital Digital" />
   <div class="rights">Todos os direitos reservados</div>
-  <div class="cnpj"><strong>CNPJ 48.978.195/0001-75 | AXR Digital</strong></div>
+  <div class="cnpj"><strong>CNPJ 48.978.195/0001-75 | AXR NEGÓCIOS DIGITAIS LTDA</strong></div>
 </footer>
 
 <!-- CTA click tracking -->
