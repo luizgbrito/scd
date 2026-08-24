@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Convite Especial | Capital Digital</title>
+<meta name="description" content="Assista esse recado rápido e veja como entrar no Hustle Club com condição de aluno." />
+<link rel="icon" href="assets/img/favicon.png" type="image/png" />
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '946406425103675');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<!-- Utmify: captura UTMs da URL e repassa pro checkout -->
+<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+
+<style>
+  /* ---------- FONTE ---------- */
+  @font-face { font-family:"Mosvita"; src:url("assets/fonts/Mosvita-Regular.otf") format("opentype"); font-weight:400; font-display:swap; }
+  @font-face { font-family:"Mosvita"; src:url("assets/fonts/Mosvita-SemiBold.otf") format("opentype"); font-weight:600; font-display:swap; }
+  @font-face { font-family:"Mosvita"; src:url("assets/fonts/Mosvita-Bold.otf") format("opentype"); font-weight:700; font-display:swap; }
+  @font-face { font-family:"Mosvita"; src:url("assets/fonts/Mosvita-ExtraBold.otf") format("opentype"); font-weight:800; font-display:swap; }
+  @font-face { font-family:"Mosvita"; src:url("assets/fonts/Mosvita.otf") format("opentype"); font-weight:100 900; font-display:swap; }
+
+  :root{
+    --bg-0:#07080a;
+    --bg-1:#0d0f13;
+    --ink:#f5f7fa;
+    --ink-dim:#b7bfca;
+    --ink-soft:#8d96a3;
+    --ink-faint:#5d6573;
+    --gold:#f39021;
+    --gold-soft:#f7a94d;
+    --green:#21b821;
+    --green-bright:#2ee02e;
+    --green-deep:#169016;
+    --red:#ec1c1c;
+    --card:rgba(255,255,255,0.04);
+    --line:rgba(255,255,255,0.09);
+    --line-soft:rgba(255,255,255,0.06);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Mosvita",system-ui,-apple-system,sans-serif;
+    background:var(--bg-0);color:var(--ink);
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    line-height:1.55;overflow-x:hidden;position:relative;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-2;
+    background:
+      radial-gradient(115% 70% at 50% -8%, rgba(243,144,33,0.11) 0%, rgba(243,144,33,0) 55%),
+      radial-gradient(90% 50% at 85% 8%, rgba(243,144,33,0.06) 0%, rgba(243,144,33,0) 60%),
+      linear-gradient(180deg, var(--bg-1) 0%, var(--bg-0) 55%, #050608 100%);
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+
+  .wrap{width:100%;max-width:680px;margin:0 auto;padding:0 22px;}
+
+  /* ---------- BARRA DE URGÊNCIA ---------- */
+  .topbar{
+    background:linear-gradient(180deg,#c41414,#8f0e0e);
+    text-align:center;padding:14px 18px;
+    font-size:clamp(13px,3vw,15px);font-weight:800;line-height:1.4;
+  }
+
+  /* ---------- LOGO ---------- */
+  .logobar{display:flex;justify-content:center;padding:24px 0 4px;}
+  .logobar img{height:22px;width:auto;opacity:.95;}
+
+  /* ---------- HEADLINE ---------- */
+  .headline{padding:clamp(20px,4vw,32px) 0 clamp(18px,3.5vw,26px);text-align:center;}
+  .headline h1{
+    font-size:clamp(22px,5vw,32px);font-weight:800;line-height:1.24;letter-spacing:-.01em;
+    max-width:600px;margin:0 auto;text-wrap:balance;
+  }
+  .headline h1 .hl{color:var(--gold);}
+
+  /* ---------- VSL ---------- */
+  .vsl-bloco{padding:0 0 clamp(24px,4.5vw,32px);text-align:center;}
+  .vsl-embed{max-width:420px;margin:0 auto;}
+
+  /* ---------- BOTÃO CTA ---------- */
+  .cta-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:clamp(8px,2vw,14px);}
+  #ctaWrap{display:none;}
+  #ctaWrap.unlocked{display:flex;animation:ctaFadeIn .5s ease both;}
+  @keyframes ctaFadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+  .cta{
+    display:inline-flex;align-items:center;justify-content:center;text-align:center;
+    font-family:"Mosvita",sans-serif;font-weight:800;font-size:clamp(15px,3.2vw,18px);line-height:1.2;
+    color:#fff;background:linear-gradient(180deg,var(--green-bright) 0%,var(--green) 55%,var(--green-deep) 100%);
+    border:none;border-radius:14px;cursor:pointer;
+    min-height:64px;padding:14px clamp(22px,5vw,42px);width:min(100%,520px);
+    box-shadow:0 16px 34px -12px rgba(33,184,33,.6), inset 0 1px 0 rgba(255,255,255,.28);
+    animation:pulse 1.9s cubic-bezier(.4,0,.6,1) infinite;
+    transition:transform .12s ease;
+  }
+  .cta:hover{transform:translateY(-1px) scale(1.012);}
+  .cta:active{transform:scale(.987);}
+  @keyframes pulse{
+    0%{box-shadow:0 16px 34px -12px rgba(33,184,33,.6),0 0 0 0 rgba(46,224,46,.5);}
+    70%{box-shadow:0 16px 34px -12px rgba(33,184,33,.6),0 0 0 20px rgba(46,224,46,0);}
+    100%{box-shadow:0 16px 34px -12px rgba(33,184,33,.6),0 0 0 0 rgba(46,224,46,0);}
+  }
+  @media (prefers-reduced-motion:reduce){.cta{animation:none;}}
+  .cta-note{font-size:12.5px;color:var(--ink-soft);font-weight:600;letter-spacing:.04em;}
+  .decline{
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    font-family:"Mosvita",sans-serif;font-weight:800;font-size:clamp(14px,3vw,16px);line-height:1.3;
+    color:#fff;background:linear-gradient(180deg,#f04a3a,#c41414);
+    border-radius:14px;min-height:56px;padding:12px 26px;width:min(100%,520px);
+    margin:8px auto 0;box-shadow:0 12px 26px -10px rgba(196,20,20,.55);
+    transition:transform .12s ease;
+  }
+  .decline:hover{transform:translateY(-1px) scale(1.01);}
+
+  /* ---------- TROCA DE PAGAMENTO ---------- */
+  .troca{padding:clamp(30px,5.5vw,44px) 0 clamp(20px,4vw,30px);}
+  .troca-card{max-width:600px;margin:0 auto;border:1px solid var(--line);border-radius:18px;background:var(--card);padding:clamp(26px,5vw,36px) clamp(20px,4vw,28px);text-align:center;}
+  .troca-card .badge{width:44px;height:44px;border-radius:50%;background:var(--card);border:1px solid var(--line);
+    display:grid;place-items:center;margin:0 auto 16px;color:var(--ink-soft);}
+  .troca-card .badge svg{width:20px;height:20px;}
+  .troca-card h3{font-size:clamp(17px,3.8vw,21px);font-weight:800;margin-bottom:20px;}
+  .troca-card ol{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:22px;text-align:left;counter-reset:troca;}
+  .troca-card li{display:flex;gap:12px;align-items:flex-start;color:var(--ink-dim);font-size:clamp(13.5px,2.9vw,15px);line-height:1.4;}
+  .troca-card li .n{
+    counter-increment:troca;flex-shrink:0;width:26px;height:26px;border-radius:50%;
+    background:rgba(243,144,33,.14);color:var(--gold);font-weight:800;font-size:13px;
+    display:grid;place-items:center;margin-top:1px;
+  }
+  .troca-card li .n::before{content:counter(troca);}
+  .troca-btn{
+    display:inline-flex;align-items:center;justify-content:center;text-align:center;
+    font-family:"Mosvita",sans-serif;font-weight:800;font-size:clamp(13px,2.9vw,15px);letter-spacing:.03em;
+    color:#1a1206;background:linear-gradient(180deg,var(--gold-soft),var(--gold));
+    border-radius:12px;min-height:54px;padding:12px 28px;width:100%;
+    box-shadow:0 12px 26px -10px rgba(243,144,33,.5);
+    transition:transform .12s ease;
+  }
+  .troca-btn:hover{transform:translateY(-1px) scale(1.01);}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.visible{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+
+  /* ---------- RODAPÉ ---------- */
+  footer{
+    border-top:1px solid var(--line-soft);
+    padding:32px 22px 40px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;
+  }
+  footer .logo{height:30px;width:auto;opacity:.92;}
+  footer .rights{font-size:13px;color:var(--ink-dim);letter-spacing:.04em;font-weight:600;}
+  footer .cnpj{font-size:12px;color:var(--ink-faint);letter-spacing:.03em;line-height:1.6;}
+  footer .cnpj strong{font-weight:700;color:var(--ink-soft);}
+</style>
+</head>
+<body>
+
+<div class="topbar">Agora, eu quero te tratar como filho(a)! 🎁</div>
+<div class="logobar"><img src="assets/img/logo-capital.png" alt="Capital Digital" /></div>
+
+<main>
+
+  <!-- ============ HEADLINE ============ -->
+  <section class="headline">
+    <div class="wrap">
+      <h1>Assista a esse recado e <span class="hl">resgate seu prêmio</span>!</h1>
+    </div>
+  </section>
+
+  <!-- ============ VSL ============ -->
+  <section class="vsl-bloco reveal">
+    <div class="wrap">
+      <div class="vsl-embed">
+        <vturb-smartplayer id="vid-6a8a6803441e08d95111abb2" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
+      </div>
+      <div class="cta-wrap" id="ctaWrap">
+        <a class="cta" href="https://pay.hub.la/Ir0LWRObs999DWAl6alA/upsell" data-cta="oferta">Quero entrar no Hustle Club</a>
+        <a class="decline" href="/scd-down3/" data-cta="decline">Agora não, prefiro continuar sem o Hustle Club</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TROCA DE PAGAMENTO ============ -->
+  <section class="troca reveal">
+    <div class="wrap">
+      <div class="troca-card">
+        <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg></div>
+        <h3>Precisa trocar o meio de pagamento?</h3>
+        <ol>
+          <li><span class="n"></span><span>Se você pagou no Pix e quer passar pro cartão</span></li>
+          <li><span class="n"></span><span>Se quer pagar com 2 cartões</span></li>
+          <li><span class="n"></span><span>Se quer pagar com Pix + cartão</span></li>
+          <li><span class="n"></span><span>Se quer trocar pra qualquer outro meio de pagamento</span></li>
+        </ol>
+        <a class="troca-btn" href="https://pay.hub.la/Ir0LWRObs999DWAl6alA">Desejo trocar o método de pagamento</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ RODAPÉ ============ -->
+<footer>
+  <img class="logo" src="assets/img/logo-capital.png" alt="Capital Digital" />
+  <div class="rights">Todos os direitos reservados</div>
+  <div class="cnpj"><strong>CNPJ 48.978.195/0001-75 | AXR NEGÓCIOS DIGITAIS LTDA</strong></div>
+</footer>
+
+<!-- Vturb player script -->
+<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/players/6a8a6803441e08d95111abb2/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
+
+<!-- Bloqueia o Smart Autoplay do Vturb: o player continua aparecendo normal, mas só toca depois de um clique real
+     dentro dele mesmo. Trava TODOS os <video> internos (querySelectorAll), reforça por alguns segundos via
+     polling caso o play() seja chamado antes do nosso listener existir. -->
+<script>
+(function(){
+  document.querySelectorAll('vturb-smartplayer').forEach(function(player){
+    var userClicked = false;
+    player.addEventListener('click', function(){ userClicked = true; }, true);
+
+    function enforce(video){
+      if (!userClicked && !video.paused) { video.pause(); }
+    }
+
+    function guard(video){
+      if (video.dataset.autoplayGuard) return;
+      video.dataset.autoplayGuard = '1';
+      enforce(video);
+      video.addEventListener('play', function(){ enforce(video); });
+      video.addEventListener('playing', function(){ enforce(video); });
+      var tries = 0;
+      var poll = setInterval(function(){
+        enforce(video);
+        tries++;
+        if (userClicked || tries > 140) clearInterval(poll);
+      }, 50);
+    }
+
+    function scan(root){
+      if (!root || !root.querySelectorAll) return;
+      root.querySelectorAll('video').forEach(guard);
+    }
+
+    scan(player);
+    scan(player.shadowRoot);
+
+    var mo = new MutationObserver(function(){
+      scan(player);
+      scan(player.shadowRoot);
+    });
+    mo.observe(player, { childList: true, subtree: true });
+    if (player.shadowRoot) mo.observe(player.shadowRoot, { childList: true, subtree: true });
+  });
+})();
+</script>
+
+<!-- Libera os botões só depois de 8:45 (525s) na página -->
+<script>
+(function(){
+  var DELAY_MS = 8 * 60 * 1000 + 45 * 1000;
+  setTimeout(function(){
+    var el = document.getElementById('ctaWrap');
+    if (el) el.classList.add('unlocked');
+  }, DELAY_MS);
+})();
+</script>
+
+<!-- CTA click tracking -->
+<script>
+  document.querySelectorAll('a[data-cta="oferta"]').forEach(function(el){
+    el.addEventListener('click', function(){
+      if (window.fbq) { fbq('track', 'InitiateCheckout'); }
+    });
+  });
+</script>
+
+<!-- Animação sutil ao rolar -->
+<script>
+(function(){
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll('.reveal');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    targets.forEach(function(el){ el.classList.add('visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  targets.forEach(function(el, i){
+    el.classList.add('reveal');
+    el.style.transitionDelay = (i % 3) * 60 + 'ms';
+    io.observe(el);
+  });
+})();
+</script>
+
+</body>
+</html>
