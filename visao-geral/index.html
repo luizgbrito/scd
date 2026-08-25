@@ -63,11 +63,20 @@
   .legend-item{ display:flex; align-items:center; gap:7px; font-size:11.5px; color:var(--muted); font-weight:600; }
   .legend-dot{ width:10px; height:10px; border-radius:3px; display:inline-block; }
   .hint{ padding: 0 34px 18px; font-size:12px; color: var(--muted-2); font-style:italic; }
-  #graph{ width:100%; padding: 6px 10px 60px; overflow:auto; }
-  #graph svg{ display:block; margin:0 auto; }
+  #graph{
+    width:100%; height:74vh; min-height:520px; margin:0 10px 40px;
+    overflow:hidden; position:relative; cursor:grab;
+    border:1px solid var(--hair); border-radius:12px;
+    background: radial-gradient(80% 60% at 50% 0%, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 70%);
+    user-select:none; -webkit-user-select:none; touch-action:none;
+  }
+  #graph.panning{ cursor:grabbing; }
+  #panWrap{ position:absolute; top:0; left:0; will-change:transform; }
+  #graph svg{ display:block; user-select:none; -webkit-user-drag:none; }
   .node{ cursor:default; }
-  .node.clickable{ cursor:pointer; }
+  .node.clickable{ cursor:grab; }
   .node.clickable:hover rect{ filter:brightness(1.18); }
+  .node.clickable:active{ cursor:grabbing; }
   .toggle-dot{ cursor:pointer; }
   .toggle-dot:hover circle{ filter:brightness(1.3); }
 </style>
@@ -87,6 +96,8 @@
     <div class="controls">
       <button class="btn" id="expandAll">Expandir Tudo</button>
       <button class="btn" id="collapseAll">Recolher Tudo</button>
+      <button class="btn" id="recenter">Centralizar Visão</button>
+      <button class="btn" id="resetPositions">Resetar Posições</button>
     </div>
   </div>
 
@@ -94,9 +105,9 @@
     <div class="legend-item"><span class="legend-dot" style="background:#f39021;"></span>Vantagens do Nosso Método</div>
     <div class="legend-item"><span class="legend-dot" style="background:#f7a94d;"></span>O Que é Necessário para Começar</div>
   </div>
-  <p class="hint">Clique em qualquer bloco com um · ao lado para abrir ou fechar essa ramificação. Os blocos menores (sem filhos) também são clicáveis — clique pra marcar/desmarcar como já apresentado.</p>
+  <p class="hint">Clique em qualquer bloco com um · ao lado para abrir ou fechar essa ramificação.</p>
 
-  <div id="graph"></div>
+  <div id="graph"><div id="panWrap"></div></div>
 
 <script>
 // ---------------------------------------------------------------------
@@ -200,6 +211,8 @@ function normalize(node, depth){
   node.children = node.children || [];
   if(node.collapsed === undefined) node.collapsed = false;
   if(node.done === undefined) node.done = false;
+  node.offsetX = 0;
+  node.offsetY = 0;
   node.children.forEach(c => normalize(c, depth + 1));
 }
 normalize(treeData, 0);
@@ -280,12 +293,25 @@ const EDGE_COLORS = { A:'#a8681a', B:'#8a6a2f' };
 
 const svgNS = 'http://www.w3.org/2000/svg';
 const graphEl = document.getElementById('graph');
+const panWrap = document.getElementById('panWrap');
 
 function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function applyOffsets(node){
+  node.x += node.offsetX;
+  node.y += node.offsetY;
+  node.children.forEach(applyOffsets);
+}
+
+let panX = 0, panY = 0, hasCentered = false;
+function applyPan(){
+  panWrap.style.transform = `translate(${panX.toFixed(1)}px, ${panY.toFixed(1)}px)`;
+}
 
 function renderAll(){
   cursorY = 0;
   place(treeData);
+  applyOffsets(treeData);
 
   const bounds = [1e9, 1e9, -1e9, -1e9];
   function collectBounds(node){
@@ -347,7 +373,15 @@ function renderAll(){
   }
   walk(treeData, null);
 
-  graphEl.innerHTML = `<svg viewBox="${vbX.toFixed(1)} ${vbY.toFixed(1)} ${vbW.toFixed(1)} ${vbH.toFixed(1)}" width="${vbW.toFixed(0)}" height="${vbH.toFixed(0)}" xmlns="${svgNS}">${edgesHTML}${nodesHTML}</svg>`;
+  panWrap.innerHTML = `<svg viewBox="${vbX.toFixed(1)} ${vbY.toFixed(1)} ${vbW.toFixed(1)} ${vbH.toFixed(1)}" width="${vbW.toFixed(0)}" height="${vbH.toFixed(0)}" xmlns="${svgNS}">${edgesHTML}${nodesHTML}</svg>`;
+
+  if(!hasCentered){
+    hasCentered = true;
+    const cw = graphEl.clientWidth, ch = graphEl.clientHeight;
+    panX = Math.max(16, (cw - vbW) / 2);
+    panY = Math.max(16, (ch - vbH) / 2);
+    applyPan();
+  }
 }
 
 function findNode(node, id){
@@ -359,7 +393,81 @@ function findNode(node, id){
   return null;
 }
 
+// ---------------------------------------------------------------------
+// Arrastar e soltar: fundo (pan) e blocos individuais (posição livre)
+// ---------------------------------------------------------------------
+const DRAG_THRESHOLD = 4;
+let dragState = null;
+let suppressNextClick = false;
+
+graphEl.addEventListener('mousedown', (e) => {
+  if(e.button !== 0) return;
+  const toggleEl = e.target.closest('.toggle-dot');
+  if(toggleEl) return; // o toggle-dot só reage a clique, não arrasta
+  const nodeEl = e.target.closest('.node');
+  if(nodeEl){
+    const node = findNode(treeData, nodeEl.getAttribute('data-id'));
+    if(node){
+      dragState = {
+        type: 'node', node,
+        startX: e.clientX, startY: e.clientY,
+        startOffX: node.offsetX, startOffY: node.offsetY,
+        moved: false,
+      };
+      e.preventDefault();
+    }
+    return;
+  }
+  // clique no fundo (fora de qualquer bloco): pan do canvas inteiro
+  dragState = {
+    type: 'pan',
+    startX: e.clientX, startY: e.clientY,
+    startPanX: panX, startPanY: panY,
+    moved: false,
+  };
+  graphEl.classList.add('panning');
+  e.preventDefault();
+});
+
+document.addEventListener('mousemove', (e) => {
+  if(!dragState) return;
+  const dx = e.clientX - dragState.startX;
+  const dy = e.clientY - dragState.startY;
+  if(!dragState.moved && (Math.abs(dx) > DRAG_THRESHOLD || Math.abs(dy) > DRAG_THRESHOLD)){
+    dragState.moved = true;
+  }
+  if(!dragState.moved) return;
+
+  if(dragState.type === 'node'){
+    dragState.node.offsetX = dragState.startOffX + dx;
+    dragState.node.offsetY = dragState.startOffY + dy;
+    renderAll();
+  } else if(dragState.type === 'pan'){
+    panX = dragState.startPanX + dx;
+    panY = dragState.startPanY + dy;
+    applyPan();
+  }
+});
+
+document.addEventListener('mouseup', () => {
+  if(!dragState) return;
+  if(dragState.moved && dragState.type === 'node'){
+    suppressNextClick = true; // evita que o "click" logo em seguida alterne colapso/marcação
+  }
+  graphEl.classList.remove('panning');
+  dragState = null;
+});
+
+// Também permite mover a visão com o scroll do mouse / trackpad, além do arrasto
+graphEl.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  panX -= e.deltaX;
+  panY -= e.deltaY;
+  applyPan();
+}, { passive: false });
+
 graphEl.addEventListener('click', (e) => {
+  if(suppressNextClick){ suppressNextClick = false; return; }
   const g = e.target.closest('[data-id]');
   if(!g) return;
   const node = findNode(treeData, g.getAttribute('data-id'));
@@ -383,6 +491,20 @@ document.getElementById('expandAll').addEventListener('click', () => {
 document.getElementById('collapseAll').addEventListener('click', () => {
   setCollapsedAll(treeData, true);
   treeData.collapsed = false; // mantém a raiz sempre visível/aberta
+  renderAll();
+});
+document.getElementById('recenter').addEventListener('click', () => {
+  hasCentered = false;
+  renderAll();
+});
+function resetOffsets(node){
+  node.offsetX = 0;
+  node.offsetY = 0;
+  node.children.forEach(resetOffsets);
+}
+document.getElementById('resetPositions').addEventListener('click', () => {
+  resetOffsets(treeData);
+  hasCentered = false;
   renderAll();
 });
 
