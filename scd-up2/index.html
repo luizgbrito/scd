@@ -281,16 +281,37 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
 })();
 </script>
 
-<!-- Libera os botões só depois de 8:45 (525s) na página -->
+<!-- =====================================================================
+     LIBERAÇÃO DOS BOTÕES - SINCRONIZADO COM O VÍDEO (VTurb / smartplayer)
+     ---------------------------------------------------------------------
+     ctaWrap e trocaWrap começam ocultos e são exibidos quando o vídeo
+     passa de SECONDS_TO_DISPLAY segundos.
+     >> Ajuste apenas SECONDS_TO_DISPLAY (em segundos). Ex.: 525 = 8:45.
+     >> Se NÃO houver player na página, libera após FALLBACK_NO_PLAYER_SECONDS.
+     ===================================================================== -->
 <script>
 (function(){
-  var DELAY_MS = 8 * 60 * 1000 + 45 * 1000;
-  setTimeout(function(){
+  var SECONDS_TO_DISPLAY = 8 * 60 + 45;
+  var FALLBACK_NO_PLAYER_SECONDS = 8 * 60 + 45;
+
+  var revelado = false, elapsed = 0;
+  function mostrar(){
+    if (revelado) return;
+    revelado = true;
     ['ctaWrap', 'trocaWrap'].forEach(function(id){
       var el = document.getElementById(id);
       if (el) el.classList.add('unlocked');
     });
-  }, DELAY_MS);
+  }
+  var timer = setInterval(function(){
+    elapsed += 1;
+    var sp = (typeof smartplayer !== 'undefined' && smartplayer.instances && smartplayer.instances[0] && smartplayer.instances[0].video) ? smartplayer.instances[0].video : null;
+    if (sp) {
+      if (sp.currentTime > SECONDS_TO_DISPLAY) { mostrar(); clearInterval(timer); }
+    } else if (elapsed >= FALLBACK_NO_PLAYER_SECONDS) {
+      mostrar(); clearInterval(timer);
+    }
+  }, 1000);
 })();
 </script>
 
