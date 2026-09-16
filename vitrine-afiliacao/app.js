@@ -26,6 +26,19 @@ const products = [
     description: "Formação completa para se tornar Gestora de Projetos Digitais e fechar o primeiro contrato de até R$ 5.000 em até 30 dias, organizando operações de agências e negócios online sem precisar aparecer, vender ou ter experiência prévia.",
     materialsUrl: "https://drive.google.com/drive/folders/1PzrfLLQZkLMmxE8E9phbdNoVfq3p8ABj?usp=drive_link",
     affiliateUrl: "https://hub.la/group_affiliate/6hUCCvqClNs9QKKpEBxZ"
+  },
+  {
+    name: "Protocolo Zero Halitose",
+    category: "Saúde",
+    status: "Faturando",
+    statusTone: "live",
+    image: "images/product-halitose-logo.svg",
+    logo: "ZERO HALITOSE",
+    commission: "80%",
+    price: "R$ 97,00",
+    description: "Protocolo natural para eliminar o mau hálito crônico na raiz em apenas 3 dias, reduzindo os aminoácidos da saliva que alimentam as bactérias causadoras do mau cheiro, sem depender de enxaguante, chiclete ou spray.",
+    materialsUrl: "https://drive.google.com/drive/folders/10o7_GXw06ZCUzXKteeRtIpgd28CRWJx5?usp=sharing",
+    affiliateUrl: "https://dashboard.kiwify.com/join/affiliate/rGgkpN3f"
   }
 ];
 
