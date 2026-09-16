@@ -32,8 +32,9 @@ const products = [
     category: "Saúde",
     status: "Faturando",
     statusTone: "live",
-    image: "images/product-halitose-logo.svg",
+    image: "images/product-halitose-logo.png",
     logo: "ZERO HALITOSE",
+    logoImage: true,
     commission: "80%",
     price: "R$ 97,00",
     description: "Protocolo natural para eliminar o mau hálito crônico na raiz em apenas 3 dias, reduzindo os aminoácidos da saliva que alimentam as bactérias causadoras do mau cheiro, sem depender de enxaguante, chiclete ou spray.",
@@ -53,16 +54,18 @@ function renderCards() {
       : "border border-white/20 bg-white/10 text-white/80 backdrop-blur";
     return `
       <article data-idx="${idx}" class="reveal-lift group relative cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-card-dark transition-all duration-500 active:scale-[0.98] hover:border-[oklch(0.7_0.18_60/0.45)] hover:shadow-[0_30px_80px_-30px_oklch(0.7_0.18_60/0.45)]" style="transition-delay:${idx * 120}ms">
-        <div class="relative aspect-[3/4] overflow-hidden">
-          <img src="${p.image}" alt="${p.name}" loading="lazy" class="h-full w-full object-cover grayscale transition-transform duration-1000 group-hover:scale-110 group-hover:grayscale-0"/>
-          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent transition-opacity duration-500 group-hover:opacity-80"></div>
+        <div class="relative aspect-[3/4] overflow-hidden ${p.logoImage ? 'bg-[#2DE7B3]' : ''}">
+          <img src="${p.image}" alt="${p.name}" loading="lazy" class="h-full w-full ${p.logoImage ? 'object-contain p-6' : 'object-cover grayscale group-hover:grayscale-0'} transition-transform duration-1000 group-hover:scale-110"/>
+          ${p.logoImage ? '' : `
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent transition-opacity duration-500 group-hover:opacity-80"></div>`}
           <div class="absolute right-3 top-3 sm:right-4 sm:top-4 flex flex-col items-end gap-2">
             <span class="rounded-md px-2.5 sm:px-3 py-1 text-[9px] sm:text-[10px] font-semibold uppercase tracking-wide sm:tracking-wider whitespace-nowrap transition-transform duration-500 group-hover:translate-y-[-2px] ${categoryClass}">${p.category}</span>
             <span class="rounded-md border border-white/15 bg-black/60 px-2.5 sm:px-3 py-1 text-[9px] sm:text-[10px] font-medium uppercase tracking-wide sm:tracking-wider whitespace-nowrap text-white/70 backdrop-blur transition-transform duration-500 group-hover:translate-y-[-2px]">${p.status}</span>
           </div>
+          ${p.logoImage ? '' : `
           <div class="absolute bottom-4 sm:bottom-6 left-0 right-0 px-3 text-center transition-transform duration-500 group-hover:translate-y-[-8px]">
             <h3 class="font-display text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white drop-shadow-2xl break-words">${p.logo}</h3>
-          </div>
+          </div>`}
         </div>
         <div class="border-t border-white/10 p-4 sm:p-5">
           <div class="group/btn flex w-full items-center justify-between text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.15em] sm:tracking-[0.25em] text-white/90 transition-colors group-hover:text-white">
@@ -137,11 +140,12 @@ function renderModal() {
         </button>
         <div class="max-h-[92vh] overflow-y-auto overflow-x-hidden rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[2.5rem] border border-white/10 bg-[#0A0A0A] shadow-[0_0_100px_rgba(0,0,0,1)]">
         <div class="grid md:grid-cols-2">
-          <div class="relative aspect-[4/5] sm:aspect-[16/10] md:aspect-auto overflow-hidden">
-            <img src="${t.image}" alt="${t.name}" class="h-full w-full object-cover grayscale transition-all duration-1000 delay-300 ${a ? "scale-105 grayscale-0" : "scale-125 grayscale"}"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+          <div class="relative aspect-[4/5] sm:aspect-[16/10] md:aspect-auto overflow-hidden ${t.logoImage ? 'bg-[#2DE7B3]' : ''}">
+            <img src="${t.image}" alt="${t.name}" class="h-full w-full ${t.logoImage ? `object-contain p-10 transition-all duration-1000 delay-300 ${a ? "scale-100" : "scale-110"}` : `object-cover grayscale transition-all duration-1000 delay-300 ${a ? "scale-105 grayscale-0" : "scale-125 grayscale"}`}"/>
+            ${t.logoImage ? '' : `
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>`}
             <div class="absolute bottom-5 left-5 right-16 sm:bottom-8 sm:left-8 sm:right-20 md:bottom-10 md:left-10 transition-all duration-700 delay-500 ${a ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"}">
-              <h2 class="font-display text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white drop-shadow-2xl break-words">${t.logo}</h2>
+              ${t.logoImage ? '' : `<h2 class="font-display text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white drop-shadow-2xl break-words">${t.logo}</h2>`}
               <div class="flex gap-2 mt-2 sm:mt-3">
                 <span class="text-[9px] sm:text-[10px] uppercase tracking-[0.1em] sm:tracking-[0.2em] whitespace-nowrap text-black bg-white px-2 py-1 rounded font-bold">${t.category}</span>
               </div>
