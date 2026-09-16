@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Framework de Teste e Escala de Criativos — Capital Digital</title>
+<style>
+  :root{
+    --bg:#0e0e10;
+    --card:#18181b;
+    --card2:#14140f;
+    --border:#29292d;
+    --text:#e9e9ec;
+    --text-dim:#cfcfd4;
+    --text-faint:#8a8a90;
+    --accent:#f39021;
+    --accent-dark:#1c1710;
+    --good:#6fcf97;
+    --bad:#eb5757;
+    --mid:#e0c341;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);}
+
+  /* NAV */
+  .navbar{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(14,14,16,0.92);
+    backdrop-filter:blur(8px);
+    padding:14px 18px;
+  }
+  .nav-inner{
+    max-width:980px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+  .brand{
+    font-weight:800;
+    font-size:13px;
+    letter-spacing:0.04em;
+    white-space:nowrap;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .brand-logo{ height:22px; width:auto; display:block; }
+  .brand span{color:var(--accent);}
+  .tabs{
+    display:flex;
+    gap:4px;
+    flex-wrap:wrap;
+    overflow-x:auto;
+  }
+  .tab-btn{
+    background:transparent;
+    border:1px solid transparent;
+    color:var(--text-faint);
+    font-size:11.5px;
+    font-weight:600;
+    padding:7px 12px;
+    border-radius:20px;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:all .15s ease;
+    font-family:inherit;
+  }
+  .tab-btn:hover{ color:var(--text); }
+  .tab-btn.active{
+    background:var(--accent);
+    color:#14140f;
+  }
+
+  main{
+    max-width:820px;
+    margin:0 auto;
+    padding:36px 20px 90px 20px;
+  }
+  .section{ display:none; animation:fade .35s ease; }
+  .section.active{ display:block; }
+  @keyframes fade{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+
+  .kicker{
+    font-size:10.5px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:800;
+    margin-bottom:10px;
+  }
+  h1{
+    font-size:clamp(28px,5vw,42px);
+    line-height:1.15;
+    margin:0 0 16px 0;
+    font-weight:800;
+    color:#fff;
+    letter-spacing:-0.01em;
+  }
+  h2{
+    font-size:22px;
+    color:#fff;
+    font-weight:800;
+    margin:0 0 16px 0;
+  }
+  h3{
+    font-size:14px;
+    color:var(--accent);
+    font-weight:800;
+    margin:0 0 8px 0;
+  }
+  p{ font-size:14px; line-height:1.7; color:var(--text-dim); margin:0 0 14px 0; }
+  ul{ margin:0; padding-left:18px; }
+  li{ font-size:13.5px; line-height:1.7; color:var(--text-dim); margin-bottom:6px; }
+  b{ color:#fff; }
+
+  .badge{
+    display:inline-block;
+    border:1px solid var(--accent);
+    color:var(--accent);
+    font-size:10px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    font-weight:700;
+    padding:5px 12px;
+    border-radius:20px;
+    margin-bottom:22px;
+  }
+
+  /* Cards */
+  .phase-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:20px 0 26px 0; }
+  @media(max-width:900px){ .phase-row{ grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:480px){ .phase-row{ grid-template-columns:1fr; } }
+  .phase-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-top:3px solid var(--accent);
+    border-radius:8px;
+    padding:18px 16px;
+    cursor:pointer;
+    transition:transform .15s ease, border-color .15s ease;
+  }
+  .phase-card:hover{ transform:translateY(-2px); border-color:#3a3a40; }
+  .phase-num{ font-size:26px; font-weight:800; color:var(--accent); opacity:.85; }
+  .phase-card h3{ margin-top:8px; font-size:13.5px; }
+  .phase-card p{ font-size:11.5px; margin-bottom:0; color:var(--text-faint); }
+
+  .box{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:18px 20px;
+    margin-bottom:14px;
+  }
+  .box-title{
+    font-size:13px;
+    font-weight:700;
+    color:#fff;
+    margin-bottom:8px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .tag{
+    display:inline-block;
+    background:var(--accent);
+    color:#14140f;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:3px 8px;
+    border-radius:3px;
+  }
+  .tag.outline{ background:transparent; border:1px solid var(--accent); color:var(--accent); }
+
+  .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  @media(max-width:680px){ .two-col{ grid-template-columns:1fr; } }
+
+  .example-box{
+    background:var(--card2);
+    border:1px dashed var(--accent);
+    border-radius:6px;
+    padding:12px 14px;
+    font-size:12.5px;
+    color:#e2c48f;
+    margin-top:8px;
+  }
+  .example-box b{ color:var(--accent); }
+
+  .warn{ border-color: rgba(235,87,87,0.4); }
+  .warn .box-title{ color:#ff9f9f; }
+
+  /* Scenario blocks (accordion) */
+  .scenario{
+    background:var(--card2);
+    border:1px solid var(--border);
+    border-left:4px solid var(--accent);
+    border-radius:8px;
+    margin-bottom:12px;
+    overflow:hidden;
+  }
+  .scenario.good{ border-left-color:var(--good); }
+  .scenario.bad{ border-left-color:var(--bad); }
+  .scenario.mid{ border-left-color:var(--mid); }
+  .scenario-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 16px;
+    cursor:pointer;
+    user-select:none;
+  }
+  .scenario-title{ font-size:13.5px; font-weight:800; color:#fff; }
+  .scenario-title .metric{ color:var(--accent); font-weight:700; }
+  .chevron{ color:var(--text-faint); transition:transform .2s ease; font-size:12px; }
+  .scenario.open .chevron{ transform:rotate(180deg); }
+  .scenario-body{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .25s ease;
+    padding:0 16px;
+  }
+  .scenario.open .scenario-body{ max-height:400px; padding:0 16px 16px 16px; }
+  .sub-note{
+    font-size:11.5px;
+    color:var(--text-faint);
+    margin-top:8px;
+    padding-left:10px;
+    border-left:2px solid var(--border);
+  }
+  .pending{ font-size:12px; color:var(--text-faint); font-style:italic; }
+
+  /* compare */
+  .compare-row{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  @media(max-width:680px){ .compare-row{ grid-template-columns:1fr; } }
+  .compare-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:18px;
+  }
+  .compare-icon{ font-size:22px; color:var(--accent); margin-bottom:6px; }
+
+  /* WIZARD */
+  .wizard-wrap{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:26px 24px;
+  }
+  .wizard-trail{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-bottom:18px;
+    min-height:20px;
+  }
+  .trail-chip{
+    font-size:10.5px;
+    background:var(--card2);
+    border:1px solid var(--border);
+    color:var(--text-faint);
+    padding:4px 10px;
+    border-radius:20px;
+  }
+  .wizard-q{
+    font-size:18px;
+    font-weight:800;
+    color:#fff;
+    margin-bottom:6px;
+  }
+  .wizard-note{
+    font-size:12.5px;
+    color:var(--text-dim);
+    background:var(--card2);
+    border-radius:6px;
+    padding:10px 12px;
+    margin-bottom:16px;
+    border-left:3px solid var(--accent);
+  }
+  .wizard-options{ display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .wizard-opt{
+    background:var(--card2);
+    border:1px solid var(--border);
+    color:var(--text);
+    font-size:13.5px;
+    font-weight:600;
+    padding:13px 16px;
+    border-radius:8px;
+    text-align:left;
+    cursor:pointer;
+    transition:all .15s ease;
+    font-family:inherit;
+  }
+  .wizard-opt:hover{ border-color:var(--accent); background:#1f1a10; }
+  .wizard-result{
+    border-radius:8px;
+    padding:20px;
+    margin-top:6px;
+  }
+  .wizard-result.good{ background:rgba(111,207,151,0.08); border:1px solid rgba(111,207,151,0.4); }
+  .wizard-result.bad{ background:rgba(235,87,87,0.08); border:1px solid rgba(235,87,87,0.4); }
+  .wizard-result.mid{ background:rgba(224,195,65,0.08); border:1px solid rgba(224,195,65,0.4); }
+  .wizard-result.pending{ background:var(--card2); border:1px solid var(--border); }
+  .result-badge{
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    margin-bottom:8px;
+    display:inline-block;
+  }
+  .wizard-result.good .result-badge{ color:var(--good); }
+  .wizard-result.bad .result-badge{ color:var(--bad); }
+  .wizard-result.mid .result-badge{ color:var(--mid); }
+  .wizard-result.pending .result-badge{ color:var(--text-faint); }
+  .result-text{ font-size:14.5px; color:#fff; line-height:1.6; }
+  .wizard-footer{ display:flex; gap:10px; margin-top:20px; flex-wrap:wrap; }
+  .btn{
+    border:1px solid var(--accent);
+    background:transparent;
+    color:var(--accent);
+    font-size:12px;
+    font-weight:700;
+    padding:9px 16px;
+    border-radius:20px;
+    cursor:pointer;
+    font-family:inherit;
+  }
+  .btn.solid{ background:var(--accent); color:#14140f; }
+  .btn:hover{ opacity:0.85; }
+
+  /* Checklist */
+  .progress-wrap{
+    background:var(--card2);
+    border-radius:20px;
+    height:8px;
+    overflow:hidden;
+    margin-bottom:6px;
+  }
+  .progress-bar{
+    height:100%;
+    background:var(--accent);
+    width:0%;
+    transition:width .3s ease;
+  }
+  .progress-label{ font-size:11px; color:var(--text-faint); margin-bottom:20px; }
+  .check-group{ margin-bottom:22px; }
+  .check-group h3{ font-size:13px; margin-bottom:10px; }
+  .check-item{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    padding:9px 10px;
+    border-radius:6px;
+    cursor:pointer;
+    transition:background .15s ease;
+  }
+  .check-item:hover{ background:var(--card); }
+  .check-box{
+    min-width:16px;
+    height:16px;
+    border:1.5px solid var(--accent);
+    border-radius:4px;
+    margin-top:2px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .check-box.checked{ background:var(--accent); }
+  .check-box.checked::after{ content:"✓"; font-size:11px; color:#14140f; font-weight:800; }
+  .check-text{ font-size:13px; color:var(--text-dim); line-height:1.5; }
+  .check-item.done .check-text{ color:var(--text-faint); text-decoration:line-through; }
+  .reset-link{ font-size:11px; color:var(--text-faint); cursor:pointer; text-decoration:underline; }
+
+  footer{
+    text-align:center;
+    padding:30px 20px 50px 20px;
+    font-size:10.5px;
+    color:#45454c;
+  }
+
+  .cta-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:8px; }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="brand"><img src="data:image/png;base64,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" alt="Capital Digital" class="brand-logo"></div>
+    <div class="tabs" id="tabs"></div>
+  </div>
+</nav>
+
+<main>
+
+  <!-- INÍCIO -->
+  <section class="section" data-section="inicio">
+    <div class="kicker">Capital Digital · Módulo 8</div>
+    <h1>Framework de Teste<br>e Escala de <span style="color:var(--accent)">Criativos</span></h1>
+    <p style="font-size:15px; max-width:520px;">Do teste inicial em ABO até a escala intraday em CBO. O processo completo de tomada de decisão para campanhas de oferta direta e VSL na Meta Ads: quando matar um criativo, quando escalar e quanto subir de orçamento a cada etapa.</p>
+    <div class="badge">Material do Aluno · Interativo</div>
+
+    <div class="phase-row">
+      <div class="phase-card" onclick="goTo('fase1')">
+        <div class="phase-num">01</div>
+        <h3>Teste em ABO</h3>
+        <p>Valide criativo gastando o mínimo possível.</p>
+      </div>
+      <div class="phase-card" onclick="goTo('decisao')">
+        <div class="phase-num">02</div>
+        <h3>Mapa de Decisão</h3>
+        <p>Critério numérico pra manter, cortar ou liberar pra pré-escala.</p>
+      </div>
+      <div class="phase-card" onclick="goTo('preescala')">
+        <div class="phase-num">03</div>
+        <h3>Pré-Escala</h3>
+        <p>CBO Bid com 3x o ticket e conjuntos travados, pra confirmar antes de soltar verba.</p>
+      </div>
+      <div class="phase-card" onclick="goTo('fase3')">
+        <div class="phase-num">04</div>
+        <h3>Escala Plena</h3>
+        <p>Cresça o orçamento sem perder eficiência.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="box-title"><span class="tag outline">Glossário rápido</span> Termos que você vai ver o tempo todo aqui</div>
+      <ul>
+        <li><b>Campanha, conjunto de anúncios e anúncio:</b> a campanha é a "pasta" principal. Dentro dela ficam os conjuntos de anúncios (onde você define público e, às vezes, orçamento). Dentro de cada conjunto ficam os anúncios (o vídeo/imagem + texto que a pessoa vê).</li>
+        <li><b>ABO:</b> tipo de campanha onde você define o orçamento em cada conjunto, separadamente. Cada um recebe uma verba garantida.</li>
+        <li><b>CBO:</b> tipo de campanha onde você define um orçamento total, e a própria Meta decide sozinha quanto investir em cada conjunto.</li>
+        <li><b>ROAS:</b> quanto voltou em vendas pra cada real gasto em anúncio. ROAS de 1,5 quer dizer que, pra cada R$1 gasto, voltaram R$1,50 em vendas.</li>
+        <li><b>Ticket:</b> o preço de venda do seu produto. Se o seu produto custa R$97, o seu ticket é R$97.</li>
+        <li><b>AOV:</b> o valor médio de cada venda. Use esse no lugar do ticket se você é o dono/criador do produto (produtor); se for afiliado, use o ticket.</li>
+        <li><b>Custo por checkout iniciado:</b> quanto custou, em média, cada vez que alguém começou a preencher os dados de pagamento, mesmo sem finalizar a compra.</li>
+        <li><b>Bid Cap / Cost Cap (Limite de Custo):</b> configuração de campanha que diz pra Meta "não gaste mais que tanto por resultado", sem travar o orçamento total.</li>
+      </ul>
+      <p style="margin-bottom:0; margin-top:8px;">Os valores de orçamento de teste e de escala inicial são calculados em cima do seu ticket. Já os critérios do mapa de decisão (custo de checkout e ROAS) são valores fixos, iguais pra qualquer produto.</p>
+    </div>
+
+    <div class="cta-row">
+      <button class="btn solid" onclick="goTo('ferramenta')">Abrir ferramenta de decisão →</button>
+      <button class="btn" onclick="goTo('fase1')">Ler o framework completo</button>
+    </div>
+  </section>
+
+  <!-- FASE 1 -->
+  <section class="section" data-section="fase1">
+    <div class="kicker">Fase 1</div>
+    <h2>Testando o criativo em <span style="color:var(--accent)">ABO</span></h2>
+    <p>O objetivo dessa fase não é vender muito. É descobrir, gastando o mínimo possível, quais criativos têm chance real de virar campanha de escala. Você está comprando informação, não faturamento.</p>
+
+    <div class="box">
+      <div class="box-title">Estrutura da campanha de teste</div>
+      <ul>
+        <li><b>Tipo de campanha:</b> ABO (orçamento no nível do conjunto de anúncios), objetivo Vendas.</li>
+        <li><b>Nomenclatura: ABO 1-X-1.</b> 1 campanha, X conjuntos (X = criativos em teste na rodada), 1 anúncio por conjunto. Testando 15 criativos → <b>ABO 1-15-1</b>.</li>
+        <li><b>1 conjunto de anúncios por criativo.</b> Nunca coloque dois criativos brigando dentro do mesmo conjunto.</li>
+        <li><b>1 anúncio por conjunto.</b> Estrutura limpa, sem variação de copy ou de público dentro do teste.</li>
+        <li><b>Mesmo público em todos os conjuntos</b> da rodada, pra isolar a variável criativo.</li>
+        <li><b>Campanha única e contínua por conta.</b> Não recrie a cada rodada: novos criativos entram como novos conjuntos.</li>
+      </ul>
+    </div>
+
+    <div class="box" style="border-left:3px solid var(--good);">
+      <div class="box-title">Por que ABO e não CBO pra testar</div>
+      <p style="margin-bottom:0;">No CBO a Meta decide sozinha quanto investir em cada conjunto, podendo deixar um criativo sem verba mesmo que ele seja bom. No ABO todo criativo recebe o mesmo orçamento garantido: quanto mais você isolar as variáveis, melhor a leitura do teste.</p>
+    </div>
+
+    <div class="box" style="border-left:3px solid var(--mid);">
+      <div class="box-title">Alternativa: testar em CBO BidCap</div>
+      <p style="margin-bottom:0;">Se o seu caixa for curto, dá pra testar em <b>CBO BidCap</b> em vez de ABO, com a mesma lógica 1-X-1, só que o orçamento é por campanha em vez de por conjunto. Qual é melhor? Depende do seu momento. ABO garante o mesmo orçamento pra cada anúncio, o que te faz gastar mais rápido pra levar os validados pra escala, mas custa mais no total. CBO BidCap deixa a Meta distribuir a verba entre os anúncios, testando mais barato quando você não tem caixa de sobra.</p>
+    </div>
+
+    <div class="two-col">
+      <div class="box">
+        <div class="box-title"><span class="tag">Orçamento</span></div>
+        <p><b>1/3 do AOV ou do ticket, por dia, por criativo.</b> AOV se você é produtor, ticket se for afiliado.</p>
+        <div class="example-box"><b>Exemplo:</b> produto de R$97 (ticket) → orçamento de teste de ~R$32/dia por conjunto.</div>
+      </div>
+      <div class="box">
+        <div class="box-title"><span class="tag">Duração</span></div>
+        <p style="margin-bottom:0;"><b>2 dias corridos por criativo</b>, sem mexer no orçamento nem pausar no meio, exceto pela regra de corte antecipado.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="box-title"><span class="tag outline">Lote de teste</span></div>
+      <p style="margin-bottom:0;">Suba os criativos novos em lotes de <b>3 a 5 por rodada</b>, de acordo com o caixa disponível.</p>
+    </div>
+
+    <div class="box warn">
+      <div class="box-title">Regra de corte antecipado</div>
+      <p style="margin-bottom:0;">Se um criativo gastar o orçamento inteiro do dia 1 sem nenhum clique qualificado ou início de finalização de compra, mate ele ali mesmo, sem esperar completar os 2 dias.</p>
+    </div>
+  </section>
+
+  <!-- MAPA DE DECISÃO -->
+  <section class="section" data-section="decisao">
+    <div class="kicker">Fase 2</div>
+    <h2>Mapa de <span style="color:var(--accent)">Decisão</span></h2>
+    <p>Clique em cada cenário pra abrir. Se preferir responder passo a passo, use a <a onclick="goTo('ferramenta')" style="cursor:pointer;">ferramenta interativa</a>.</p>
+
+    <h3 style="margin-top:22px;">Criativo sem venda</h3>
+    <p style="font-size:12.5px;">Decisão baseada no <b>custo por checkout iniciado</b> (coluna "Custo por finalização de compra iniciada").</p>
+
+    <div class="scenario good" onclick="toggleScenario(this)">
+      <div class="scenario-head">
+        <div class="scenario-title">Cenário 1 <span class="metric">· Custo de checkout bom (&lt; R$45)</span></div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="scenario-body">
+        <ul>
+          <li>Mantenha a campanha rodando por mais <b>24 horas</b>.</li>
+          <li>Se completar essas 24h extras e não sair venda → <b>pause a campanha</b>.</li>
+          <li>Em paralelo, suba esse mesmo criativo em <b>outra conta de anúncios</b>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="scenario bad" onclick="toggleScenario(this)">
+      <div class="scenario-head">
+        <div class="scenario-title">Cenário 2 <span class="metric">· Custo de checkout ruim (&gt; R$45)</span></div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="scenario-body">
+        <ul>
+          <li><b>Pause a campanha e descarte o criativo.</b> Não insista nele.</li>
+          <li>Faça um criativo <b>100% novo</b> e rode um teste novo do zero.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="margin-top:24px;">Criativo com venda</h3>
+    <p style="font-size:12.5px;">Decisão baseada no <b>ROAS</b> (retorno sobre o investimento em anúncios).</p>
+
+    <div class="scenario mid" onclick="toggleScenario(this)">
+      <div class="scenario-head">
+        <div class="scenario-title">Cenário 1 <span class="metric">· ROAS entre 0,8 e 1,2 (empatando)</span></div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="scenario-body">
+        <ul>
+          <li>Mantenha a campanha rodando por mais <b>48 horas</b>.</li>
+          <li>Se cair abaixo de 0,8 → <b>corte a campanha</b>.</li>
+          <li>Se ficar acima de 1,2 → <b>mantenha rodando</b>.</li>
+        </ul>
+        <div class="sub-note">Em paralelo: suba o mesmo criativo em outra conta e faça uma variação mexendo no <b>gancho</b> (os primeiros segundos do vídeo/imagem que prendem a atenção: mude a cinematografia, o formato, o texto de abertura etc).</div>
+      </div>
+    </div>
+
+    <div class="scenario bad" onclick="toggleScenario(this)">
+      <div class="scenario-head">
+        <div class="scenario-title">Cenário 2 <span class="metric">· ROAS abaixo de 0,8</span></div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="scenario-body">
+        <p class="pending">Custo de checkout caro ou bom: critério ainda em definição no framework. Trate como sinal de alerta e acompanhe de perto antes de decidir.</p>
+      </div>
+    </div>
+
+    <div class="scenario good" onclick="toggleScenario(this)">
+      <div class="scenario-head">
+        <div class="scenario-title">Cenário 3 <span class="metric">· ROAS acima de 1,2</span></div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="scenario-body">
+        <p style="margin-bottom:0;"><b>Mantenha a campanha rodando.</b></p>
+      </div>
+    </div>
+
+    <div class="box" style="margin-top:16px; border:1px solid var(--accent); background:var(--accent-dark);">
+      <div class="box-title">Próximo passo</div>
+      <p style="margin-bottom:0;">Criativo que <b>vendeu</b> (Cenário 1 ou Cenário 3) não vai direto pra escala plena. Ele passa antes por uma ponte de validação: a <b>Pré-Escala</b>.</p>
+    </div>
+  </section>
+
+  <!-- PRÉ-ESCALA -->
+  <section class="section" data-section="preescala">
+    <div class="kicker">Fase 3</div>
+    <h2>Pré-Escala <span style="color:var(--accent)">· Confirmando antes de soltar a rédea</span></h2>
+    <p>Criativo que vendeu no ABO não vai direto pra escala plena. Ele passa antes por uma ponte de validação, com orçamento controlado e conjuntos travados.</p>
+
+    <div class="box">
+      <div class="box-title">Estrutura da pré-escala</div>
+      <ul>
+        <li><b>Tipo de campanha:</b> CBO, com estratégia de lance por <b>Limite de Custo (Bid Cap / Cost Cap)</b>.</li>
+        <li><b>Orçamento total da campanha:</b> 3x o valor do ticket.</li>
+        <li><b>Trava por conjunto:</b> cada conjunto é limitado, usando o limite mínimo/máximo de gasto por conjunto, ao valor de 1x o ticket. Isso impede que a Meta concentre toda a verba num conjunto só.</li>
+        <li><b>Nomenclatura: CBO Bid 1-X-5.</b> 1 campanha, X conjuntos (um por criativo validado no lote), 5 anúncios por conjunto: o vencedor + 4 variações dele, mudando hook e corpo.</li>
+      </ul>
+    </div>
+
+    <div class="example-box"><b>Exemplo:</b> validou 3 criativos no lote de teste → <b>CBO Bid 1-3-5</b>. X = a quantidade de ads que você validou (3, nesse caso). O 5 significa que cada conjunto tem o ad validado + 4 variações dele, totalizando 5 ads por conjunto.</div>
+
+    <div class="box">
+      <div class="box-title"><span class="tag outline">Conceito</span> Bid Cap x limite por conjunto</div>
+      <p style="margin-bottom:0;">São duas alavancas diferentes, usadas juntas. O <b>Bid Cap</b> (Cost Cap) é uma estratégia de lance a nível de <b>campanha</b>: define um teto de custo por resultado que a Meta tenta respeitar ao distribuir o orçamento entre os conjuntos. Já o <b>limite de gasto por conjunto</b> age no nível do <b>conjunto de anúncios</b>: trava quanto cada um pode gastar, independente da estratégia de lance.</p>
+    </div>
+
+    <div class="box">
+      <div class="box-title"><span class="tag outline">Por que migrar</span> Não fique pausando e ligando campanha na mão</div>
+      <p style="margin-bottom:0;">Criativo que vende bem só em certos horários (por exemplo, só de tarde) e queima orçamento no resto do dia não precisa ficar sendo pausado e ligado manualmente. Junte todos os seus criativos validados numa única campanha CBO Bid (1-X-5, conjuntos isolados por ad) e deixe o Bid Cap distribuir a verba entre os horários e entre os ads de forma automática.</p>
+    </div>
+
+    <div class="box" style="border:1px solid var(--accent); background:var(--accent-dark);">
+      <div class="box-title">🚀 Gatilho de Escala</div>
+      <p style="margin-bottom:0;">Quando a pré-escala bate <b>ROAS acima de 1,6, sustentado por mais de 3 dias rodando</b>, ela sai da pré-escala e entra na <b>Fase 4: Escala Plena</b>.</p>
+    </div>
+  </section>
+
+  <!-- FASE 4: ESCALA PLENA -->
+  <section class="section" data-section="fase3">
+    <div class="kicker">Fase 4</div>
+    <h2>Escala <span style="color:var(--accent)">Plena</span></h2>
+    <p>Quando a pré-escala bate o gatilho (ROAS acima de 1,6 por mais de 3 dias), ela sai do modo de validação e entra na escala de verdade: sem teto fixo de orçamento, crescendo pelos horários que mais vendem.</p>
+
+    <div class="box">
+      <div class="box-title">O que muda na escala plena</div>
+      <ul>
+        <li><b>Continua na mesma campanha CBO Bid</b> que já vinha rodando na pré-escala. Não recria do zero.</li>
+        <li><b>Remove a trava por conjunto</b> (o limite de 1x ticket usado na pré-escala).</li>
+        <li><b>Mesmo público</b> que gerou o resultado até aqui.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <div class="box-title"><span class="tag outline">Como crescer a partir daqui</span></div>
+      <p style="margin-bottom:0;">O crescimento segue as regras de <b>escala vertical</b> (aumentar orçamento na mesma campanha, concentrado nos horários bons de venda) e <b>escala horizontal</b> (duplicar quando saturar), detalhadas a seguir.</p>
+    </div>
+  </section>
+
+  <!-- ESCALA INTRADAY -->
+  <section class="section" data-section="intraday">
+    <div class="kicker">Fase 4</div>
+    <h2>Escala Intraday <span style="color:var(--accent)">· Vertical</span></h2>
+    <p>Escala intraday não é aumentar orçamento de forma genérica a cada tantas horas. É <b>socar verba extra nos horários bons de venda</b>, dentro da mesma campanha que já vendeu, em escala vertical. Só se aplica a campanhas que já estão na Fase 4.</p>
+
+    <div class="compare-row">
+      <div class="compare-card">
+        <div class="compare-icon">↑</div>
+        <h3>Escala Vertical</h3>
+        <p style="margin-bottom:0; font-size:12.5px;">Aumentar orçamento <b>dentro do mesmo</b> conjunto/campanha que já vendeu. É a ferramenta da escala intraday.</p>
+      </div>
+      <div class="compare-card">
+        <div class="compare-icon">⇢</div>
+        <h3>Escala Horizontal</h3>
+        <p style="margin-bottom:0; font-size:12.5px;"><b>Duplicar</b> o conjunto/campanha pra abrir público, criativo ou conta nova. Usada quando bate teto de saturação.</p>
+      </div>
+    </div>
+
+    <div class="box" style="margin-top:14px;">
+      <div class="box-title">Como aplicar a escala vertical</div>
+      <ul>
+        <li><b>1. Mapeie os horários bons de venda.</b> Olhe o histórico de resultados por hora no Gerenciador de Anúncios, nas campanhas que já estão na Fase 4.</li>
+        <li><b>2. Concentre o aumento de verba nesses horários.</b> Suba o orçamento (vertical) especificamente nessa janela, sem espalhar linear nas 24h.</li>
+        <li><b>3. Fora dos horários bons, mantenha o orçamento base.</b></li>
+        <li><b>4. Só em campanha que já está na Fase 4.</b> Campanha em teste ou em pré-escala não recebe escala intraday.</li>
+      </ul>
+    </div>
+    <div class="example-box"><b>Exemplo:</b> se as vendas se concentram das 18h às 23h, é nesse bloco que você concentra o aumento de verba do dia.</div>
+
+    <h3 style="margin-top:26px;">Quando duplicar (escala horizontal)</h3>
+    <div class="box">
+      <div class="box-title"><span class="tag outline">Sinal de saturação</span></div>
+      <p style="margin-bottom:0;">Vários aumentos verticais seguidos sem ganho proporcional de resultado. O público do conjunto já está saturado.</p>
+    </div>
+    <div class="box">
+      <div class="box-title"><span class="tag">Ação</span> Duplique o conjunto de anúncios</div>
+      <p style="margin-bottom:0;">Duplique o conjunto (ou campanha) que já validou, em vez de continuar subindo orçamento no mesmo. Isso abre um <b>leilão</b> novo pra Meta (a disputa automática que decide pra quem mostrar seu anúncio), sem perder o histórico do conjunto original.</p>
+    </div>
+    <div class="box warn">
+      <div class="box-title">Quando pausar em vez de duplicar</div>
+      <p style="margin-bottom:0;">Se o custo por resultado ultrapassar 1 ticket sem nenhuma venda no próprio dia, pause em vez de duplicar. Duplicar só faz sentido em cima de campanha que ainda performa, só que saturada.</p>
+    </div>
+  </section>
+
+  <!-- FERRAMENTA -->
+  <section class="section" data-section="ferramenta">
+    <div class="kicker">Ferramenta interativa</div>
+    <h2>Onde estou <span style="color:var(--accent)">agora?</span></h2>
+    <p>Responda as perguntas com base na sua campanha real e a ferramenta te mostra a ação certa, seguindo o framework completo.</p>
+
+    <div class="wizard-wrap">
+      <div class="wizard-trail" id="wizardTrail"></div>
+      <div id="wizardBody"></div>
+    </div>
+  </section>
+
+  <!-- CHECKLIST -->
+  <section class="section" data-section="checklist">
+    <div class="kicker">Consulta rápida</div>
+    <h2>Checklist <span style="color:var(--accent)">operacional</span></h2>
+    <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+    <div class="progress-label" id="progressLabel">0 de 0 marcados</div>
+
+    <div id="checklistContainer"></div>
+    <span class="reset-link" onclick="resetChecklist()">Limpar marcações</span>
+  </section>
+
+</main>
+
+<footer>Capital Digital · Framework de Teste e Escala de Criativos · Configurando e Ativando a Máquina de Vendas</footer>
+
+<script>
+/* ---------- NAV ---------- */
+const sections = [
+  {id:'inicio', label:'Início'},
+  {id:'fase1', label:'Fase 1 · Teste'},
+  {id:'decisao', label:'Mapa de Decisão'},
+  {id:'preescala', label:'Pré-Escala'},
+  {id:'fase3', label:'Fase 4 · Escala'},
+  {id:'intraday', label:'Escala Intraday'},
+  {id:'ferramenta', label:'Ferramenta'},
+  {id:'checklist', label:'Checklist'},
+];
+
+const tabsEl = document.getElementById('tabs');
+sections.forEach(s=>{
+  const btn = document.createElement('button');
+  btn.className = 'tab-btn';
+  btn.textContent = s.label;
+  btn.id = 'tab-'+s.id;
+  btn.onclick = ()=>goTo(s.id);
+  tabsEl.appendChild(btn);
+});
+
+function goTo(id){
+  document.querySelectorAll('.section').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el=>el.classList.remove('active'));
+  document.querySelector('[data-section="'+id+'"]').classList.add('active');
+  document.getElementById('tab-'+id).classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+goTo('inicio');
+
+/* ---------- ACCORDION ---------- */
+function toggleScenario(el){
+  el.classList.toggle('open');
+}
+
+/* ---------- WIZARD ---------- */
+const flow = {
+  start: {
+    q: "O criativo vendeu durante os 2 dias de teste?",
+    options: [
+      {label:"Sim, vendeu", next:"venda_roas"},
+      {label:"Não vendeu", next:"sem_venda_custo"}
+    ]
+  },
+  sem_venda_custo: {
+    q: "Qual o custo por checkout iniciado (finalização de compra iniciada)?",
+    options: [
+      {label:"Abaixo de R$45", next:"sem_venda_bom"},
+      {label:"Acima de R$45", next:"sem_venda_ruim"}
+    ]
+  },
+  sem_venda_bom: {
+    note: "Mantenha a campanha rodando por mais 24 horas. Em paralelo, suba esse mesmo criativo em outra conta de anúncios.",
+    q: "Passadas as 24h extras, saiu alguma venda?",
+    options: [
+      {label:"Sim, saiu venda", next:"venda_roas"},
+      {label:"Não saiu venda", next:"final_pausa_sem_venda"}
+    ]
+  },
+  sem_venda_ruim: {
+    result: "Pause a campanha e descarte o criativo. Não insista nele: crie um criativo 100% novo e rode um teste novo do zero, seguindo a Fase 1.",
+    tone:"bad", badge:"Pausar e descartar", final:true
+  },
+  final_pausa_sem_venda: {
+    result: "Pause a campanha. O criativo não converteu mesmo com custo de checkout baixo.",
+    tone:"bad", badge:"Pausar", final:true
+  },
+  venda_roas: {
+    q: "Qual a faixa de ROAS da campanha?",
+    options: [
+      {label:"Entre 0,8 e 1,2 (empatando)", next:"roas_meio"},
+      {label:"Abaixo de 0,8", next:"roas_baixo"},
+      {label:"Acima de 1,2", next:"roas_alto"}
+    ]
+  },
+  roas_meio: {
+    note: "Mantenha a campanha rodando por mais 48 horas. Em paralelo, suba o mesmo criativo em outra conta e crie uma variação mexendo no gancho.",
+    q: "Passadas as 48h, o que aconteceu com o ROAS?",
+    options: [
+      {label:"Caiu abaixo de 0,8", next:"final_corta"},
+      {label:"Subiu acima de 1,2", next:"roas_alto"}
+    ]
+  },
+  roas_baixo: {
+    result: "Critério em definição no framework. Trate como sinal de alerta, tanto com custo de checkout caro quanto bom, e acompanhe de perto antes de decidir.",
+    tone:"pending", badge:"Em definição", final:true
+  },
+  final_corta: {
+    result: "Corte a campanha. O ROAS não se sustentou acima de 0,8.",
+    tone:"bad", badge:"Cortar", final:true
+  },
+  roas_alto: {
+    note: "Mantenha a campanha rodando. Como vendeu, ela entra em Pré-Escala: CBO Bid (Limite de Custo), orçamento total de 3x o ticket, cada conjunto travado em 1x o ticket (nomenclatura CBO Bid 1-X-5: X conjuntos, 5 anúncios cada — o vencedor + 4 variações).",
+    q: "Na pré-escala, ela já está há mais de 3 dias com ROAS acima de 1,6?",
+    options: [
+      {label:"Sim", next:"final_escala"},
+      {label:"Ainda não", next:"final_mantem"}
+    ]
+  },
+  final_escala: {
+    result: "Gatilho de escala! Sai da pré-escala e entra na Fase 4: Escala Plena — remove a trava por conjunto e continua na mesma campanha CBO Bid, crescendo agora via escala vertical (horários bons de venda) e escala horizontal (duplicação quando saturar).",
+    tone:"good", badge:"🚀 Escalar (Fase 4)", final:true
+  },
+  final_mantem: {
+    result: "Continue rodando dentro da pré-escala, monitorando. Ainda não bateu o gatilho de escala (ROAS acima de 1,6 por mais de 3 dias).",
+    tone:"mid", badge:"Manter na pré-escala", final:true
+  }
+};
+
+let wizardTrail = [];
+
+function wizardGoTo(nodeId){
+  const node = flow[nodeId];
+  const body = document.getElementById('wizardBody');
+  const trailEl = document.getElementById('wizardTrail');
+  trailEl.innerHTML = wizardTrail.map(t=>'<span class="trail-chip">'+t+'</span>').join('');
+
+  let html = '';
+  if(node.note){
+    html += '<div class="wizard-note">'+node.note+'</div>';
+  }
+  if(node.q){
+    html += '<div class="wizard-q">'+node.q+'</div>';
+    html += '<div class="wizard-options">';
+    node.options.forEach(opt=>{
+      html += '<button class="wizard-opt" onclick="wizardChoose(\''+nodeId+'\',\''+opt.next+'\',\''+opt.label.replace(/'/g,"\\'")+'\')">'+opt.label+'</button>';
+    });
+    html += '</div>';
+  } else if(node.result){
+    html += '<div class="wizard-result '+node.tone+'">';
+    html += '<span class="result-badge">'+node.badge+'</span>';
+    html += '<div class="result-text">'+node.result+'</div>';
+    html += '</div>';
+    html += '<div class="wizard-footer">';
+    html += '<button class="btn solid" onclick="wizardReset()">Recomeçar</button>';
+    html += '<button class="btn" onclick="wizardBack()">← Voltar</button>';
+    html += '</div>';
+  }
+  body.innerHTML = html;
+}
+
+let wizardHistory = ['start'];
+
+function wizardChoose(current, next, label){
+  wizardTrail.push(label);
+  wizardHistory.push(next);
+  wizardGoTo(next);
+}
+
+function wizardBack(){
+  if(wizardHistory.length > 1){
+    wizardHistory.pop();
+    wizardTrail.pop();
+    wizardGoTo(wizardHistory[wizardHistory.length-1]);
+  }
+}
+
+function wizardReset(){
+  wizardTrail = [];
+  wizardHistory = ['start'];
+  wizardGoTo('start');
+}
+wizardReset();
+
+/* ---------- CHECKLIST ---------- */
+const checklistData = [
+  {group:"Teste (ABO)", items:[
+    "Nomenclatura ABO 1-X-1: 1 campanha, X conjuntos (X = criativos em teste), 1 anúncio por conjunto, mesmo público em todos",
+    "Orçamento de 1/3 do AOV (produtor) ou do ticket (afiliado), por dia, por criativo. Janela de 2 dias corridos",
+    "Campanha única e contínua por conta: novos criativos entram como novos conjuntos",
+    "Lote de 3 a 5 criativos por rodada",
+    "Gastou o orçamento do dia 1 sem clique qualificado? Mate na hora"
+  ]},
+  {group:"Mapa de decisão (fim do teste)", items:[
+    "Sem venda + custo checkout < R$45: mantenha +24h, sem venda depois → pause. Suba em outra conta",
+    "Sem venda + custo checkout > R$45: pause, descarte, crie criativo 100% novo",
+    "Com venda + ROAS 0,8 a 1,2: mantenha +48h. Cai <0,8 corte, fica >1,2 mantenha. Suba em outra conta + variação de gancho",
+    "Com venda + ROAS > 1,2: mantenha rodando",
+    "Qualquer criativo que vendeu segue pra Pré-Escala"
+  ]},
+  {group:"Pré-Escala", items:[
+    "Vendeu no ABO? Migra pra CBO Bid (Limite de Custo), orçamento total de 3x o ticket",
+    "Trava cada conjunto no valor de 1x o ticket (limite de gasto por conjunto)",
+    "Nomenclatura CBO Bid 1-X-5: X conjuntos (um por criativo validado), 5 anúncios por conjunto (vencedor + 4 variações)",
+    "Mesmo público que validou no teste",
+    "ROAS > 1,6 sustentado por mais de 3 dias? Gatilho de escala: sai da pré-escala e entra na Fase 4"
+  ]},
+  {group:"Escala intraday (vertical) e horizontal", items:[
+    "Mapeie os horários bons de venda e concentre o aumento de orçamento (vertical) nessa janela",
+    "Escala intraday só em campanha que já está na Fase 4. Campanha em teste ou pré-escala não recebe",
+    "Aumentos seguidos sem ganho proporcional (saturação)? Duplique o conjunto (horizontal)",
+    "Custo por resultado passou 1 ticket sem venda no dia? Pause, não duplique"
+  ]}
+];
+
+const STORAGE_KEY = 'cd_framework_checklist_v1';
+
+function loadChecked(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  }catch(e){ return {}; }
+}
+function saveChecked(state){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+}
+
+let checkedState = loadChecked();
+let totalItems = 0;
+
+function renderChecklist(){
+  const container = document.getElementById('checklistContainer');
+  container.innerHTML = '';
+  totalItems = 0;
+  checklistData.forEach((grp, gi)=>{
+    const groupDiv = document.createElement('div');
+    groupDiv.className = 'check-group';
+    const h3 = document.createElement('h3');
+    h3.textContent = grp.group;
+    groupDiv.appendChild(h3);
+    grp.items.forEach((item, ii)=>{
+      totalItems++;
+      const key = gi+'-'+ii;
+      const row = document.createElement('div');
+      row.className = 'check-item' + (checkedState[key] ? ' done' : '');
+      row.onclick = ()=> toggleCheck(key, row);
+      row.innerHTML = '<div class="check-box'+(checkedState[key]?' checked':'')+'"></div><div class="check-text">'+item+'</div>';
+      groupDiv.appendChild(row);
+    });
+    container.appendChild(groupDiv);
+  });
+  updateProgress();
+}
+
+function toggleCheck(key, row){
+  checkedState[key] = !checkedState[key];
+  saveChecked(checkedState);
+  row.classList.toggle('done');
+  row.querySelector('.check-box').classList.toggle('checked');
+  updateProgress();
+}
+
+function updateProgress(){
+  const done = Object.values(checkedState).filter(Boolean).length;
+  const pct = totalItems ? Math.round((done/totalItems)*100) : 0;
+  document.getElementById('progressBar').style.width = pct+'%';
+  document.getElementById('progressLabel').textContent = done+' de '+totalItems+' marcados';
+}
+
+function resetChecklist(){
+  checkedState = {};
+  saveChecked(checkedState);
+  renderChecklist();
+}
+
+renderChecklist();
+</script>
+</body>
+</html>
