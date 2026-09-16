@@ -493,14 +493,27 @@ src="https://www.facebook.com/tr?id=1420570966942123&ev=PageView&noscript=1"
   })();
 </script>
 
-<!-- Libera o botão de compra só depois de 35:04 (2104s) na página -->
+<!-- Libera o botão de compra só depois de 35:04 (2104s) DE VÍDEO — sincronizado com o player VTurb -->
 <script>
 (function(){
-  var DELAY_MS = 35 * 60 * 1000 + 4 * 1000;
-  setTimeout(function(){
+  var SECONDS_TO_DISPLAY = 35 * 60 + 4;
+  var FALLBACK_NO_PLAYER_SECONDS = 35 * 60 + 4;
+  var revelado = false, elapsed = 0;
+  function mostrar(){
+    if (revelado) return;
+    revelado = true;
     var el = document.getElementById('ctaWrap');
     if (el) el.classList.add('unlocked');
-  }, DELAY_MS);
+  }
+  var timer = setInterval(function(){
+    elapsed += 1;
+    var sp = (typeof smartplayer !== 'undefined' && smartplayer.instances && smartplayer.instances[0] && smartplayer.instances[0].video) ? smartplayer.instances[0].video : null;
+    if (sp) {
+      if (sp.currentTime > SECONDS_TO_DISPLAY) { mostrar(); clearInterval(timer); }
+    } else if (elapsed >= FALLBACK_NO_PLAYER_SECONDS) {
+      mostrar(); clearInterval(timer);
+    }
+  }, 1000);
 })();
 </script>
 
