@@ -380,12 +380,14 @@ src="https://www.facebook.com/tr?id=1377242124615254&ev=PageView&noscript=1"
 
     <!-- ======= BOTÃO PULSANTE (liberado pelo vídeo) ======= -->
     <div class="cta-wrap esconder" id="ctaWrap" style="flex-direction: column; align-items: center;">
+      <div class="payt-embed" style="display:flex; flex-direction:column; align-items:center; width:100%; text-align:center;">
       <!-- Botão de compra Payt — cole onde quiser que o cliente clique -->
       <a href="#" payt_action="oneclick_buy" data-object="L9OO8N-4ZK529" style="display: inline-block; background: #22c55e; color: #ffffff; font-family: system-ui, -apple-system, sans-serif; font-size: 20px; font-weight: 700; padding: 16px 24px; border-radius: 8px; text-decoration: none; text-align: center; cursor: pointer">Sim, eu quero ser Sócio Capital Digital</a>
 
       <!-- Select de parcelas visível — o comprador escolhe quantas parcelas no cartão.
            Para PIX é sempre 1x; o script ignora esse select. -->
-      <select payt_element="installment" data-object="L9OO8N-4ZK529" style="display:block; margin:10px auto 0; max-width:240px; padding:10px; border:1px solid #cbd5e1; border-radius:6px; background:#fff; font-size:14px;"></select>
+      <select payt_element="installment" data-object="L9OO8N-4ZK529" style="display:block; width:100%; margin:10px auto 0; max-width:240px; padding:10px; border:1px solid #cbd5e1; border-radius:6px; background:#fff; font-size:14px;"></select>
+      </div>
     </div>
 
     <!-- ======= LINK RECUSAR (Payt: ?refused=1) ======= -->

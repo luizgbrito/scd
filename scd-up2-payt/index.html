@@ -190,12 +190,14 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
         <vturb-smartplayer id="vid-6a8a6803441e08d95111abb2" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
       </div>
       <div class="cta-wrap" id="ctaWrap">
+        <div class="payt-embed" style="display:flex; flex-direction:column; align-items:center; width:100%; text-align:center;">
         <!-- Botão de compra Payt — cole onde quiser que o cliente clique -->
         <a href="#" payt_action="oneclick_buy" data-object="4555B5-4EOVEO" style="display: inline-block; background: #22c55e; color: #ffffff; font-family: system-ui, -apple-system, sans-serif; font-size: 20px; font-weight: 700; padding: 16px 24px; border-radius: 8px; text-decoration: none; text-align: center; cursor: pointer">Quero entrar no Hustle Club</a>
 
         <!-- Select de parcelas visível — o comprador escolhe quantas parcelas no cartão.
            Para PIX é sempre 1x; o script ignora esse select. -->
-        <select payt_element="installment" data-object="4555B5-4EOVEO" style="display:block; margin:10px auto 0; max-width:240px; padding:10px; border:1px solid #cbd5e1; border-radius:6px; background:#fff; font-size:14px;"></select>
+        <select payt_element="installment" data-object="4555B5-4EOVEO" style="display:block; width:100%; margin:10px auto 0; max-width:240px; padding:10px; border:1px solid #cbd5e1; border-radius:6px; background:#fff; font-size:14px;"></select>
+        </div>
 
         <!-- Link recusar (Payt: ?refused=1) -->
         <a class="decline" href="?refused=1" data-cta="decline">Agora não, prefiro continuar sem o Hustle Club</a>
