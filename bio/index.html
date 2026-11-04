@@ -236,6 +236,8 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   }
   @media (min-width:600px){.video-grid > div{width:260px;}}
 
+
+
   /* ---------- SETAS DE CARROSSEL ---------- */
   .carousel-wrap{position:relative;}
   .carousel-arrow{
@@ -466,27 +468,21 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   footer .cnpj strong{font-weight:700;color:var(--ink-soft);}
 
   /* ==========================================================
-     DELAY — tudo abaixo da VSL fica oculto até liberar
+     DELAY — tudo abaixo da VSL some da página até liberar
+     (display:none garante que não ocupe espaço nenhum)
      ========================================================== */
   #conteudo-apos-vsl {
-    opacity: 0;
-    pointer-events: none;
-    user-select: none;
-    transition: opacity .6s ease;
-  }
-  #conteudo-apos-vsl.desbloqueado {
-    opacity: 1;
-    pointer-events: auto;
-    user-select: auto;
-  }
-  /* O botão flutuante é position:fixed, por isso precisa de display:none
-     explícito antes de liberar — opacity/pointer-events não bastam */
-  #conteudo-apos-vsl .wpp-float {
     display: none;
   }
-  #conteudo-apos-vsl.desbloqueado .wpp-float {
-    display: grid;
+  #conteudo-apos-vsl.desbloqueado {
+    display: block;
+    animation: conteudoFadeIn .6s ease both;
   }
+  @keyframes conteudoFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: none; }
+  }
+  /* wpp-float é position:fixed — herda o display:none do pai corretamente */
 </style>
 </head>
 <body>
@@ -985,57 +981,71 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
 })();
 </script>
 
-<!-- Bloqueia o Smart Autoplay do Vturb em TODOS os players da página -->
+<!-- Bloqueia autoplay em TODOS os players VTurb da página.
+     Só toca após clique real dentro do próprio player. -->
 <script>
 (function(){
-  document.querySelectorAll('vturb-smartplayer').forEach(function(player){
-    var userClicked = false;
-    player.addEventListener('click', function(){
-      userClicked = true;
-      var vids = player.querySelectorAll ? player.querySelectorAll('video') : [];
-      vids.forEach(function(v){ v.muted = false; });
-      if (player.shadowRoot) {
-        player.shadowRoot.querySelectorAll('video').forEach(function(v){ v.muted = false; });
-      }
-    }, true);
+  function guardPlayer(player) {
+    var clicked = false;
 
-    function enforce(video){
-      if (userClicked) return;
-      if (!video.muted) { video.muted = true; }
-      if (!video.paused) { video.pause(); }
+    // Usuário clicou dentro do player: libera áudio e play
+    player.addEventListener('click', function(){ clicked = true; }, true);
+
+    function stop(video) {
+      if (clicked) return;
+      video.pause();
+      video.muted = true;
     }
 
-    function guard(video){
-      if (video.dataset.autoplayGuard) return;
-      video.dataset.autoplayGuard = '1';
-      enforce(video);
-      video.addEventListener('play', function(){ enforce(video); });
-      video.addEventListener('playing', function(){ enforce(video); });
-      video.addEventListener('timeupdate', function(){ enforce(video); });
-      video.addEventListener('volumechange', function(){ enforce(video); });
-      var tries = 0;
+    function attachTo(video) {
+      if (video._cdGuard) return;
+      video._cdGuard = true;
+      // Bloqueia antes de qualquer evento
+      stop(video);
+      // Reforça em cada tentativa do player de rodar
+      ['play','playing','timeupdate','canplay','canplaythrough'].forEach(function(ev){
+        video.addEventListener(ev, function(){ stop(video); }, true);
+      });
+      // Polling curto e agressivo nos primeiros 10s
+      var ticks = 0;
       var poll = setInterval(function(){
-        enforce(video);
-        tries++;
-        if (userClicked || tries > 200) clearInterval(poll);
+        stop(video);
+        ticks++;
+        if (clicked || ticks > 400) clearInterval(poll);
       }, 25);
     }
 
-    function scan(root){
-      if (!root || !root.querySelectorAll) return;
-      root.querySelectorAll('video').forEach(guard);
+    function scanRoot(root) {
+      if (!root) return;
+      if (root.querySelectorAll) root.querySelectorAll('video').forEach(attachTo);
     }
 
-    scan(player);
-    scan(player.shadowRoot);
+    scanRoot(player);
+    scanRoot(player.shadowRoot);
 
+    // Observa inserções futuras de <video> (o VTurb cria o elemento depois)
     var mo = new MutationObserver(function(){
-      scan(player);
-      scan(player.shadowRoot);
+      scanRoot(player);
+      scanRoot(player.shadowRoot);
     });
     mo.observe(player, { childList: true, subtree: true });
     if (player.shadowRoot) mo.observe(player.shadowRoot, { childList: true, subtree: true });
+  }
+
+  // Aplica a todos os players já no DOM
+  document.querySelectorAll('vturb-smartplayer').forEach(guardPlayer);
+
+  // Aplica a players que o VTurb possa inserir dinamicamente
+  var bodyMo = new MutationObserver(function(mutations){
+    mutations.forEach(function(m){
+      m.addedNodes.forEach(function(node){
+        if (node.nodeType !== 1) return;
+        if (node.tagName === 'VTURB-SMARTPLAYER') guardPlayer(node);
+        node.querySelectorAll && node.querySelectorAll('vturb-smartplayer').forEach(guardPlayer);
+      });
+    });
   });
+  bodyMo.observe(document.body, { childList: true, subtree: true });
 })();
 </script>
 
