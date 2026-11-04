@@ -494,10 +494,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
   <div class="wrap">
     <h1>Veja como ativar esse <span class="hl">novo Sistema de IA</span> para vender na internet sem aparecer</h1>
     <div class="vsl-embed">
-      <vturb-smartplayer
-        id="ab-6a8306df5a7c58405c4aafd7"
-        style="display: block; margin: 0 auto; width: 100%;">
-      </vturb-smartplayer>
+      <vturb-smartplayer id="vid-6aeba146a539367385f917d7" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
     </div>
   </div>
 </section>
@@ -926,7 +923,7 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
 </script>
 
 <!-- Vturb player scripts -->
-<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/ab-test/6a8306df5a7c58405c4aafd7/player.js",s.async=!0,document.head.appendChild(s);</script>
+<script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/players/6aeba146a539367385f917d7/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
 <script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/players/6a849ce8a4d48ef3f38abaf9/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
 <script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/players/6a849ce2c25ad82f79b9b205/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
 <script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/63134f5a-5311-4756-a882-4b30ba6008cc/players/6a849cdcd52b73491ec4a5c5/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
@@ -940,40 +937,60 @@ src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
      ============================================================ -->
 <script>
 (function(){
-  var SECONDS_TO_DISPLAY = 35 * 60 + 4; // 2104s — igual ao da landing de afiliados
-  var FALLBACK_NO_PLAYER_SECONDS = 35 * 60 + 4;
+  var SECONDS_TO_DISPLAY = 35 * 60 + 4; // 2104s
+  var FALLBACK_SECONDS   = 35 * 60 + 4; // fallback se não achar o player
   var revelado = false;
-  var elapsed = 0;
+  var elapsed  = 0;
 
   function mostrar() {
     if (revelado) return;
     revelado = true;
     var el = document.getElementById('conteudo-apos-vsl');
-    if (el) {
-      el.classList.add('desbloqueado');
-      // Rola suavemente para o início do conteúdo liberado
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (el) el.classList.add('desbloqueado');
+  }
+
+  // Tenta obter o currentTime do player VTurb por várias estratégias
+  function getCurrentTime() {
+    // 1) smartplayer.instances — array padrão do VTurb
+    if (typeof smartplayer !== 'undefined' && smartplayer.instances) {
+      for (var i = 0; i < smartplayer.instances.length; i++) {
+        var inst = smartplayer.instances[i];
+        if (inst && inst.video && inst.video.currentTime > 0) return inst.video.currentTime;
+        if (inst && inst.currentTime > 0) return inst.currentTime;
+      }
     }
+
+    // 2) Qualquer <video> dentro do elemento vturb-smartplayer da VSL
+    var vslPlayer = document.querySelector('vturb-smartplayer');
+    if (vslPlayer) {
+      // Tenta no light DOM
+      var v = vslPlayer.querySelector('video');
+      if (v && v.currentTime > 0) return v.currentTime;
+      // Tenta no shadow DOM
+      if (vslPlayer.shadowRoot) {
+        v = vslPlayer.shadowRoot.querySelector('video');
+        if (v && v.currentTime > 0) return v.currentTime;
+      }
+    }
+
+    // 3) Qualquer <video> na página com currentTime > 0
+    var videos = document.querySelectorAll('video');
+    for (var j = 0; j < videos.length; j++) {
+      if (videos[j].currentTime > 0) return videos[j].currentTime;
+    }
+
+    return -1; // não achou
   }
 
   var timer = setInterval(function() {
-    elapsed += 1;
+    elapsed++;
+    var ct = getCurrentTime();
 
-    // Tenta pegar a instância do player da VSL (ab-test)
-    var sp = null;
-    if (typeof smartplayer !== 'undefined' &&
-        smartplayer.instances &&
-        smartplayer.instances[0] &&
-        smartplayer.instances[0].video) {
-      sp = smartplayer.instances[0].video;
-    }
-
-    if (sp) {
-      if (sp.currentTime > SECONDS_TO_DISPLAY) {
-        mostrar();
-        clearInterval(timer);
-      }
-    } else if (elapsed >= FALLBACK_NO_PLAYER_SECONDS) {
+    if (ct >= SECONDS_TO_DISPLAY) {
+      mostrar();
+      clearInterval(timer);
+    } else if (ct === -1 && elapsed >= FALLBACK_SECONDS) {
+      // Nunca encontrou o player — libera por tempo de página
       mostrar();
       clearInterval(timer);
     }
