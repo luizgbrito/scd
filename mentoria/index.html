@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mentoria Impulse · Aplicação</title>
+<meta name="description" content="Mentoria Impulse: 3 meses pra montar sua operação vendendo em dólar, com um time de IA fazendo o trabalho pesado e sem precisar aparecer.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Inter:wght@400..700&display=swap" rel="stylesheet">
+<style>
+/* Visual do Nox OS (formulário Impulse): vidro escuro sobre paisagem em cinza, pílulas brancas, gradiente só nos detalhes. */
+:root{
+  --ink:255 255 255; --paper:11 11 12; --veil:5 5 5;
+  --bg:#050505; --frame-a:rgba(22,22,24,.86); --frame-b:rgba(9,9,10,.94);
+  --glass:rgb(var(--ink) / .045); --glass-2:rgb(var(--ink) / .075); --glass-3:rgb(var(--ink) / .11);
+  --line:rgb(var(--ink) / .08); --line-2:rgb(var(--ink) / .14); --line-3:rgb(var(--ink) / .22);
+  --t1:rgb(var(--ink) / .94); --t2:rgb(var(--ink) / .62); --t3:rgb(var(--ink) / .4);
+  --bad:rgb(255,125,125);
+  --grad:linear-gradient(90deg,#e0541c,#f7b25a 55%,#ffe9c2);
+  --display:"Geist","Inter",system-ui,sans-serif; --ui:"Inter",-apple-system,system-ui,sans-serif; --mono:"Geist Mono",ui-monospace,Menlo,monospace;
+  --gut:clamp(16px,2.3vw,40px); --ez:cubic-bezier(.16,1,.3,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font:400 16px/1.55 var(--ui);color:var(--t1);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{display:block}
+a{color:inherit;text-decoration:none}
+::selection{background:rgb(var(--ink) / .22)}
+:focus-visible{outline:2px solid rgb(var(--ink) / .55);outline-offset:3px}
+.wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 var(--gut)}
+section{position:relative;padding:clamp(80px,10vw,136px) 0}
+
+/* tipografia do form */
+.t64{font:400 clamp(36px,4.6vw,64px)/1.03 var(--display);letter-spacing:-.05em;text-wrap:balance}
+.t48{font:400 clamp(30px,3.6vw,50px)/1.06 var(--display);letter-spacing:-.048em;text-wrap:balance}
+.t22{font:500 clamp(18px,1.5vw,21px)/1.25 var(--display);letter-spacing:-.03em}
+.lead{font-size:clamp(16px,1.2vw,18.5px);line-height:1.55;letter-spacing:-.01em;color:var(--t2)}
+.body{font-size:15px;line-height:1.55;color:var(--t3)}
+.mono{font:400 11.5px/1.45 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--t3)}
+.cl{background:linear-gradient(180deg,rgb(var(--ink) / .92),rgb(var(--ink) / .55));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 .06em .1em 0;margin-right:-.06em}
+.head{max-width:780px;margin-bottom:clamp(36px,4vw,56px)}
+.head.center{margin-left:auto;margin-right:auto;text-align:center}
+.head .mono{display:block;margin-bottom:18px}
+.head .lead{margin-top:18px;max-width:620px}
+.head.center .lead{margin-left:auto;margin-right:auto}
+
+/* pílulas e botões do form */
+.pill{display:inline-flex;align-items:center;gap:9px;height:32px;padding:0 14px 0 10px;border-radius:999px;border:1px solid var(--line-2);background:var(--glass-2);color:var(--t2);white-space:nowrap;
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--grad);box-shadow:0 0 10px rgba(247,178,90,.6);animation:dot 2.6s ease-in-out infinite}
+@keyframes dot{50%{box-shadow:0 0 0 4px rgba(247,178,90,.12),0 0 14px rgba(247,178,90,.7)}}
+.btn{position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:10px;height:clamp(52px,4.2vw,58px);padding:0 clamp(26px,2.4vw,34px);border-radius:999px;
+  font:500 clamp(15px,1.1vw,16.5px)/1 var(--ui);letter-spacing:-.01em;white-space:nowrap;background:rgb(var(--ink));color:rgb(var(--paper));border:1px solid rgb(var(--ink));
+  box-shadow:0 8px 24px rgba(0,0,0,.4);transition:background .2s,transform .2s var(--ez),box-shadow .2s}
+.btn:hover{background:#e6e6e7;box-shadow:0 10px 30px rgba(0,0,0,.5);transform:translateY(-1px)}
+.btn:hover svg{transform:translateX(2px)}
+.btn svg{width:14px;height:14px;flex:none;transition:transform .2s}
+.btn::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 35%,rgba(0,0,0,.08) 50%,transparent 65%);translate:-130% 0;animation:shine 6s 2s var(--ez) infinite}
+@keyframes shine{0%,72%{translate:-130% 0}90%,100%{translate:130% 0}}
+.cta-meta{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px 18px}
+
+/* painéis de vidro */
+.panel{position:relative;overflow:hidden;border-radius:18px;padding:clamp(22px,2.4vw,30px);border:1px solid var(--line-2);
+  background:linear-gradient(180deg,var(--frame-a),var(--frame-b));-webkit-backdrop-filter:blur(28px) saturate(.6);backdrop-filter:blur(28px) saturate(.6);
+  box-shadow:0 30px 80px -30px rgba(0,0,0,.6),inset 0 1px 0 rgb(var(--ink) / .08);transition:border-color .4s var(--ez),transform .5s var(--ez)}
+.panel::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 140% at 0% 0%,rgb(var(--ink) / .06),transparent 60%)}
+@media (hover:hover){.panel:hover{border-color:var(--line-3);transform:translateY(-3px)}}
+.panel.lead-line::after{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:var(--grad);opacity:.85}
+.panel h3{margin-top:16px}
+.panel p{margin-top:8px}
+.ico{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(150deg,rgb(var(--ink) / .16),rgb(var(--ink) / .04) 55%,rgb(var(--ink) / .09));box-shadow:inset 0 1px 0 rgb(var(--ink) / .35),inset 0 0 0 1px rgb(var(--ink) / .12),0 10px 22px rgba(0,0,0,.45)}
+.ico svg{width:20px;height:20px;fill:none;stroke:var(--t1);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+
+/* progresso de leitura (como o do form) */
+.progress{position:fixed;top:0;left:0;right:0;height:2px;background:var(--line);z-index:30}
+.progress i{display:block;height:100%;width:0;background:var(--grad);box-shadow:0 0 12px rgba(247,178,90,.45)}
+
+/* topo */
+.top{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:18px var(--gut);transition:background .4s,border-color .4s}
+.top.solid{background:rgba(5,5,5,.7);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.brand{display:inline-flex;align-items:center;gap:11px}
+.brand b{font:500 17px/1 var(--display);letter-spacing:-.04em}
+.brand .wm{font-size:13px;color:var(--t2);padding-left:11px;border-left:1px solid var(--line-2);line-height:1}
+.top .btn{height:40px;padding:0 18px;font-size:14px}
+
+/* hero com a paisagem do form */
+.hero{position:relative;min-height:100vh;min-height:100dvh;display:flex;align-items:center;overflow:hidden;padding:120px 0 90px;background:radial-gradient(70% 60% at 20% 30%,rgb(var(--ink) / .06),transparent 70%),linear-gradient(180deg,#141416 0%,#050505 100%)}
+.scene{position:absolute;inset:0;z-index:0;background:linear-gradient(#d9dadc 0%,#b9bbbf 38%,#3a3b3e 70%,#050505 100%)}
+.scene svg{position:absolute;inset:0;width:100%;height:100%}
+.scene .m1{animation:drift 26s ease-in-out infinite alternate}
+.scene .m2{animation:drift 32s ease-in-out infinite alternate-reverse}
+@keyframes drift{to{transform:translateX(-24px)}}
+.scene::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 0%,rgb(var(--veil) / .35) 0%,rgb(var(--veil) / .65) 50%,rgb(var(--veil) / .96) 100%),linear-gradient(0deg,#050505 0%,transparent 30%)}
+.grain{position:absolute;inset:0;z-index:1;opacity:.06;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.9) .6px,transparent .7px);background-size:4px 4px;mix-blend-mode:overlay}
+.hero-photo{position:absolute;z-index:1;right:0;bottom:0;top:0;width:50%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 40%),linear-gradient(0deg,transparent 0%,#000 26%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0%,#000 40%),linear-gradient(0deg,transparent 0%,#000 26%);mask-composite:intersect}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:saturate(.95) brightness(.88)}
+.hero .wrap{position:relative;z-index:2}
+.hero-copy{max-width:640px}
+.hero .t64{margin-top:22px}
+.rot{display:flex;flex-wrap:nowrap;align-items:baseline;gap:.26em;margin-top:14px;font:400 clamp(22px,2.4vw,32px)/1.15 var(--display);letter-spacing:-.04em;white-space:nowrap}
+.rot .w{display:inline-grid}
+.rot .w > span{grid-area:1/1;opacity:0;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;animation:rot 12s var(--ez) infinite}
+.rot .w > span:nth-child(2){animation-delay:3s}.rot .w > span:nth-child(3){animation-delay:6s}.rot .w > span:nth-child(4){animation-delay:9s}
+@keyframes rot{0%{opacity:0;transform:translateY(.25em);filter:blur(6px)}4%,21%{opacity:1;transform:none;filter:none}25%,100%{opacity:0;transform:translateY(-.2em);filter:blur(6px)}}
+.hero .lead{margin-top:24px;max-width:560px}
+.hero .btn{margin-top:32px}
+
+/* faixa em movimento */
+.band{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:16px 0;background:rgb(var(--ink) / .015)}
+.band-track{display:flex;gap:34px;width:max-content;animation:band 40s linear infinite}
+.band span{display:inline-flex;align-items:center;gap:34px;white-space:nowrap}
+.band span::after{content:"";width:5px;height:5px;border-radius:50%;background:rgb(var(--ink) / .35)}
+@keyframes band{to{transform:translateX(-50%)}}
+
+/* metodologia: linha que acompanha a rolagem */
+.method{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(36px,6vw,80px);align-items:start}
+.method .head{position:sticky;top:120px;margin-bottom:0}
+.steps{position:relative;display:flex;flex-direction:column;gap:12px;padding-left:58px}
+.steps::before{content:"";position:absolute;left:21px;top:8px;bottom:8px;width:1px;background:var(--line-2)}
+.steps .fill{position:absolute;left:21px;top:8px;width:1px;height:0;background:linear-gradient(180deg,#fff,rgb(var(--ink) / .4));box-shadow:0 0 10px rgb(var(--ink) / .4)}
+.step{position:relative}
+.step .n{position:absolute;left:-58px;top:22px;width:43px;height:43px;border-radius:12px;display:grid;place-items:center;font:400 12px/1 var(--mono);color:var(--t2);background:#0b0b0c;border:1px solid var(--line-2);box-shadow:0 0 0 6px var(--bg);transition:color .5s,border-color .5s,background .5s}
+.step.on .n{color:rgb(var(--paper));background:rgb(var(--ink));border-color:rgb(var(--ink))}
+
+/* mini visuais vivos nos cards */
+.viz{height:84px;margin:4px 0 6px;border-radius:12px;border:1px solid var(--line);background:rgb(var(--ink) / .025);position:relative;overflow:hidden}
+.viz svg{width:100%;height:100%}
+.spark{fill:none;stroke:rgb(var(--ink) / .85);stroke-width:1.6;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2s var(--ez) .2s}
+.in .spark{stroke-dashoffset:0}
+.spark-area{fill:url(#sparkfill);opacity:0;transition:opacity 1s .9s}
+.in .spark-area{opacity:1}
+.conv{display:flex;align-items:center;justify-content:center;gap:10px;height:100%;font:500 22px/1 var(--display);letter-spacing:-.03em}
+.conv small{font:400 11px/1 var(--mono);color:var(--t3);letter-spacing:.06em}
+.conv .arrow{color:var(--t3);font-size:14px}
+.nodes{position:absolute;inset:0}
+.nodes i{position:absolute;width:8px;height:8px;border-radius:50%;background:rgb(var(--ink) / .85);box-shadow:0 0 0 4px rgb(var(--ink) / .06);animation:node 2.8s ease-in-out infinite}
+.nodes i:nth-child(1){left:50%;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;animation-delay:0s}
+.nodes i:nth-child(2){left:22%;top:28%;animation-delay:.3s}.nodes i:nth-child(3){left:76%;top:26%;animation-delay:.6s}
+.nodes i:nth-child(4){left:26%;top:72%;animation-delay:.9s}.nodes i:nth-child(5){left:74%;top:70%;animation-delay:1.2s}
+.nodes svg{position:absolute;inset:0}
+.nodes line{stroke:rgb(var(--ink) / .16);stroke-width:1;stroke-dasharray:3 4;animation:dash 6s linear infinite}
+@keyframes node{50%{box-shadow:0 0 0 7px rgb(var(--ink) / .02),0 0 12px rgb(var(--ink) / .3)}}
+@keyframes dash{to{stroke-dashoffset:-40}}
+.mask{display:grid;place-items:center;height:100%}
+.mask svg{width:46px;height:46px;fill:none;stroke:rgb(var(--ink) / .75);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.mask .slash{stroke-dasharray:30;stroke-dashoffset:30;transition:stroke-dashoffset 1.2s var(--ez) .5s}
+.in .mask .slash{stroke-dashoffset:0}
+
+/* sobre a call/seleção: painel quente do form (único lugar com laranja) */
+.ink{position:relative;overflow:hidden;isolation:isolate;border-radius:22px;padding:clamp(28px,4vw,56px);border:1px solid var(--line-2);
+  background:radial-gradient(90% 70% at 0% 110%,rgba(224,84,28,.16) 0%,rgba(247,178,90,.05) 35%,transparent 65%),radial-gradient(80% 60% at 100% -10%,rgb(var(--ink) / .1),transparent 60%),linear-gradient(180deg,var(--frame-a),var(--frame-b))}
+.ink .grain{z-index:-1}
+.ink-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,4vw,56px);align-items:start}
+.ink .lead + .lead{margin-top:14px}
+.ink .lead b{color:var(--t1);font-weight:500}
+
+/* lista não é pra você */
+.no-list{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.no-list li{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:13px;border:1px solid var(--line);background:linear-gradient(180deg,var(--glass-2),var(--glass));color:var(--t2);font-size:15px}
+.no-list svg{flex:none;width:16px;height:16px;margin-top:3px;fill:none;stroke:var(--bad);stroke-width:2;stroke-linecap:round}
+
+/* entrega */
+.deliver .big{font:300 clamp(40px,4vw,56px)/1 var(--display);letter-spacing:-.05em}
+.deliver .big small{font:400 13px/1 var(--mono);letter-spacing:.06em;color:var(--t3);margin-left:6px;text-transform:uppercase}
+
+/* sobre */
+.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,5vw,64px);align-items:center}
+.portrait{border-radius:22px;overflow:hidden;border:1px solid var(--line-2);aspect-ratio:4/5;position:relative}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:35% 30%}
+.portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(5,5,5,.7))}
+.about .lead{margin-top:16px}
+.about .lead b{color:var(--t1);font-weight:500}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:28px}
+.stats .panel{padding:18px}
+.stats b{display:block;font:400 clamp(24px,2.2vw,30px)/1 var(--display);letter-spacing:-.05em}
+.stats .panel > span{display:block;margin-top:8px;font-size:13px;color:var(--t3);line-height:1.4}
+.stats b [data-count]{display:inline;color:inherit}
+
+/* provas */
+.proofs{display:grid;grid-template-columns:repeat(2,minmax(0,300px));justify-content:center;gap:16px}
+.proofs img{width:100%;border-radius:18px;border:1px solid var(--line-2);box-shadow:0 30px 60px -30px #000}
+
+/* faq */
+.faq{max-width:820px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:18px;align-items:center;padding:22px 0;font:500 17px/1.35 var(--display);letter-spacing:-.02em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{font-style:normal;flex:none;width:30px;height:30px;border-radius:999px;display:grid;place-items:center;border:1px solid var(--line-2);background:var(--glass);color:var(--t2);transition:transform .4s var(--ez),background .3s}
+.faq details[open] summary i{transform:rotate(45deg);background:var(--glass-3)}
+.faq .ans{padding:0 46px 22px 0;color:var(--t2);font-size:15.5px}
+.faq details[open] .ans{animation:rise .5s var(--ez) both}
+
+/* final */
+.final{text-align:center;overflow:hidden}
+.final .t48{max-width:820px;margin:0 auto}
+.final .lead{margin:18px auto 0;max-width:600px}
+.final .btn{margin-top:32px}
+.final .cta-meta{justify-content:center}
+
+footer{border-top:1px solid var(--line);padding:40px 0 48px;text-align:center}
+.axr{width:64px;height:auto;margin:0 auto;opacity:.9}
+footer small{display:block;max-width:640px;margin:16px auto 0;font-size:11.5px;line-height:1.7;color:var(--t3)}
+
+/* etapas: colunas que sobem ao aparecer */
+.pillars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:end;min-height:520px}
+.pillar{display:flex;flex-direction:column;justify-content:flex-end;height:100%}
+.p-top{padding:0 6px 18px}
+.p-top .mono{display:block;margin-bottom:10px}
+.p-top .body{margin-top:8px}
+.col{height:0;border-radius:14px 14px 0 0;border:1px solid var(--line-2);border-bottom:0;position:relative;overflow:hidden;
+  background:repeating-linear-gradient(90deg,rgb(var(--ink) / .07) 0 6px,rgb(var(--ink) / .02) 6px 14px),linear-gradient(180deg,rgb(var(--ink) / .14),rgb(var(--ink) / .02));
+  transition:height 1.6s var(--ez)}
+.col::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,transparent,#fff,transparent);opacity:.6}
+.pillars.in .pillar:nth-child(1) .col{height:calc(var(--h) - 120px);transition-delay:.05s}
+.pillars.in .pillar:nth-child(2) .col{height:calc(var(--h) - 120px);transition-delay:.2s}
+.pillars.in .pillar:nth-child(3) .col{height:calc(var(--h) - 120px);transition-delay:.35s}
+.pillars.in .pillar:nth-child(4) .col{height:calc(var(--h) - 120px);transition-delay:.5s}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.bonus-wrap{margin-top:40px}
+.bonus .pill{margin-bottom:4px}
+@media (max-width:1000px){.grid3{grid-template-columns:repeat(2,minmax(0,1fr))}.pillars{grid-template-columns:repeat(2,minmax(0,1fr));min-height:0}.pillar{height:auto}.pillars.in .col{height:70px!important}}
+@media (max-width:620px){.grid3{grid-template-columns:1fr}.pillars{grid-template-columns:1fr}}
+
+/* entrada */
+@media (prefers-reduced-motion:no-preference){
+  .hero-copy > *{animation:rise 1s var(--ez) both}
+  .hero-copy > :nth-child(2){animation-delay:.1s}.hero-copy > :nth-child(3){animation-delay:.2s}.hero-copy > :nth-child(4){animation-delay:.3s}.hero-copy > :nth-child(5){animation-delay:.4s}.hero-copy > :nth-child(6){animation-delay:.5s}
+  .hero-photo img{animation:settle 2.6s var(--ez) both}
+  .rv{opacity:0;translate:0 22px;filter:blur(8px);transition:opacity 1s var(--ez) var(--d,0s),translate 1s var(--ez) var(--d,0s),filter 1s var(--ez) var(--d,0s)}
+  .rv.in{opacity:1;translate:0 0;filter:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rot .w > span:first-child{opacity:1}.spark{stroke-dashoffset:0}}
+@keyframes rise{from{opacity:0;transform:translateY(16px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+@keyframes settle{from{transform:scale(1.06);opacity:.3}to{transform:none;opacity:1}}
+
+@media (max-width:1000px){
+  .grid4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .method,.ink-grid,.about{grid-template-columns:1fr}
+  .method .head{position:static}
+  .portrait{max-width:420px}
+}
+@media (max-width:760px){
+  .hero{display:block;min-height:auto;padding:0 0 64px}
+  .hero-photo{position:relative;width:100%;height:56vh;-webkit-mask-image:linear-gradient(180deg,#000 50%,transparent);mask-image:linear-gradient(180deg,#000 50%,transparent)}
+  .hero .wrap{margin-top:-80px}
+  .hero .btn,.final .btn{width:100%}
+  .rot{font-size:clamp(17px,5.2vw,22px)}
+  .grid2,.no-list{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .brand .wm{display:none}
+  .faq .ans{padding-right:0}
+}
+@media (max-width:520px){
+  .grid4{grid-template-columns:1fr}
+  .steps{padding-left:52px}
+  .step .n{left:-52px}
+  .proofs{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* ===== v6 ===== */
+/* linha laranja fina, sutil e com brilho no topo de todos os blocos */
+.panel::after{content:"";position:absolute;top:0;left:14%;right:14%;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(224,84,28,.55) 25%,#ffd9a5 50%,rgba(224,84,28,.55) 75%,transparent);
+  box-shadow:0 0 8px rgba(247,178,90,.55),0 0 18px rgba(224,84,28,.25);opacity:.75}
+.panel.lead-line::after{inset:0 14% auto 14%;height:1px;opacity:.75}
+
+/* hero centralizado no celular */
+@media (max-width:760px){
+  .cta-meta{justify-content:center;text-align:center}
+}
+
+/* gráficos com vida: laranja sutil */
+.spark{stroke:url(#sparkline);stroke-width:1.8;filter:drop-shadow(0 0 4px rgba(247,178,90,.45))}
+.spark-dot{fill:#ffe9c2;opacity:0;filter:drop-shadow(0 0 6px #f7b25a);transition:opacity .6s 1.9s}
+.in .spark-dot{opacity:1;animation:sparkdot 2.4s 2.4s ease-in-out infinite}
+@keyframes sparkdot{50%{r:5;opacity:.6}}
+.conv > span:last-child [data-count]{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.conv .arrow{color:#f7b25a;animation:nudge 2.4s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(4px)}}
+.nodes i:nth-child(1){background:var(--grad);box-shadow:0 0 0 4px rgba(247,178,90,.12),0 0 16px rgba(247,178,90,.5)}
+.nodes line{stroke:rgba(247,178,90,.35)}
+.mask .slash{stroke:#f7b25a;filter:drop-shadow(0 0 4px rgba(247,178,90,.6))}
+.viz{background:radial-gradient(120% 120% at 100% 0%,rgba(247,178,90,.07),transparent 60%),rgb(var(--ink) / .025)}
+
+/* jornada das 4 etapas */
+.journey{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding-top:30px}
+.j-line{position:absolute;top:8px;left:12%;right:12%;height:1px;background:var(--line-2)}
+.j-line i{display:block;height:100%;width:0;background:var(--grad);box-shadow:0 0 10px rgba(247,178,90,.55);transition:width 2.2s var(--ez) .2s}
+.journey.in .j-line i{width:100%}
+.jstep{position:relative;overflow:visible}
+.j-node{position:absolute;top:-27px;left:50%;width:11px;height:11px;margin-left:-5.5px;border-radius:50%;background:#0b0b0c;border:1px solid var(--line-3);transition:background .5s,border-color .5s,box-shadow .5s}
+.journey.in .jstep .j-node{background:#f7b25a;border-color:#ffe9c2;box-shadow:0 0 0 4px rgba(247,178,90,.12),0 0 14px rgba(247,178,90,.6)}
+.journey.in .jstep:nth-child(2) .j-node{transition-delay:.4s}.journey.in .jstep:nth-child(3) .j-node{transition-delay:.9s}
+.journey.in .jstep:nth-child(4) .j-node{transition-delay:1.4s}.journey.in .jstep:nth-child(5) .j-node{transition-delay:1.9s}
+.j-head{display:flex;align-items:center;justify-content:space-between}
+.j-num{font:300 40px/1 var(--display);letter-spacing:-.05em;background:linear-gradient(180deg,rgb(var(--ink) / .9),rgb(var(--ink) / .25));-webkit-background-clip:text;background-clip:text;color:transparent}
+.j-meter{margin-top:18px;height:3px;border-radius:99px;background:rgb(var(--ink) / .07);overflow:hidden}
+.j-meter i{display:block;height:100%;width:0;border-radius:inherit;background:var(--grad);box-shadow:0 0 8px rgba(247,178,90,.5);transition:width 1.6s var(--ez) .6s}
+.journey.in .j-meter i{width:var(--w)}
+@media (max-width:1000px){
+  .journey{grid-template-columns:1fr 1fr}
+  .j-line,.j-node{display:none}
+  .journey{padding-top:0}
+}
+@media (max-width:620px){.journey{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"><i id="bar"></i></div>
+
+<header class="top" id="top">
+  <a class="brand" href="#" aria-label="Mentoria Impulse"><b>Impulse</b><span class="wm">Mentoria</span></a>
+  <a href="#aplicacao" class="btn">Aplicar</a>
+</header>
+
+<section class="hero" id="hero">
+  <div class="grain" aria-hidden="true"></div>
+  <div class="hero-photo"><img src="assets/luiz/terraco-1300.webp" alt="Luiz Brito" width="1300" height="1346" fetchpriority="high"></div>
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="pill mono"><i></i>Mentoria Impulse · Aplicação aberta</span>
+      <h1 class="t64">Venda produtos digitais criados com IA <span class="cl">e receba em dólar</span></h1>
+      <div class="rot" aria-label="sem precisar aparecer, falar inglês, morar fora ou ter equipe grande">
+        <span class="cl">sem precisar</span>
+        <span class="w" aria-hidden="true"><span>aparecer</span><span>falar inglês</span><span>morar fora</span><span>de equipe grande</span></span>
+      </div>
+      <p class="lead">A Impulse é a mentoria pra quem quer construir uma operação em moeda forte com produtos digitais criados por um time de IA, que faz todo o trabalho pesado. Se você for selecionado, a gente sobe a estrutura junto com você, ao vivo.</p>
+      <a href="#aplicacao" class="btn">Quero me aplicar pra Impulse <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+      <div class="cta-meta"><span class="mono">3 meses · Vagas limitadas · Seleção por perfil</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="band" aria-hidden="true">
+  <div class="band-track mono">
+    <span>Moeda forte</span><span>Agentes de IA</span><span>Tráfego direto</span><span>Sem aparecer</span><span>Inglês e espanhol</span><span>Produto próprio</span><span>Câmbio Invertido</span><span>Operação enxuta</span>
+    <span>Moeda forte</span><span>Agentes de IA</span><span>Tráfego direto</span><span>Sem aparecer</span><span>Inglês e espanhol</span><span>Produto próprio</span><span>Câmbio Invertido</span><span>Operação enxuta</span>
+  </div>
+</div>
+
+<section id="para-quem">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="mono">Para quem é</span>
+      <h2 class="t48">A Impulse foi criada para um grupo específico de pessoas… <span class="cl">talvez você seja uma delas.</span></h2>
+    </div>
+    <div class="grid4">
+      <article class="panel lead-line rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></div><h3 class="t22">Estudantes e CLT</h3><p class="body">que querem construir uma renda em moeda forte sem depender do salário e sem precisar largar tudo de uma vez.</p></article>
+      <article class="panel rv" style="--d:.06s"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 6-6"/></svg></div><h3 class="t22">Players do digital</h3><p class="body">que já rodam tráfego, lançamento, afiliado ou serviço e querem montar a própria operação vendendo pra fora.</p></article>
+      <article class="panel rv" style="--d:.12s"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div><h3 class="t22">Empresários e liberais</h3><p class="body">que têm conhecimento e capital, mas estão cansados de ter o faturamento preso ao real e às horas que conseguem vender.</p></article>
+      <article class="panel rv" style="--d:.18s"><div class="ico"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div><h3 class="t22">Quem já tentou sozinho</h3><p class="body">que comprou curso, testou método e travou no meio, e agora quer alguém do lado pra fazer dar certo.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="metodo">
+  <div class="wrap">
+    <div class="head center rv">
+      <span class="mono">Como funciona</span>
+      <h2 class="t48">4 etapas pra sair do zero <span class="cl">e chegar na escala.</span></h2>
+    </div>
+    <div class="journey rv">
+      <div class="j-line" aria-hidden="true"><i></i></div>
+      <article class="panel jstep"><span class="j-node"></span><div class="j-head"><span class="j-num">01</span><div class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></div></div><h3 class="t22">Diagnóstico</h3><p class="body">Entendemos seu momento, seu tempo e seu objetivo pra escolher o mercado e a oferta certa.</p><div class="j-meter"><i style="--w:25%"></i></div></article>
+      <article class="panel jstep"><span class="j-node"></span><div class="j-head"><span class="j-num">02</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></div></div><h3 class="t22">Implementação da estrutura</h3><p class="body">Nos 12 encontros ao vivo a gente sobe a estrutura junto: produto, página, VSL e criativos com IA.</p><div class="j-meter"><i style="--w:50%"></i></div></article>
+      <article class="panel jstep"><span class="j-node"></span><div class="j-head"><span class="j-num">03</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div></div><h3 class="t22">Análise</h3><p class="body">Lemos os números com você e ajustamos o que precisa antes de colocar mais dinheiro.</p><div class="j-meter"><i style="--w:75%"></i></div></article>
+      <article class="panel jstep"><span class="j-node"></span><div class="j-head"><span class="j-num">04</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 6-6"/><path d="M16 8h4v4"/></svg></div></div><h3 class="t22">Escala</h3><p class="body">Com a oferta validada, transformamos resultado em previsibilidade e crescemos em moeda forte.</p><div class="j-meter"><i style="--w:100%"></i></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="por-que">
+  <div class="wrap">
+    <div class="head center rv">
+      <span class="mono">Por que dólar</span>
+      <h2 class="t48">Por que vender em moeda forte <span class="cl">é o caminho mais inteligente agora?</span></h2>
+    </div>
+    <div class="grid4">
+      <article class="panel rv">
+        <div class="viz"><svg viewBox="0 0 200 84" preserveAspectRatio="none"><defs><linearGradient id="sparkfill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7b25a" stop-opacity=".22"/><stop offset="1" stop-color="#e0541c" stop-opacity="0"/></linearGradient><linearGradient id="sparkline" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffffff" stop-opacity=".55"/><stop offset=".6" stop-color="#f7b25a"/><stop offset="1" stop-color="#ffe9c2"/></linearGradient></defs><path class="spark-area" d="M0 70 C25 66 35 58 55 60 S90 44 110 46 S150 26 170 22 S190 16 200 12 V84 H0Z"/><circle class="spark-dot" cx="200" cy="12" r="3.5"/><path class="spark" pathLength="1" d="M0 70 C25 66 35 58 55 60 S90 44 110 46 S150 26 170 22 S190 16 200 12"/></svg></div>
+        <h3 class="t22">Câmbio Invertido</h3><p class="body">Você passa a ganhar em dólar e gastar em real. Quando o dólar sobe, sua renda sobe junto, sem trabalhar uma hora a mais.</p>
+      </article>
+      <article class="panel rv" style="--d:.06s">
+        <div class="viz"><div class="conv"><span><small>US$ </small><span data-count="47">0</span></span><span class="arrow">→</span><span><small>R$ </small><span data-count="263">0</span></span></div></div>
+        <h3 class="t22">Cada venda vale mais</h3><p class="body">A mesma venda que aqui seria de R$ 47 lá fora vale quase 6 vezes mais, com o mesmo esforço e a mesma estrutura.</p>
+      </article>
+      <article class="panel rv" style="--d:.12s">
+        <div class="viz"><div class="nodes"><svg viewBox="0 0 200 84" preserveAspectRatio="none"><line x1="100" y1="42" x2="44" y2="24"/><line x1="100" y1="42" x2="152" y2="22"/><line x1="100" y1="42" x2="52" y2="60"/><line x1="100" y1="42" x2="148" y2="59"/></svg><i></i><i></i><i></i><i></i><i></i></div></div>
+        <h3 class="t22">A IA faz o trabalho pesado</h3><p class="body">Um time de agentes cria produto, página e anúncios na língua certa. Você aprende a decidir o que vale dinheiro.</p>
+      </article>
+      <article class="panel rv" style="--d:.18s">
+        <div class="viz"><div class="mask"><svg viewBox="0 0 48 48"><path d="M6 24s7-12 18-12 18 12 18 12-7 12-18 12S6 24 6 24Z"/><circle cx="24" cy="24" r="5"/><path class="slash" d="M10 10l28 28"/></svg></div></div>
+        <h3 class="t22">Sem aparecer</h3><p class="body">Você não precisa gravar vídeo, ter seguidor nem mostrar o rosto. As vendas vêm de anúncio, não da sua imagem.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="entrega">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="mono">O que você recebe</span>
+      <h2 class="t48">Tudo pra sua operação rodar, <span class="cl">com a gente do seu lado.</span></h2>
+    </div>
+    <div class="grid3">
+      <article class="panel lead-line rv"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20a6 6 0 0 1 12 0M15 20a4.5 4.5 0 0 1 6.5-4"/></svg></div><h3 class="t22">Acesso direto ao Luiz</h3><p class="body">Você fala direto com quem roda a operação, sem intermediário.</p></article>
+      <article class="panel rv" style="--d:.06s"><div class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m22 8-6 4 6 4Z"/></svg></div><h3 class="t22">12 encontros ao vivo</h3><p class="body">Um encontro por semana durante 3 meses, subindo a estrutura da sua operação junto com a gente.</p></article>
+      <article class="panel rv" style="--d:.12s"><div class="ico"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l1.4-3.6A8.5 8.5 0 1 1 21 11.5Z"/></svg></div><h3 class="t22">3 meses de acompanhamento</h3><p class="body">Do primeiro ao último encontro, a gente segue do seu lado no seu grupo de WhatsApp individual.</p></article>
+      <article class="panel rv"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h8"/></svg></div><h3 class="t22">Sócio: acesso a todas as ofertas</h3><p class="body">Acesso às ofertas da nossa operação. No fim da mentoria, quem mostrar competência, ética e resultado pode ser contratado pela nossa operação.</p></article>
+      <article class="panel rv" style="--d:.06s"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="m10 9 5 3-5 3Z"/></svg></div><h3 class="t22">Swipe file de criativos e VSLs</h3><p class="body">Criativos e VSLs otimizados que já rodam, pra você modelar e ganhar tempo.</p></article>
+      <article class="panel rv" style="--d:.12s"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 6-6"/></svg></div><h3 class="t22">Decisões de tráfego pago</h3><p class="body">A gente acompanha suas decisões de tráfego: o que manter, o que cortar e quando escalar.</p></article>
+    </div>
+    <div class="bonus-wrap rv">
+      <span class="mono">Bônus</span>
+      <div class="grid2" style="margin-top:14px">
+        <article class="panel bonus"><span class="pill mono"><i></i>Primeiro que entrar</span><h3 class="t22">Chance de virar consultor de tráfego no Capital Digital</h3><p class="body">Quem garantir a primeira vaga concorre a uma posição de consultor de tráfego na nossa operação.</p></article>
+        <article class="panel bonus"><span class="pill mono"><i></i>Todos que entrarem</span><h3 class="t22">Todos os cursos, comunidade e aulas</h3><p class="body">Acesso completo aos nossos cursos, à comunidade de alunos e às aulas.</p></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="selecao">
+  <div class="wrap">
+    <div class="ink rv">
+      <div class="grain" aria-hidden="true"></div>
+      <div class="ink-grid">
+        <div>
+          <span class="mono">Por que existe seleção</span>
+          <h2 class="t48" style="margin-top:18px">Essa mentoria <span class="cl">não é pra todo mundo.</span></h2>
+        </div>
+        <div>
+                    <p class="lead"><b>A gente não precisa dessa mentoria pra pagar conta.</b> A Impulse existe pra acompanhar de perto poucas pessoas que vão executar de verdade. Por isso a escolha é feita com cuidado, e por isso cada inscrição é lida com atenção.</p>
+          <p class="lead">Antes de qualquer coisa, eu preciso entender quem é você, qual o seu momento, quanto tempo você tem e até onde quer levar esse projeto. Se fizer sentido pros dois lados, a gente avança junto.</p>
+          <p class="lead">Preencher a aplicação não garante a sua vaga. <b>Só preencha se você está decidido a executar.</b></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="nao-e">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="mono">Seja honesto com você</span>
+      <h2 class="t48">A Impulse não é pra todo mundo. <span class="cl">Não é pra você se…</span></h2>
+    </div>
+    <ul class="no-list">
+      <li class="rv"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>Procura dinheiro fácil ou rápido</li>
+      <li class="rv" style="--d:.05s"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>Não pode separar nada pros primeiros testes</li>
+      <li class="rv"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>Não quer seguir orientação</li>
+      <li class="rv" style="--d:.05s"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>Não tem algumas horas por semana pra dedicar ao projeto</li>
+      <li class="rv"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>Espera que a IA decida tudo sozinha, sem revisar nada</li>
+      <li class="rv" style="--d:.05s"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>Desiste no primeiro anúncio que não performa</li>
+      <li class="rv"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>Só quer assistir aula, sem colocar nada no ar</li>
+      <li class="rv" style="--d:.05s"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>Não está disposto a investir em você agora</li>
+      <li class="rv"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>Quer resultado sem abrir mão do conforto</li>
+      <li class="rv" style="--d:.05s"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>Coloca a culpa no mercado antes de olhar os próprios números</li>
+    </ul>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="wrap about">
+    <div class="portrait rv"><img src="assets/luiz/retrato-dollar.webp" alt="Luiz Brito" width="700" height="840" loading="lazy"></div>
+    <div class="rv" style="--d:.08s">
+      <span class="mono">Quem sou eu?</span>
+      <h2 class="t48" style="margin-top:18px">Prazer, <span class="cl">Luiz Brito.</span></h2>
+      <p class="lead">Comecei como menor aprendiz numa fábrica e passei por um call center de cobrança antes de acertar na internet. Coloquei minha primeira oferta global no ar com os últimos R$ 400 de limite do cartão e acordei com duas vendas.</p>
+      <p class="lead">De lá pra cá, passei de <b>R$ 5 milhões vendidos para fora do Brasil</b>, recebendo em dólar, e passei 9 meses com uma equipe de programadores colocando o que eu faço dentro de um sistema de IA. Na Impulse, é esse processo que eu aplico junto com você.</p>
+      <div class="stats">
+        <div class="panel"><b>+R$ <span data-count="5">0</span> mi</b><span>vendidos para fora do Brasil</span></div>
+        <div class="panel"><b>R$ <span data-count="400">0</span></b><span>de limite no cartão pra começar</span></div>
+        <div class="panel"><b><span data-count="9">0</span> meses</b><span>construindo o sistema de agentes</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="resultados">
+  <div class="wrap">
+    <div class="head center rv">
+      <span class="mono">Resultados</span>
+      <h2 class="t48">Vendas em dólar, <span class="cl">na tela de quem aplicou.</span></h2>
+    </div>
+    <div class="proofs">
+      <img class="rv" src="assets/provas/receita-12807.webp" alt="Receita de US$ 12.807,07 em 30 dias" loading="lazy">
+      <img class="rv" style="--d:.08s" src="assets/provas/receita-6635.webp" alt="Receita de US$ 6.635,06 em 30 dias" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="head center rv">
+      <span class="mono">Dúvidas</span>
+      <h2 class="t48">Perguntas <span class="cl">frequentes</span></h2>
+    </div>
+    <div class="faq rv">
+      <details><summary>Quanto custa a Impulse?<i>+</i></summary><div class="ans">R$ 3.500 à vista ou 12x de R$ 350 no cartão. O valor também aparece no fim da aplicação.</div></details>
+      <details><summary>Preencher a aplicação garante a minha vaga?<i>+</i></summary><div class="ans">Não. A gente lê cada inscrição com atenção e escolhe só quem de fato vai aproveitar. Se você for aprovado, a gente te chama no WhatsApp.</div></details>
+      <details><summary>Quanto tempo dura a mentoria?<i>+</i></summary><div class="ans">3 meses: 12 encontros ao vivo, um por semana, com acompanhamento no seu grupo de WhatsApp individual durante todo o período.</div></details>
+      <details><summary>Preciso falar inglês ou aparecer?<i>+</i></summary><div class="ans">Não. Você conversa com os agentes em português e eles entregam tudo no idioma do país que você escolher. As vendas vêm de anúncio, sem precisar mostrar o rosto.</div></details>
+      <details><summary>Preciso de muito dinheiro pra anúncio?<i>+</i></summary><div class="ans">Não. Você começa com testes pequenos e controlados, e a gente define junto um valor que não aperte as contas da sua casa.</div></details>
+      <details><summary>Tenho pouco tempo. Dá pra fazer?<i>+</i></summary><div class="ans">Dá, desde que você consiga dedicar algumas horas por semana. Os agentes fazem a parte pesada e você cuida das decisões.</div></details>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="aplicacao">
+  <div class="wrap">
+    <div class="rv">
+      <span class="pill mono"><i></i>Aplicação · Mentoria Impulse</span>
+      <h2 class="t48" style="margin-top:22px">Se você quer construir uma operação em moeda forte, <span class="cl">sem depender da sua imagem nem de equipe grande…</span></h2>
+      <p class="lead">Preencha a aplicação. Leva cerca de 3 minutos. Se você estiver entre os selecionados, a gente te chama no WhatsApp e constrói isso junto.</p>
+      <a href="#" class="btn" data-apply>Quero me aplicar pra Impulse <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+      <div class="cta-meta"><span class="mono">Preencher não garante a vaga</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img class="axr" src="assets/marca/axr-branco.png" alt="AXR Digital" width="692" height="402">
+    <small>Os resultados apresentados são de pessoas reais e não representam garantia de ganhos. O resultado de cada pessoa depende de dedicação, execução e investimento. Este site não faz parte do site do Facebook nem da Meta Platforms, Inc., e não é endossado por eles.</small>
+    <small style="margin-top:8px">© 2026 AXR Digital. Todos os direitos reservados.</small>
+  </div>
+</footer>
+
+<script>
+/* ===== CONFIG ===== */
+const APPLY_URL = ""; // link do formulário de inscrição da Impulse
+
+(function () {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* botões de aplicação */
+  document.querySelectorAll('[data-apply]').forEach(a => {
+    if (APPLY_URL) { a.href = APPLY_URL; }
+    else a.addEventListener('click', e => { e.preventDefault(); alert('Link do formulário ainda não configurado.'); });
+  });
+
+  /* barra de progresso de leitura, topo sólido e linha da metodologia */
+  const bar = document.getElementById('bar'), top = document.getElementById('top');
+  const steps = document.getElementById('steps'), fill = document.getElementById('steps-fill');
+  const stepEls = [...document.querySelectorAll('.step')];
+  let ticking = false;
+  function onScroll() {
+    ticking = false;
+    const h = document.documentElement.scrollHeight - innerHeight;
+    bar.style.width = (h > 0 ? scrollY / h * 100 : 0) + '%';
+    top.classList.toggle('solid', scrollY > 40);
+    if (steps && fill) {
+      const r = steps.getBoundingClientRect(), mid = innerHeight * 0.6;
+      const p = Math.max(0, Math.min(1, (mid - r.top) / (r.height - 16)));
+      fill.style.height = (p * (r.height - 16)) + 'px';
+      stepEls.forEach(s => s.classList.toggle('on', s.getBoundingClientRect().top + 30 < mid));
+    }
+    if (!reduce) document.querySelectorAll('.rv:not(.in)').forEach(el => { if (el.getBoundingClientRect().top < innerHeight * .9) reveal(el); });
+  }
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  addEventListener('resize', onScroll);
+
+  /* contadores */
+  const ease = t => 1 - Math.pow(1 - t, 3);
+  function count(el) {
+    const to = +el.dataset.count, t0 = performance.now(), dur = 1400;
+    (function tick(now) { const p = Math.min(1, (now - t0) / dur); el.textContent = Math.round(to * ease(p)); if (p < 1) requestAnimationFrame(tick); })(t0);
+  }
+  function reveal(el) {
+    if (el.classList.contains('in')) return;
+    el.classList.add('in');
+    el.querySelectorAll('[data-count]').forEach(count);
+  }
+
+  /* revelar ao rolar */
+  if (reduce) { document.querySelectorAll('.rv').forEach(el => { el.classList.add('in'); el.querySelectorAll('[data-count]').forEach(c => c.textContent = c.dataset.count); }); }
+  else {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { reveal(e.target); io.unobserve(e.target); } }), { threshold: .12, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  }
+  onScroll();
+
+  /* rolagem suave nos links âncora */
+  const easeIO = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  let anim = null;
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || a.hasAttribute('data-apply')) return;
+    const id = a.getAttribute('href').slice(1), t = id && document.getElementById(id);
+    if (!t) return;
+    e.preventDefault();
+    const y = Math.max(0, t.getBoundingClientRect().top + scrollY - 70), start = scrollY, dist = y - start;
+    if (reduce) { scrollTo(0, y); return; }
+    const dur = Math.min(1400, Math.max(550, Math.abs(dist) * .45)), t0 = performance.now();
+    if (anim) cancelAnimationFrame(anim);
+    const step = now => { const p = Math.min(1, (now - t0) / dur); scrollTo(0, start + dist * easeIO(p)); anim = p < 1 ? requestAnimationFrame(step) : null; };
+    anim = requestAnimationFrame(step);
+  });
+  ['wheel', 'touchstart'].forEach(ev => addEventListener(ev, () => { if (anim) { cancelAnimationFrame(anim); anim = null; } }, { passive: true }));
+})();
+</script>
+</body>
+</html>
