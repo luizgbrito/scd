@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="verde">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dollar Machine · Aula gratuita</title>
+<meta name="description" content="Veja como vender produtos digitais em dólar sem aparecer, com um time de IA que faz todo o trabalho pesado por você.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0b; --ink:#f3f3f1; --muted:#a3a3a0; --dim:#77776f; --line:rgba(255,255,255,.09); --line2:rgba(255,255,255,.16);
+  --glass:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02) 60%,rgba(255,255,255,.04));
+  --sans:"Instrument Sans","Helvetica Neue",Arial,sans-serif; --serif:"Instrument Serif",Georgia,serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+/* tema verde */
+[data-theme="verde"]{
+  --accent:#0AAF42; --accent-soft:#8fd9a8; --accent-rgb:10,175,66;
+  --hl:linear-gradient(155deg,#d6fbe3 6%,#56dc88 48%,#0AAF42 100%);
+  --base:linear-gradient(170deg,#ffffff 0%,#e8f7ee 55%,#a6e2bd 100%);
+  --tag-bg:#0AAF42; --tag-ink:#03140a; --top-bg:linear-gradient(180deg,#16251b,#0f1a13); --top-border:rgba(10,175,66,.28); --top-ink:#cfe3d4; --line-top:linear-gradient(90deg,transparent,#0AAF42 25%,#6fe39a 50%,#0AAF42 75%,transparent);
+}
+/* tema laranja Nox */
+[data-theme="nox"]{
+  --accent:#f7b25a; --accent-soft:#f7b25a; --accent-rgb:224,84,28;
+  --hl:linear-gradient(90deg,#e0541c,#f7b25a 55%,#ffe9c2);
+  --base:linear-gradient(180deg,#ffffff 0%,#c4c4c8 100%);
+  --tag-bg:linear-gradient(90deg,#e0541c,#f7b25a); --tag-ink:#1a0904; --top-bg:linear-gradient(180deg,#221710,#150f0b); --top-border:rgba(224,84,28,.3); --top-ink:#e6d9cc; --line-top:linear-gradient(90deg,transparent,#e0541c 22%,#f7b25a 50%,#e0541c 78%,transparent);
+}
+/* tema laranja FGA (destaque em serifada itálica) */
+[data-theme="fga"]{
+  --accent:#f7b25a; --accent-soft:#f7b25a; --accent-rgb:224,84,28;
+  --hl:linear-gradient(90deg,#e0541c,#f7b25a 55%,#ffe9c2);
+  --base:linear-gradient(180deg,#F1F2EB 0%,#cfcfc8 100%); --ink:#F1F2EB;
+  --tag-bg:#e0541c; --tag-ink:#0a0a0b; --top-bg:linear-gradient(180deg,#221710,#150f0b); --top-border:rgba(224,84,28,.3); --top-ink:#e6d9cc; --line-top:linear-gradient(90deg,transparent,#e0541c 22%,#f7b25a 50%,#e0541c 78%,transparent);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{min-height:100vh;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  background-image:radial-gradient(60% 40% at 50% -6%,rgba(var(--accent-rgb),.16),transparent 70%),radial-gradient(40% 30% at 50% 0%,rgba(255,255,255,.06),transparent 70%)}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{width:100%;max-width:780px;margin:0 auto;padding:0 20px}
+
+/* barra do topo */
+.topbar{text-align:center;padding:12px 16px 11px;border-bottom:1px solid var(--top-border);background:var(--top-bg);color:var(--top-ink);font-size:15px;line-height:1.45}
+.topbar b{color:#fff;font-weight:700}
+.topbar .sep{opacity:.45;margin:0 4px}
+.topbar s{color:#ff6a5c;text-decoration-thickness:2px}
+.topbar strong{color:var(--accent-soft);font-weight:700}
+.topbar .timer{font-size:13.5px;color:var(--top-ink);opacity:.85}
+#countdown{font:600 13.5px/1 var(--mono);letter-spacing:.04em;color:#fff}
+
+/* tag + headline */
+.intro{text-align:center;padding:34px 0 0}
+.tag{display:inline-block;padding:6px 12px;border-radius:4px;background:var(--tag-bg);color:var(--tag-ink);font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase}
+h1{margin:20px auto 0;max-width:720px;font-size:clamp(28px,4.6vw,46px);font-weight:450;line-height:1.04;letter-spacing:-.045em;text-wrap:balance}
+h1 .b{background-image:var(--base);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+h1 .h{background-image:var(--hl);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+[data-theme="fga"] h1 .h{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em;font-size:1.08em;line-height:0;padding-right:.07em;margin-right:-.07em}
+.note{margin-top:14px;font-size:14px;color:var(--dim)}
+.note b{color:var(--muted);font-weight:500}
+
+/* player */
+.player{position:relative;margin:28px auto 0;width:min(100%,440px);aspect-ratio:9/16;border-radius:20px;overflow:hidden;background:#111;
+  border:1px solid var(--line2);box-shadow:0 40px 90px -40px rgba(var(--accent-rgb),.55),0 30px 60px -30px #000}
+.player.wide{width:100%;aspect-ratio:16/9}
+.player::before{content:"";position:absolute;top:-1px;left:22px;right:22px;height:1px;z-index:3;background:var(--line-top);box-shadow:0 0 12px rgba(var(--accent-rgb),.5)}
+.player img.poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.player::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,11,.1),rgba(10,10,11,.15) 50%,rgba(10,10,11,.55));pointer-events:none}
+.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:4}
+.play{position:absolute;z-index:2;left:50%;top:50%;translate:-50% -50%;width:86px;height:86px;border-radius:50%;display:grid;place-items:center;border:0;cursor:pointer;color:#fff;
+  background:linear-gradient(160deg,rgba(255,255,255,.28),rgba(255,255,255,.08));-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 0 0 1px rgba(255,255,255,.2),0 14px 34px rgba(0,0,0,.45)}
+.play svg{width:30px;height:30px;margin-left:4px;fill:currentColor}
+.play::after{content:"";position:absolute;inset:-12px;border-radius:50%;border:1px solid rgba(255,255,255,.28);animation:ring 2.4s var(--ease) infinite}
+.sound{position:absolute;z-index:2;left:50%;bottom:22px;translate:-50% 0;display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:99px;background:rgba(10,10,11,.6);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid var(--line2);font-size:13px;white-space:nowrap}
+.sound svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* CTA com delay */
+.cta{display:none;margin:30px auto 0;max-width:560px;text-align:center}
+.cta.show{display:block;animation:rise .9s var(--ease) both}
+.cta-card{position:relative;padding:26px 24px 22px;border-radius:20px;background:var(--glass);border:1px solid var(--line2);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 30px 60px -36px rgba(var(--accent-rgb),.6)}
+.cta-card::before{content:"";position:absolute;top:-1px;left:22px;right:22px;height:1px;background:var(--line-top);box-shadow:0 0 12px rgba(var(--accent-rgb),.5)}
+.cta-label{font:500 11.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent-soft)}
+.cta-title{margin-top:12px;font-size:22px;font-weight:500;letter-spacing:-.03em;line-height:1.2}
+.cta-price{margin-top:8px;color:var(--muted);font-size:15px}
+.cta-price b{color:var(--ink);font-weight:600}
+.btn{position:relative;overflow:hidden;isolation:isolate;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:18px;height:62px;border-radius:64px;
+  font-weight:600;font-size:17px;letter-spacing:-.01em;color:#111112;background:linear-gradient(180deg,#fff,#e2e2e4);box-shadow:inset 0 1px 0 #fff,0 14px 34px -10px rgba(var(--accent-rgb),.55);
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.btn::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.75) 50%,transparent 65%);translate:-130% 0;animation:shine 5s 1.2s var(--ease) infinite}
+.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin-top:14px;font-size:12.5px;color:var(--dim)}
+.trust span{display:inline-flex;align-items:center;gap:6px}
+.trust svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* rodapé */
+footer{margin-top:72px;border-top:1px solid var(--line);padding:40px 0 48px;text-align:center}
+.axr{width:64px;height:auto;margin:0 auto;opacity:.92}
+footer small{display:block;max-width:620px;margin:16px auto 0;font-size:11.5px;line-height:1.7;color:var(--dim)}
+footer .copy{margin-top:10px;font:400 11px/1.6 var(--mono);letter-spacing:.06em;color:var(--dim)}
+
+/* entrada suave */
+@media (prefers-reduced-motion:no-preference){
+  .intro > *,.player{animation:rise .9s var(--ease) both}
+  .intro > :nth-child(1){animation-delay:.16s}.intro > :nth-child(2){animation-delay:.24s}.intro > :nth-child(3){animation-delay:.32s}.player{animation-delay:.42s}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@keyframes rise{from{opacity:0;transform:translateY(16px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+@keyframes ring{from{transform:scale(.85);opacity:1}to{transform:scale(1.3);opacity:0}}
+@keyframes shine{0%,70%{translate:-130% 0}88%,100%{translate:130% 0}}
+
+@media (max-width:520px){
+  .wrap{padding:0 16px}
+  .topbar{font-size:13.5px}.topbar .timer,#countdown{font-size:12.5px}
+  .intro{padding-top:28px}
+  .player{border-radius:16px}
+  .btn{height:58px;font-size:16px}
+}
+
+/* ===== fundos neutros como o Nox (branco e cinza), sem brilho colorido ===== */
+body{background:#0b0b0c;background-image:radial-gradient(70% 45% at 50% 0%,rgba(255,255,255,.075),transparent 70%),linear-gradient(180deg,#1d1d1f 0%,#0b0b0c 55%)!important}
+.topbar{background:linear-gradient(180deg,#1c1c1e,#141416)!important;border-bottom:1px solid rgba(255,255,255,.08)!important;color:#d6d6d3!important}
+.topbar .timer{color:#b8b8b5!important}
+.player{box-shadow:0 30px 70px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.04)!important}
+.player::before,.cta-card::before{background:linear-gradient(90deg,transparent,rgba(255,255,255,.35) 30%,rgba(255,255,255,.6) 50%,rgba(255,255,255,.35) 70%,transparent)!important;box-shadow:none!important}
+.cta-card{box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 30px 60px -36px rgba(0,0,0,.9)!important}
+.btn{box-shadow:inset 0 1px 0 #fff,0 14px 34px -14px rgba(0,0,0,.8)!important}
+
+/* ===== ajustes: topo uniforme, título sem cortes, rodapé com a mesma fonte ===== */
+.topbar,.topbar p,.topbar b,.topbar strong,.topbar .timer,#countdown{font-family:var(--sans)!important;font-weight:700!important;font-size:14.5px!important;letter-spacing:0!important;color:#efefed!important;opacity:1!important}
+.topbar .timer{margin-top:2px}
+.topbar .sep{opacity:.35!important}
+.topbar s{color:#efefed!important;text-decoration-color:#ff5f52;text-decoration-thickness:2px;opacity:.8}
+.topbar strong{color:var(--accent-soft)!important}
+#countdown{font-variant-numeric:tabular-nums}
+@media (max-width:520px){.topbar,.topbar p,.topbar b,.topbar strong,.topbar .timer,#countdown{font-size:13px!important}}
+/* título: espaço para acentos e descendentes não serem cortados pelo gradiente */
+h1{line-height:1.12!important}
+h1 .b,h1 .h{padding:.06em 0 .12em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+[data-theme="fga"] h1 .h{line-height:inherit!important;padding:.06em .08em .14em 0}
+/* rodapé: copyright na mesma fonte do aviso */
+footer .copy{font-family:var(--sans)!important;font-size:11.5px!important;letter-spacing:0!important;line-height:1.7!important;color:var(--dim)!important}
+
+/* ===== barra do topo sólida, caixa alta e negrito, na cor da Dollar ===== */
+[data-theme="verde"]{--bar-bg:#0AAF42;--bar-price:#FFE14D}
+[data-theme="nox"],[data-theme="fga"]{--bar-bg:linear-gradient(90deg,#e0541c,#f0902c);--bar-price:#FFF2B3}
+.topbar{background:var(--bar-bg)!important;border-bottom:0!important;padding:11px 16px 10px!important}
+.topbar,.topbar p,.topbar b,.topbar strong,.topbar s,.topbar .timer,#countdown{color:#fff!important;text-transform:uppercase;font-weight:700!important;opacity:1!important}
+.topbar p + p{margin-top:3px}
+.topbar .sep{opacity:1!important;margin:0 2px!important}
+.topbar s{text-decoration-color:#fff!important;text-decoration-thickness:2px}
+.topbar strong{color:var(--bar-price)!important}
+
+/* ===== botão pós-delay: verde, uma ação só ===== */
+.cta{max-width:560px}
+.btn-vagas{display:flex;align-items:center;justify-content:center;width:100%;min-height:66px;padding:16px 24px;border-radius:14px;
+  background:linear-gradient(180deg,#14c457,#0AAF42 55%,#08933a);color:#fff;font:800 clamp(17px,2.4vw,21px)/1.15 var(--sans);letter-spacing:.02em;text-transform:uppercase;text-align:center;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -2px 0 rgba(0,0,0,.18),0 16px 36px -14px rgba(10,175,66,.65);
+  transition:transform .3s var(--ease),filter .3s var(--ease)}
+.btn-vagas:hover{transform:translateY(-2px);filter:brightness(1.06)}
+@media (prefers-reduced-motion:no-preference){.cta.show .btn-vagas{animation:vagas-pulse 2.4s 1s ease-in-out infinite}}
+@keyframes vagas-pulse{0%,100%{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -2px 0 rgba(0,0,0,.18),0 16px 36px -14px rgba(10,175,66,.65),0 0 0 0 rgba(10,175,66,.45)}
+  50%{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -2px 0 rgba(0,0,0,.18),0 16px 36px -14px rgba(10,175,66,.65),0 0 0 10px rgba(10,175,66,0)}}
+
+/* ===================================================================
+   Nova identidade (padrão da /dm): preto, grade sutil, granulado,
+   título em serifa, laranja só nos detalhes
+   =================================================================== */
+:root{--sans:"Geist",system-ui,sans-serif!important;--mono:"Geist Mono",ui-monospace,Menlo,monospace;--ez:cubic-bezier(.16,1,.3,1);--nox:linear-gradient(90deg,#e0541c 0%,#f7b25a 45%,#ffe9c2 100%)}
+html,body{background:#050505!important;background-image:none!important}
+body{font-family:"Geist",system-ui,sans-serif!important}
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background-image:linear-gradient(rgb(255 255 255 / .035) 1px,transparent 1px),linear-gradient(90deg,rgb(255 255 255 / .035) 1px,transparent 1px);background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(110% 80% at 50% 30%,#000 35%,transparent 100%);mask-image:radial-gradient(110% 80% at 50% 30%,#000 35%,transparent 100%)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(60% 40% at 50% 0%,rgba(247,178,90,.08),transparent 70%)}
+.grain{position:fixed;inset:0;z-index:50;pointer-events:none;opacity:.18;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");background-size:180px 180px}
+.topbar,.topbar p,.topbar b,.topbar strong,.topbar s,.topbar .timer,#countdown{font-family:"Geist",system-ui,sans-serif!important}
+.topbar{position:relative;z-index:60}
+
+/* rótulo em pílula */
+.tag{display:inline-flex!important;align-items:center;gap:8px;padding:7px 13px 7px 11px!important;border-radius:999px!important;background:rgb(255 255 255 / .05)!important;
+  border:1px solid rgb(255 255 255 / .14);color:rgb(255 255 255 / .78)!important;font:500 10.5px/1 "Geist Mono",monospace!important;letter-spacing:.14em!important}
+.tag i{width:6px;height:6px;border-radius:50%;background:#f7b25a;box-shadow:0 0 8px rgba(247,178,90,.8);animation:dot 1.6s ease-in-out infinite}
+@keyframes dot{50%{opacity:.35}}
+
+/* título no estilo da /dm */
+h1.vt{max-width:760px!important;margin:22px auto 0!important;font-family:"Instrument Serif",Georgia,serif!important;font-weight:400!important;text-transform:uppercase;color:#f5f3ee;
+  line-height:.86!important;letter-spacing:-.012em!important;-webkit-text-stroke:.016em currentColor;text-wrap:balance}
+h1.vt > span{display:block}
+.vt-big{font-size:clamp(38px,5.6vw,66px)}
+.vt-acc{margin:.04em 0 .08em;font-size:clamp(44px,6.6vw,80px);line-height:.95}
+.vt-acc em{font-style:italic;text-transform:none;-webkit-text-stroke:0;background-image:var(--nox);-webkit-background-clip:text;background-clip:text;color:transparent;padding:.04em .12em .1em .04em;
+  filter:drop-shadow(calc(var(--ca-dx,0) * 5px) calc(var(--ca-dy,0) * 5px) 0 rgba(255,60,100,calc(var(--ca-amt,0) * .5))) drop-shadow(calc(var(--ca-dx,0) * -5px) calc(var(--ca-dy,0) * -5px) 0 rgba(110,180,205,calc(var(--ca-amt,0) * .45)))}
+.vt-small{font-size:clamp(20px,2.6vw,30px);line-height:.98;color:rgb(255 255 255 / .9);max-width:22em;margin:0 auto}
+.ca-text{text-shadow:calc(var(--ca-dx,0) * 5px) calc(var(--ca-dy,0) * 5px) 0 rgba(255,60,100,calc(var(--ca-amt,0) * .5)),calc(var(--ca-dx,0) * -5px) calc(var(--ca-dy,0) * -5px) 0 rgba(110,180,205,calc(var(--ca-amt,0) * .45))}
+.vt-acc em{text-shadow:none}
+
+/* player em vidro com a linha laranja fina */
+.player{border-radius:22px!important;border:1px solid rgb(255 255 255 / .14)!important;box-shadow:0 40px 90px -40px rgba(0,0,0,.95),0 0 0 1px rgb(255 255 255 / .03)!important}
+.player::before{left:16%!important;right:16%!important;background:linear-gradient(90deg,transparent,rgba(224,84,28,.55) 25%,#ffd9a5 50%,rgba(224,84,28,.55) 75%,transparent)!important;box-shadow:0 0 8px rgba(247,178,90,.55)!important}
+.sound{font-family:"Geist",system-ui,sans-serif}
+
+/* botão: pílula verde, texto que rola e seta que troca no hover */
+.btn-vagas{gap:12px;border-radius:999px!important;font:600 clamp(16px,2.2vw,19px)/1.15 "Geist",system-ui,sans-serif!important;letter-spacing:-.01em!important;text-transform:none!important}
+.btn-vagas .roll{position:relative;display:inline-block;flex:none;white-space:nowrap;overflow:hidden;line-height:1.25;padding:0 3px;margin:0 -3px}
+.btn-vagas .roll > span{display:block;transition:transform .45s var(--ez)}
+.btn-vagas .roll > span + span{position:absolute;inset:0 3px;transform:translateY(105%)}
+.btn-vagas:hover .roll > span:first-child{transform:translateY(-105%)}
+.btn-vagas:hover .roll > span + span{transform:translateY(0)}
+.btn-vagas .arr{position:relative;display:inline-block;flex:none;width:18px;height:18px;overflow:hidden}
+.btn-vagas .arr svg{position:absolute;inset:0;width:18px;height:18px;fill:currentColor;transition:transform .45s var(--ez),opacity .45s var(--ez)}
+.btn-vagas .arr svg + svg{transform:translate(-10px,10px);opacity:0}
+.btn-vagas:hover .arr svg:first-child{transform:translate(10px,-10px);opacity:0}
+.btn-vagas:hover .arr svg + svg{transform:none;opacity:1}
+
+/* rodapé */
+footer{border-top:0!important}
+footer small,footer .copy{font-family:"Geist",system-ui,sans-serif!important}
+@media (max-width:520px){.vt-big{font-size:clamp(34px,10vw,44px)}.vt-acc{font-size:clamp(40px,12vw,54px)}.vt-small{font-size:clamp(18px,5.4vw,22px)}}
+@media (prefers-reduced-motion:reduce){.ca-text{text-shadow:none!important}.vt-acc em{filter:none}}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="topbar" role="status">
+  <p><b>Aula Liberada</b> <span class="sep">|</span> De: <s>R$697,00</s> por: <strong>R$0,00</strong></p>
+  <p class="timer">- Acaba hoje - Tempo restante: <span id="countdown">--:--:--</span> -</p>
+</div>
+
+<main class="wrap">
+  <section class="intro">
+    <span class="tag"><i></i>A aula já começou</span>
+    <h1 class="vt ca-text"><span class="vt-big">Veja como vender produtos digitais</span> <span class="vt-acc"><em>em dólar sem aparecer</em></span> <span class="vt-small">com um time de IA que faz todo o trabalho pesado por você</span></h1>
+  </section>
+
+  <div class="player" id="player">
+    <img class="poster" src="assets/luiz/vsl-frame.jpg" alt="Luiz Brito apresentando a aula" width="580" height="1054">
+    <button class="play" type="button" aria-label="Assistir à aula"><svg viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg></button>
+    <span class="sound"><svg viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5Zm4.5 3.5a5 5 0 0 1 0 7m3-10a9 9 0 0 1 0 13"/></svg>Clique para assistir com som</span>
+  </div>
+
+  <section class="cta" id="cta" aria-live="polite">
+    <a href="#" class="btn-vagas" data-checkout><span class="roll"><span>Quero uma das 30 vagas</span><span aria-hidden="true">Quero uma das 30 vagas</span></span><span class="arr" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg><svg viewBox="0 0 256 256"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></span></a>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img class="axr" src="assets/marca/axr-branco.png" alt="AXR Digital" width="692" height="402">
+    <small>Os resultados apresentados são de pessoas reais e não representam garantia de ganhos. O resultado de cada pessoa depende de dedicação, execução e investimento. Este site não faz parte do site do Facebook nem da Meta Platforms, Inc., e não é endossado por eles.</small>
+    <p class="copy">© 2026 AXR Digital. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script>
+/* ===== CONFIG ===== */
+const VSL_EMBED_URL = "";     // link do player da VSL (Vturb, Panda, YouTube)
+const VSL_VERTICAL = true;    // true = vídeo vertical 9:16, false = horizontal 16:9
+const CHECKOUT_URL = "";      // link do checkout
+const DELAY_ATIVO = false;     // false = botão aparece direto. true = botão só aparece no momento definido abaixo
+const BUTTON_DELAY = 600;     // segundo do vídeo em que o botão aparece (600 = 10:00)
+
+(function () {
+  const player = document.getElementById('player');
+  const cta = document.getElementById('cta');
+  if (!VSL_VERTICAL) player.classList.add('wide');
+
+  const loadVideo = () => {
+    if (!VSL_EMBED_URL) return;
+    const f = document.createElement('iframe');
+    f.src = VSL_EMBED_URL; f.title = 'Aula Dollar Machine';
+    f.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture'; f.allowFullscreen = true;
+    player.append(f);
+  };
+  if (VSL_EMBED_URL) loadVideo();
+  player.querySelector('.play').addEventListener('click', loadVideo);
+
+  document.querySelectorAll('[data-checkout]').forEach(a => { if (CHECKOUT_URL) a.href = CHECKOUT_URL; });
+
+  /* botão com delay: aparece após BUTTON_DELAY segundos; quem já viu, vê direto.
+     Para testar sem esperar, abra a página com ?cta=1 no final do link. */
+  /* contagem regressiva até o fim do dia (horário de quem visita) */
+  const cd = document.getElementById('countdown');
+  const pad = n => String(n).padStart(2, '0');
+  const tickCd = () => {
+    const now = new Date(), end = new Date(now); end.setHours(23, 59, 59, 999);
+    const left = Math.max(0, Math.floor((end - now) / 1000));
+    cd.textContent = pad(Math.floor(left / 3600)) + ':' + pad(Math.floor(left % 3600 / 60)) + ':' + pad(left % 60);
+  };
+  tickCd(); setInterval(tickCd, 1000);
+
+  const KEY = 'dm_vsl_cta';
+  const show = () => {
+    if (cta.classList.contains('show')) return;
+    cta.classList.add('show');
+    try { localStorage.setItem(KEY, '1'); } catch (e) {}
+  };
+  let seen = false;
+  try { seen = localStorage.getItem(KEY) === '1'; } catch (e) {}
+  if (!DELAY_ATIVO || seen || new URLSearchParams(location.search).has('cta')) { show(); return; }
+
+  /* Sincronizado com o vídeo (Vturb): o botão aparece quando o VÍDEO chega em BUTTON_DELAY,
+     contando só o tempo assistido. Para isso o player precisa estar embutido com o código
+     do próprio Vturb (tag <vturb-smartplayer> + script), e não como iframe. */
+  const vturb = document.querySelector('vturb-smartplayer');
+  if (vturb) {
+    vturb.addEventListener('player:ready', () => {
+      if (typeof vturb.displayHiddenElements === 'function') vturb.displayHiddenElements(BUTTON_DELAY, ['#cta'], { persist: true });
+      else setTimeout(show, BUTTON_DELAY * 1000);
+    });
+    return;
+  }
+  /* Sem Vturb embutido: conta o tempo desde que a página abriu (não acompanha pausas do vídeo). */
+  setTimeout(show, BUTTON_DELAY * 1000);
+})();
+
+/* título: cores que se separam com o mouse, como na /dm */
+(function () {
+  if (!matchMedia('(hover:hover) and (pointer:fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const t = document.querySelector('.ca-text'); if (!t) return;
+  let lx = null, ly = null, tx = 0, ty = 0, ta = 0, x = 0, y = 0, a = 0, run = false;
+  const c = (v) => Math.max(-1, Math.min(1, v));
+  const tick = () => {
+    x += (tx - x) * .2; y += (ty - y) * .2; a += (ta - a) * .2; tx *= .9; ty *= .9; ta *= .9;
+    t.style.setProperty('--ca-dx', x.toFixed(3)); t.style.setProperty('--ca-dy', y.toFixed(3)); t.style.setProperty('--ca-amt', a.toFixed(3));
+    if (a + ta > .002) requestAnimationFrame(tick); else run = false;
+  };
+  addEventListener('pointermove', (e) => {
+    if (lx !== null) { const vx = e.clientX - lx, vy = e.clientY - ly, sp = Math.hypot(vx, vy); if (sp > .5) { tx = c(vx / 22); ty = c(vy / 22); ta = Math.min(1, Math.max(ta, sp / 32)); } }
+    lx = e.clientX; ly = e.clientY; if (!run) { run = true; requestAnimationFrame(tick); }
+  });
+})();
+</script>
+</body>
+</html>
