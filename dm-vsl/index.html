@@ -231,7 +231,10 @@ h1.vt > span{display:block}
 /* rodapé */
 footer{border-top:0!important}
 footer small,footer .copy{font-family:"Geist",system-ui,sans-serif!important}
-@media (max-width:520px){.vt-big{font-size:clamp(34px,10vw,44px)}.vt-acc{font-size:clamp(40px,12vw,54px)}.vt-small{font-size:clamp(18px,5.4vw,22px)}}
+/* subheadline em fonte normal de texto */
+h1.vt .vt-small{font-family:"Geist",system-ui,sans-serif!important;text-transform:none!important;-webkit-text-stroke:0!important;font-weight:400;
+  font-size:clamp(16px,1.8vw,19px)!important;line-height:1.55!important;letter-spacing:-.005em!important;color:rgb(255 255 255 / .72)!important;max-width:34em!important;margin-top:16px!important;text-wrap:balance}
+@media (max-width:520px){.vt-big{font-size:clamp(34px,10vw,44px)}.vt-acc{font-size:clamp(40px,12vw,54px)}}
 @media (prefers-reduced-motion:reduce){.ca-text{text-shadow:none!important}.vt-acc em{filter:none}}
 </style>
 </head>

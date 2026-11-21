@@ -844,6 +844,24 @@ a.btn.btn-ghost::after{display:none!important}
 .proof-quad .result-print img{object-position:50% 50%!important}
 /* fechamento com a foto lifestyle */
 .final-close{background:linear-gradient(90deg,rgba(5,5,5,.35),rgba(5,5,5,.6) 50%,rgba(5,5,5,.35)),linear-gradient(180deg,rgba(5,5,5,.15),rgba(5,5,5,.75)),url(assets/luiz/tulum-luiz.webp) center 55%/cover!important}
+
+/* ===== ajustes v11 ===== */
+/* menu: fundo escuro desfocado que some aos poucos, como no Sinnu */
+.nav::before{bottom:-44px!important;background:linear-gradient(180deg,rgba(5,5,5,.86) 0%,rgba(5,5,5,.68) 55%,rgba(5,5,5,0) 100%)!important;
+  -webkit-backdrop-filter:blur(16px)!important;backdrop-filter:blur(16px)!important;
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 55%,rgba(0,0,0,.6) 78%,transparent 100%)!important;
+  mask-image:linear-gradient(to bottom,#000 0%,#000 55%,rgba(0,0,0,.6) 78%,transparent 100%)!important}
+/* notificações da Hotmart no hero */
+.ai-toasts{width:360px!important;height:150px!important}
+.ai-toast.hm{gap:12px;padding:11px 14px;border-radius:20px;background:rgba(30,30,32,.74)}
+.ai-toast.hm img{flex:none;width:40px;height:40px;border-radius:10px}
+.ai-toast.hm .hm-t1{display:flex;justify-content:space-between;gap:10px}
+.ai-toast.hm .hm-t1 b{margin:0;font:600 13.5px/1.3 var(--sans);color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ai-toast.hm .hm-t1 i{font-style:normal;font-size:11.5px;color:rgb(255 255 255 / .5);white-space:nowrap}
+.ai-toast.hm .d{margin-top:2px;font-size:12.5px;color:rgb(255 255 255 / .78)}
+@media (max-width:760px){
+  .ai-toasts.inline{display:block!important;position:relative!important;inset:auto!important;width:100%!important;height:96px!important;margin-top:24px}
+}
 /* "Sem precisar" mais leve */
 .hero-objections,.hero-objections *{font-weight:400!important}
 .faq-item[open] summary .pm{background:rgb(255 255 255 / .1)!important;color:#fff!important}
@@ -1233,18 +1251,9 @@ a.btn.btn-ghost::after{display:none!important}
 
 <section id="resultados" class="proof-section">
   <div class="wrap">
-    <div class="proof-top">
     <div class="sec-head">
       <h2><span class="sg">Não precisa acreditar em mim. Olha a tela de </span><span class="hl">quem aplicou</span><span class="sg">.</span></h2>
       <p>Vendas reais em dólar, feitas com a mesma estrutura que você vai receber dentro da Dollar Machine.</p>
-    </div>
-    <div class="hm-toasts" aria-label="Notificações de vendas em dólar na Hotmart">
-      <div class="hm-toast"><img src="assets/marca/hotmart-logo.png" alt="" width="96" height="96"><span class="hm-body"><span class="hm-t1"><b>Venda realizada</b><i>há 5m</i></span><span class="hm-t2">Você recebeu: US$ 41.03 - HP3522331168</span></span></div>
-      <div class="hm-toast"><img src="assets/marca/hotmart-logo.png" alt="" width="96" height="96"><span class="hm-body"><span class="hm-t1"><b>Venda realizada</b><i>há 5m</i></span><span class="hm-t2">Você recebeu: US$ 24.09 - HP3466157829</span></span></div>
-      <div class="hm-toast"><img src="assets/marca/hotmart-logo.png" alt="" width="96" height="96"><span class="hm-body"><span class="hm-t1"><b>Venda realizada com Cartão de Crédito</b><i>há 3h</i></span><span class="hm-t2">Você recebeu: US$ 24.09 - HP2275867325</span></span></div>
-      <div class="hm-toast"><img src="assets/marca/hotmart-logo.png" alt="" width="96" height="96"><span class="hm-body"><span class="hm-t1"><b>Venda realizada com Cartão de Crédito</b><i>12:48</i></span><span class="hm-t2">Você recebeu: US$ 24.80 - HP3467804094</span></span></div>
-      <div class="hm-toast"><img src="assets/marca/hotmart-logo.png" alt="" width="96" height="96"><span class="hm-body"><span class="hm-t1"><b>Venda realizada</b><i>06:32</i></span><span class="hm-t2">Você recebeu: US$ 24.14 - HP0148620781</span></span></div>
-    </div>
     </div>
     <div class="result-prints proof-quad" role="group" aria-label="Prints de vendas">
       <a class="result-print" href="assets/provas/celular/receita-12807.webp" data-proof aria-label="Ampliar print: US$ 12.807,07. Receita em dólar registrada em 30 dias.">
@@ -1879,6 +1888,9 @@ new IntersectionObserver(([e]) => { atOffer = e.isIntersecting; upd(); }, { thre
 (function () {
   const box = document.getElementById('ai-toasts');
   if (!box) return;
+  /* no celular a pilha fica abaixo dos botões, sem cobrir a foto */
+  const placeBox = () => { const mob = matchMedia('(max-width:760px)').matches; const cta = document.querySelector('.hero-cta'); if (mob && cta && box.previousElementSibling !== cta) { cta.after(box); box.classList.add('inline'); } else if (!mob && box.classList.contains('inline')) { document.getElementById('hero').insertBefore(box, document.querySelector('.hero .hero-layout')); box.classList.remove('inline'); } };
+  placeBox(); addEventListener('resize', placeBox);
   const I = {
     search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
     doc: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>',
@@ -1886,16 +1898,19 @@ new IntersectionObserver(([e]) => { atOffer = e.isIntersecting; upd(); }, { thre
     dollar: '<path d="M12 3v18M16.5 7.5c0-1.7-2-3-4.5-3s-4.5 1.3-4.5 3 2 2.6 4.5 3 4.5 1.3 4.5 3-2 3-4.5 3-4.5-1.3-4.5-3"/>'
   };
   const msgs = [
-    { k: 'Agente de pesquisa', t: 'Oferta encontrada', d: '3 produtos vendendo nos EUA', i: 'search' },
-    { k: 'Agente de copy', t: 'Página de vendas pronta', d: 'Escrita em inglês, revisada', i: 'doc' },
-    { k: 'Agente de criativos', t: '12 anúncios gerados', d: 'Prontos para subir no Facebook', i: 'spark' },
-    { k: 'Hotmart', t: 'Venda aprovada', d: 'US$ 47,00 · Estados Unidos', i: 'dollar', sale: true }
+    { t: 'Venda realizada', w: 'há 5m', d: 'US$ 41.03 - HP3522331168' },
+    { t: 'Venda realizada com Cartão de Crédito', w: 'há 1h', d: 'US$ 34.67 - HP2741515601' },
+    { t: 'Venda realizada', w: 'há 6m', d: 'US$ 47.29 - HP1332396563' },
+    { t: 'Venda realizada com Cartão de Crédito', w: 'há 3h', d: 'US$ 24.09 - HP2275867325' },
+    { t: 'Venda realizada', w: 'Ontem, 18:17', d: 'US$ 32.56 - HP0258119332' },
+    { t: 'Venda realizada com Cartão de Crédito', w: '12:48', d: 'US$ 24.80 - HP3467804094' },
+    { t: 'Venda realizada com Cartão...', w: 'Ontem, 11:06', d: 'US$ 59.87 - HP3530116218' }
   ];
   const max = () => (matchMedia('(max-width:760px)').matches ? 2 : 3);
   const make = (m) => {
     const el = document.createElement('div');
-    el.className = 'ai-toast' + (m.sale ? ' sale' : '');
-    el.innerHTML = '<span class="ic"><svg viewBox="0 0 24 24">' + I[m.i] + '</svg></span><span class="tx"><span class="top"><span>' + m.k + '</span><span>agora</span></span><b>' + m.t + '</b><span class="d">' + m.d + '</span></span>';
+    el.className = 'ai-toast hm';
+    el.innerHTML = '<img src="assets/marca/hotmart-logo.png" alt="" width="96" height="96"><span class="tx"><span class="hm-t1"><b>' + m.t + '</b><i>' + m.w + '</i></span><span class="d">Você recebeu: ' + m.d + '</span></span>';
     return el;
   };
   const layout = () => {
@@ -1917,7 +1932,7 @@ new IntersectionObserver(([e]) => { atOffer = e.isIntersecting; upd(); }, { thre
     box.prepend(el);
     requestAnimationFrame(() => requestAnimationFrame(layout));
   };
-  if (reduce) { box.append(make(msgs[3])); layout(); return; }
+  if (reduce) { box.append(make(msgs[0])); layout(); return; }
   setTimeout(() => { push(); setInterval(push, 3200); }, 1400);
 })();
 
