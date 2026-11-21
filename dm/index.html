@@ -878,6 +878,32 @@ a.btn.btn-ghost::after{display:none!important}
   font:700 clamp(120px,14vw,170px)/1 var(--display)!important;color:transparent!important;-webkit-text-stroke:1.5px rgba(247,178,90,.55);
   filter:drop-shadow(0 0 18px rgba(247,178,90,.18));opacity:.85}
 @media (max-width:520px){.offer-top .offer-dollar{font-size:110px!important;right:12px;-webkit-text-stroke-width:1.2px}}
+
+/* ===== ajustes v13 ===== */
+/* menu: desfoque forte numa camada própria que some para baixo */
+.nav::before{display:none!important}
+.nav-blur{position:fixed;left:0;right:0;top:0;height:calc(var(--nav-h,64px) + 40px);z-index:49;pointer-events:none;opacity:0;transition:opacity .35s var(--ez);
+  background:linear-gradient(180deg,rgba(5,5,5,.5),rgba(5,5,5,.22) 60%,rgba(5,5,5,0));
+  -webkit-backdrop-filter:blur(18px) saturate(1.3);backdrop-filter:blur(18px) saturate(1.3);
+  -webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent 100%);mask-image:linear-gradient(to bottom,#000 55%,transparent 100%)}
+.nav-blur.on{opacity:1}
+/* preço em duas linhas */
+.offer-price .installs{display:block!important;margin-top:6px!important;font-family:var(--mono)!important;font-size:14px!important;letter-spacing:.2em!important;text-transform:uppercase;color:rgb(255 255 255 / .62)!important}
+/* dólar vazado integrado ao bloco */
+.offer-top .offer-dollar{display:block!important;position:absolute;right:-26px;bottom:-78px;top:auto;width:clamp(150px,17vw,200px);height:auto;transform:rotate(-14deg);
+  opacity:.42;pointer-events:none;filter:none;
+  -webkit-mask-image:linear-gradient(200deg,#000 35%,rgba(0,0,0,.35) 100%);mask-image:linear-gradient(200deg,#000 35%,rgba(0,0,0,.35) 100%)}
+@media (max-width:520px){.offer-top .offer-dollar{width:130px;right:-22px;bottom:-58px}}
+/* notificações no celular: à direita, sobre a foto, sem cobrir tudo */
+@media (max-width:760px){
+  .ai-toasts{display:block!important;position:absolute!important;left:auto!important;right:8px!important;top:58px!important;bottom:auto!important;width:min(206px,55vw)!important;height:80px!important;margin:0!important}
+  .ai-toast.hm{padding:8px 10px;gap:8px;border-radius:15px}
+  .ai-toast.hm img{width:30px;height:30px;border-radius:8px}
+  .ai-toast.hm .hm-t1 b{font-size:11.5px}.ai-toast.hm .hm-t1 i{font-size:10px}
+  .ai-toast.hm .d{font-size:10.5px}
+}
+/* fechamento: bordas da foto esmaecidas */
+.final-close{background:radial-gradient(72% 80% at 50% 48%,rgba(5,5,5,.42) 0%,rgba(5,5,5,.55) 50%,rgba(5,5,5,.94) 100%),linear-gradient(180deg,rgba(5,5,5,.25),rgba(5,5,5,0) 30%,rgba(5,5,5,0) 70%,rgba(5,5,5,.6)),url(assets/luiz/tulum-luiz.webp) center 74%/cover!important}
 /* "Sem precisar" mais leve */
 .hero-objections,.hero-objections *{font-weight:400!important}
 .faq-item[open] summary .pm{background:rgb(255 255 255 / .1)!important;color:#fff!important}
@@ -888,6 +914,7 @@ a.btn.btn-ghost::after{display:none!important}
 <div class="read-progress" aria-hidden="true"><i id="read-bar"></i></div>
 <div class="topbar">Oportunidade para quem quer <b>ganhar dinheiro de verdade</b> com um ativo digital global sem precisar aparecer.</div>
 
+<div class="nav-blur" aria-hidden="true"></div>
 <nav class="nav">
   <div class="wrap">
     <a href="#" class="logo" aria-label="Dollar Machine">
@@ -919,7 +946,7 @@ a.btn.btn-ghost::after{display:none!important}
   <div class="ai-toasts" id="ai-toasts" aria-hidden="true"></div>
   <div class="wrap hero-layout">
     <div class="hero-copy">
-      <h1 class="hero-title ca-text"><span class="ht-big">Venda produtos digitais</span> <span class="ht-accent"><svg class="ht-arrow" viewBox="0 0 256 256" aria-hidden="true"><path d="M200.49,72.48,93,180h75a12,12,0,0,1,0,24H64a12,12,0,0,1-12-12V88a12,12,0,0,1,24,0v75L183.51,55.51a12,12,0,0,1,17,17Z"/></svg><em>em dólar</em></span> <span class="ht-small">com um time de IA que faz todo o trabalho pesado por você</span></h1>
+      <h1 class="hero-title ca-text"><span class="ht-big">Venda produtos digitais</span> <span class="ht-accent"><svg class="ht-arrow" viewBox="0 0 256 256" aria-hidden="true"><path d="M204,64V168a12,12,0,0,1-24,0V93L72.49,200.49a12,12,0,0,1-17-17L163,76H88a12,12,0,0,1,0-24H192A12,12,0,0,1,204,64Z"/></svg><em>em dólar</em></span> <span class="ht-small">com um time de IA que faz todo o trabalho pesado por você</span></h1>
       <p class="hero-sub ca-text">O caminho para construir uma renda sólida <strong>na internet à prova de qualquer governo</strong>, na moeda mais forte com ajuda da IA para fazer a parte chata.</p>
 
       <div class="hero-objections">
@@ -1511,7 +1538,7 @@ a.btn.btn-ghost::after{display:none!important}
       <div class="card offer-card" id="checkout">
         <div class="offer-top">
           <div><span class="dm-wordmark" aria-hidden="true">DOLLAR<br>MACHINE</span><strong>Treinamento + agentes de IA</strong></div>
-          <span class="offer-dollar" aria-hidden="true">$</span>
+          <svg class="offer-dollar" viewBox="0 0 220 300" aria-hidden="true" focusable="false"><defs><filter id="dl-ring" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="2" result="d"/><feComposite in="d" in2="SourceAlpha" operator="out" result="o"/><feFlood flood-color="#b4b4b8"/><feComposite in2="o" operator="in"/></filter></defs><text x="110" y="248" text-anchor="middle" font-size="300" font-weight="600" font-family="Geist, Inter, sans-serif" filter="url(#dl-ring)">$</text></svg>
         </div>
         <div class="offer-items">
           <h3>O que você recebe ao entrar</h3>
@@ -1525,7 +1552,8 @@ a.btn.btn-ghost::after{display:none!important}
           </ul>
         </div>
         <div class="offer-price">
-          <div class="from">De <s>R$ 8.200</s> por 12x de</div>
+          <div class="from">De <s>R$ 8.200</s></div>
+          <div class="installs">por 12x de</div>
           <div class="price"><small>R$</small>31,40</div>
           <div class="cash">ou R$ 297 à vista no Pix</div>
           <a href="#checkout" data-checkout class="btn btn-primary btn-lg">Quero minha Dollar Machine</a>
@@ -1904,9 +1932,7 @@ new IntersectionObserver(([e]) => { atOffer = e.isIntersecting; upd(); }, { thre
 (function () {
   const box = document.getElementById('ai-toasts');
   if (!box) return;
-  /* no celular a pilha fica abaixo dos botões, sem cobrir a foto */
-  const placeBox = () => { const mob = matchMedia('(max-width:760px)').matches; const cta = document.querySelector('.hero-cta'); if (mob && cta && box.previousElementSibling !== cta) { cta.after(box); box.classList.add('inline'); } else if (!mob && box.classList.contains('inline')) { document.getElementById('hero').insertBefore(box, document.querySelector('.hero .hero-layout')); box.classList.remove('inline'); } };
-  placeBox(); addEventListener('resize', placeBox);
+
   const I = {
     search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
     doc: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>',
@@ -2043,6 +2069,16 @@ document.querySelectorAll('.unlock-row').forEach((b) => {
   const io = new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) { box.classList.add('in'); io.disconnect(); } }); }, { threshold: .2 });
   io.observe(box);
   setTimeout(() => { if (box.getBoundingClientRect().top < innerHeight) box.classList.add('in'); }, 1200);
+})();
+
+/* desfoque do menu: camada fixa que aparece quando o menu gruda no topo */
+(function () {
+  const nav = document.querySelector('.nav'), blur = document.querySelector('.nav-blur');
+  if (!nav || !blur) return;
+  let t = false;
+  const upd = () => { t = false; blur.classList.toggle('on', nav.getBoundingClientRect().top <= 1); };
+  addEventListener('scroll', () => { if (!t) { t = true; requestAnimationFrame(upd); } }, { passive: true });
+  addEventListener('resize', upd); upd();
 })();
 </script>
 </body>
