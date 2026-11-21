@@ -743,12 +743,6 @@ h2 .hl{font-size:1.1em;line-height:.9;padding-right:.12em!important;margin-right
 .hero-scene .ca-r{filter:url(#ca-red)}
 .hero-scene .ca-c{filter:url(#ca-cyan)}
 @media (min-width:761px){
-  .hero-scene{inset:0!important}
-  .hero-scene img{object-position:68% 52%!important}
-  .hero-scene::after{background:
-      linear-gradient(90deg,rgba(5,5,5,.94) 0%,rgba(5,5,5,.78) 34%,rgba(5,5,5,.22) 64%,rgba(5,5,5,.05) 100%),
-      linear-gradient(0deg,#050505 0%,rgba(5,5,5,0) 32%),
-      linear-gradient(180deg,rgba(5,5,5,.55) 0%,rgba(5,5,5,0) 22%)!important}
   .hero .hero-layout{padding-top:calc(var(--nav-h,64px) + 40px)!important;padding-bottom:70px}
   .hero-copy{max-width:820px!important}
 }
@@ -837,6 +831,19 @@ a.btn.btn-ghost::after{display:none!important}
 @media (max-width:420px){.hm-toast:nth-child(2n){margin-left:0}}
 @media (max-width:760px){.hm-toast:nth-child(n+4){display:none}}
 @media (prefers-reduced-motion:reduce){.hm-toast{opacity:1;transform:none}}
+
+/* ===== ajustes v10 ===== */
+/* menu: desfoque que some aos poucos, sem linha de sombra */
+.nav::before{bottom:-36px!important;-webkit-backdrop-filter:blur(10px)!important;backdrop-filter:blur(10px)!important;
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 40%,rgba(0,0,0,.5) 70%,transparent 100%)!important;
+  mask-image:linear-gradient(to bottom,#000 0%,#000 40%,rgba(0,0,0,.5) 70%,transparent 100%)!important;box-shadow:none!important}
+/* card do time de IA não cobre a foto no celular */
+@media (max-width:760px){.ai-toasts{display:none!important}}
+/* prints no formato de celular */
+.proof-quad .result-print{aspect-ratio:900/1950!important}
+.proof-quad .result-print img{object-position:50% 50%!important}
+/* fechamento com a foto lifestyle */
+.final-close{background:linear-gradient(90deg,rgba(5,5,5,.35),rgba(5,5,5,.6) 50%,rgba(5,5,5,.35)),linear-gradient(180deg,rgba(5,5,5,.15),rgba(5,5,5,.75)),url(assets/luiz/tulum-luiz.webp) center 55%/cover!important}
 /* "Sem precisar" mais leve */
 .hero-objections,.hero-objections *{font-weight:400!important}
 .faq-item[open] summary .pm{background:rgb(255 255 255 / .1)!important;color:#fff!important}
@@ -1229,28 +1236,40 @@ a.btn.btn-ghost::after{display:none!important}
     <div class="proof-top">
     <div class="sec-head">
       <h2><span class="sg">Não precisa acreditar em mim. Olha a tela de </span><span class="hl">quem aplicou</span><span class="sg">.</span></h2>
-      <p>Vendas reais, feitas com a mesma estrutura que você vai receber dentro da Dollar Machine.</p>
+      <p>Vendas reais em dólar, feitas com a mesma estrutura que você vai receber dentro da Dollar Machine.</p>
     </div>
-    <div class="hm-toasts" aria-label="Notificações de vendas na Hotmart">
-      <div class="hm-toast"><img src="assets/marca/hotmart-logo.png" alt="" width="96" height="96"><span class="hm-body"><span class="hm-t1"><b>Venda realizada com Cartão de Cré...</b><i>há 5m</i></span><span class="hm-t2">Você recebeu: R$ 176,50 - HP2066481314</span></span></div>
-      <div class="hm-toast"><img src="assets/marca/hotmart-logo.png" alt="" width="96" height="96"><span class="hm-body"><span class="hm-t1"><b>Venda realizada com Cartão de Cré...</b><i>há 1h</i></span><span class="hm-t2">Você recebeu: R$ 176,50 - HP0120021304</span></span></div>
-      <div class="hm-toast"><img src="assets/marca/hotmart-logo.png" alt="" width="96" height="96"><span class="hm-body"><span class="hm-t1"><b>Venda realizada com o Pix Hotmart</b><i>há 1h</i></span><span class="hm-t2">Você recebeu: R$ 176,50 - HP0091534561</span></span></div>
-      <div class="hm-toast"><img src="assets/marca/hotmart-logo.png" alt="" width="96" height="96"><span class="hm-body"><span class="hm-t1"><b>Venda realizada com Cartão de Cré...</b><i>há 1h</i></span><span class="hm-t2">Você recebeu: R$ 176,50 - HP1285795147</span></span></div>
-      <div class="hm-toast"><img src="assets/marca/hotmart-logo.png" alt="" width="96" height="96"><span class="hm-body"><span class="hm-t1"><b>Venda realizada com o Pix Hotmart</b><i>há 1h</i></span><span class="hm-t2">Você recebeu: R$ 176,50 - HP4171411898</span></span></div>
+    <div class="hm-toasts" aria-label="Notificações de vendas em dólar na Hotmart">
+      <div class="hm-toast"><img src="assets/marca/hotmart-logo.png" alt="" width="96" height="96"><span class="hm-body"><span class="hm-t1"><b>Venda realizada</b><i>há 5m</i></span><span class="hm-t2">Você recebeu: US$ 41.03 - HP3522331168</span></span></div>
+      <div class="hm-toast"><img src="assets/marca/hotmart-logo.png" alt="" width="96" height="96"><span class="hm-body"><span class="hm-t1"><b>Venda realizada</b><i>há 5m</i></span><span class="hm-t2">Você recebeu: US$ 24.09 - HP3466157829</span></span></div>
+      <div class="hm-toast"><img src="assets/marca/hotmart-logo.png" alt="" width="96" height="96"><span class="hm-body"><span class="hm-t1"><b>Venda realizada com Cartão de Crédito</b><i>há 3h</i></span><span class="hm-t2">Você recebeu: US$ 24.09 - HP2275867325</span></span></div>
+      <div class="hm-toast"><img src="assets/marca/hotmart-logo.png" alt="" width="96" height="96"><span class="hm-body"><span class="hm-t1"><b>Venda realizada com Cartão de Crédito</b><i>12:48</i></span><span class="hm-t2">Você recebeu: US$ 24.80 - HP3467804094</span></span></div>
+      <div class="hm-toast"><img src="assets/marca/hotmart-logo.png" alt="" width="96" height="96"><span class="hm-body"><span class="hm-t1"><b>Venda realizada</b><i>06:32</i></span><span class="hm-t2">Você recebeu: US$ 24.14 - HP0148620781</span></span></div>
     </div>
     </div>
     <div class="result-prints proof-quad" role="group" aria-label="Prints de vendas">
-      <a class="result-print" href="assets/provas/inteiros/receita-12807.webp" data-proof aria-label="Ampliar print: US$ 12.807,07">
-          <img src="assets/provas/inteiros/receita-12807.webp" alt="US$ 12.807,07. Receita registrada em um recorte de 30 dias." width="924" height="2000" loading="lazy" decoding="async">
+      <a class="result-print" href="assets/provas/celular/receita-12807.webp" data-proof aria-label="Ampliar print: US$ 12.807,07. Receita em dólar registrada em 30 dias.">
+          <img src="assets/provas/celular/receita-12807.webp" alt="US$ 12.807,07. Receita em dólar registrada em 30 dias." width="900" height="1950" loading="lazy" decoding="async">
         </a>
-      <a class="result-print" href="assets/provas/inteiros/notificacoes-hotmart.webp" data-proof aria-label="Ampliar print: Notificações de vendas na Hotmart">
-          <img src="assets/provas/inteiros/notificacoes-hotmart.webp" alt="Notificações de vendas realizadas na Hotmart." width="900" height="1848" loading="lazy" decoding="async">
+      <a class="result-print" href="assets/provas/celular/cakto-usd.webp" data-proof aria-label="Ampliar print: Comissões em dólar na Cakto.">
+          <img src="assets/provas/celular/cakto-usd.webp" alt="Comissões em dólar na Cakto." width="900" height="1950" loading="lazy" decoding="async">
         </a>
-      <a class="result-print" href="assets/provas/inteiros/receita-6635.webp" data-proof aria-label="Ampliar print: US$ 6.635,06">
-          <img src="assets/provas/inteiros/receita-6635.webp" alt="US$ 6.635,06. Receita registrada em outro recorte de 30 dias." width="591" height="1280" loading="lazy" decoding="async">
+      <a class="result-print" href="assets/provas/celular/receita-6635.webp" data-proof aria-label="Ampliar print: US$ 6.635,06. Receita em dólar registrada em outro recorte de 30 dias.">
+          <img src="assets/provas/celular/receita-6635.webp" alt="US$ 6.635,06. Receita em dólar registrada em outro recorte de 30 dias." width="900" height="1950" loading="lazy" decoding="async">
         </a>
-      <a class="result-print" href="assets/provas/inteiros/vendas-hoje-hotmart.webp" data-proof aria-label="Ampliar print: Vendas do dia na Hotmart">
-          <img src="assets/provas/inteiros/vendas-hoje-hotmart.webp" alt="Painel de vendas do dia na Hotmart, com 21 pedidos." width="900" height="1286" loading="lazy" decoding="async">
+      <a class="result-print" href="assets/provas/celular/hotmart-usd.webp" data-proof aria-label="Ampliar print: Notificações de vendas em dólar na Hotmart.">
+          <img src="assets/provas/celular/hotmart-usd.webp" alt="Notificações de vendas em dólar na Hotmart." width="900" height="1950" loading="lazy" decoding="async">
+        </a>
+      <a class="result-print" href="assets/provas/celular/utmify-dashboard.webp" data-proof aria-label="Ampliar print: Painel da Utmify com lucro, ROAS e faturamento.">
+          <img src="assets/provas/celular/utmify-dashboard.webp" alt="Painel da Utmify com lucro, ROAS e faturamento." width="900" height="1950" loading="lazy" decoding="async">
+        </a>
+      <a class="result-print" href="assets/provas/celular/digistore-usd.webp" data-proof aria-label="Ampliar print: Notificações de vendas em dólar na Digistore24.">
+          <img src="assets/provas/celular/digistore-usd.webp" alt="Notificações de vendas em dólar na Digistore24." width="900" height="1950" loading="lazy" decoding="async">
+        </a>
+      <a class="result-print" href="assets/provas/celular/hotmart-brl.webp" data-proof aria-label="Ampliar print: Notificações de vendas na Hotmart.">
+          <img src="assets/provas/celular/hotmart-brl.webp" alt="Notificações de vendas na Hotmart." width="900" height="1950" loading="lazy" decoding="async">
+        </a>
+      <a class="result-print" href="assets/provas/celular/vendas-hoje.webp" data-proof aria-label="Ampliar print: Painel de vendas do dia na Hotmart.">
+          <img src="assets/provas/celular/vendas-hoje.webp" alt="Painel de vendas do dia na Hotmart." width="900" height="1950" loading="lazy" decoding="async">
         </a>
     </div>
   </div>
