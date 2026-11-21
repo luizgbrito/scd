@@ -2,7 +2,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 /* ===== PRODUTOS =====
    Para cada produto, preencha quando tiver:
-   commission    -> porcentagem de comissão (ex.: "70%")
+   commission    -> porcentagem de comissão
    affiliateUrl  -> link de afiliação (Cakto, Hotmart, Kiwify...). Vazio = abre e-mail de solicitação
    materialsUrl  -> link da pasta de materiais. Vazio = botão some                                  */
 const products = [
@@ -11,7 +11,7 @@ const products = [
     category: "Autonomia",
     status: "LATAM · Espanhol",
     image: "images/supervivencia.webp",
-    commission: "Sob consulta",
+    commission: "80%",
     price: "US$ 9,90",
     market: "LATAM",
     description: "Guia digital com 101 projetos práticos de água, energia, alimentos e produção doméstica para preparar a casa contra a falta de luz, comida e água. Acompanha 5 bônus e é vendido em espanhol para toda a América Latina.",
@@ -24,7 +24,7 @@ const products = [
     category: "Saúde",
     status: "LATAM · Espanhol",
     image: "images/activa360.webp",
-    commission: "Sob consulta",
+    commission: "80%",
     price: "US$ 17",
     market: "LATAM",
     description: "Kit digital com 6 módulos de exercícios e sessões prontas para profissionais que atendem idosos. Fisioterapeutas, educadores físicos e cuidadores param de improvisar e passam a seguir um roteiro claro. Garantia de 7 dias.",
@@ -37,7 +37,7 @@ const products = [
     category: "Saúde",
     status: "LATAM · Espanhol",
     image: "images/desparasitacao.webp",
-    commission: "Sob consulta",
+    commission: "80%",
     price: "US$ 9,90",
     market: "LATAM",
     description: "Protocolo de 9 dias para quem convive com dores nas articulações, com o guia de mobilidade em PDF, orientações de alimentação e acompanhamento. Pagamento único, vendido em espanhol para a América Latina.",
@@ -50,7 +50,7 @@ const products = [
     category: "Religioso",
     status: "LATAM · Espanhol",
     image: "images/biblia3d.webp",
-    commission: "Sob consulta",
+    commission: "80%",
     price: "US$ 27",
     market: "LATAM",
     description: "Biblical World 3D reúne mais de 300 páginas visuais, mais de 100 mapas, reconstruções em 3D, um mapa bíblico interativo com cenas em vídeo e 6 volumes extras completos. Acesso imediato e garantia de 15 dias.",
