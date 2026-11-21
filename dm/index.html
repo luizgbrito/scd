@@ -843,7 +843,7 @@ a.btn.btn-ghost::after{display:none!important}
 .proof-quad .result-print{aspect-ratio:900/1950!important}
 .proof-quad .result-print img{object-position:50% 50%!important}
 /* fechamento com a foto lifestyle */
-.final-close{background:linear-gradient(90deg,rgba(5,5,5,.35),rgba(5,5,5,.6) 50%,rgba(5,5,5,.35)),linear-gradient(180deg,rgba(5,5,5,.15),rgba(5,5,5,.75)),url(assets/luiz/tulum-luiz.webp) center 55%/cover!important}
+.final-close{background:radial-gradient(60% 70% at 50% 45%,rgba(5,5,5,.62),rgba(5,5,5,.3) 70%),linear-gradient(180deg,rgba(5,5,5,.1),rgba(5,5,5,.55)),url(assets/luiz/tulum-luiz.webp) center 74%/cover!important}
 
 /* ===== ajustes v11 ===== */
 /* menu: fundo escuro desfocado que some aos poucos, como no Sinnu */
@@ -862,6 +862,22 @@ a.btn.btn-ghost::after{display:none!important}
 @media (max-width:760px){
   .ai-toasts.inline{display:block!important;position:relative!important;inset:auto!important;width:100%!important;height:96px!important;margin-top:24px}
 }
+
+/* ===== ajustes v12 ===== */
+/* menu: só o desfoque, sem a sombra que marcava uma linha */
+.nav{box-shadow:none!important}
+.nav::before{bottom:-48px!important;background:linear-gradient(180deg,rgba(5,5,5,.5) 0%,rgba(5,5,5,.25) 60%,rgba(5,5,5,0) 100%)!important;
+  -webkit-backdrop-filter:blur(14px)!important;backdrop-filter:blur(14px)!important;
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 35%,transparent 100%)!important;mask-image:linear-gradient(to bottom,#000 0%,#000 35%,transparent 100%)!important}
+/* preço */
+.offer-price .from{opacity:1!important;color:rgb(255 255 255 / .62)!important}
+.offer-price .from s{color:#ff6b6b!important;opacity:1!important;text-decoration-color:#ff6b6b;text-decoration-thickness:2px}
+/* dólar vazado no bloco da oferta */
+.offer-top{position:relative;overflow:hidden}
+.offer-top .offer-dollar{display:block!important;gap:0;position:absolute;right:clamp(18px,4%,40px);top:50%;transform:translateY(-52%);pointer-events:none;
+  font:700 clamp(120px,14vw,170px)/1 var(--display)!important;color:transparent!important;-webkit-text-stroke:1.5px rgba(247,178,90,.55);
+  filter:drop-shadow(0 0 18px rgba(247,178,90,.18));opacity:.85}
+@media (max-width:520px){.offer-top .offer-dollar{font-size:110px!important;right:12px;-webkit-text-stroke-width:1.2px}}
 /* "Sem precisar" mais leve */
 .hero-objections,.hero-objections *{font-weight:400!important}
 .faq-item[open] summary .pm{background:rgb(255 255 255 / .1)!important;color:#fff!important}
@@ -1259,26 +1275,26 @@ a.btn.btn-ghost::after{display:none!important}
       <a class="result-print" href="assets/provas/celular/receita-12807.webp" data-proof aria-label="Ampliar print: US$ 12.807,07. Receita em dólar registrada em 30 dias.">
           <img src="assets/provas/celular/receita-12807.webp" alt="US$ 12.807,07. Receita em dólar registrada em 30 dias." width="900" height="1950" loading="lazy" decoding="async">
         </a>
-      <a class="result-print" href="assets/provas/celular/cakto-usd.webp" data-proof aria-label="Ampliar print: Comissões em dólar na Cakto.">
-          <img src="assets/provas/celular/cakto-usd.webp" alt="Comissões em dólar na Cakto." width="900" height="1950" loading="lazy" decoding="async">
-        </a>
-      <a class="result-print" href="assets/provas/celular/receita-6635.webp" data-proof aria-label="Ampliar print: US$ 6.635,06. Receita em dólar registrada em outro recorte de 30 dias.">
-          <img src="assets/provas/celular/receita-6635.webp" alt="US$ 6.635,06. Receita em dólar registrada em outro recorte de 30 dias." width="900" height="1950" loading="lazy" decoding="async">
-        </a>
       <a class="result-print" href="assets/provas/celular/hotmart-usd.webp" data-proof aria-label="Ampliar print: Notificações de vendas em dólar na Hotmart.">
           <img src="assets/provas/celular/hotmart-usd.webp" alt="Notificações de vendas em dólar na Hotmart." width="900" height="1950" loading="lazy" decoding="async">
         </a>
       <a class="result-print" href="assets/provas/celular/utmify-dashboard.webp" data-proof aria-label="Ampliar print: Painel da Utmify com lucro, ROAS e faturamento.">
           <img src="assets/provas/celular/utmify-dashboard.webp" alt="Painel da Utmify com lucro, ROAS e faturamento." width="900" height="1950" loading="lazy" decoding="async">
         </a>
-      <a class="result-print" href="assets/provas/celular/digistore-usd.webp" data-proof aria-label="Ampliar print: Notificações de vendas em dólar na Digistore24.">
-          <img src="assets/provas/celular/digistore-usd.webp" alt="Notificações de vendas em dólar na Digistore24." width="900" height="1950" loading="lazy" decoding="async">
+      <a class="result-print" href="assets/provas/celular/hotmart-usd-3.webp" data-proof aria-label="Ampliar print: Notificações de vendas em dólar na Hotmart.">
+          <img src="assets/provas/celular/hotmart-usd-3.webp" alt="Notificações de vendas em dólar na Hotmart." width="900" height="1950" loading="lazy" decoding="async">
         </a>
-      <a class="result-print" href="assets/provas/celular/hotmart-brl.webp" data-proof aria-label="Ampliar print: Notificações de vendas na Hotmart.">
-          <img src="assets/provas/celular/hotmart-brl.webp" alt="Notificações de vendas na Hotmart." width="900" height="1950" loading="lazy" decoding="async">
+      <a class="result-print" href="assets/provas/celular/receita-6635.webp" data-proof aria-label="Ampliar print: US$ 6.635,06. Receita em dólar registrada em outro recorte de 30 dias.">
+          <img src="assets/provas/celular/receita-6635.webp" alt="US$ 6.635,06. Receita em dólar registrada em outro recorte de 30 dias." width="900" height="1950" loading="lazy" decoding="async">
         </a>
-      <a class="result-print" href="assets/provas/celular/vendas-hoje.webp" data-proof aria-label="Ampliar print: Painel de vendas do dia na Hotmart.">
-          <img src="assets/provas/celular/vendas-hoje.webp" alt="Painel de vendas do dia na Hotmart." width="900" height="1950" loading="lazy" decoding="async">
+      <a class="result-print" href="assets/provas/celular/utmify-notificacoes.webp" data-proof aria-label="Ampliar print: Notificações de vendas aprovadas na Utmify.">
+          <img src="assets/provas/celular/utmify-notificacoes.webp" alt="Notificações de vendas aprovadas na Utmify." width="900" height="1950" loading="lazy" decoding="async">
+        </a>
+      <a class="result-print" href="assets/provas/celular/hotmart-usd-2.webp" data-proof aria-label="Ampliar print: Notificações de vendas em dólar na Hotmart.">
+          <img src="assets/provas/celular/hotmart-usd-2.webp" alt="Notificações de vendas em dólar na Hotmart." width="900" height="1950" loading="lazy" decoding="async">
+        </a>
+      <a class="result-print" href="assets/provas/celular/utmify-usa.webp" data-proof aria-label="Ampliar print: Painel da Utmify da operação nos Estados Unidos.">
+          <img src="assets/provas/celular/utmify-usa.webp" alt="Painel da Utmify da operação nos Estados Unidos." width="900" height="1950" loading="lazy" decoding="async">
         </a>
     </div>
   </div>
@@ -1495,6 +1511,7 @@ a.btn.btn-ghost::after{display:none!important}
       <div class="card offer-card" id="checkout">
         <div class="offer-top">
           <div><span class="dm-wordmark" aria-hidden="true">DOLLAR<br>MACHINE</span><strong>Treinamento + agentes de IA</strong></div>
+          <span class="offer-dollar" aria-hidden="true">$</span>
         </div>
         <div class="offer-items">
           <h3>O que você recebe ao entrar</h3>
@@ -1508,8 +1525,7 @@ a.btn.btn-ghost::after{display:none!important}
           </ul>
         </div>
         <div class="offer-price">
-          <div class="from">De <s>R$ 8.200</s> por</div>
-          <div class="installs">12x DE</div>
+          <div class="from">De <s>R$ 8.200</s> por 12x de</div>
           <div class="price"><small>R$</small>31,40</div>
           <div class="cash">ou R$ 297 à vista no Pix</div>
           <a href="#checkout" data-checkout class="btn btn-primary btn-lg">Quero minha Dollar Machine</a>
