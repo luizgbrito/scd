@@ -200,8 +200,9 @@ body{color:var(--ink);-webkit-font-smoothing:antialiased}
 h1,h2,h3,.headline{font-weight:500!important;letter-spacing:-.035em!important;color:#f5f3ee}
 h1 .hl,h2 .hl,.headline .hl,.big .hl{font-family:"Instrument Serif",Georgia,serif!important;font-style:italic!important;font-weight:400!important;letter-spacing:-.01em!important;
   background:var(--dm-grad)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;padding-right:.08em}
-.hl{color:#f7b25a!important}
+.hl{color:#fff!important;font-weight:600!important}
 p strong{color:#fff}
+.center{color:rgb(255 255 255 / .92)!important}
 
 /* rótulos */
 .badge,.play-cue,.pay-label{font-family:"Geist Mono",ui-monospace,monospace!important;letter-spacing:.12em!important;text-transform:uppercase}
@@ -240,7 +241,7 @@ a:hover > .arr svg + svg{transform:none;opacity:1}
 .pay-section::before,.troca-card::before,.price-card::before,.recap-card::before,.garantia-card::before{content:""!important;position:absolute!important;top:0!important;left:16%!important;right:16%!important;height:1px!important;
   background:linear-gradient(90deg,transparent,rgba(224,84,28,.55) 25%,#ffd9a5 50%,rgba(224,84,28,.55) 75%,transparent)!important;box-shadow:0 0 8px rgba(247,178,90,.55)!important;border:0!important;width:auto!important;transform:none!important}
 .num,.n,.pct{background:rgba(247,178,90,.12)!important;color:#f7b25a!important;border-color:rgba(247,178,90,.3)!important}
-.old,.old2,s,del{color:#ff6b6b!important}
+.old,.old2,s,del{color:rgb(255 255 255 / .5)!important;text-decoration-color:#ff6b6b!important;text-decoration-thickness:2px!important}
 .divider{background:linear-gradient(90deg,transparent,rgb(255 255 255 / .14),transparent)!important}
 .seal{border-color:rgba(247,178,90,.4)!important}
 
@@ -251,6 +252,22 @@ footer .rights,footer .cnpj,footer .cnpj strong{color:rgb(255 255 255 / .42)!imp
 .dm-logo{display:inline-flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
 .dm-logo i{width:34px;height:34px;border-radius:9px;background:#fff;color:#0b0b0c;display:grid;place-items:center;font:700 19px/1 "Geist",sans-serif;font-style:normal}
 .dm-logo b{font:800 13px/.92 "Geist",sans-serif;letter-spacing:-.03em;text-transform:uppercase}
+/* leitura: textos maiores e com mais contraste */
+p:not([class*="t-"]):not(.t1):not(.sub):not(.big):not(.vista):not(.cta-note):not(.price-note):not(.rights):not(.cnpj){font-size:clamp(16px,1.5vw,17.5px)!important;line-height:1.65!important}
+p,.lead,.d,.note,.scarcity,.price-reveal .note,.guarantee-text,.recebe-item .d{color:rgb(255 255 255 / .78)!important}
+.price-note,.cta-note,.cash,.vista,.t-note{color:rgb(255 255 255 / .62)!important}
+.pay-list li{color:rgb(255 255 255 / .78)!important;font-size:15px!important}
+.recebe-item .d,.d{font-size:15px!important;line-height:1.55!important}
+.t{font-size:16.5px!important}
+/* preços e selos discretos, no tom da marca */
+.installment b,.big .n,.price-note b,.t-price{color:#fff!important;background:none!important;-webkit-text-fill-color:#fff!important}
+.seal{background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.09),rgba(16,16,18,.96) 68%)!important;border:1px solid rgba(247,178,90,.42)!important;
+  box-shadow:0 0 0 6px rgba(247,178,90,.05),0 24px 50px -24px #000!important;color:#fff!important}
+.seal::before{background:none!important;border-color:rgb(255 255 255 / .1)!important}
+.seal .pct{color:rgb(255 255 255 / .16)!important}.seal .rz,.seal .days{color:#fff!important}
+.ck{color:#1fc35a!important}
+.num,.n:not(.big .n),.pct{background:rgb(255 255 255 / .06)!important;color:#ffd9a5!important;border-color:rgb(255 255 255 / .14)!important}
+.badge{color:rgb(255 255 255 / .78)!important}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
