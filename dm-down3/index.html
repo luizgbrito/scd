@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hustle Club | Dollar Machine</title>
+<meta name="description" content="Sua última chance de entrar no Hustle Club com condição exclusiva de aluno." />
+<link rel="icon" href="data:,">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '946406425103675');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=946406425103675&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<!-- Utmify: captura UTMs da URL e repassa pro checkout -->
+<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+
+<style>
+  /* ---------- FONTE ---------- */
+  
+  
+  
+  
+  
+
+  :root{
+    --bg-0:#07080a;
+    --bg-1:#0d0f13;
+    --ink:#f5f7fa;
+    --ink-dim:#b7bfca;
+    --ink-soft:#8d96a3;
+    --ink-faint:#5d6573;
+    --gold:#f39021;
+    --gold-soft:#f7a94d;
+    --green:#21b821;
+    --green-bright:#2ee02e;
+    --green-deep:#169016;
+    --red:#ec1c1c;
+    --card:rgba(255,255,255,0.04);
+    --line:rgba(255,255,255,0.09);
+    --line-soft:rgba(255,255,255,0.06);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Mosvita",system-ui,-apple-system,sans-serif;
+    background:var(--bg-0);color:var(--ink);
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    line-height:1.55;overflow-x:hidden;position:relative;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-2;
+    background:
+      radial-gradient(115% 70% at 50% -8%, rgba(243,144,33,0.11) 0%, rgba(243,144,33,0) 55%),
+      radial-gradient(90% 50% at 85% 8%, rgba(243,144,33,0.06) 0%, rgba(243,144,33,0) 60%),
+      linear-gradient(180deg, var(--bg-1) 0%, var(--bg-0) 55%, #050608 100%);
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+
+  .wrap{width:100%;max-width:680px;margin:0 auto;padding:0 22px;}
+
+  /* ---------- BARRA DE URGÊNCIA ---------- */
+  .topbar{
+    background:linear-gradient(180deg,#c41414,#8f0e0e);
+    text-align:center;padding:14px 18px;
+    font-size:clamp(13px,3vw,15px);font-weight:800;line-height:1.4;
+  }
+
+  /* ---------- LOGO ---------- */
+  .logobar{display:flex;justify-content:center;padding:24px 0 4px;}
+  .logobar img{height:22px;width:auto;opacity:.95;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:clamp(20px,4vw,32px) 0 clamp(10px,2vw,16px);text-align:center;}
+  .hero h1{
+    font-size:clamp(24px,5.4vw,36px);font-weight:800;line-height:1.22;letter-spacing:-.01em;
+    max-width:620px;margin:0 auto;text-wrap:balance;
+  }
+  .hero h1 .hl{color:var(--gold);}
+  .hero .scarcity{
+    margin-top:16px;color:var(--ink-dim);font-size:clamp(14px,3.2vw,16.5px);font-weight:600;
+    max-width:560px;margin-left:auto;margin-right:auto;
+  }
+  .hero .scarcity strong{color:#fff;}
+
+  /* ---------- CARTA ---------- */
+  .bloco{padding:clamp(22px,4.5vw,32px) 0;text-align:center;}
+  .bloco p{
+    color:var(--ink-dim);font-size:clamp(15px,3.2vw,17px);line-height:1.65;
+    max-width:600px;margin:0 auto 14px;text-wrap:pretty;
+  }
+  .bloco p:last-child{margin-bottom:0;}
+  .bloco p strong{color:#fff;font-weight:700;}
+  .bloco p .hl{color:var(--gold);font-weight:700;}
+
+  .divider{border:none;border-top:1px solid var(--line-soft);max-width:280px;margin:0 auto;}
+
+  /* ---------- REVELAÇÃO DE PREÇO ---------- */
+  .price-reveal{padding:clamp(10px,2vw,16px) 0 clamp(26px,4.5vw,34px);text-align:center;}
+  .price-reveal .old{
+    font-size:clamp(20px,4.6vw,28px);font-weight:800;color:var(--ink-faint);
+    text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:3px;
+    margin-bottom:6px;
+  }
+  .price-reveal .old2{
+    font-size:clamp(20px,4.6vw,28px);font-weight:800;color:var(--ink-faint);
+    text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:3px;
+    margin-bottom:14px;
+  }
+  .price-reveal .note{color:var(--ink-dim);font-size:clamp(14px,3vw,16px);max-width:560px;margin:0 auto;}
+
+  /* ---------- BOTÃO CTA ---------- */
+  .cta-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:clamp(22px,4vw,30px);}
+  .cta{
+    display:inline-flex;align-items:center;justify-content:center;text-align:center;
+    font-family:"Mosvita",sans-serif;font-weight:800;font-size:clamp(15px,3.2vw,18px);line-height:1.2;
+    color:#fff;background:linear-gradient(180deg,var(--green-bright) 0%,var(--green) 55%,var(--green-deep) 100%);
+    border:none;border-radius:14px;cursor:pointer;
+    min-height:64px;padding:14px clamp(22px,5vw,42px);width:min(100%,520px);
+    box-shadow:0 16px 34px -12px rgba(33,184,33,.6), inset 0 1px 0 rgba(255,255,255,.28);
+    animation:pulse 1.9s cubic-bezier(.4,0,.6,1) infinite;
+    transition:transform .12s ease;
+  }
+  .cta:hover{transform:translateY(-1px) scale(1.012);}
+  .cta:active{transform:scale(.987);}
+  @keyframes pulse{
+    0%{box-shadow:0 16px 34px -12px rgba(33,184,33,.6),0 0 0 0 rgba(46,224,46,.5);}
+    70%{box-shadow:0 16px 34px -12px rgba(33,184,33,.6),0 0 0 20px rgba(46,224,46,0);}
+    100%{box-shadow:0 16px 34px -12px rgba(33,184,33,.6),0 0 0 0 rgba(46,224,46,0);}
+  }
+  @media (prefers-reduced-motion:reduce){.cta{animation:none;}}
+  .cta-note{font-size:12.5px;color:var(--ink-soft);font-weight:600;letter-spacing:.04em;}
+  .decline{
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    font-family:"Mosvita",sans-serif;font-weight:800;font-size:clamp(14px,3vw,16px);line-height:1.3;
+    color:#fff;background:linear-gradient(180deg,#f04a3a,#c41414);
+    border-radius:14px;min-height:56px;padding:12px 26px;width:min(100%,520px);
+    margin:20px auto 0;box-shadow:0 12px 26px -10px rgba(196,20,20,.55);
+    transition:transform .12s ease;
+  }
+  .decline:hover{transform:translateY(-1px) scale(1.01);}
+  .decline:hover{color:var(--ink-soft);}
+
+  /* ---------- VOCÊ RECEBE (CARDS) ---------- */
+  .recebe{padding:clamp(10px,2vw,16px) 0 clamp(30px,5vw,40px);}
+  .recebe h2{text-align:center;font-size:clamp(20px,4.6vw,28px);font-weight:800;margin-bottom:26px;}
+  .recebe-list{display:flex;flex-direction:column;gap:16px;max-width:600px;margin:0 auto;text-align:left;}
+  .recebe-item{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px;}
+  .recebe-item .ic{flex-shrink:0;width:42px;height:42px;border-radius:50%;background:rgba(243,144,33,.14);color:var(--gold);display:grid;place-items:center;}
+  .recebe-item .ic svg{width:20px;height:20px;}
+  .recebe-item .t{font-weight:700;color:#fff;font-size:clamp(14.5px,3vw,16.5px);margin-bottom:4px;}
+  .recebe-item .d{color:var(--ink-dim);font-size:clamp(13.5px,2.9vw,15px);line-height:1.5;}
+
+  /* ---------- GARANTIA ---------- */
+  .garantia-bloco{padding:clamp(24px,5vw,36px) 0;}
+  .garantia-card{
+    max-width:600px;margin:0 auto;border:1px solid rgba(243,144,33,.25);border-radius:18px;
+    background:rgba(243,144,33,.05);padding:clamp(24px,5vw,32px) clamp(20px,4vw,28px);text-align:center;
+  }
+  .garantia-card .badge{width:52px;height:52px;border-radius:50%;background:rgba(243,144,33,.14);
+    display:grid;place-items:center;margin:0 auto 14px;color:var(--gold);}
+  .garantia-card .badge svg{width:26px;height:26px;}
+  .garantia-card h3{font-size:clamp(17px,3.8vw,22px);font-weight:800;margin-bottom:12px;}
+  .garantia-card p{color:var(--ink-dim);font-size:clamp(14px,3vw,15.5px);margin-bottom:0;}
+
+  /* ---------- OFERTA (RECAP) ---------- */
+  .recap{padding:clamp(24px,5vw,36px) 0 clamp(30px,5vw,40px);}
+  .recap-card{
+    background:linear-gradient(180deg,#101319,rgba(13,15,19,.85));
+    border:1px solid var(--line);border-radius:22px;
+    padding:clamp(26px,5vw,40px) clamp(20px,4vw,36px);
+    box-shadow:0 40px 90px -40px rgba(0,0,0,.95), 0 0 0 1px rgba(243,144,33,.07);
+    position:relative;overflow:hidden;
+  }
+  .recap-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.6;}
+  .recap-card h2{
+    text-align:center;font-size:clamp(19px,4.2vw,26px);font-weight:800;line-height:1.25;
+    margin-bottom:clamp(20px,4vw,26px);text-wrap:balance;
+  }
+  .recap-card h2 .hl{color:var(--gold);}
+  .recap-list{list-style:none;display:flex;flex-direction:column;}
+  .recap-list li{
+    display:flex;align-items:flex-start;gap:12px;
+    padding:13px 0;border-top:1px solid var(--line-soft);
+    color:var(--ink-dim);font-size:clamp(13.5px,3vw,15.5px);line-height:1.4;text-align:left;
+  }
+  .recap-list li:last-child{border-bottom:1px solid var(--line-soft);}
+  .recap-list .ck{color:var(--green-bright);flex-shrink:0;width:18px;height:18px;display:grid;place-items:center;margin-top:2px;}
+  .recap-list .ck svg{width:15px;height:15px;}
+  .recap-list .item{flex:1;}
+  .recap-list .item b{color:#fff;font-weight:700;}
+  .recap-total{
+    text-align:center;margin-top:clamp(22px,4vw,30px);
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .recap-total .t1{font-size:clamp(16px,3.6vw,20px);color:var(--ink-soft);font-weight:600;}
+  .recap-total .t1 s{color:var(--red);text-decoration-thickness:2.5px;}
+  .recap-total .sub{font-size:clamp(14px,3.2vw,17px);color:var(--ink-dim);font-weight:600;margin-top:8px;}
+  .recap-total .big{font-size:clamp(34px,8.5vw,52px);color:#fff;font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-top:2px;}
+  .recap-total .big .n{color:var(--green-bright);}
+  .recap-total .vista{font-size:clamp(15px,3.4vw,18px);color:#fff;font-weight:600;margin-top:2px;}
+  .recap-card .cta-wrap{margin-top:clamp(22px,4vw,28px);}
+
+  /* ---------- TROCA DE PAGAMENTO ---------- */
+  .troca{padding:clamp(20px,4vw,30px) 0;}
+  .troca-card{max-width:600px;margin:0 auto;border:1px solid var(--line);border-radius:18px;background:var(--card);padding:clamp(26px,5vw,36px) clamp(20px,4vw,28px);text-align:center;}
+  .troca-card .badge{width:44px;height:44px;border-radius:50%;background:var(--card);border:1px solid var(--line);
+    display:grid;place-items:center;margin:0 auto 16px;color:var(--ink-soft);}
+  .troca-card .badge svg{width:20px;height:20px;}
+  .troca-card h3{font-size:clamp(17px,3.8vw,21px);font-weight:800;margin-bottom:20px;}
+  .troca-card ol{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:22px;text-align:left;counter-reset:troca;}
+  .troca-card li{display:flex;gap:12px;align-items:flex-start;color:var(--ink-dim);font-size:clamp(13.5px,2.9vw,15px);line-height:1.4;}
+  .troca-card li .n{
+    counter-increment:troca;flex-shrink:0;width:26px;height:26px;border-radius:50%;
+    background:rgba(243,144,33,.14);color:var(--gold);font-weight:800;font-size:13px;
+    display:grid;place-items:center;margin-top:1px;
+  }
+  .troca-card li .n::before{content:counter(troca);}
+  .troca-btn{
+    display:inline-flex;align-items:center;justify-content:center;text-align:center;
+    font-family:"Mosvita",sans-serif;font-weight:800;font-size:clamp(13px,2.9vw,15px);letter-spacing:.03em;
+    color:#1a1206;background:linear-gradient(180deg,var(--gold-soft),var(--gold));
+    border-radius:12px;min-height:54px;padding:12px 28px;width:100%;
+    box-shadow:0 12px 26px -10px rgba(243,144,33,.5);
+    transition:transform .12s ease;
+  }
+  .troca-btn:hover{transform:translateY(-1px) scale(1.01);}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.visible{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+
+  /* ---------- RODAPÉ ---------- */
+  footer{
+    border-top:1px solid var(--line-soft);
+    padding:32px 22px 40px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;
+  }
+  footer .logo{height:30px;width:auto;opacity:.92;}
+  footer .rights{font-size:13px;color:var(--ink-dim);letter-spacing:.04em;font-weight:600;}
+  footer .cnpj{font-size:12px;color:var(--ink-faint);letter-spacing:.03em;line-height:1.6;}
+  footer .cnpj strong{font-weight:700;color:var(--ink-soft);}
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ===================================================================
+   Identidade visual da Dollar Machine (mesma da /dm)
+   =================================================================== */
+:root{--bg-0:#050505;--bg-1:#0b0b0c;--ink:#f3f3f1;--ink-dim:rgba(255,255,255,.7);--ink-soft:rgba(255,255,255,.58);--ink-faint:rgba(255,255,255,.4);
+  --gold:#f7b25a;--gold-soft:#ffd9a5;--line:rgba(255,255,255,.1);--line-soft:rgba(255,255,255,.07);--card:rgba(255,255,255,.035);
+  --dm-grad:linear-gradient(90deg,#e0541c 0%,#f7b25a 45%,#ffe9c2 100%);--ez:cubic-bezier(.16,1,.3,1);
+  --green:#f7b25a;--green-bright:#ffd9a5;--green-deep:#e0541c;--red:#ff6b6b}
+html,body{background:#050505!important;background-image:none!important}
+body,body *{font-family:"Geist",system-ui,-apple-system,sans-serif!important}
+body{color:var(--ink);-webkit-font-smoothing:antialiased}
+.dm-grid{position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background-image:linear-gradient(rgb(255 255 255 / .034) 1px,transparent 1px),linear-gradient(90deg,rgb(255 255 255 / .034) 1px,transparent 1px);background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(110% 80% at 50% 25%,#000 35%,transparent 100%);mask-image:radial-gradient(110% 80% at 50% 25%,#000 35%,transparent 100%)}
+.dm-glow{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(55% 38% at 50% -4%,rgba(247,178,90,.09),transparent 70%)}
+.dm-grain{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.15;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");background-size:180px 180px}
+
+/* barra do topo na cor da página principal */
+.offer-bar,.top-bar,.topbar{background:linear-gradient(90deg,#0f1a12,#1b2a1d,#0f1a12)!important;color:#d9e6c8!important;border:0!important;box-shadow:none!important}
+.offer-bar *,.top-bar *,.topbar *{color:inherit!important}
+.offer-bar strong,.top-bar strong,.topbar strong,.offer-bar b,.top-bar b,.topbar b{color:#fff!important}
+
+/* títulos */
+h1,h2,h3,.headline{font-weight:500!important;letter-spacing:-.035em!important;color:#f5f3ee}
+h1 .hl,h2 .hl,.headline .hl,.big .hl{font-family:"Instrument Serif",Georgia,serif!important;font-style:italic!important;font-weight:400!important;letter-spacing:-.01em!important;
+  background:var(--dm-grad)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;padding-right:.08em}
+.hl{color:#f7b25a!important}
+p strong{color:#fff}
+
+/* rótulos */
+.badge,.play-cue,.pay-label{font-family:"Geist Mono",ui-monospace,monospace!important;letter-spacing:.12em!important;text-transform:uppercase}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 13px!important;border-radius:999px!important;background:rgb(255 255 255 / .05)!important;border:1px solid rgb(255 255 255 / .14)!important;color:rgb(255 255 255 / .78)!important;font-size:10.5px!important}
+.play-cue{color:rgb(255 255 255 / .7)!important;font-size:12px!important}
+.play-cue .arrow{color:#f7b25a!important}
+
+/* botão principal: pílula branca com o hover do Sinnu */
+a.cta{display:inline-flex!important;align-items:center;justify-content:center;gap:12px;background:#fff!important;background-image:none!important;color:#0b0b0c!important;border:0!important;
+  border-radius:999px!important;font-weight:600!important;letter-spacing:-.01em!important;text-transform:none!important;text-shadow:none!important;
+  box-shadow:0 18px 40px -16px rgba(247,178,90,.45),0 0 0 1px rgb(255 255 255 / .2)!important;transition:filter .3s var(--ez),transform .3s var(--ez)}
+a.cta:hover{filter:brightness(.93)}
+a.cta::before,a.cta::after{display:none!important}
+/* botões secundários: pílula só com contorno */
+.pay-btn,.troca-btn{display:inline-flex!important;align-items:center;justify-content:center;gap:10px;background:transparent!important;background-image:none!important;color:#fff!important;
+  border:1px solid rgb(255 255 255 / .34)!important;border-radius:999px!important;box-shadow:none!important;text-transform:none!important;font-weight:500!important}
+.pay-btn:hover,.troca-btn:hover{background:rgb(255 255 255 / .07)!important;border-color:rgb(255 255 255 / .7)!important}
+.decline a,a.decline{background:transparent!important;background-image:none!important;border:0!important;box-shadow:none!important;animation:none!important;color:rgb(255 255 255 / .5)!important;text-decoration:underline!important;text-decoration-color:rgb(255 255 255 / .25)!important;text-underline-offset:4px;font-weight:400!important;text-transform:none!important}
+.decline a:hover,a.decline:hover{color:#fff!important}
+.roll{position:relative;display:inline-block;flex:none;overflow:hidden;line-height:1.25;padding:0 3px;margin:0 -3px;white-space:nowrap}
+.roll > span{display:block;transition:transform .45s var(--ez)}
+.roll > span + span{position:absolute;inset:0 3px;transform:translateY(105%)}
+a:hover > .roll > span:first-child{transform:translateY(-105%)}
+a:hover > .roll > span + span{transform:none}
+.arr{position:relative;display:inline-block;flex:none;width:17px;height:17px;overflow:hidden}
+.arr svg{position:absolute;inset:0;width:17px;height:17px;fill:currentColor;transition:transform .45s var(--ez),opacity .45s var(--ez)}
+.arr svg + svg{transform:translate(-10px,10px);opacity:0}
+a:hover > .arr svg:first-child{transform:translate(10px,-10px);opacity:0}
+a:hover > .arr svg + svg{transform:none;opacity:1}
+@media (max-width:520px){.roll{white-space:normal}}
+
+/* blocos em vidro escuro com a linha laranja fina no topo */
+.pay-section,.troca-card,.price-card,.recap-card,.garantia-card,.recebe-item,.guarantee,.final,.price-tag{position:relative;
+  background:linear-gradient(180deg,rgba(22,22,24,.86),rgba(9,9,10,.94))!important;border:1px solid rgb(255 255 255 / .13)!important;border-radius:18px!important;
+  box-shadow:0 30px 70px -36px rgba(0,0,0,.9),inset 0 1px 0 rgb(255 255 255 / .06)!important}
+.pay-section::before,.troca-card::before,.price-card::before,.recap-card::before,.garantia-card::before{content:""!important;position:absolute!important;top:0!important;left:16%!important;right:16%!important;height:1px!important;
+  background:linear-gradient(90deg,transparent,rgba(224,84,28,.55) 25%,#ffd9a5 50%,rgba(224,84,28,.55) 75%,transparent)!important;box-shadow:0 0 8px rgba(247,178,90,.55)!important;border:0!important;width:auto!important;transform:none!important}
+.num,.n,.pct{background:rgba(247,178,90,.12)!important;color:#f7b25a!important;border-color:rgba(247,178,90,.3)!important}
+.old,.old2,s,del{color:#ff6b6b!important}
+.divider{background:linear-gradient(90deg,transparent,rgb(255 255 255 / .14),transparent)!important}
+.seal{border-color:rgba(247,178,90,.4)!important}
+
+/* rodapé */
+footer{border-top:0!important;background:transparent!important}
+footer .logo{width:60px!important;height:auto!important;max-width:60px!important;opacity:.92}
+footer .rights,footer .cnpj,footer .cnpj strong{color:rgb(255 255 255 / .42)!important;font-weight:400!important}
+.dm-logo{display:inline-flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
+.dm-logo i{width:34px;height:34px;border-radius:9px;background:#fff;color:#0b0b0c;display:grid;place-items:center;font:700 19px/1 "Geist",sans-serif;font-style:normal}
+.dm-logo b{font:800 13px/.92 "Geist",sans-serif;letter-spacing:-.03em;text-transform:uppercase}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="dm-grid" aria-hidden="true"></div><div class="dm-glow" aria-hidden="true"></div><div class="dm-grain" aria-hidden="true"></div>
+
+<div class="topbar">Essa é a última página. Depois daqui você vai direto pra área de membros.</div>
+<div class="logobar"><span class="dm-logo"><i>$</i><b>Dollar<br>Machine</b></span></div>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap">
+      <h1>Sem enrolação: nessa página você ganhou <span class="hl">R$500 de desconto</span> pra entrar no Hustle Club</h1>
+      <p class="scarcity">Você <strong>não vai ver essa condição de novo</strong>, nem pedindo no direct, nem no suporte. Só aqui, só agora.</p>
+    </div>
+  </section>
+
+  <!-- ============ CARTA PESSOAL ============ -->
+  <section class="bloco reveal">
+    <div class="wrap">
+      <p>Antes de mais nada: obrigado por confiar em mim e entrar pro Dollar Machine. Meu recado é simples: o que separa quem muda de vida de quem só reclama é o segundo de coragem que você já teve.</p>
+      <p>Agora você já tem o sistema, o passo a passo completo pra espionar o mercado, modelar ofertas e rodar sua máquina de vendas. Mas preciso ser sincero sobre uma coisa.</p>
+      <p>O principal motivo pelo qual gente com o conhecimento certo e o melhor sistema nas mãos ainda assim não sai do lugar <strong>não é falta de vontade, nem de conteúdo, nem de inteligência.</strong> É solidão.</p>
+      <p>É travar numa dúvida boba de madrugada e não ter ninguém pra destravar. Alunos com acompanhamento chegam ao resultado, em média, <span class="hl">4x mais rápido</span> do que quem vai sozinho.</p>
+      <p>Empreender sozinho é a forma mais lenta de chegar no resultado. Por isso eu criei a <strong>Comunidade Hustle Club</strong>: o único lugar onde você tem acesso direto a mim, pessoalmente, pra te ajudar a dar certo.</p>
+    </div>
+  </section>
+
+  <!-- ============ REVELAÇÃO DE PREÇO ============ -->
+  <section class="price-reveal reveal">
+    <div class="wrap">
+      <div class="old">Você não vai pagar R$2.000,00</div>
+      <div class="old2">Nem R$997,00</div>
+      <p class="note">Você vai ter o mesmo acesso ao Hustle Club que qualquer outro aluno, por uma condição que eu reservo só pra quem já é aluno do Dollar Machine, e só existe aqui, nessa página, agora.</p>
+      <div class="cta-wrap">
+        <a class="cta" href="#oferta" data-cta="hero">Quero entrar no Hustle Club</a>
+        <span class="cta-note">Garantia incondicional de 7 dias</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============ VOCÊ RECEBE ============ -->
+  <section class="recebe reveal">
+    <div class="wrap">
+      <h2>Você vai receber:</h2>
+      <div class="recebe-list">
+        <div class="recebe-item">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
+          <div><div class="t">Mentoria em grupo comigo, ao vivo, por 6 meses</div><div class="d">Duas vezes por mês, eu abro a operação dos alunos em grupo: corrijo criativo, ajusto oferta, olho os números. Fica tudo gravado se você não puder assistir ao vivo.</div></div>
+        </div>
+        <div class="recebe-item">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span>
+          <div><div class="t">Comunidade Hustle Club vitalícia</div><div class="d">Acesso pra sempre, enquanto a comunidade existir. Tem sala de trabalho conjunto ao vivo, onde membros ligam câmera e trabalham juntos, trocando ideia em tempo real.</div></div>
+        </div>
+        <div class="recebe-item">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"></path></svg></span>
+          <div><div class="t">Bônus: Estratégia Oculta de Tráfego Direto</div><div class="d">A alavanca que eu uso na minha própria operação pra escalar sem o custo explodir. Vendido separado, valeria no mínimo R$1.000.</div></div>
+        </div>
+        <div class="recebe-item">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></span>
+          <div><div class="t">Bônus: Acesso antecipado a ofertas exclusivas</div><div class="d">Antes de qualquer afiliado saber que a oferta existe, você já tá rodando, com a maior comissão que eu consigo liberar.</div></div>
+        </div>
+        <div class="recebe-item">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7z"></path></svg></span>
+          <div><div class="t">Bônus: Programa de Aceleração</div><div class="d">Pra quando você passar dos R$50.000/mês: como contratar, delegar e automatizar sem virar escravo do próprio negócio. Mais de R$5.000 em desconto de ferramentas inclusos.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GARANTIA ============ -->
+  <section class="garantia-bloco reveal">
+    <div class="wrap">
+      <div class="garantia-card">
+        <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg></div>
+        <h3>Garantia incondicional de 7 dias</h3>
+        <p>Se nos primeiros 7 dias você sentir que não é pra você, é só pedir reembolso. Sem pergunta, sem burocracia, sem enrolação.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OFERTA ============ -->
+  <section class="recap" id="oferta">
+    <div class="wrap">
+      <div class="recap-card reveal">
+        <h2>É agora, ou <span class="hl">você paga o preço cheio</span> depois</h2>
+        <ul class="recap-list">
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="item"><b>Mentoria em grupo comigo, ao vivo</b>, por 6 meses</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="item"><b>Comunidade Hustle Club vitalícia</b>, com sala de trabalho conjunto</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="item">Bônus: Estratégia Oculta de Tráfego Direto</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="item">Bônus: acesso antecipado a ofertas exclusivas</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="item">Bônus: Programa de Aceleração (+R$5.000 em ferramentas)</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="item">Garantia incondicional de 7 dias</span></li>
+        </ul>
+        <div class="recap-total">
+          <div class="t1">Valor de uma mentoria como essa: <s>R$20.000</s></div>
+          <div class="sub">Mas nessa página, você paga apenas:</div>
+          <div class="big">12x de <span class="n">R$51,41</span></div>
+          <div class="vista">ou R$497,00 à vista</div>
+        </div>
+        <div class="cta-wrap">
+          <a class="cta" href="https://pay.hub.la/Ir0LWRObs999DWAl6alA/upsell" data-cta="oferta">Quero entrar no Hustle Club</a>
+          <a class="decline" href="/scd-obg/" data-cta="decline">Agora não, prefiro continuar sem o Hustle Club</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TROCA DE PAGAMENTO ============ -->
+  <section class="troca reveal">
+    <div class="wrap">
+      <div class="troca-card">
+        <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg></div>
+        <h3>Precisa trocar o meio de pagamento?</h3>
+        <ol>
+          <li><span class="n"></span><span>Se você pagou no Pix e quer passar pro cartão</span></li>
+          <li><span class="n"></span><span>Se quer pagar com 2 cartões</span></li>
+          <li><span class="n"></span><span>Se quer pagar com Pix + cartão</span></li>
+          <li><span class="n"></span><span>Se quer trocar pra qualquer outro meio de pagamento</span></li>
+        </ol>
+        <a class="troca-btn" href="https://pay.hub.la/Ir0LWRObs999DWAl6alA">Desejo trocar o método de pagamento</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ RODAPÉ ============ -->
+<footer>
+  <img class="logo" src="assets/axr-branco.png" alt="AXR Digital">
+  <div class="rights">Todos os direitos reservados</div>
+  <div class="cnpj"><strong>CNPJ 48.978.195/0001-75 | AXR NEGÓCIOS DIGITAIS LTDA</strong></div>
+</footer>
+
+<!-- CTA click tracking -->
+<script>
+  document.querySelectorAll('a[data-cta="hero"],a[data-cta="oferta"]').forEach(function(el){
+    el.addEventListener('click', function(){
+      if (window.fbq) { fbq('track', 'InitiateCheckout'); }
+    });
+  });
+</script>
+
+<!-- Animação sutil ao rolar -->
+<script>
+(function(){
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll('.reveal, .recebe-item');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    targets.forEach(function(el){ el.classList.add('visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  targets.forEach(function(el, i){
+    el.classList.add('reveal');
+    el.style.transitionDelay = (i % 3) * 60 + 'ms';
+    io.observe(el);
+  });
+})();
+</script>
+
+
+<script>
+/* botões: texto que rola e seta que troca no hover */
+document.querySelectorAll('a.cta, a.pay-btn, a.troca-btn').forEach(function (b) {
+  if (b.querySelector('.roll')) return;
+  var t = b.textContent.trim(); if (!t) return;
+  b.textContent = '';
+  var r = document.createElement('span'); r.className = 'roll';
+  var a = document.createElement('span'); a.textContent = t; var c = document.createElement('span'); c.textContent = t; c.setAttribute('aria-hidden', 'true');
+  r.append(a, c);
+  var w = document.createElement('span'); w.className = 'arr'; w.setAttribute('aria-hidden', 'true'); w.innerHTML = '<svg viewBox="0 0 256 256"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg><svg viewBox="0 0 256 256"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg>';
+  b.append(r); if (b.classList.contains('cta')) b.append(w);
+});
+</script>
+</body>
+</html>
