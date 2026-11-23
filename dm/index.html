@@ -904,6 +904,23 @@ a.btn.btn-ghost::after{display:none!important}
 }
 /* fechamento: bordas da foto esmaecidas */
 .final-close{background:radial-gradient(72% 80% at 50% 48%,rgba(5,5,5,.42) 0%,rgba(5,5,5,.55) 50%,rgba(5,5,5,.94) 100%),linear-gradient(180deg,rgba(5,5,5,.25),rgba(5,5,5,0) 30%,rgba(5,5,5,0) 70%,rgba(5,5,5,.6)),url(assets/luiz/tulum-luiz.webp) center 74%/cover!important}
+
+/* ===== ajustes v15 ===== */
+/* barra de progresso sempre fixa no topo */
+.read-progress{position:fixed!important;top:0!important;left:0!important;right:0!important;width:100%;z-index:2147483000!important;transform:translateZ(0);-webkit-transform:translateZ(0)}
+.read-progress i{width:100%!important;transform:scaleX(0);transform-origin:0 50%;will-change:transform}
+/* o brilho do ciclo não pode alargar a página no celular */
+.cycle-section{overflow-x:clip}
+/* hero: mais respiro entre as linhas e gradiente em "time de IA" */
+.hero h1.hero-title .ht-small{line-height:1.08!important}
+.hero .hero-sub{line-height:1.9!important}
+.hero h1.hero-title .ht-hl{background-image:linear-gradient(90deg,#e0541c 0%,#f7b25a 45%,#ffe9c2 100%);-webkit-background-clip:text;background-clip:text;color:transparent!important;-webkit-text-fill-color:transparent;
+  text-shadow:none!important;padding:.08em .05em .1em 0;margin:-.08em -.05em -.1em 0;-webkit-box-decoration-break:clone;box-decoration-break:clone;
+  filter:drop-shadow(calc(var(--ca-dx,0) * 6px) calc(var(--ca-dy,0) * 6px) 0 rgba(255,60,100,calc(var(--ca-amt,0) * .5))) drop-shadow(calc(var(--ca-dx,0) * -6px) calc(var(--ca-dy,0) * -6px) 0 rgba(110,180,205,calc(var(--ca-amt,0) * .45)))}
+@media (max-width:760px){
+  .read-progress{height:3px!important}
+  .nav-blur{-webkit-backdrop-filter:blur(9px) saturate(1.15)!important;backdrop-filter:blur(9px) saturate(1.15)!important}
+}
 /* "Sem precisar" mais leve */
 .hero-objections,.hero-objections *{font-weight:400!important}
 .faq-item[open] summary .pm{background:rgb(255 255 255 / .1)!important;color:#fff!important}
@@ -946,7 +963,7 @@ a.btn.btn-ghost::after{display:none!important}
   <div class="ai-toasts" id="ai-toasts" aria-hidden="true"></div>
   <div class="wrap hero-layout">
     <div class="hero-copy">
-      <h1 class="hero-title ca-text"><span class="ht-big">Venda produtos digitais</span> <span class="ht-accent"><svg class="ht-arrow" viewBox="0 0 256 256" aria-hidden="true"><path d="M204,64V168a12,12,0,0,1-24,0V93L72.49,200.49a12,12,0,0,1-17-17L163,76H88a12,12,0,0,1,0-24H192A12,12,0,0,1,204,64Z"/></svg><em>em dólar</em></span> <span class="ht-small">com um time de IA que faz todo o trabalho pesado por você</span></h1>
+      <h1 class="hero-title ca-text"><span class="ht-big">Venda produtos digitais</span> <span class="ht-accent"><svg class="ht-arrow" viewBox="0 0 256 256" aria-hidden="true"><path d="M204,64V168a12,12,0,0,1-24,0V93L72.49,200.49a12,12,0,0,1-17-17L163,76H88a12,12,0,0,1,0-24H192A12,12,0,0,1,204,64Z"/></svg><em>em dólar</em></span> <span class="ht-small">com um <span class="ht-hl">time de IA</span> que faz todo o trabalho pesado por você</span></h1>
       <p class="hero-sub ca-text">O caminho para construir uma renda sólida <strong>na internet à prova de qualquer governo</strong>, na moeda mais forte com ajuda da IA para fazer a parte chata.</p>
 
       <div class="hero-objections">
@@ -1923,8 +1940,10 @@ new IntersectionObserver(([e]) => { atOffer = e.isIntersecting; upd(); }, { thre
   const bar = document.getElementById('read-bar');
   if (!bar) return;
   let t = false;
-  const upd = () => { t = false; const h = document.documentElement.scrollHeight - innerHeight; bar.style.width = (h > 0 ? scrollY / h * 100 : 0) + '%'; };
-  addEventListener('scroll', () => { if (!t) { t = true; requestAnimationFrame(upd); } }, { passive: true });
+  const upd = () => { t = false; const h = document.documentElement.scrollHeight - window.innerHeight; const p = h > 0 ? Math.min(1, Math.max(0, window.scrollY / h)) : 0; bar.style.transform = 'scaleX(' + p.toFixed(4) + ')'; };
+  const ask = () => { if (!t) { t = true; requestAnimationFrame(upd); } };
+  addEventListener('scroll', ask, { passive: true });
+  addEventListener('resize', ask); addEventListener('load', ask);
   upd();
 })();
 
@@ -2088,7 +2107,7 @@ document.querySelectorAll('.unlock-row').forEach((b) => {
   let last = scrollY, lt = performance.now(), tgt = 0, cur = 0, run = false;
   const tick = () => {
     cur += (tgt - cur) * 0.22; tgt *= 0.86;
-    const b = (cur * 4.2).toFixed(2), o = (cur * 1.8).toFixed(2);
+    const k = matchMedia('(max-width:760px)').matches ? 0.5 : 1, b = (cur * 4.2 * k).toFixed(2), o = (cur * 1.8 * k).toFixed(2);
     w.style.filter = cur < 0.003 ? '' : 'blur(' + b + 'px) drop-shadow(rgba(255,40,90,.55) ' + o + 'px 0 0) drop-shadow(rgba(30,210,255,.55) -' + o + 'px 0 0)';
     if (cur > 0.003 || tgt > 0.003) requestAnimationFrame(tick); else { run = false; w.style.filter = ''; }
   };
