@@ -157,6 +157,10 @@ footer p{margin-top:12px;font-size:12.5px;color:var(--t3)}
 }
 @media (max-width:520px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.stats .stat:last-child{grid-column:1 / -1}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.rv{opacity:1;transform:none;filter:none}}
+
+/* degradê: área de pintura maior que as letras, para nada ficar cortado */
+.t-acc em,.stat.hot b{
+  padding:.2em .3em .3em .24em!important;margin:-.2em -.3em -.3em -.24em!important;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 </style>
 </head>
 <body>

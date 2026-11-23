@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mentoria Impulse · Aplicação</title>
-<meta name="description" content="Mentoria Impulse: 3 meses pra montar sua operação vendendo em dólar, com um time de IA fazendo o trabalho pesado e sem precisar aparecer.">
+<meta name="description" content="Mentoria Impulse: em 3 meses e 12 encontros ao vivo, eu e meu time montamos com você sua operação em dólar com produtos digitais criados com IA.">
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Inter:wght@400..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Inter:wght@400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
 /* Visual do Nox OS (formulário Impulse): vidro escuro sobre paisagem em cinza, pílulas brancas, gradiente só nos detalhes. */
 :root{
@@ -309,30 +309,203 @@ footer small{display:block;max-width:640px;margin:16px auto 0;font-size:11.5px;l
   .journey{padding-top:0}
 }
 @media (max-width:620px){.journey{grid-template-columns:1fr}}
+
+/* ===================================================================
+   v8: visual da mentoria, sem verde
+   =================================================================== */
+html{background:#050505}
+body{background:transparent;overflow-x:clip}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(rgb(255 255 255 / .032) 1px,transparent 1px),linear-gradient(90deg,rgb(255 255 255 / .032) 1px,transparent 1px);background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(120% 90% at 50% 40%,#000 40%,transparent 100%);mask-image:radial-gradient(120% 90% at 50% 40%,#000 40%,transparent 100%)}
+body,.btn{font-family:"Geist","Inter",-apple-system,system-ui,sans-serif}
+@media (min-width:1024px){html{zoom:.92}.hero{min-height:calc(100vh / .92)!important}}
+
+/* leitura */
+.body{color:rgb(255 255 255 / .64)}
+.lead{color:rgb(255 255 255 / .72)}
+.stats .panel > span{color:rgb(255 255 255 / .6)}
+.no-list li{color:rgb(255 255 255 / .74)}
+
+/* títulos: destaque em serifa itálica */
+.t48 .cl{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;font-size:1.1em;letter-spacing:-.01em;line-height:.98;padding-right:.12em;margin-right:-.1em}
+.head > .mono,.ink-grid > div > .mono,.about > div > .mono,.bonus-wrap > .mono{display:inline-flex!important;align-items:center;gap:8px;padding:6px 12px 6px 10px;border-radius:999px;background:rgb(255 255 255 / .05);border:1px solid var(--line-2);font-size:10.5px;letter-spacing:.14em;color:var(--t2)}
+.head > .mono::before,.ink-grid > div > .mono::before,.about > div > .mono::before,.bonus-wrap > .mono::before{content:"";width:6px;height:6px;border-radius:50%;background:#f7b25a;box-shadow:0 0 8px rgba(247,178,90,.7)}
+
+/* progresso sempre fixo */
+.progress{position:fixed!important;top:0!important;left:0;right:0;width:100%;background:transparent;z-index:2147483000;transform:translateZ(0)}
+.progress i{width:100%!important;transform:scaleX(0);transform-origin:0 50%;will-change:transform}
+
+/* menu transparente com desfoque */
+.top.solid{background:transparent;border:0;-webkit-backdrop-filter:none;backdrop-filter:none}
+.top-blur{position:fixed;left:0;right:0;top:0;height:112px;z-index:19;pointer-events:none;opacity:0;transition:opacity .35s var(--ez);
+  background:linear-gradient(180deg,rgba(5,5,5,.5),rgba(5,5,5,.22) 60%,rgba(5,5,5,0));
+  -webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);
+  -webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent);mask-image:linear-gradient(to bottom,#000 55%,transparent)}
+.top-blur.on{opacity:1}
+
+/* hero */
+.hero .grain{opacity:.28;mix-blend-mode:overlay;background-size:180px 180px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
+.ca-defs{position:absolute;width:0;height:0;overflow:hidden}
+.hero-copy{max-width:780px}
+.hero h1.hero-title{margin-top:22px;font-family:"Instrument Serif",Georgia,serif;font-weight:400;letter-spacing:-.015em;line-height:.86;color:#f5f3ee;text-transform:uppercase;-webkit-text-stroke:.018em currentColor;max-width:780px}
+.hero-title > span{display:block}
+.ht-big{font-size:clamp(50px,6vw,98px)}
+.ht-accent{display:flex!important;align-items:center;gap:.12em;margin:-.1em 0 .06em;font-size:clamp(68px,8vw,132px);line-height:.92}
+.hero h1.hero-title .ht-accent em{font-family:"Instrument Serif",Georgia,serif;font-style:italic;text-transform:none;-webkit-text-stroke:0;background-image:linear-gradient(90deg,#e0541c 0%,#f7b25a 45%,#ffe9c2 100%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;padding:.06em .12em .1em .02em;margin-right:-.1em;
+  filter:drop-shadow(calc(var(--ca-dx,0) * 6px) calc(var(--ca-dy,0) * 6px) 0 rgba(255,60,100,calc(var(--ca-amt,0) * .5))) drop-shadow(calc(var(--ca-dx,0) * -6px) calc(var(--ca-dy,0) * -6px) 0 rgba(110,180,205,calc(var(--ca-amt,0) * .45)))}
+.ht-arrow{flex:none;width:.26em;height:.26em;fill:rgb(255 255 255 / .45);transform:translateY(.08em)}
+.hero h1.hero-title .ht-small{font-size:clamp(25px,2.5vw,40px);line-height:1.08;max-width:21em;color:rgb(255 255 255 / .92)}
+.hero h1.hero-title .ht-hl{white-space:nowrap;background-image:linear-gradient(90deg,#e0541c 0%,#f7b25a 45%,#ffe9c2 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;text-shadow:none;padding:.08em .05em .1em 0;margin:-.08em -.05em -.1em 0;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.ca-text{text-shadow:calc(var(--ca-dx,0) * 6px) calc(var(--ca-dy,0) * 6px) 0 rgba(255,60,100,calc(var(--ca-amt,0) * .5)),calc(var(--ca-dx,0) * -6px) calc(var(--ca-dy,0) * -6px) 0 rgba(110,180,205,calc(var(--ca-amt,0) * .45))}
+.hero .lead{font-family:var(--mono);font-size:13.5px;line-height:1.9;letter-spacing:.03em;text-transform:uppercase;color:rgb(255 255 255 / .82);max-width:600px;margin-top:24px}
+.hero .lead strong{color:#fff;font-weight:500}
+.rot{margin-top:18px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero .hero-cta .btn{margin-top:0}
+.hero-photo{will-change:transform}
+.hero-photo .ca-layer{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:screen;opacity:0;pointer-events:none;will-change:transform,opacity;animation:none!important}
+.hero-photo .ca-r{filter:url(#ca-red)}.hero-photo .ca-c{filter:url(#ca-cyan)}
+
+/* notificações da Hotmart */
+.ai-toasts{position:absolute;right:5%;bottom:13%;width:360px;height:150px;z-index:3;pointer-events:none}
+.ai-toast{position:absolute;left:0;right:0;top:0;display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:20px;background:rgba(30,30,32,.74);border:1px solid rgb(255 255 255 / .14);-webkit-backdrop-filter:blur(22px) saturate(1.2);backdrop-filter:blur(22px) saturate(1.2);
+  box-shadow:0 20px 50px -20px rgba(0,0,0,.7),inset 0 1px 0 rgb(255 255 255 / .08);transform-origin:50% 0;transition:transform .9s var(--ez),opacity .9s var(--ez),filter .9s var(--ez);will-change:transform,opacity}
+.ai-toast img{flex:none;width:40px;height:40px;border-radius:10px}
+.ai-toast .tx{display:block;min-width:0;flex:1}
+.ai-toast .hm-t1{display:flex;justify-content:space-between;gap:10px}
+.ai-toast b{font-weight:600;font-size:13.5px;line-height:1.3;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ai-toast i{font-style:normal;font-size:11.5px;color:rgb(255 255 255 / .5);white-space:nowrap}
+.ai-toast .d{display:block;margin-top:2px;font-size:12.5px;line-height:1.3;color:rgb(255 255 255 / .78);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* botões: preenchido e transparente, com texto que rola */
+a.btn.btn-ghost{background:rgb(255 255 255 / .02);color:#fff;border:1px solid rgb(255 255 255 / .34);box-shadow:none;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+a.btn.btn-ghost:hover{background:rgb(255 255 255 / .08);border-color:rgb(255 255 255 / .62);box-shadow:none}
+a.btn.btn-ghost::after{display:none}
+.top a.btn.btn-ghost{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+.btn .roll{position:relative;display:inline-block;flex:none;white-space:nowrap;overflow:hidden;line-height:1.25;padding:0 3px;margin:0 -3px}
+.btn .roll > span{display:block;transition:transform .45s var(--ez)}
+.btn .roll > span + span{position:absolute;inset:0 3px;transform:translateY(105%)}
+.btn:hover .roll > span:first-child{transform:translateY(-105%)}
+.btn:hover .roll > span + span{transform:none}
+.btn .arr{position:relative;display:inline-block;flex:none;width:16px;height:16px;overflow:hidden}
+.btn .arr svg{position:absolute;inset:0;width:16px;height:16px;fill:currentColor;transition:transform .45s var(--ez),opacity .45s var(--ez)}
+.btn .arr svg + svg{transform:translate(-9px,9px);opacity:0}
+.btn:hover .arr svg:first-child{transform:translate(9px,-9px);opacity:0}
+.btn:hover .arr svg + svg{transform:none;opacity:1}
+.section-cta{margin-top:32px;text-align:center}
+.section-cta p{margin-top:16px;font-size:14.5px;color:rgb(255 255 255 / .6)}
+.section-cta p a{color:#fff;text-decoration:underline;text-decoration-color:rgb(255 255 255 / .35);text-underline-offset:4px;transition:text-decoration-color .3s}
+.section-cta p a:hover{text-decoration-color:#f7b25a}
+
+/* toque para destravar */
+.unlock-list{max-width:860px;margin:0 auto;display:grid;gap:10px}
+.unlock-row{position:relative;display:block;width:100%;min-height:68px;padding:0;border-radius:16px;cursor:pointer;text-align:left;color:inherit;font:inherit;background:linear-gradient(180deg,var(--frame-a),var(--frame-b));border:1px solid var(--line-2);overflow:hidden;transition:border-color .5s var(--ez),box-shadow .5s var(--ez)}
+.unlock-row:hover{border-color:var(--line-3)}
+.ul-lock{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;color:var(--t2);transition:opacity .5s var(--ez)}
+.ul-lock svg,.ul-check svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ul-content{display:flex;align-items:center;gap:14px;flex-wrap:wrap;min-height:68px;padding:14px 22px;filter:blur(7px);opacity:.28;transition:filter .7s var(--ez),opacity .7s var(--ez)}
+.ul-check{flex:none;width:24px;height:24px;border-radius:7px;display:grid;place-items:center;color:#0b0b0c;background:#fff}
+.ul-content b{font:400 22px/1.1 "Instrument Serif",Georgia,serif;font-style:italic;color:#fff}
+.ul-desc{font-size:14.5px;color:var(--t2)}
+.unlock-row.open{border-color:rgba(247,178,90,.32);box-shadow:0 0 0 1px rgba(247,178,90,.08),0 24px 60px -30px rgba(224,84,28,.35)}
+.unlock-row.open .ul-lock{opacity:0}
+.unlock-row.open .ul-content{filter:none;opacity:1}
+
+/* prints em formato de celular */
+.proofs{grid-template-columns:repeat(4,minmax(0,1fr));justify-content:stretch}
+.proof{display:block;overflow:hidden;aspect-ratio:900/1950;border-radius:18px;border:1px solid var(--line-2);box-shadow:0 30px 60px -30px #000;background:#0b0b0c;transition:opacity 1s var(--ez) var(--d,0s),translate 1s var(--ez) var(--d,0s),filter 1s var(--ez) var(--d,0s),transform .55s var(--ez),border-color .4s var(--ez)}
+.proofs .proof img{width:100%;height:100%;object-fit:cover;border:0;border-radius:0;box-shadow:none}
+@media (hover:hover){.proof:hover{transform:translateY(-4px) scale(1.01);border-color:var(--line-3)}}
+.lb{position:fixed;inset:0;z-index:2147483001;display:grid;place-items:center;padding:20px;background:rgba(3,3,3,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.lb[hidden]{display:none}
+.lb img{max-width:100%;max-height:calc(100vh - 40px);border-radius:16px}
+.lb button{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line-3);background:rgba(5,5,5,.6);color:#fff;cursor:pointer}
+.lb svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+
+/* fechamento em card com a foto lifestyle */
+.final-card{position:relative;isolation:isolate;overflow:hidden;border-radius:26px;border:1px solid var(--line-2);padding:clamp(56px,7vw,96px) clamp(20px,5vw,64px);
+  background:radial-gradient(72% 80% at 50% 48%,rgba(5,5,5,.5) 0%,rgba(5,5,5,.6) 50%,rgba(5,5,5,.94) 100%),linear-gradient(180deg,rgba(5,5,5,.25),rgba(5,5,5,0) 30%,rgba(5,5,5,0) 70%,rgba(5,5,5,.6)),url(assets/luiz/terraco-1300.webp) center 58%/cover}
+.final-card::before{content:"";position:absolute;top:0;left:18%;right:18%;height:1px;background:linear-gradient(90deg,transparent,rgba(224,84,28,.55) 25%,#ffd9a5 50%,rgba(224,84,28,.55) 75%,transparent);box-shadow:0 0 8px rgba(247,178,90,.55)}
+.final-card .lead{color:rgb(255 255 255 / .8)}
+.final-card .mono{color:rgb(255 255 255 / .72)}
+
+@media (max-width:760px){
+  .top-blur{height:96px;-webkit-backdrop-filter:blur(9px) saturate(1.15);backdrop-filter:blur(9px) saturate(1.15)}
+  .progress{height:3px}
+  .ht-big{font-size:clamp(38px,11vw,52px)}
+  .ht-accent{font-size:clamp(52px,15vw,72px)}
+  .hero h1.hero-title .ht-small{font-size:clamp(21px,5.9vw,27px)}
+  .hero .lead{font-size:12px;margin-top:20px}
+  .hero-cta{gap:10px}
+  .hero .hero-cta .btn{flex:1 1 100%}
+  .section-cta .btn{width:100%}
+  .ai-toasts{right:8px;left:auto;top:92px;bottom:auto;width:min(206px,55vw);height:80px}
+  .ai-toast{padding:8px 10px;gap:8px;border-radius:15px}
+  .ai-toast img{width:30px;height:30px;border-radius:8px}
+  .ai-toast b{font-size:11.5px}.ai-toast i{font-size:10px}.ai-toast .d{font-size:10.5px}
+  .proofs{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .ul-content{padding:14px 16px;gap:8px 12px}
+  .ul-content b{font-size:19px}
+  .ul-desc{flex-basis:100%;font-size:13.5px}
+}
+@media (prefers-reduced-motion:reduce){.ca-text{text-shadow:none!important}}
+
+/* ===== v9 ===== */
+#intro{padding-bottom:0}
+.intro-box{max-width:860px;margin:0 auto;text-align:center}
+.intro-box .t48{margin-top:20px}
+.intro-box .lead{max-width:680px;margin:18px auto 0}
+.intro-box .btn{margin-top:28px}
+.j-res{margin-top:12px!important;padding-top:12px;border-top:1px solid var(--line);font-size:14px;line-height:1.45;color:rgb(255 255 255 / .82)}
+.j-res b{font-weight:500;color:#f7b25a}
+.about-cta{margin-top:24px}
+.hero-photo img{object-position:center 62%}
+.ai-toasts{right:2.5%;bottom:auto;top:18%;width:340px}
+@media (max-width:760px){
+  .intro-box{text-align:left}
+  .intro-box .btn,.about-cta .btn{width:100%}
+  .intro-box .lead{margin-left:0}
+  .ai-toasts{right:8px;top:92px;width:min(206px,55vw)}
+}
+@media (max-width:420px){.intro-box .pill{max-width:100%;padding:0 10px 0 9px;gap:7px;font-size:10px;letter-spacing:.04em}}
+.stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:760px){.stats{grid-template-columns:1fr}}
+/* menu legível também sobre a foto clara do hero */
+.top-blur{opacity:1}
+/* degradê: área de pintura maior que as letras, para nada ficar cortado */
+.cl,.t48 .cl,.hero h1.hero-title .ht-hl,.hero h1.hero-title .ht-accent em,.rot .w > span,.j-num,.conv > span:last-child [data-count]{
+  padding:.2em .3em .3em .24em!important;margin:-.2em -.3em -.3em -.24em!important;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 </style>
 </head>
 <body>
 
 <div class="progress" aria-hidden="true"><i id="bar"></i></div>
 
+<div class="top-blur" id="top-blur" aria-hidden="true"></div>
 <header class="top" id="top">
   <a class="brand" href="#" aria-label="Mentoria Impulse"><b>Impulse</b><span class="wm">Mentoria</span></a>
-  <a href="#aplicacao" class="btn">Aplicar</a>
+  <a href="#aplicacao" class="btn btn-ghost">Aplicar</a>
 </header>
 
 <section class="hero" id="hero">
   <div class="grain" aria-hidden="true"></div>
-  <div class="hero-photo"><img src="assets/luiz/terraco-1300.webp" alt="Luiz Brito" width="1300" height="1346" fetchpriority="high"></div>
+  <svg class="ca-defs" width="0" height="0" aria-hidden="true" focusable="false"><filter id="ca-red" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0"/></filter><filter id="ca-cyan" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/></filter></svg>
+  <div class="ai-toasts" id="ai-toasts" aria-hidden="true"></div>
+  <div class="hero-photo"><img src="assets/luiz/tulum-luiz.webp" alt="Luiz Brito em Tulum, no México" width="1125" height="1500" fetchpriority="high"></div>
   <div class="wrap">
     <div class="hero-copy">
       <span class="pill mono"><i></i>Mentoria Impulse · Aplicação aberta</span>
-      <h1 class="t64">Venda produtos digitais criados com IA <span class="cl">e receba em dólar</span></h1>
-      <div class="rot" aria-label="sem precisar aparecer, falar inglês, morar fora ou ter equipe grande">
-        <span class="cl">sem precisar</span>
-        <span class="w" aria-hidden="true"><span>aparecer</span><span>falar inglês</span><span>morar fora</span><span>de equipe grande</span></span>
+      <h1 class="hero-title ca-text"><span class="ht-big">Monte sua operação</span> <span class="ht-accent"><svg class="ht-arrow" viewBox="0 0 256 256" aria-hidden="true"><path d="M204,64V168a12,12,0,0,1-24,0V93L72.49,200.49a12,12,0,0,1-17-17L163,76H88a12,12,0,0,1,0-24H192A12,12,0,0,1,204,64Z"/></svg><em>em dólar</em></span> <span class="ht-small">com produtos digitais criados com IA, <span class="ht-hl">comigo e meu time do seu lado</span>, ao vivo, por 3 meses</span></h1>
+      <p class="lead ca-text">Já passei de R$ 5 milhões vendidos para fora do Brasil. <strong>Agora eu e meu time vamos subir a sua operação junto com você</strong>: 12 encontros ao vivo, acompanhamento individual e acesso às ofertas da minha operação.</p>
+      <div class="rot" aria-label="Sem precisar aparecer, falar inglês, montar equipe ou fazer isso sozinho">
+        <span class="cl">Sem precisar</span>
+        <span class="w" aria-hidden="true"><span>aparecer</span><span>falar inglês</span><span>montar equipe</span><span>fazer isso sozinho</span></span>
       </div>
-      <p class="lead">A Impulse é a mentoria pra quem quer construir uma operação em moeda forte com produtos digitais criados por um time de IA, que faz todo o trabalho pesado. Se você for selecionado, a gente sobe a estrutura junto com você, ao vivo.</p>
-      <a href="#aplicacao" class="btn">Quero me aplicar pra Impulse <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+      <div class="hero-cta">
+        <a href="#aplicacao" class="btn">Quero ser um dos selecionados</a>
+        <a href="#metodo" class="btn btn-ghost">Ver como funciona</a>
+      </div>
       <div class="cta-meta"><span class="mono">3 meses · Vagas limitadas · Seleção por perfil</span></div>
     </div>
   </div>
@@ -344,6 +517,17 @@ footer small{display:block;max-width:640px;margin:16px auto 0;font-size:11.5px;l
     <span>Moeda forte</span><span>Agentes de IA</span><span>Tráfego direto</span><span>Sem aparecer</span><span>Inglês e espanhol</span><span>Produto próprio</span><span>Câmbio Invertido</span><span>Operação enxuta</span>
   </div>
 </div>
+
+<section id="intro">
+  <div class="wrap">
+    <div class="intro-box rv">
+      <span class="pill mono"><i></i>Vagas limitadas · Seleção por perfil</span>
+      <h2 class="t48">Uma mentoria para poucas pessoas, <span class="cl">que eu acompanho de perto.</span></h2>
+      <p class="lead">Se você for selecionado, eu e meu time vamos caminhar com você do zero até a escala: escolher a oportunidade, criar o produto com IA, colocar a oferta no ar, ler os números e crescer recebendo em dólar.</p>
+      <a href="#aplicacao" class="btn">Quero ser um dos selecionados</a>
+    </div>
+  </div>
+</section>
 
 <section id="para-quem">
   <div class="wrap">
@@ -364,15 +548,16 @@ footer small{display:block;max-width:640px;margin:16px auto 0;font-size:11.5px;l
   <div class="wrap">
     <div class="head center rv">
       <span class="mono">Como funciona</span>
-      <h2 class="t48">4 etapas pra sair do zero <span class="cl">e chegar na escala.</span></h2>
+      <h2 class="t48">Do zero à operação em dólar: <span class="cl">as 4 etapas que eu vou percorrer com você.</span></h2>
     </div>
     <div class="journey rv">
       <div class="j-line" aria-hidden="true"><i></i></div>
-      <article class="panel jstep"><span class="j-node"></span><div class="j-head"><span class="j-num">01</span><div class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></div></div><h3 class="t22">Diagnóstico</h3><p class="body">Entendemos seu momento, seu tempo e seu objetivo pra escolher o mercado e a oferta certa.</p><div class="j-meter"><i style="--w:25%"></i></div></article>
-      <article class="panel jstep"><span class="j-node"></span><div class="j-head"><span class="j-num">02</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></div></div><h3 class="t22">Implementação da estrutura</h3><p class="body">Nos 12 encontros ao vivo a gente sobe a estrutura junto: produto, página, VSL e criativos com IA.</p><div class="j-meter"><i style="--w:50%"></i></div></article>
-      <article class="panel jstep"><span class="j-node"></span><div class="j-head"><span class="j-num">03</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div></div><h3 class="t22">Análise</h3><p class="body">Lemos os números com você e ajustamos o que precisa antes de colocar mais dinheiro.</p><div class="j-meter"><i style="--w:75%"></i></div></article>
-      <article class="panel jstep"><span class="j-node"></span><div class="j-head"><span class="j-num">04</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 6-6"/><path d="M16 8h4v4"/></svg></div></div><h3 class="t22">Escala</h3><p class="body">Com a oferta validada, transformamos resultado em previsibilidade e crescemos em moeda forte.</p><div class="j-meter"><i style="--w:100%"></i></div></article>
+      <article class="panel jstep"><span class="j-node"></span><div class="j-head"><span class="j-num">01</span><div class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></div></div><h3 class="t22">Diagnóstico</h3><p class="body">Eu e meu time entendemos seu momento, seu tempo e seu objetivo pra escolher o mercado e a oferta certa.</p><p class="j-res"><b>Resultado:</b> você sabe o que vender e pra quem.</p><div class="j-meter"><i style="--w:25%"></i></div></article>
+      <article class="panel jstep"><span class="j-node"></span><div class="j-head"><span class="j-num">02</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></div></div><h3 class="t22">Implementação da estrutura</h3><p class="body">Nos 12 encontros ao vivo, subimos a estrutura com você: produto, página, VSL e criativos com IA.</p><p class="j-res"><b>Resultado:</b> sua oferta no ar, pronta pra vender em dólar.</p><div class="j-meter"><i style="--w:50%"></i></div></article>
+      <article class="panel jstep"><span class="j-node"></span><div class="j-head"><span class="j-num">03</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div></div><h3 class="t22">Análise</h3><p class="body">Eu e meu time lemos os números com você e ajustamos o que precisa antes de colocar mais dinheiro.</p><p class="j-res"><b>Resultado:</b> você para de decidir no escuro.</p><div class="j-meter"><i style="--w:75%"></i></div></article>
+      <article class="panel jstep"><span class="j-node"></span><div class="j-head"><span class="j-num">04</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 6-6"/><path d="M16 8h4v4"/></svg></div></div><h3 class="t22">Escala</h3><p class="body">Com a oferta validada, transformamos resultado em previsibilidade e crescemos em moeda forte.</p><p class="j-res"><b>Resultado:</b> um plano claro pra crescer sem equipe grande.</p><div class="j-meter"><i style="--w:100%"></i></div></article>
     </div>
+    <div class="section-cta rv"><a href="#aplicacao" class="btn btn-ghost">Fazer minha aplicação</a></div>
   </div>
 </section>
 
@@ -388,7 +573,7 @@ footer small{display:block;max-width:640px;margin:16px auto 0;font-size:11.5px;l
         <h3 class="t22">Câmbio Invertido</h3><p class="body">Você passa a ganhar em dólar e gastar em real. Quando o dólar sobe, sua renda sobe junto, sem trabalhar uma hora a mais.</p>
       </article>
       <article class="panel rv" style="--d:.06s">
-        <div class="viz"><div class="conv"><span><small>US$ </small><span data-count="47">0</span></span><span class="arrow">→</span><span><small>R$ </small><span data-count="263">0</span></span></div></div>
+        <div class="viz"><div class="conv"><span><small>US$ </small><span data-count="47">0</span></span><span class="arrow">→</span><span><small>R$ </small><span data-count="279">0</span></span></div></div>
         <h3 class="t22">Cada venda vale mais</h3><p class="body">A mesma venda que aqui seria de R$ 47 lá fora vale quase 6 vezes mais, com o mesmo esforço e a mesma estrutura.</p>
       </article>
       <article class="panel rv" style="--d:.12s">
@@ -407,23 +592,39 @@ footer small{display:block;max-width:640px;margin:16px auto 0;font-size:11.5px;l
   <div class="wrap">
     <div class="head rv">
       <span class="mono">O que você recebe</span>
-      <h2 class="t48">Tudo pra sua operação rodar, <span class="cl">com a gente do seu lado.</span></h2>
+      <h2 class="t48">Tudo pra sua operação rodar, <span class="cl">comigo e meu time do seu lado.</span></h2>
     </div>
     <div class="grid3">
-      <article class="panel lead-line rv"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20a6 6 0 0 1 12 0M15 20a4.5 4.5 0 0 1 6.5-4"/></svg></div><h3 class="t22">Acesso direto ao Luiz</h3><p class="body">Você fala direto com quem roda a operação, sem intermediário.</p></article>
-      <article class="panel rv" style="--d:.06s"><div class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m22 8-6 4 6 4Z"/></svg></div><h3 class="t22">12 encontros ao vivo</h3><p class="body">Um encontro por semana durante 3 meses, subindo a estrutura da sua operação junto com a gente.</p></article>
-      <article class="panel rv" style="--d:.12s"><div class="ico"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l1.4-3.6A8.5 8.5 0 1 1 21 11.5Z"/></svg></div><h3 class="t22">3 meses de acompanhamento</h3><p class="body">Do primeiro ao último encontro, a gente segue do seu lado no seu grupo de WhatsApp individual.</p></article>
-      <article class="panel rv"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h8"/></svg></div><h3 class="t22">Sócio: acesso a todas as ofertas</h3><p class="body">Acesso às ofertas da nossa operação. No fim da mentoria, quem mostrar competência, ética e resultado pode ser contratado pela nossa operação.</p></article>
+      <article class="panel lead-line rv"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20a6 6 0 0 1 12 0M15 20a4.5 4.5 0 0 1 6.5-4"/></svg></div><h3 class="t22">Acesso direto a mim</h3><p class="body">Você fala direto comigo, que rodo a operação, sem intermediário.</p></article>
+      <article class="panel rv" style="--d:.06s"><div class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m22 8-6 4 6 4Z"/></svg></div><h3 class="t22">12 encontros ao vivo</h3><p class="body">Um encontro por semana durante 3 meses, subindo a estrutura da sua operação comigo e com meu time.</p></article>
+      <article class="panel rv" style="--d:.12s"><div class="ico"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l1.4-3.6A8.5 8.5 0 1 1 21 11.5Z"/></svg></div><h3 class="t22">3 meses de acompanhamento</h3><p class="body">Do primeiro ao último encontro, eu e meu time seguimos do seu lado no seu grupo de WhatsApp individual.</p></article>
+      <article class="panel rv"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h8"/></svg></div><h3 class="t22">Sócio: acesso a todas as ofertas</h3><p class="body">Acesso às ofertas da minha operação. No fim da mentoria, quem mostrar competência, ética e resultado pode entrar pro meu time.</p></article>
       <article class="panel rv" style="--d:.06s"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="m10 9 5 3-5 3Z"/></svg></div><h3 class="t22">Swipe file de criativos e VSLs</h3><p class="body">Criativos e VSLs otimizados que já rodam, pra você modelar e ganhar tempo.</p></article>
-      <article class="panel rv" style="--d:.12s"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 6-6"/></svg></div><h3 class="t22">Decisões de tráfego pago</h3><p class="body">A gente acompanha suas decisões de tráfego: o que manter, o que cortar e quando escalar.</p></article>
+      <article class="panel rv" style="--d:.12s"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 6-6"/></svg></div><h3 class="t22">Decisões de tráfego pago</h3><p class="body">Eu e meu time acompanhamos suas decisões de tráfego: o que manter, o que cortar e quando escalar.</p></article>
     </div>
     <div class="bonus-wrap rv">
       <span class="mono">Bônus</span>
       <div class="grid2" style="margin-top:14px">
-        <article class="panel bonus"><span class="pill mono"><i></i>Primeiro que entrar</span><h3 class="t22">Chance de virar consultor de tráfego no Capital Digital</h3><p class="body">Quem garantir a primeira vaga concorre a uma posição de consultor de tráfego na nossa operação.</p></article>
-        <article class="panel bonus"><span class="pill mono"><i></i>Todos que entrarem</span><h3 class="t22">Todos os cursos, comunidade e aulas</h3><p class="body">Acesso completo aos nossos cursos, à comunidade de alunos e às aulas.</p></article>
+        <article class="panel bonus"><span class="pill mono"><i></i>Primeiro que entrar</span><h3 class="t22">Chance de virar consultor de tráfego no meu time</h3><p class="body">Quem garantir a primeira vaga concorre a uma posição de consultor de tráfego na minha operação.</p></article>
+        <article class="panel bonus"><span class="pill mono"><i></i>Todos que entrarem</span><h3 class="t22">Todos os cursos, comunidade e aulas</h3><p class="body">Acesso completo aos meus cursos, à comunidade de alunos e às aulas.</p></article>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="o-que-muda" class="unlock-section">
+  <div class="wrap">
+    <div class="head center rv">
+      <span class="mono">Toque e descubra</span>
+      <h2 class="t48">O que muda quando eu e meu time entramos <span class="cl">na sua operação.</span></h2>
+    </div>
+    <div class="unlock-list rv">
+      <button class="unlock-row" type="button" aria-expanded="false"><span class="ul-lock"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Toque para destravar</span><span class="ul-content"><span class="ul-check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><b>Você para de decidir no escuro</b><span class="ul-desc">Eu e meu time lemos seus números com você antes de colocar mais dinheiro.</span></span></button>
+      <button class="unlock-row" type="button" aria-expanded="false"><span class="ul-lock"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Toque para destravar</span><span class="ul-content"><span class="ul-check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><b>O que travou vira ajuste no encontro seguinte</b><span class="ul-desc">Toda semana, ao vivo, corrigimos com você o que não andou.</span></span></button>
+      <button class="unlock-row" type="button" aria-expanded="false"><span class="ul-lock"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Toque para destravar</span><span class="ul-content"><span class="ul-check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><b>Você não começa do zero</b><span class="ul-desc">Acesso às ofertas da minha operação e ao swipe de criativos e VSLs.</span></span></button>
+      <button class="unlock-row" type="button" aria-expanded="false"><span class="ul-lock"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Toque para destravar</span><span class="ul-content"><span class="ul-check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><b>Você tem com quem falar</b><span class="ul-desc">Acesso direto a mim e grupo de WhatsApp individual por 3 meses.</span></span></button>
+    </div>
+    <div class="section-cta rv"><a href="#aplicacao" class="btn">Fazer minha aplicação</a></div>
   </div>
 </section>
 
@@ -433,12 +634,12 @@ footer small{display:block;max-width:640px;margin:16px auto 0;font-size:11.5px;l
       <div class="grain" aria-hidden="true"></div>
       <div class="ink-grid">
         <div>
-          <span class="mono">Por que existe seleção</span>
-          <h2 class="t48" style="margin-top:18px">Essa mentoria <span class="cl">não é pra todo mundo.</span></h2>
+          <span class="mono">Sobre a aplicação</span>
+          <h2 class="t48" style="margin-top:18px">Então você vai tentar me vender alguma coisa? <span class="cl">Sim e não.</span></h2>
         </div>
         <div>
-                    <p class="lead"><b>A gente não precisa dessa mentoria pra pagar conta.</b> A Impulse existe pra acompanhar de perto poucas pessoas que vão executar de verdade. Por isso a escolha é feita com cuidado, e por isso cada inscrição é lida com atenção.</p>
-          <p class="lead">Antes de qualquer coisa, eu preciso entender quem é você, qual o seu momento, quanto tempo você tem e até onde quer levar esse projeto. Se fizer sentido pros dois lados, a gente avança junto.</p>
+          <p class="lead"><b>Eu não preciso dessa mentoria pra pagar conta.</b> A Impulse existe pra eu acompanhar de perto poucas pessoas que vão executar de verdade, e por isso eu e meu time lemos cada aplicação com atenção.</p>
+          <p class="lead">Antes de falar de qualquer proposta, eu preciso entender quem é você, qual o seu momento, quanto tempo você tem e até onde quer levar esse projeto. Se fizer sentido pros dois lados, eu te mostro como vamos construir a sua operação.</p>
           <p class="lead">Preencher a aplicação não garante a sua vaga. <b>Só preencha se você está decidido a executar.</b></p>
         </div>
       </div>
@@ -473,13 +674,13 @@ footer small{display:block;max-width:640px;margin:16px auto 0;font-size:11.5px;l
     <div class="rv" style="--d:.08s">
       <span class="mono">Quem sou eu?</span>
       <h2 class="t48" style="margin-top:18px">Prazer, <span class="cl">Luiz Brito.</span></h2>
-      <p class="lead">Comecei como menor aprendiz numa fábrica e passei por um call center de cobrança antes de acertar na internet. Coloquei minha primeira oferta global no ar com os últimos R$ 400 de limite do cartão e acordei com duas vendas.</p>
+      <p class="lead">Comecei como menor aprendiz numa fábrica e passei por um call center de cobrança antes de acertar na internet. Coloquei minha primeira oferta global no ar e acordei com duas vendas.</p>
       <p class="lead">De lá pra cá, passei de <b>R$ 5 milhões vendidos para fora do Brasil</b>, recebendo em dólar, e passei 9 meses com uma equipe de programadores colocando o que eu faço dentro de um sistema de IA. Na Impulse, é esse processo que eu aplico junto com você.</p>
       <div class="stats">
         <div class="panel"><b>+R$ <span data-count="5">0</span> mi</b><span>vendidos para fora do Brasil</span></div>
-        <div class="panel"><b>R$ <span data-count="400">0</span></b><span>de limite no cartão pra começar</span></div>
-        <div class="panel"><b><span data-count="9">0</span> meses</b><span>construindo o sistema de agentes</span></div>
+                <div class="panel"><b><span data-count="9">0</span> meses</b><span>construindo o sistema de agentes</span></div>
       </div>
+      <div class="about-cta"><a href="#aplicacao" class="btn btn-ghost">Fazer minha aplicação</a></div>
     </div>
   </div>
 </section>
@@ -488,11 +689,17 @@ footer small{display:block;max-width:640px;margin:16px auto 0;font-size:11.5px;l
   <div class="wrap">
     <div class="head center rv">
       <span class="mono">Resultados</span>
-      <h2 class="t48">Vendas em dólar, <span class="cl">na tela de quem aplicou.</span></h2>
+      <h2 class="t48">Resultados reais, <span class="cl">da minha operação e de quem aplicou.</span></h2>
     </div>
     <div class="proofs">
-      <img class="rv" src="assets/provas/receita-12807.webp" alt="Receita de US$ 12.807,07 em 30 dias" loading="lazy">
-      <img class="rv" style="--d:.08s" src="assets/provas/receita-6635.webp" alt="Receita de US$ 6.635,06 em 30 dias" loading="lazy">
+      <a class="proof rv" style="--d:0.00s" href="assets/provas/celular/receita-12807.webp" aria-label="Ampliar print: US$ 12.807,07 de receita em 30 dias"><img src="assets/provas/celular/receita-12807.webp" alt="US$ 12.807,07 de receita em 30 dias" width="900" height="1950" loading="lazy" decoding="async"></a>
+      <a class="proof rv" style="--d:0.06s" href="assets/provas/celular/hotmart-usd.webp" aria-label="Ampliar print: Notificações de vendas em dólar na Hotmart"><img src="assets/provas/celular/hotmart-usd.webp" alt="Notificações de vendas em dólar na Hotmart" width="900" height="1950" loading="lazy" decoding="async"></a>
+      <a class="proof rv" style="--d:0.12s" href="assets/provas/celular/utmify-dashboard.webp" aria-label="Ampliar print: Painel da Utmify com lucro, ROAS e faturamento"><img src="assets/provas/celular/utmify-dashboard.webp" alt="Painel da Utmify com lucro, ROAS e faturamento" width="900" height="1950" loading="lazy" decoding="async"></a>
+      <a class="proof rv" style="--d:0.18s" href="assets/provas/celular/hotmart-usd-3.webp" aria-label="Ampliar print: Notificações de vendas em dólar na Hotmart"><img src="assets/provas/celular/hotmart-usd-3.webp" alt="Notificações de vendas em dólar na Hotmart" width="900" height="1950" loading="lazy" decoding="async"></a>
+      <a class="proof rv" style="--d:0.00s" href="assets/provas/celular/receita-6635.webp" aria-label="Ampliar print: US$ 6.635,06 de receita em 30 dias"><img src="assets/provas/celular/receita-6635.webp" alt="US$ 6.635,06 de receita em 30 dias" width="900" height="1950" loading="lazy" decoding="async"></a>
+      <a class="proof rv" style="--d:0.06s" href="assets/provas/celular/utmify-notificacoes.webp" aria-label="Ampliar print: Notificações de vendas aprovadas na Utmify"><img src="assets/provas/celular/utmify-notificacoes.webp" alt="Notificações de vendas aprovadas na Utmify" width="900" height="1950" loading="lazy" decoding="async"></a>
+      <a class="proof rv" style="--d:0.12s" href="assets/provas/celular/hotmart-usd-2.webp" aria-label="Ampliar print: Notificações de vendas em dólar na Hotmart"><img src="assets/provas/celular/hotmart-usd-2.webp" alt="Notificações de vendas em dólar na Hotmart" width="900" height="1950" loading="lazy" decoding="async"></a>
+      <a class="proof rv" style="--d:0.18s" href="assets/provas/celular/utmify-usa.webp" aria-label="Ampliar print: Painel da Utmify da operação nos Estados Unidos"><img src="assets/provas/celular/utmify-usa.webp" alt="Painel da Utmify da operação nos Estados Unidos" width="900" height="1950" loading="lazy" decoding="async"></a>
     </div>
   </div>
 </section>
@@ -505,10 +712,10 @@ footer small{display:block;max-width:640px;margin:16px auto 0;font-size:11.5px;l
     </div>
     <div class="faq rv">
       <details><summary>Quanto custa a Impulse?<i>+</i></summary><div class="ans">R$ 3.500 à vista ou 12x de R$ 350 no cartão. O valor também aparece no fim da aplicação.</div></details>
-      <details><summary>Preencher a aplicação garante a minha vaga?<i>+</i></summary><div class="ans">Não. A gente lê cada inscrição com atenção e escolhe só quem de fato vai aproveitar. Se você for aprovado, a gente te chama no WhatsApp.</div></details>
+      <details><summary>Preencher a aplicação garante a minha vaga?<i>+</i></summary><div class="ans">Não. Eu e meu time lemos cada inscrição com atenção e escolhemos só quem de fato vai aproveitar. Se você for aprovado, te chamamos no WhatsApp.</div></details>
       <details><summary>Quanto tempo dura a mentoria?<i>+</i></summary><div class="ans">3 meses: 12 encontros ao vivo, um por semana, com acompanhamento no seu grupo de WhatsApp individual durante todo o período.</div></details>
       <details><summary>Preciso falar inglês ou aparecer?<i>+</i></summary><div class="ans">Não. Você conversa com os agentes em português e eles entregam tudo no idioma do país que você escolher. As vendas vêm de anúncio, sem precisar mostrar o rosto.</div></details>
-      <details><summary>Preciso de muito dinheiro pra anúncio?<i>+</i></summary><div class="ans">Não. Você começa com testes pequenos e controlados, e a gente define junto um valor que não aperte as contas da sua casa.</div></details>
+      <details><summary>Preciso de muito dinheiro pra anúncio?<i>+</i></summary><div class="ans">Não. Você começa com testes pequenos e controlados, e definimos juntos um valor que não aperte as contas da sua casa.</div></details>
       <details><summary>Tenho pouco tempo. Dá pra fazer?<i>+</i></summary><div class="ans">Dá, desde que você consiga dedicar algumas horas por semana. Os agentes fazem a parte pesada e você cuida das decisões.</div></details>
     </div>
   </div>
@@ -516,11 +723,11 @@ footer small{display:block;max-width:640px;margin:16px auto 0;font-size:11.5px;l
 
 <section class="final" id="aplicacao">
   <div class="wrap">
-    <div class="rv">
+    <div class="final-card rv">
       <span class="pill mono"><i></i>Aplicação · Mentoria Impulse</span>
-      <h2 class="t48" style="margin-top:22px">Se você quer construir uma operação em moeda forte, <span class="cl">sem depender da sua imagem nem de equipe grande…</span></h2>
-      <p class="lead">Preencha a aplicação. Leva cerca de 3 minutos. Se você estiver entre os selecionados, a gente te chama no WhatsApp e constrói isso junto.</p>
-      <a href="#" class="btn" data-apply>Quero me aplicar pra Impulse <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+      <h2 class="t48" style="margin-top:22px">Pare de tentar sozinho. <span class="cl">Construa sua operação em dólar comigo.</span></h2>
+      <p class="lead">Preencha a aplicação. Leva cerca de 3 minutos. Se você estiver entre os selecionados, eu e meu time te chamamos no WhatsApp pra construir isso com você.</p>
+      <a href="#" class="btn" data-apply>Fazer minha aplicação <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
       <div class="cta-meta"><span class="mono">Preencher não garante a vaga</span></div>
     </div>
   </div>
@@ -533,6 +740,8 @@ footer small{display:block;max-width:640px;margin:16px auto 0;font-size:11.5px;l
     <small style="margin-top:8px">© 2026 AXR Digital. Todos os direitos reservados.</small>
   </div>
 </footer>
+
+<div class="lb" id="lb" hidden><button type="button" aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button><img alt=""></div>
 
 <script>
 /* ===== CONFIG ===== */
@@ -555,8 +764,9 @@ const APPLY_URL = ""; // link do formulário de inscrição da Impulse
   function onScroll() {
     ticking = false;
     const h = document.documentElement.scrollHeight - innerHeight;
-    bar.style.width = (h > 0 ? scrollY / h * 100 : 0) + '%';
-    top.classList.toggle('solid', scrollY > 40);
+    bar.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, Math.max(0, scrollY / h)) : 0).toFixed(4) + ')';
+    top.classList.toggle('solid', scrollY > 10);
+    document.getElementById('top-blur').classList.toggle('on', scrollY > 10);
     if (steps && fill) {
       const r = steps.getBoundingClientRect(), mid = innerHeight * 0.6;
       const p = Math.max(0, Math.min(1, (mid - r.top) / (r.height - 16)));
@@ -605,6 +815,96 @@ const APPLY_URL = ""; // link do formulário de inscrição da Impulse
     anim = requestAnimationFrame(step);
   });
   ['wheel', 'touchstart'].forEach(ev => addEventListener(ev, () => { if (anim) { cancelAnimationFrame(anim); anim = null; } }, { passive: true }));
+})();
+
+/* botões: texto que rola e seta que troca */
+(function () {
+  const ARR = '<svg viewBox="0 0 256 256"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg>';
+  document.querySelectorAll('a.btn').forEach((b) => {
+    const label = b.textContent.trim(); if (!label) return;
+    b.textContent = '';
+    const r = document.createElement('span'); r.className = 'roll';
+    r.innerHTML = '<span></span><span aria-hidden="true"></span>';
+    r.children[0].textContent = label; r.children[1].textContent = label;
+    const a = document.createElement('span'); a.className = 'arr'; a.setAttribute('aria-hidden', 'true'); a.innerHTML = ARR + ARR;
+    b.append(r, a);
+  });
+})();
+
+/* notificações reais da Hotmart em loop, como no iPhone */
+(function () {
+  const box = document.getElementById('ai-toasts'); if (!box) return;
+  const msgs = [
+    { t: 'Venda realizada', w: 'há 5m', d: 'US$ 41.03 - HP3522331168' },
+    { t: 'Venda realizada com Cartão de Crédito', w: 'há 1h', d: 'US$ 34.67 - HP2741515601' },
+    { t: 'Venda realizada', w: 'há 6m', d: 'US$ 47.29 - HP1332396563' },
+    { t: 'Venda realizada com Cartão de Crédito', w: 'há 3h', d: 'US$ 24.09 - HP2275867325' },
+    { t: 'Venda realizada', w: 'Ontem, 18:17', d: 'US$ 32.56 - HP0258119332' },
+    { t: 'Venda realizada com Cartão de Crédito', w: '12:48', d: 'US$ 24.80 - HP3467804094' },
+    { t: 'Venda realizada com Cartão...', w: 'Ontem, 11:06', d: 'US$ 59.87 - HP3530116218' }
+  ];
+  const max = () => (matchMedia('(max-width:760px)').matches ? 2 : 3);
+  const make = (m) => { const el = document.createElement('div'); el.className = 'ai-toast'; el.innerHTML = '<img src="assets/marca/hotmart-logo.png" alt="" width="96" height="96"><span class="tx"><span class="hm-t1"><b>' + m.t + '</b><i>' + m.w + '</i></span><span class="d">Você recebeu: ' + m.d + '</span></span>'; return el; };
+  const layout = () => {
+    const els = [...box.children];
+    els.forEach((el, i) => { el.style.zIndex = String(10 - i); el.style.transform = 'translateY(' + (i * 14) + 'px) scale(' + (1 - i * .05) + ')'; el.style.opacity = i === 0 ? '1' : String(Math.max(0, .55 - (i - 1) * .3)); el.style.filter = i === 0 ? 'none' : 'blur(' + i * .6 + 'px)'; });
+    els.slice(max()).forEach((el) => { el.style.opacity = '0'; setTimeout(() => el.remove(), 900); });
+  };
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { box.append(make(msgs[0])); layout(); return; }
+  let n = 0;
+  const push = () => { const el = make(msgs[n++ % msgs.length]); el.style.opacity = '0'; el.style.transform = 'translateY(-26px) scale(1.02)'; box.prepend(el); requestAnimationFrame(() => requestAnimationFrame(layout)); };
+  setTimeout(() => { push(); setInterval(push, 3200); }, 1400);
+})();
+
+/* toque para destravar */
+document.querySelectorAll('.unlock-row').forEach((b) => b.addEventListener('click', () => { b.classList.add('open'); b.setAttribute('aria-expanded', 'true'); }));
+
+/* ampliar prints */
+(function () {
+  const lb = document.getElementById('lb'), img = lb.querySelector('img');
+  const close = () => { lb.hidden = true; img.removeAttribute('src'); document.body.style.overflow = ''; };
+  document.querySelectorAll('.proof').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); img.src = a.getAttribute('href'); img.alt = a.querySelector('img').alt; lb.hidden = false; document.body.style.overflow = 'hidden'; }));
+  lb.addEventListener('click', (e) => { if (e.target !== img) close(); });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.hidden) close(); });
+})();
+
+/* hero: cores que se separam e foto que acompanha o mouse */
+(function () {
+  const hero = document.getElementById('hero');
+  if (!hero || !matchMedia('(hover:hover) and (pointer:fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const scene = hero.querySelector('.hero-photo'), base = scene.querySelector('img'), texts = hero.querySelectorAll('.ca-text');
+  let layers = [];
+  const add = () => { if (layers.length) return; const src = base.currentSrc || base.src; layers = ['ca-r', 'ca-c'].map((c) => { const im = document.createElement('img'); im.className = 'ca-layer ' + c; im.alt = ''; im.setAttribute('aria-hidden', 'true'); im.src = src; im.style.objectPosition = getComputedStyle(base).objectPosition; scene.appendChild(im); return im; }); };
+  if (base.complete) add(); else base.addEventListener('load', add, { once: true });
+  let lx = null, ly = null, tdx = 0, tdy = 0, ta = 0, dx = 0, dy = 0, a = 0, px = 0, py = 0, tpx = 0, tpy = 0, run = false;
+  const c = (v) => Math.max(-1, Math.min(1, v));
+  const tick = () => {
+    dx += (tdx - dx) * .2; dy += (tdy - dy) * .2; a += (ta - a) * .2; px += (tpx - px) * .06; py += (tpy - py) * .06; tdx *= .9; tdy *= .9; ta *= .9;
+    texts.forEach((t) => { t.style.setProperty('--ca-dx', dx.toFixed(3)); t.style.setProperty('--ca-dy', dy.toFixed(3)); t.style.setProperty('--ca-amt', a.toFixed(3)); });
+    if (layers[0]) { layers[0].style.transform = 'translate(' + (dx * 9).toFixed(2) + 'px,' + (dy * 9).toFixed(2) + 'px)'; layers[1].style.transform = 'translate(' + (-dx * 9).toFixed(2) + 'px,' + (-dy * 9).toFixed(2) + 'px)'; const o = Math.min(.75, a * 1.1).toFixed(3); layers[0].style.opacity = o; layers[1].style.opacity = o; }
+    scene.style.transform = 'translate3d(' + (-px * 14).toFixed(2) + 'px,' + (-py * 10).toFixed(2) + 'px,0) scale(1.04)';
+    if (Math.abs(a) + Math.abs(ta) > .002 || Math.abs(tpx - px) + Math.abs(tpy - py) > .001) requestAnimationFrame(tick); else run = false;
+  };
+  const kick = () => { if (!run) { run = true; requestAnimationFrame(tick); } };
+  hero.addEventListener('pointermove', (e) => {
+    if (lx !== null) { const vx = e.clientX - lx, vy = e.clientY - ly, sp = Math.hypot(vx, vy); if (sp > .5) { tdx = c(vx / 22); tdy = c(vy / 22); ta = Math.min(1, Math.max(ta, sp / 32)); } }
+    lx = e.clientX; ly = e.clientY; const r = hero.getBoundingClientRect(); tpx = (e.clientX - r.left) / r.width - .5; tpy = (e.clientY - r.top) / r.height - .5; kick();
+  });
+  hero.addEventListener('pointerleave', () => { lx = ly = null; tpx = 0; tpy = 0; kick(); });
+})();
+
+/* menu: borra levemente enquanto rola e volta */
+(function () {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const w = document.getElementById('top');
+  let last = scrollY, lt = performance.now(), tgt = 0, cur = 0, run = false;
+  const tick = () => {
+    cur += (tgt - cur) * .22; tgt *= .86;
+    const k = matchMedia('(max-width:760px)').matches ? .5 : 1, b = (cur * 4.2 * k).toFixed(2), o = (cur * 1.8 * k).toFixed(2);
+    w.style.filter = cur < .003 ? '' : 'blur(' + b + 'px) drop-shadow(rgba(255,40,90,.55) ' + o + 'px 0 0) drop-shadow(rgba(30,210,255,.55) -' + o + 'px 0 0)';
+    if (cur > .003 || tgt > .003) requestAnimationFrame(tick); else { run = false; w.style.filter = ''; }
+  };
+  addEventListener('scroll', () => { const now = performance.now(), dt = Math.min(48, Math.max(16, now - lt)), v = Math.min(8, Math.abs(scrollY - last) / dt); last = scrollY; lt = now; tgt = Math.min(1, Math.max(tgt, v / 1.3) + v * .06); if (!run) { run = true; requestAnimationFrame(tick); } }, { passive: true });
 })();
 </script>
 </body>

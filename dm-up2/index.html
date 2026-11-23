@@ -232,7 +232,7 @@ a:hover > .roll > span + span{transform:none}
 .arr svg + svg{transform:translate(-10px,10px);opacity:0}
 a:hover > .arr svg:first-child{transform:translate(10px,-10px);opacity:0}
 a:hover > .arr svg + svg{transform:none;opacity:1}
-@media (max-width:520px){.roll{white-space:normal}}
+@media (max-width:520px){.roll{white-space:normal;flex:0 1 auto;min-width:0;text-align:center}a.cta,.pay-btn,.troca-btn{max-width:100%}}
 
 /* blocos em vidro escuro com a linha laranja fina no topo */
 .pay-section,.troca-card,.price-card,.recap-card,.garantia-card,.recebe-item,.guarantee,.final,.price-tag{position:relative;
@@ -268,6 +268,9 @@ p,.lead,.d,.note,.scarcity,.price-reveal .note,.guarantee-text,.recebe-item .d{c
 .ck{color:#1fc35a!important}
 .num,.n:not(.big .n),.pct{background:rgb(255 255 255 / .06)!important;color:#ffd9a5!important;border-color:rgb(255 255 255 / .14)!important}
 .badge{color:rgb(255 255 255 / .78)!important}
+/* degradê: área de pintura maior que as letras, para nada ficar cortado */
+h1 .hl,h2 .hl,.headline .hl,.big .hl{
+  padding:.2em .3em .3em .24em!important;margin:-.2em -.3em -.3em -.24em!important;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
